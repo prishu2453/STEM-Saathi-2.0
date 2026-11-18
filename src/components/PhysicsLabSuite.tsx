@@ -44,6 +44,7 @@ import type { Language, PhysicsTopicId, SyncStatus } from '../types/stem';
 import { Magnetism3DScene } from './Magnetism3DScene';
 import { PhysicsExperiment3DScene } from './PhysicsExperiment3DScene';
 import { ExperimentStation, stationShortName } from './ExperimentStation';
+import { Sim3DGuide } from './Sim3DGuide';
 import { STATION_ORDER, type StationId } from '../sims/stations';
 import { useStageFullscreen } from '../hooks/useStageFullscreen';
 import { ProjectileMissionLab } from './ProjectileMissionLab';
@@ -1201,6 +1202,9 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   )}
                   </div>
                   </div>
+
+                  {/* Plain-language guide in six languages */}
+                  <Sim3DGuide experimentId={selectedExperiment} appLanguage={language} />
 
                   {/* Guided 2D Projectile Mission & Offline Download Pack toggle when Projectile Motion is active */}
                   {selectedExperiment === 'mechanics' && (
