@@ -1,3 +1,4 @@
+import { apiUrl } from '../lib/apiBase';
 import { useCallback, useRef, useState } from 'react';
 import type { Language } from '../types/stem';
 
@@ -41,7 +42,7 @@ export function useAudioTranscriber(language: Language): UseAudioTranscriberRetu
       setIsTranscribing(true);
       setTranscribeError(null);
       try {
-        const res = await fetch('/api/audio/transcribe', {
+        const res = await fetch(apiUrl('/api/audio/transcribe'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

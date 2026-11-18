@@ -1,5 +1,7 @@
 /**
- * Student accounts stored on the server in a JSON file (data/accounts.json, git-ignored).
+ * Student accounts.
+ * - Hosted (DATABASE_URL set, e.g. Render/Neon PostgreSQL): stored in two tables, so logins survive restarts.
+ * - Local (no DATABASE_URL): stored in a JSON file (data/accounts.json, git-ignored).
  * - Passwords are hashed with scrypt + per-user salt; plain passwords are never stored.
  * - Session tokens are random 32-byte values; only their SHA-256 hash is stored.
  * - Login attempts are rate-limited per username and per IP.
@@ -57,26 +59,110 @@ export const MAX_SNAPSHOT_BYTES = 2_000_000;
 let db: DbShape | null = null;
 let writeChain: Promise<void> = Promise.resolve();
 
-function load(): DbShape {
-  if (db) return db;
+/* ---------- storage driver ---------- */
+type SessionOp =
+  | { t: 'add'; s: SessionRecord }
+  | { t: 'del'; hash: string }
+  | { t: 'delAccountExcept'; accountId: string; keep: string }
+  | { t: 'prune'; now: number };
+const dirtyAccounts = new Set<string>();
+let sessionOps: SessionOp[] = [];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let pool: any = null; // pg.Pool when DATABASE_URL is set
+
+function loadFile(): DbShape {
   try {
-    const raw = fs.readFileSync(DB_FILE, 'utf8');
-    const parsed = JSON.parse(raw) as DbShape;
-    db = { accounts: parsed.accounts ?? [], sessions: parsed.sessions ?? [] };
+    const parsed = JSON.parse(fs.readFileSync(DB_FILE, 'utf8')) as DbShape;
+    return { accounts: parsed.accounts ?? [], sessions: parsed.sessions ?? [] };
   } catch {
-    db = { accounts: [], sessions: [] };
+    return { accounts: [], sessions: [] };
   }
-  return db;
 }
 
-/** Atomic write (temp file + rename), serialized so two requests never interleave. */
+/** Call once before the server starts listening. */
+export async function initAccountStore(): Promise<'postgres' | 'file'> {
+  const url = process.env.DATABASE_URL;
+  if (!url) {
+    db = loadFile();
+    return 'file';
+  }
+  const { default: pg } = await import('pg');
+  const local = /@(localhost|127\.0\.0\.1)[:/]/.test(url);
+  pool = new pg.Pool({ connectionString: url, max: 5, ssl: local || /sslmode=disable/.test(url) ? false : { rejectUnauthorized: false } });
+  await pool.query(`CREATE TABLE IF NOT EXISTS ss_accounts (
+    id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL, data JSONB NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT now())`);
+  await pool.query(`CREATE TABLE IF NOT EXISTS ss_sessions (
+    token_hash TEXT PRIMARY KEY, account_id TEXT NOT NULL, expires_at BIGINT NOT NULL)`);
+  await pool.query('DELETE FROM ss_sessions WHERE expires_at < $1', [Date.now()]);
+  const accs = await pool.query('SELECT data FROM ss_accounts');
+  const sess = await pool.query('SELECT token_hash, account_id, expires_at FROM ss_sessions');
+  db = {
+    accounts: accs.rows.map((r: { data: AccountRecord }) => r.data),
+    sessions: sess.rows.map((r: { token_hash: string; account_id: string; expires_at: string }) => ({
+      tokenHash: r.token_hash,
+      accountId: r.account_id,
+      expiresAt: Number(r.expires_at),
+    })),
+  };
+  return 'postgres';
+}
+
+function load(): DbShape {
+  if (!db) db = loadFile();
+  return db;
+}
+const markAccount = (rec: AccountRecord) => dirtyAccounts.add(rec.id);
+const sessionOp = (op: SessionOp) => sessionOps.push(op);
+
+/** Save pending changes. File: atomic rewrite. Postgres: only changed rows, in one transaction. */
 function persist(): Promise<void> {
-  const snapshot = JSON.stringify(load());
+  if (!pool) {
+    dirtyAccounts.clear();
+    sessionOps = [];
+    const snapshot = JSON.stringify(load());
+    writeChain = writeChain.then(async () => {
+      await fs.promises.mkdir(DATA_DIR, { recursive: true });
+      const tmp = `${DB_FILE}.${process.pid}.tmp`;
+      await fs.promises.writeFile(tmp, snapshot, { mode: 0o600 });
+      await fs.promises.rename(tmp, DB_FILE);
+    });
+    return writeChain;
+  }
+  const accounts = [...dirtyAccounts].map((id) => load().accounts.find((a) => a.id === id)).filter(Boolean) as AccountRecord[];
+  const rows = accounts.map((a) => [a.id, a.username, JSON.stringify(a)]);
+  const ops = sessionOps;
+  dirtyAccounts.clear();
+  sessionOps = [];
   writeChain = writeChain.then(async () => {
-    await fs.promises.mkdir(DATA_DIR, { recursive: true });
-    const tmp = `${DB_FILE}.${process.pid}.tmp`;
-    await fs.promises.writeFile(tmp, snapshot, { mode: 0o600 });
-    await fs.promises.rename(tmp, DB_FILE);
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      for (const [id, username, data] of rows) {
+        await client.query(
+          `INSERT INTO ss_accounts (id, username, data, updated_at) VALUES ($1, $2, $3, now())
+           ON CONFLICT (id) DO UPDATE SET username = EXCLUDED.username, data = EXCLUDED.data, updated_at = now()`,
+          [id, username, data]
+        );
+      }
+      for (const op of ops) {
+        if (op.t === 'add')
+          await client.query('INSERT INTO ss_sessions (token_hash, account_id, expires_at) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING', [
+            op.s.tokenHash,
+            op.s.accountId,
+            op.s.expiresAt,
+          ]);
+        else if (op.t === 'del') await client.query('DELETE FROM ss_sessions WHERE token_hash = $1', [op.hash]);
+        else if (op.t === 'delAccountExcept')
+          await client.query('DELETE FROM ss_sessions WHERE account_id = $1 AND token_hash <> $2', [op.accountId, op.keep]);
+        else await client.query('DELETE FROM ss_sessions WHERE expires_at < $1', [op.now]);
+      }
+      await client.query('COMMIT');
+    } catch (err) {
+      await client.query('ROLLBACK').catch(() => undefined);
+      throw err;
+    } finally {
+      client.release();
+    }
   });
   return writeChain;
 }
@@ -166,7 +252,10 @@ function newSession(accountId: string): string {
   const d = load();
   const now = Date.now();
   d.sessions = d.sessions.filter((s) => s.expiresAt > now);
-  d.sessions.push({ tokenHash: sha256(token), accountId, expiresAt: now + SESSION_DAYS * 86_400_000 });
+  const rec: SessionRecord = { tokenHash: sha256(token), accountId, expiresAt: now + SESSION_DAYS * 86_400_000 };
+  d.sessions.push(rec);
+  sessionOp({ t: 'prune', now });
+  sessionOp({ t: 'add', s: rec });
   return token;
 }
 
@@ -192,6 +281,7 @@ export async function createAccount(
     lastLoginAt: now,
   };
   d.accounts.push(rec);
+  markAccount(rec);
   const token = newSession(rec.id);
   await persist();
   return { token, account: toPublic(rec) };
@@ -205,6 +295,7 @@ export async function login(
   const ok = verifyPassword(password, rec?.passwordHash ?? DUMMY_HASH);
   if (!rec || !ok) return null;
   rec.lastLoginAt = new Date().toISOString();
+  markAccount(rec);
   const token = newSession(rec.id);
   await persist();
   return { token, account: toPublic(rec), snapshot: rec.snapshot };
@@ -227,6 +318,7 @@ export async function updateProfile(token: string | undefined, profile: StudentP
   const rec = accountForToken(token);
   if (!rec) return null;
   rec.profile = profile;
+  markAccount(rec);
   await persist();
   return toPublic(rec);
 }
@@ -236,6 +328,7 @@ export async function saveSnapshot(token: string | undefined, snapshot: Record<s
   if (!rec) return null;
   rec.snapshot = snapshot;
   rec.snapshotUpdatedAt = new Date().toISOString();
+  markAccount(rec);
   await persist();
   return rec.snapshotUpdatedAt;
 }
@@ -248,6 +341,8 @@ export async function changePassword(token: string | undefined, oldPw: string, n
   const keep = sha256(token!);
   // Sign out every other device after a password change.
   load().sessions = load().sessions.filter((s) => s.accountId !== rec.id || s.tokenHash === keep);
+  markAccount(rec);
+  sessionOp({ t: 'delAccountExcept', accountId: rec.id, keep });
   await persist();
   return 'ok';
 }
@@ -257,6 +352,7 @@ export async function logout(token: string | undefined) {
   const d = load();
   const h = sha256(token);
   d.sessions = d.sessions.filter((s) => s.tokenHash !== h);
+  sessionOp({ t: 'del', hash: h });
   await persist();
 }
 

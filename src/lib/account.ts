@@ -1,3 +1,4 @@
+import { apiUrl } from './apiBase';
 /**
  * Client side of student accounts. Everything the app saves on the phone under the
  * "stem-saathi-" prefix (progress, class/board, flashcards, streak, settings…) is copied
@@ -181,7 +182,7 @@ function applySnapshot(snap: Record<string, string>) {
 // ---------- API ----------
 async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const token = getToken();
-  const res = await fetch(path, {
+  const res = await fetch(apiUrl(path), {
     ...init,
     headers: {
       'Content-Type': 'application/json',

@@ -1,3 +1,4 @@
+import { apiUrl } from '../lib/apiBase';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { SPEECH_LANG_CODES } from '../data/i18n';
 import { getPreferredSpeechVoice, getSavedSpeechVoiceURI, getSpeechVoiceChoices, savePreferredSpeechVoice } from '../lib/speechVoice';
@@ -105,7 +106,7 @@ export function useTeacherVoice(language: Language) {
   // Which natural voice engine (if any) the server offers for each language
   useEffect(() => {
     let alive = true;
-    fetch('/api/mentor/speech/status')
+    fetch(apiUrl('/api/mentor/speech/status'))
       .then((r) => (r.ok ? (r.json() as Promise<SpeechStatus>) : null))
       .then((st) => alive && st && setSpeechStatus(st))
       .catch(() => undefined);
@@ -245,7 +246,7 @@ export function useTeacherVoice(language: Language) {
       // Natural voice: one sentence per request (the English model takes ≤200 characters),
       // fetching the next sentence while the current one plays so speech flows without gaps.
       const fetchPart = (i: number): Promise<string> =>
-        fetch('/api/mentor/speech', {
+        fetch(apiUrl('/api/mentor/speech'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: parts[i], language, voiceName: naturalVoice }),

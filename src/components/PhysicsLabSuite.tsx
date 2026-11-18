@@ -1,3 +1,4 @@
+import { apiUrl } from '../lib/apiBase';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Atom,
@@ -328,7 +329,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
     setSolverLoading(true);
     setSolverError(null);
     try {
-      const res = await fetch('/api/physics/solve', {
+      const res = await fetch(apiUrl('/api/physics/solve'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

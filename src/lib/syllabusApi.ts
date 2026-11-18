@@ -1,3 +1,4 @@
+import { apiUrl } from './apiBase';
 import {
   getChapterById,
   getSyllabusMeta,
@@ -52,7 +53,7 @@ function writeCache<T>(key: string, value: T): void {
 
 export async function fetchSyllabusMeta(): Promise<SyllabusMetaResponse> {
   try {
-    const res = await fetch('/api/syllabus/meta');
+    const res = await fetch(apiUrl('/api/syllabus/meta'));
     if (res.ok) {
       const data = (await res.json()) as SyllabusMetaResponse;
       writeCache('meta', data);
@@ -83,7 +84,7 @@ export async function fetchSyllabus(params: {
   }
 
   try {
-    const res = await fetch(`/api/syllabus?${query.toString()}`);
+    const res = await fetch(apiUrl(`/api/syllabus?${query.toString()}`));
     if (res.ok) {
       const data = (await res.json()) as SyllabusApiResponse;
       writeCache(cacheKey, data);
@@ -101,7 +102,7 @@ export async function fetchChapterDetail(
 ): Promise<ChapterDetailApiResponse | null> {
   const cacheKey = `chapter:${chapterId}`;
   try {
-    const res = await fetch(`/api/syllabus/chapter/${encodeURIComponent(chapterId)}`);
+    const res = await fetch(apiUrl(`/api/syllabus/chapter/${encodeURIComponent(chapterId)}`));
     if (res.ok) {
       const data = (await res.json()) as ChapterDetailApiResponse;
       writeCache(cacheKey, data);
@@ -160,7 +161,7 @@ export async function fetchExperiments(filters: {
   const cacheKey = `exps:${query.toString()}`;
 
   try {
-    const res = await fetch(`/api/experiments?${query.toString()}`);
+    const res = await fetch(apiUrl(`/api/experiments?${query.toString()}`));
     if (res.ok) {
       const data = (await res.json()) as { experiments: StructuredExperiment[] };
       writeCache(cacheKey, data.experiments);

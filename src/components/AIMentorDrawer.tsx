@@ -1,3 +1,4 @@
+import { apiUrl } from '../lib/apiBase';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ExternalLink,
@@ -219,7 +220,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
     setLastFailedQuery(null);
 
     try {
-      const res = await fetch('/api/mentor/ask', {
+      const res = await fetch(apiUrl('/api/mentor/ask'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
