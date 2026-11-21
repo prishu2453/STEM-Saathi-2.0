@@ -58,7 +58,7 @@ export const PilotFeedback: React.FC<{ language: Language }> = ({ language }) =>
   const [helped, setHelped] = useState('');
   const [confusing, setConfusing] = useState('');
   const [done, setDone] = useState(false);
-  const field = 'mt-1 block w-full min-h-[44px] rounded-xl border border-[#B9AD8C] bg-white dark:bg-[#1C3652] px-3 py-2 text-sm';
+  const field = 'mt-1 block w-full min-h-[44px] rounded-xl border border-[#B6A6E0] bg-white dark:bg-[#2A1D5C] px-3 py-2 text-sm';
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,9 +76,9 @@ export const PilotFeedback: React.FC<{ language: Language }> = ({ language }) =>
   };
 
   return (
-    <section aria-labelledby="fb-title" className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
-      <h2 id="fb-title" className="text-lg font-bold text-[#17324D] dark:text-white">{t('title')}</h2>
-      <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{t('note')}</p>
+    <section aria-labelledby="fb-title" className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
+      <h2 id="fb-title" className="text-lg font-bold text-[#2E1A6E] dark:text-white">{t('title')}</h2>
+      <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{t('note')}</p>
       <form onSubmit={submit} className="grid gap-3 sm:grid-cols-2">
         <label className="text-sm font-semibold">{t('who')}
           <select value={who} onChange={(e) => setWho(e.target.value as 'student' | 'teacher')} className={field}>
@@ -93,7 +93,7 @@ export const PilotFeedback: React.FC<{ language: Language }> = ({ language }) =>
           <select value={feature} onChange={(e) => setFeature(e.target.value)} className={field}>{FEATURES.map((f) => (<option key={f}>{f}</option>))}</select>
         </label>
         <label className="text-sm font-semibold">{t('clarity')}: {clarity}
-          <input type="range" min={1} max={5} step={1} value={clarity} onChange={(e) => setClarity(Number(e.target.value))} className="mt-1 block w-full h-8 accent-[#0F766E]" />
+          <input type="range" min={1} max={5} step={1} value={clarity} onChange={(e) => setClarity(Number(e.target.value))} className="mt-1 block w-full h-8 accent-[#6D28D9]" />
         </label>
         <label className="text-sm font-semibold sm:col-span-2">{t('helped')}
           <textarea value={helped} onChange={(e) => setHelped(e.target.value.slice(0, 400))} rows={2} className={field} />
@@ -102,14 +102,14 @@ export const PilotFeedback: React.FC<{ language: Language }> = ({ language }) =>
           <textarea value={confusing} onChange={(e) => setConfusing(e.target.value.slice(0, 400))} rows={2} className={field} />
         </label>
         <div className="sm:col-span-2 flex flex-wrap items-center gap-3">
-          <button type="submit" className="min-h-[48px] rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-5 text-sm font-semibold text-white cursor-pointer">{t('send')}</button>
-          {done && <span role="status" className="text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{t('saved')}</span>}
+          <button type="submit" className="min-h-[48px] rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-5 text-sm font-semibold text-white cursor-pointer">{t('send')}</button>
+          {done && <span role="status" className="text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{t('saved')}</span>}
         </div>
       </form>
-      <div className="flex flex-wrap items-center gap-3 border-t border-[#E6DEC8] dark:border-[#284766] pt-3">
+      <div className="flex flex-wrap items-center gap-3 border-t border-[#E7DDFB] dark:border-[#3B2C78] pt-3">
         <span className="text-sm tabular-nums">{list.length} {t('count')}</span>
-        <button type="button" disabled={!list.length} onClick={csv} className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#0F766E] px-4 text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6] disabled:opacity-40 cursor-pointer"><Download className="w-4 h-4" aria-hidden="true" />{t('csv')}</button>
-        <button type="button" disabled={!list.length} onClick={() => { setList([]); save([]); setDone(false); }} className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-4 text-sm font-semibold text-[#B91C1C] disabled:opacity-40 cursor-pointer"><Trash2 className="w-4 h-4" aria-hidden="true" />{t('clear')}</button>
+        <button type="button" disabled={!list.length} onClick={csv} className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#6D28D9] px-4 text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD] disabled:opacity-40 cursor-pointer"><Download className="w-4 h-4" aria-hidden="true" />{t('csv')}</button>
+        <button type="button" disabled={!list.length} onClick={() => { setList([]); save([]); setDone(false); }} className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-4 text-sm font-semibold text-[#B91C1C] disabled:opacity-40 cursor-pointer"><Trash2 className="w-4 h-4" aria-hidden="true" />{t('clear')}</button>
       </div>
     </section>
   );

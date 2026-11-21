@@ -105,7 +105,7 @@ export const kinematics: SimDef<KinState> = {
     const X = (x: number) => 30 + ((x - lo) / span) * (w - 60), y0 = h * 0.62;
     c.strokeStyle = INK; c.lineWidth = 3; c.beginPath(); c.moveTo(20, y0); c.lineTo(w - 20, y0); c.stroke();
     const step = span > 80 ? 20 : span > 40 ? 10 : 5;
-    for (let m = Math.ceil(lo / step) * step; m <= lo + span; m += step) { c.beginPath(); c.moveTo(X(m), y0); c.lineTo(X(m), y0 + 8); c.stroke(); label(c, `${m}`, X(m), y0 + 22, '#3D4A50', 11, 'center'); }
+    for (let m = Math.ceil(lo / step) * step; m <= lo + span; m += step) { c.beginPath(); c.moveTo(X(m), y0); c.lineTo(X(m), y0 + 8); c.stroke(); label(c, `${m}`, X(m), y0 + 22, '#4A3F66', 11, 'center'); }
     const cx = X(s.x);
     c.fillStyle = TEAL; c.fillRect(cx - 26, y0 - 26, 52, 18); c.fillStyle = AMBER; c.fillRect(cx - 14, y0 - 38, 28, 12);
     c.fillStyle = INK; c.beginPath(); c.arc(cx - 15, y0 - 6, 6, 0, 7); c.arc(cx + 15, y0 - 6, 6, 0, 7); c.fill();
@@ -153,7 +153,7 @@ export const incline: SimDef<InclineState> = {
   draw(c, s, p, w, h) {
     const th = (p.theta * Math.PI) / 180, L = Math.min(w * 0.7, 360), bx = 40, by = h - 40;
     const tx = bx + L * Math.cos(th), ty = by - L * Math.sin(th);
-    c.fillStyle = '#E6DEC8'; c.beginPath(); c.moveTo(bx, by); c.lineTo(tx, ty); c.lineTo(tx, by); c.closePath(); c.fill();
+    c.fillStyle = '#E7DDFB'; c.beginPath(); c.moveTo(bx, by); c.lineTo(tx, ty); c.lineTo(tx, by); c.closePath(); c.fill();
     c.strokeStyle = INK; c.lineWidth = 3; c.beginPath(); c.moveTo(bx, by); c.lineTo(tx, ty); c.stroke();
     c.beginPath(); c.moveTo(bx, by); c.lineTo(tx, by); c.stroke();
     const d = L * 0.15 + (s.s / 3) * L * 0.7, px = bx + d * Math.cos(th), py = by - d * Math.sin(th);
@@ -434,7 +434,7 @@ export const workenergy: SimDef<WorkState> = {
   draw(c, s, p, w, h) {
     const th = (p.th * Math.PI) / 180, y0 = h * 0.65, sc = (w - 80) / 11;
     c.strokeStyle = INK; c.lineWidth = 3; c.beginPath(); c.moveTo(20, y0); c.lineTo(w - 20, y0); c.stroke();
-    for (let m = 0; m <= 10; m += 2) { c.beginPath(); c.moveTo(40 + m * sc, y0); c.lineTo(40 + m * sc, y0 + 7); c.stroke(); label(c, `${m}`, 40 + m * sc, y0 + 21, '#3D4A50', 11, 'center'); }
+    for (let m = 0; m <= 10; m += 2) { c.beginPath(); c.moveTo(40 + m * sc, y0); c.lineTo(40 + m * sc, y0 + 7); c.stroke(); label(c, `${m}`, 40 + m * sc, y0 + 21, '#4A3F66', 11, 'center'); }
     const bx = 40 + s.s * sc, bw = 30 + p.m * 1.4;
     c.fillStyle = TEAL; c.fillRect(bx - bw / 2, y0 - bw, bw, bw);
     arrow(c, bx + bw / 2, y0 - bw / 2, bx + bw / 2 + p.F * 1.6 * Math.cos(th), y0 - bw / 2 - p.F * 1.6 * Math.sin(th), RED, 3);

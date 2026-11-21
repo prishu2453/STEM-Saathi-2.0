@@ -333,36 +333,36 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
     return (
       <article
         key={chapter.id}
-        className={`a11y-surface rounded-2xl border bg-white dark:bg-[#152A40] p-4 sm:p-5 flex flex-col justify-between gap-4 transition-colors ${
+        className={`a11y-surface rounded-2xl border bg-white dark:bg-[#1F1545] p-4 sm:p-5 flex flex-col justify-between gap-4 transition-colors ${
           isCompleted
-            ? 'border-[#0F766E]'
+            ? 'border-[#6D28D9]'
             : isPhysicsFeatured
               ? 'border-[#D7CFBA] dark:border-[#2C4E70]'
-              : 'border-[#E6DEC8] dark:border-[#284766]'
+              : 'border-[#E7DDFB] dark:border-[#3B2C78]'
         }`}
       >
         <div className="space-y-2">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-[#3D4A50] dark:text-[#9CB2C7]">
-            <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-[#4A3F66] dark:text-[#B3A6DE]">
+            <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
               Chapter {chapter.chapterNumber} · {topicTag}
             </span>
             {isCompleted && (
-              <span className="inline-flex items-center gap-1 font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+              <span className="inline-flex items-center gap-1 font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                 <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                 Completed
               </span>
             )}
           </div>
 
-          <h3 className="text-base sm:text-lg font-bold text-[#17324D] dark:text-white leading-snug">
+          <h3 className="text-base sm:text-lg font-bold text-[#2E1A6E] dark:text-white leading-snug">
             {title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] line-clamp-2 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] line-clamp-2 leading-relaxed">
             {summary}
           </p>
 
-          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-[#3D4A50] dark:text-[#B4C5D4] pt-1 tabular-nums">
+          <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-[#4A3F66] dark:text-[#C9BFEA] pt-1 tabular-nums">
             <span>
               Topics: {studiedCount}/{chapter.topics.length}
             </span>
@@ -377,7 +377,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             {quizScore !== undefined && (
               <>
                 <span aria-hidden="true">·</span>
-                <span className="font-semibold text-[#9A6100] dark:text-[#F2B544]">
+                <span className="font-semibold text-[#B4430C] dark:text-[#FF9F1C]">
                   Quiz: {quizScore}%
                 </span>
               </>
@@ -385,11 +385,11 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
+        <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
           <button
             type="button"
             onClick={() => onSelectChapterId(chapter.id)}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2 min-h-[44px] text-xs font-semibold text-white transition-colors cursor-pointer"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2 min-h-[44px] text-xs font-semibold text-white transition-colors cursor-pointer"
           >
             <BookOpen className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>Study Chapter</span>
@@ -401,8 +401,8 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             aria-label={`Mark ${title} complete`}
             className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border px-3 text-xs font-semibold cursor-pointer ${
               isCompleted
-                ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6]'
-                : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]'
+                ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD]'
+                : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]'
             }`}
           >
             <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
@@ -415,18 +415,18 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 py-5 sm:py-8 space-y-7">
       {/* Header + Student Board Banner */}
-      <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 sm:p-6 space-y-4">
+      <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 sm:p-6 space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <p className="text-xs font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6] flex items-center gap-1.5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD] flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>My Learning Dashboard</span>
             </p>
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-white tracking-tight">
               {formatLearningPathSummary(learningPath, language)}
             </h1>
             {syllabusData?.available && syllabusData.textbookName && (
-              <p className="text-xs sm:text-sm text-[#3D4A50] dark:text-[#B4C5D4] flex flex-wrap items-center gap-x-2 gap-y-1">
+              <p className="text-xs sm:text-sm text-[#4A3F66] dark:text-[#C9BFEA] flex flex-wrap items-center gap-x-2 gap-y-1">
                 <span>{syllabusData.textbookName}</span>
                 {syllabusData.sourceUrl && (
                   <>
@@ -435,7 +435,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                       href={syllabusData.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:underline"
+                      className="inline-flex items-center gap-1 font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:underline"
                     >
                       <span>{syllabusData.sourceTitle || 'Official Syllabus'}</span>
                       <ExternalLink className="w-3 h-3" aria-hidden="true" />
@@ -450,16 +450,16 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             <button
               type="button"
               onClick={onOpenExperimentLibrary}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer"
             >
-              <FlaskConical className="w-4 h-4 text-[#0F766E]" aria-hidden="true" />
+              <FlaskConical className="w-4 h-4 text-[#6D28D9]" aria-hidden="true" />
               <span>Experiment Library</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsEditingProfile(true)}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[#17324D] hover:bg-[#112539] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-[#2E1A6E] hover:bg-[#112539] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white cursor-pointer"
             >
               <SlidersHorizontal className="w-4 h-4" aria-hidden="true" />
               <span>Change Class / Board</span>
@@ -469,61 +469,61 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
 
         {/* Visual Progress Bars & Key Metrics */}
         {syllabusData?.available && (
-          <div className="pt-4 border-t border-[#E6DEC8] dark:border-[#284766] space-y-4">
+          <div className="pt-4 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-4">
             <div className="space-y-1.5">
               <div className="flex items-center justify-between text-xs font-semibold">
-                <span className="text-[#17324D] dark:text-[#F6F1E3]">
+                <span className="text-[#2E1A6E] dark:text-[#F5F0FF]">
                   {language === 'hi' ? 'इस ऐप के अध्यायों में प्रगति' : language === 'kn' ? 'ಈ ಆ್ಯಪ್‌ನ ಅಧ್ಯಾಯಗಳಲ್ಲಿ ಪ್ರಗತಿ' : 'Progress through the chapters in this app'} ({stats.completedInSyllabus}/{stats.syllabusChapterTotal}{' '}
                   {language === 'hi' ? 'अध्याय' : language === 'kn' ? 'ಅಧ್ಯಾಯ' : 'chapters'})
                 </span>
-                <span className="text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+                <span className="text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
                   {stats.overallPct}%
                 </span>
               </div>
               <div
-                className="h-3 w-full overflow-hidden rounded-full bg-[#F6F1E3] dark:bg-[#1C3652] border border-[#E6DEC8] dark:border-[#284766]"
+                className="h-3 w-full overflow-hidden rounded-full bg-[#F5F0FF] dark:bg-[#2A1D5C] border border-[#E7DDFB] dark:border-[#3B2C78]"
                 role="progressbar"
                 aria-valuenow={stats.overallPct}
                 aria-valuemin={0}
                 aria-valuemax={100}
               >
                 <div
-                  className="h-full rounded-full bg-[#0F766E] transition-all duration-300"
+                  className="h-full rounded-full bg-[#6D28D9] transition-all duration-300"
                   style={{ width: `${stats.overallPct}%` }}
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-              <div className="rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
-                <p className="text-[#3D4A50] dark:text-[#B4C5D4]">Topics Studied</p>
-                <p className="mt-0.5 text-base font-bold text-[#17324D] dark:text-white tabular-nums">
+              <div className="rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
+                <p className="text-[#4A3F66] dark:text-[#C9BFEA]">Topics Studied</p>
+                <p className="mt-0.5 text-base font-bold text-[#2E1A6E] dark:text-white tabular-nums">
                   {stats.studiedInSyllabus} / {stats.totalTopicsInSyllabus}
                 </p>
               </div>
-              <div className="rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
-                <p className="text-[#3D4A50] dark:text-[#B4C5D4]">Experiments Done</p>
-                <p className="mt-0.5 text-base font-bold text-[#17324D] dark:text-white tabular-nums">
+              <div className="rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
+                <p className="text-[#4A3F66] dark:text-[#C9BFEA]">Experiments Done</p>
+                <p className="mt-0.5 text-base font-bold text-[#2E1A6E] dark:text-white tabular-nums">
                   {stats.expsDoneInSyllabus} / {stats.totalExpsInSyllabus}
                 </p>
               </div>
-              <div className="rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
-                <p className="text-[#3D4A50] dark:text-[#B4C5D4]">Avg Quiz Score</p>
-                <p className="mt-0.5 text-base font-bold text-[#9A6100] dark:text-[#F2B544] tabular-nums">
+              <div className="rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
+                <p className="text-[#4A3F66] dark:text-[#C9BFEA]">Avg Quiz Score</p>
+                <p className="mt-0.5 text-base font-bold text-[#B4430C] dark:text-[#FF9F1C] tabular-nums">
                   {stats.quizCount > 0 ? `${stats.avgQuizPct}% (${stats.quizCount})` : 'Not taken'}
                 </p>
               </div>
-              <div className="rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
-                <p className="text-[#3D4A50] dark:text-[#B4C5D4] flex items-center gap-1">
+              <div className="rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
+                <p className="text-[#4A3F66] dark:text-[#C9BFEA] flex items-center gap-1">
                   <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Learning Time</span>
                 </p>
-                <p className="mt-0.5 text-base font-bold text-[#17324D] dark:text-white tabular-nums">
+                <p className="mt-0.5 text-base font-bold text-[#2E1A6E] dark:text-white tabular-nums">
                   {formatStudyTime(stats.learningTimeSeconds)}
                 </p>
               </div>
             </div>
-            <p className="text-xs leading-relaxed text-[#3D4A50] dark:text-[#B4C5D4]">
+            <p className="text-xs leading-relaxed text-[#4A3F66] dark:text-[#C9BFEA]">
               {language === 'hi'
                 ? 'इन आँकड़ों को कैसे पढ़ें: ये केवल वही गिनते हैं जो आपने इस फ़ोन पर किया या चिह्नित किया। प्रगति = ऐप के उपलब्ध अध्यायों में से पूरे किए अध्याय (पूरा आधिकारिक पाठ्यक्रम नहीं — कवरेज देखें)। क्विज़ अंक = आपके दिए क्विज़ में सही उत्तरों का प्रतिशत; यह अभ्यास है, परीक्षा परिणाम या सीखने का प्रमाण नहीं।'
                 : language === 'kn'
@@ -544,14 +544,14 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
 
       {/* Flashcards — spaced revision across the whole selected syllabus */}
       {syllabusData?.available && chapters.length > 0 && (
-        <div className="a11y-surface rounded-2xl border border-[#0F766E]/50 bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
+        <div className="a11y-surface rounded-2xl border border-[#6D28D9]/50 bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
           {!flashOpen ? (
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="space-y-1">
-                <p className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+                <p className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                   {language === 'hi' ? 'फ्लैशकार्ड' : language === 'kn' ? 'ಫ್ಲ್ಯಾಶ್‌ಕಾರ್ಡ್' : 'Flashcards'}
                 </p>
-                <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+                <p className="text-sm text-[#22163F] dark:text-[#E4DDFA]">
                   {(() => {
                     const deck = buildDeck(chapters, language);
                     const due = countDue(loadFlashProgress(), deck);
@@ -566,7 +566,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
               <button
                 type="button"
                 onClick={() => setFlashOpen(true)}
-                className="min-h-[48px] rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-6 text-sm font-semibold text-white cursor-pointer"
+                className="min-h-[48px] rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-6 text-sm font-semibold text-white cursor-pointer"
               >
                 {language === 'hi' ? 'फ्लैशकार्ड से दोहराएँ' : language === 'kn' ? 'ಫ್ಲ್ಯಾಶ್‌ಕಾರ್ಡ್ ಅಭ್ಯಾಸ' : 'Revise with flashcards'}
               </button>
@@ -585,23 +585,23 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
       {/* Continue Learning + Recents + Bookmarks */}
       {syllabusData?.available && continueChapter && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#0F766E]/50 bg-white dark:bg-[#152A40] p-5 flex flex-col justify-between gap-4">
+          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#6D28D9]/50 bg-white dark:bg-[#1F1545] p-5 flex flex-col justify-between gap-4">
             <div className="space-y-1.5">
-              <p className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+              <p className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                 Continue Learning
               </p>
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Chapter {continueChapter.chapterNumber}:{' '}
                 {resolveLocalizedText(continueChapter.title, language).text}
               </h2>
-              <p className="text-xs sm:text-sm text-[#3D4A50] dark:text-[#B4C5D4] line-clamp-2">
+              <p className="text-xs sm:text-sm text-[#4A3F66] dark:text-[#C9BFEA] line-clamp-2">
                 {resolveLocalizedText(continueChapter.conceptSummary, language).text}
               </p>
             </div>
             <button
               type="button"
               onClick={() => onSelectChapterId(continueChapter.id)}
-              className="self-start inline-flex items-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-5 py-2.5 min-h-[46px] text-xs sm:text-sm font-bold text-white cursor-pointer"
+              className="self-start inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-5 py-2.5 min-h-[46px] text-xs sm:text-sm font-bold text-white cursor-pointer"
             >
               <PlayCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>Resume Chapter</span>
@@ -609,10 +609,10 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             </button>
           </div>
 
-          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
+          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <p className="text-xs font-bold uppercase tracking-wide text-[#17324D] dark:text-[#F6F1E3]">
+                <p className="text-xs font-bold uppercase tracking-wide text-[#2E1A6E] dark:text-[#F5F0FF]">
                   Recently Studied
                 </p>
                 {recentChaptersList.length > 0 ? (
@@ -622,7 +622,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                         <button
                           type="button"
                           onClick={() => onSelectChapterId(rc.id)}
-                          className="w-full text-left text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:underline truncate cursor-pointer py-1"
+                          className="w-full text-left text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:underline truncate cursor-pointer py-1"
                         >
                           Ch {rc.chapterNumber}: {resolveLocalizedText(rc.title, language).text}
                         </button>
@@ -630,15 +630,15 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                     Open any chapter to see your recent study trail here.
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <p className="text-xs font-bold uppercase tracking-wide text-[#17324D] dark:text-[#F6F1E3] flex items-center gap-1.5">
-                  <Bookmark className="w-3.5 h-3.5 text-[#F2B544]" aria-hidden="true" />
+                <p className="text-xs font-bold uppercase tracking-wide text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center gap-1.5">
+                  <Bookmark className="w-3.5 h-3.5 text-[#FF9F1C]" aria-hidden="true" />
                   <span>Bookmarked Topics ({bookmarkedItems.length})</span>
                 </p>
                 {bookmarkedItems.length > 0 ? (
@@ -648,7 +648,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                         <button
                           type="button"
                           onClick={() => onSelectChapterId(bm.chapterId)}
-                          className="w-full text-left text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:text-[#0F766E] truncate cursor-pointer py-1"
+                          className="w-full text-left text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:text-[#6D28D9] truncate cursor-pointer py-1"
                         >
                           {bm.topicTitle} · Ch ({bm.chapterTitle})
                         </button>
@@ -656,7 +656,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                     Bookmark topics inside a chapter to save them for quick revision.
                   </p>
                 )}
@@ -671,7 +671,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="relative flex-1 max-w-md">
             <Search
-              className="w-4 h-4 text-[#3D4A50] absolute left-3.5 top-1/2 -translate-y-1/2"
+              className="w-4 h-4 text-[#4A3F66] absolute left-3.5 top-1/2 -translate-y-1/2"
               aria-hidden="true"
             />
             <input
@@ -680,14 +680,14 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search chapter, topic, or experiment..."
               aria-label="Search chapter, topic, or experiment"
-              className="w-full min-h-[46px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] pl-10 pr-4 py-2 text-sm text-[#17324D] dark:text-white focus:outline-none focus:border-[#0F766E]"
+              className="w-full min-h-[46px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] pl-10 pr-4 py-2 text-sm text-[#2E1A6E] dark:text-white focus:outline-none focus:border-[#6D28D9]"
             />
           </div>
 
           <div
             role="group"
             aria-label="Filter syllabus by subject"
-            className="flex flex-wrap items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-1"
+            className="flex flex-wrap items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-1"
           >
             {(
               [
@@ -704,8 +704,8 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                 aria-pressed={subjectFilter === tab.id}
                 className={`px-3.5 py-2 min-h-[40px] rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                   subjectFilter === tab.id
-                    ? 'bg-[#0F766E] text-white'
-                    : 'text-[#17324D] dark:text-[#DCE5EC] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652]'
+                    ? 'bg-[#6D28D9] text-white'
+                    : 'text-[#2E1A6E] dark:text-[#E4DDFA] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C]'
                 }`}
               >
                 {tab.label}
@@ -717,21 +717,21 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
 
       {/* Loading State */}
       {loadingSyllabus && (
-        <div className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-8 text-center text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+        <div className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-8 text-center text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
           Loading board-wise syllabus...
         </div>
       )}
 
       {/* Honest Unavailable Board/Class State */}
       {!loadingSyllabus && syllabusData && !syllabusData.available && (
-        <div className="a11y-surface rounded-2xl border border-[#F2B544] bg-white dark:bg-[#152A40] p-6 space-y-4">
+        <div className="a11y-surface rounded-2xl border border-[#FF9F1C] bg-white dark:bg-[#1F1545] p-6 space-y-4">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-[#9A6100] dark:text-[#F2B544] shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-[#B4430C] dark:text-[#FF9F1C] shrink-0 mt-0.5" />
             <div className="space-y-1.5">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Syllabus Not Yet Verified for This Exact Selection
               </h2>
-              <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] leading-relaxed">
+              <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] leading-relaxed">
                 {syllabusData.unavailableReason}
               </p>
             </div>
@@ -740,7 +740,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             <button
               type="button"
               onClick={() => setIsEditingProfile(true)}
-              className="rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white cursor-pointer"
+              className="rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white cursor-pointer"
             >
               Change Class or Board
             </button>
@@ -756,7 +756,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   configured: true,
                 })
               }
-              className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer"
+              className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer"
             >
               Open Verified Class 8 · CBSE (2025–26 Curiosity)
             </button>
@@ -772,11 +772,11 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6] flex items-center gap-1.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD] flex items-center gap-1.5">
                     <Atom className="w-4 h-4 shrink-0" aria-hidden="true" />
                     <span>Primary Science Focus · 1. Physics</span>
                   </p>
-                  <h2 className="text-xl font-bold text-[#17324D] dark:text-white">
+                  <h2 className="text-xl font-bold text-[#2E1A6E] dark:text-white">
                     Physics Chapters, Formulas &amp; Virtual Labs ({physicsChapters.length})
                   </h2>
                 </div>
@@ -785,7 +785,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   <button
                     type="button"
                     onClick={() => onLaunchPhysicsSim('mechanics')}
-                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-white cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-white cursor-pointer"
                   >
                     <Atom className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>Virtual Physics Lab</span>
@@ -793,9 +793,9 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   <button
                     type="button"
                     onClick={() => onLaunchPhysicsSim('optics')}
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
-                    <Calculator className="w-3.5 h-3.5 text-[#0F766E]" aria-hidden="true" />
+                    <Calculator className="w-3.5 h-3.5 text-[#6D28D9]" aria-hidden="true" />
                     <span>Optics &amp; Solver</span>
                   </button>
                 </div>
@@ -806,7 +806,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   {physicsChapters.map((ch) => renderChapterCard(ch, true))}
                 </div>
               ) : (
-                <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+                <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
                   No Physics chapters match your search filter.
                 </p>
               )}
@@ -818,20 +818,20 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#9A6100] dark:text-[#F2B544] flex items-center gap-1.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#B4430C] dark:text-[#FF9F1C] flex items-center gap-1.5">
                     <FlaskConical className="w-4 h-4 shrink-0" aria-hidden="true" />
                     <span>2. Chemistry</span>
                   </p>
-                  <h2 className="text-xl font-bold text-[#17324D] dark:text-white">
+                  <h2 className="text-xl font-bold text-[#2E1A6E] dark:text-white">
                     Chemistry Chapters &amp; Chemical Reactions ({chemistryChapters.length})
                   </h2>
                 </div>
                 <button
                   type="button"
                   onClick={() => onLaunchSupportingWorld('chemistry')}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                 >
-                  <FlaskConical className="w-3.5 h-3.5 text-[#9A6100] dark:text-[#F2B544]" />
+                  <FlaskConical className="w-3.5 h-3.5 text-[#B4430C] dark:text-[#FF9F1C]" />
                   <span>Open Chemistry World</span>
                 </button>
               </div>
@@ -841,7 +841,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   {chemistryChapters.map((ch) => renderChapterCard(ch))}
                 </div>
               ) : (
-                <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+                <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
                   No Chemistry chapters match your filter.
                 </p>
               )}
@@ -853,20 +853,20 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6] flex items-center gap-1.5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD] flex items-center gap-1.5">
                     <Leaf className="w-4 h-4 shrink-0" aria-hidden="true" />
                     <span>3. Biology</span>
                   </p>
-                  <h2 className="text-xl font-bold text-[#17324D] dark:text-white">
+                  <h2 className="text-xl font-bold text-[#2E1A6E] dark:text-white">
                     Biology Chapters &amp; Life Sciences ({biologyChapters.length})
                   </h2>
                 </div>
                 <button
                   type="button"
                   onClick={() => onLaunchSupportingWorld('biology')}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                 >
-                  <Leaf className="w-3.5 h-3.5 text-[#0F766E]" />
+                  <Leaf className="w-3.5 h-3.5 text-[#6D28D9]" />
                   <span>Open Biology World</span>
                 </button>
               </div>
@@ -876,7 +876,7 @@ export const MyLearningDashboard: React.FC<MyLearningDashboardProps> = ({
                   {biologyChapters.map((ch) => renderChapterCard(ch))}
                 </div>
               ) : (
-                <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+                <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
                   No Biology chapters match your filter.
                 </p>
               )}

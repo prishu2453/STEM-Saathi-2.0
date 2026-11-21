@@ -151,9 +151,9 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
   return (
     <section className="mx-auto max-w-3xl px-4 sm:px-6 py-6 space-y-5" aria-labelledby="demo-title">
       <div>
-        <h1 id="demo-title" className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-white">{t('title')}</h1>
-        <p className="mt-1 text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{t('intro')}</p>
-        <button type="button" onClick={quick} className={`${btn} mt-3 bg-[#17324D] text-white border-transparent`}>{t('quick')}</button>
+        <h1 id="demo-title" className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-white">{t('title')}</h1>
+        <p className="mt-1 text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{t('intro')}</p>
+        <button type="button" onClick={quick} className={`${btn} mt-3 bg-[#2E1A6E] text-white border-transparent`}>{t('quick')}</button>
       </div>
 
       <nav aria-label="Steps">
@@ -168,7 +168,7 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
                   onClick={() => (i <= 1 || chapter) && setStep(i)}
                   aria-current={active ? 'step' : undefined}
                   className={`w-full min-h-[56px] rounded-xl border px-1 py-1.5 text-[11px] sm:text-xs font-semibold flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
-                    active ? 'bg-[#0F766E] text-white border-[#0F766E]' : i < step ? 'bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6] border-[#0F766E]/40' : 'bg-white dark:bg-[#152A40] text-[#3D4A50] dark:text-[#B4C5D4] border-[#E6DEC8] dark:border-[#284766]'
+                    active ? 'bg-[#6D28D9] text-white border-[#6D28D9]' : i < step ? 'bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD] border-[#6D28D9]/40' : 'bg-white dark:bg-[#1F1545] text-[#4A3F66] dark:text-[#C9BFEA] border-[#E7DDFB] dark:border-[#3B2C78]'
                   }`}
                 >
                   <Icon className="w-4 h-4" aria-hidden="true" />
@@ -180,16 +180,16 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
         </ol>
       </nav>
 
-      <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-6 space-y-4" aria-live="polite">
+      <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-6 space-y-4" aria-live="polite">
         {step === 0 && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">1. {t('s1')}</h2>
-            <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{t('physics')}</p>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">1. {t('s1')}</h2>
+            <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{t('physics')}</p>
             <fieldset>
               <legend className="text-sm font-semibold mb-2">{t('cls')}</legend>
               <div className="flex flex-wrap gap-2">
                 {([6, 7, 8, 9, 10, 11, 12] as SchoolClass[]).map((c) => (
-                  <button key={c} type="button" aria-pressed={path.classLevel === c} onClick={() => update({ classLevel: c })} className={`min-w-[52px] ${btn} ${path.classLevel === c ? 'bg-[#0F766E] text-white border-[#0F766E]' : 'border-[#B9AD8C] text-[#17324D] dark:text-white'}`}>{c}</button>
+                  <button key={c} type="button" aria-pressed={path.classLevel === c} onClick={() => update({ classLevel: c })} className={`min-w-[52px] ${btn} ${path.classLevel === c ? 'bg-[#6D28D9] text-white border-[#6D28D9]' : 'border-[#B6A6E0] text-[#2E1A6E] dark:text-white'}`}>{c}</button>
                 ))}
               </div>
             </fieldset>
@@ -197,14 +197,14 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
               <legend className="text-sm font-semibold mb-2">{t('board')}</legend>
               <div className="flex flex-wrap gap-2">
                 {BOARDS.map((b) => (
-                  <button key={b.id} type="button" aria-pressed={path.board === b.id} onClick={() => update({ board: b.id, stateName: b.id === 'state' ? path.stateName || 'Karnataka' : '' })} className={`${btn} ${path.board === b.id ? 'bg-[#0F766E] text-white border-[#0F766E]' : 'border-[#B9AD8C] text-[#17324D] dark:text-white'}`}>{b.label}</button>
+                  <button key={b.id} type="button" aria-pressed={path.board === b.id} onClick={() => update({ board: b.id, stateName: b.id === 'state' ? path.stateName || 'Karnataka' : '' })} className={`${btn} ${path.board === b.id ? 'bg-[#6D28D9] text-white border-[#6D28D9]' : 'border-[#B6A6E0] text-[#2E1A6E] dark:text-white'}`}>{b.label}</button>
                 ))}
               </div>
             </fieldset>
             {path.board === 'state' && (
               <label className="block text-sm font-semibold">
                 {t('state')}
-                <select value={path.stateName} onChange={(e) => update({ stateName: e.target.value })} className="mt-1 block w-full min-h-[48px] rounded-xl border border-[#B9AD8C] bg-white dark:bg-[#1C3652] px-3">
+                <select value={path.stateName} onChange={(e) => update({ stateName: e.target.value })} className="mt-1 block w-full min-h-[48px] rounded-xl border border-[#B6A6E0] bg-white dark:bg-[#2A1D5C] px-3">
                   {STATES.map((s) => (<option key={s} value={s}>{s}</option>))}
                 </select>
               </label>
@@ -215,14 +215,14 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
 
         {step === 1 && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">2. {t('pick')}</h2>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">2. {t('pick')}</h2>
             {physics.length === 0 ? (
               <p className="text-sm">{t('noChapters')}</p>
             ) : (
               <ul className="space-y-2">
                 {physics.map((c) => (
                   <li key={c.id}>
-                    <button type="button" onClick={() => chooseChapter(c.id)} aria-pressed={chapterId === c.id} className={`w-full text-left min-h-[52px] rounded-xl border px-4 py-2 text-sm font-semibold cursor-pointer ${chapterId === c.id ? 'bg-[#0F766E] text-white border-[#0F766E]' : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-white'}`}>
+                    <button type="button" onClick={() => chooseChapter(c.id)} aria-pressed={chapterId === c.id} className={`w-full text-left min-h-[52px] rounded-xl border px-4 py-2 text-sm font-semibold cursor-pointer ${chapterId === c.id ? 'bg-[#6D28D9] text-white border-[#6D28D9]' : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-white'}`}>
                       Ch {c.chapterNumber}: {titleOf(c)}
                     </button>
                   </li>
@@ -234,9 +234,9 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
 
         {step === 2 && chapter && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">3. {titleOf(chapter)}</h2>
-            <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">Class {path.classLevel} · {path.board.toUpperCase()}{path.board === 'state' ? ` · ${path.stateName}` : ''} · {chapter.textbookName}</p>
-            <p className="text-xs text-[#7A4B00] dark:text-[#F2B544]">{t('draft')}</p>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">3. {titleOf(chapter)}</h2>
+            <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">Class {path.classLevel} · {path.board.toUpperCase()}{path.board === 'state' ? ` · ${path.stateName}` : ''} · {chapter.textbookName}</p>
+            <p className="text-xs text-[#7A4B00] dark:text-[#FF9F1C]">{t('draft')}</p>
             <h3 className="font-semibold">{t('idea')}</h3>
             <p className="text-base leading-relaxed">{resolveLocalizedText(chapter.conceptSummary, language).text}</p>
             {chapter.definitions.length > 0 && (
@@ -250,15 +250,15 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
               </>
             )}
             {chapter.formulas[0] && (
-              <p className="text-sm"><strong>{t('formula')}:</strong> <code className="rounded bg-[#F6F1E3] dark:bg-[#1C3652] px-2 py-0.5">{chapter.formulas[0].formula}</code></p>
+              <p className="text-sm"><strong>{t('formula')}:</strong> <code className="rounded bg-[#F5F0FF] dark:bg-[#2A1D5C] px-2 py-0.5">{chapter.formulas[0].formula}</code></p>
             )}
-            <button type="button" onClick={() => (isSpeaking ? stopSpeaking() : speak(`${titleOf(chapter)}. ${resolveLocalizedText(chapter.conceptSummary, language).text}`))} className={`${btn} border-[#0F766E] text-[#0B5F58] dark:text-[#4AD1C6]`}>{t('listen')}</button>
+            <button type="button" onClick={() => (isSpeaking ? stopSpeaking() : speak(`${titleOf(chapter)}. ${resolveLocalizedText(chapter.conceptSummary, language).text}`))} className={`${btn} border-[#6D28D9] text-[#5B21B6] dark:text-[#C4B5FD]`}>{t('listen')}</button>
           </>
         )}
 
         {step === 3 && chapter && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">4. {t('s4')}</h2>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">4. {t('s4')}</h2>
             {exp ? (
               <div className="space-y-2 text-sm">
                 <h3 className="font-semibold">{t('exp')}: {resolveLocalizedText(exp.title, language).text}</h3>
@@ -278,14 +278,14 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
 
         {step === 4 && chapter && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">5. {t('q')}</h2>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">5. {t('q')}</h2>
             {mcq ? (
               <div className="space-y-3">
                 <p className="text-base font-semibold">{resolveLocalizedText(mcq.question, language).text}</p>
                 <ul className="space-y-2">
                   {mcqOpts.map((o, i) => (
                     <li key={i}>
-                      <button type="button" disabled={answer !== null} onClick={() => setAnswer(i)} className={`w-full text-left min-h-[48px] rounded-xl border px-4 py-2 text-sm cursor-pointer ${answer === null ? 'border-[#B9AD8C]' : i === mcq.correctIndex ? 'border-[#16A34A] bg-[#DCFCE7] text-[#14532D]' : i === answer ? 'border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]' : 'border-[#E6DEC8] opacity-70'}`}>
+                      <button type="button" disabled={answer !== null} onClick={() => setAnswer(i)} className={`w-full text-left min-h-[48px] rounded-xl border px-4 py-2 text-sm cursor-pointer ${answer === null ? 'border-[#B6A6E0]' : i === mcq.correctIndex ? 'border-[#16A34A] bg-[#DCFCE7] text-[#14532D]' : i === answer ? 'border-[#B91C1C] bg-[#FEE2E2] text-[#7F1D1D]' : 'border-[#E7DDFB] opacity-70'}`}>
                         {String.fromCharCode(65 + i)}. {o}
                       </button>
                     </li>
@@ -306,22 +306,22 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
 
         {step === 5 && chapter && (
           <>
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">6. {t('save')}</h2>
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">6. {t('save')}</h2>
             <p className="text-sm">{titleOf(chapter)} — Class {path.classLevel} · {path.board.toUpperCase()}</p>
             {packParams ? (
               <>
                 <p className="text-sm tabular-nums"><strong>{t('size')}:</strong> {formatBytes(sizeBytes)}</p>
                 <div className="flex flex-wrap gap-3">
-                  <button type="button" disabled={saveState === 'saving'} onClick={() => void doSave()} className={`${btn} bg-[#0F766E] text-white border-transparent`}>{saveState === 'saving' ? t('saving') : t('save')}</button>
-                  <button type="button" onClick={() => onOpenChapter(chapter.id)} className={`${btn} border-[#0F766E] text-[#0B5F58] dark:text-[#4AD1C6]`}>{t('fullChapter')}</button>
+                  <button type="button" disabled={saveState === 'saving'} onClick={() => void doSave()} className={`${btn} bg-[#6D28D9] text-white border-transparent`}>{saveState === 'saving' ? t('saving') : t('save')}</button>
+                  <button type="button" onClick={() => onOpenChapter(chapter.id)} className={`${btn} border-[#6D28D9] text-[#5B21B6] dark:text-[#C4B5FD]`}>{t('fullChapter')}</button>
                 </div>
               </>
             ) : (
               <p className="text-sm">{t('failed')}</p>
             )}
             {saveState === 'ok' && savedMeta && (
-              <div className="rounded-xl bg-[#E3F5F3] dark:bg-[#0F766E]/25 p-3 text-sm" role="status">
-                <p className="flex items-center gap-2 font-semibold text-[#0B5F58] dark:text-[#4AD1C6]"><CheckCircle2 className="w-4 h-4" aria-hidden="true" />{t('savedOk')} ({formatBytes(savedMeta.coreSizeBytes)})</p>
+              <div className="rounded-xl bg-[#EFE7FF] dark:bg-[#6D28D9]/25 p-3 text-sm" role="status">
+                <p className="flex items-center gap-2 font-semibold text-[#5B21B6] dark:text-[#C4B5FD]"><CheckCircle2 className="w-4 h-4" aria-hidden="true" />{t('savedOk')} ({formatBytes(savedMeta.coreSizeBytes)})</p>
                 <button type="button" onClick={onOpenSaved} className="mt-2 underline font-semibold">{t('seeSaved')}</button>
               </div>
             )}
@@ -331,8 +331,8 @@ export const DemoJourney: React.FC<Props> = ({ language, path, onPathChange, onP
       </div>
 
       <div className="flex justify-between gap-3">
-        <button type="button" disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))} className={`${btn} border-[#B9AD8C] inline-flex items-center gap-2 disabled:opacity-40`}><ArrowLeft className="w-4 h-4" aria-hidden="true" />{t('back')}</button>
-        <button type="button" disabled={step === 5 || !canNext} onClick={() => setStep((s) => Math.min(5, s + 1))} className={`${btn} bg-[#17324D] text-white border-transparent inline-flex items-center gap-2 disabled:opacity-40`}>{t('next')}<ArrowRight className="w-4 h-4" aria-hidden="true" /></button>
+        <button type="button" disabled={step === 0} onClick={() => setStep((s) => Math.max(0, s - 1))} className={`${btn} border-[#B6A6E0] inline-flex items-center gap-2 disabled:opacity-40`}><ArrowLeft className="w-4 h-4" aria-hidden="true" />{t('back')}</button>
+        <button type="button" disabled={step === 5 || !canNext} onClick={() => setStep((s) => Math.min(5, s + 1))} className={`${btn} bg-[#2E1A6E] text-white border-transparent inline-flex items-center gap-2 disabled:opacity-40`}>{t('next')}<ArrowRight className="w-4 h-4" aria-hidden="true" /></button>
       </div>
     </section>
   );

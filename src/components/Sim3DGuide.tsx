@@ -121,18 +121,18 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
 
   if (!guide) return null;
 
-  const section = 'rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3 space-y-1';
-  const heading = 'flex items-center gap-1.5 text-sm font-bold text-[#17324D] dark:text-white';
-  const body = 'text-sm leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]';
+  const section = 'rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 space-y-1';
+  const heading = 'flex items-center gap-1.5 text-sm font-bold text-[#2E1A6E] dark:text-white';
+  const body = 'text-sm leading-relaxed text-[#22163F] dark:text-[#E4DDFA]';
 
   return (
     <section
       aria-labelledby="sim3d-guide-title"
       lang={speechCode}
-      className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-3 sm:p-4 space-y-3"
+      className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-3 sm:p-4 space-y-3"
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h4 id="sim3d-guide-title" className="flex items-center gap-1.5 text-base font-bold text-[#0B5F58] dark:text-[#4AD1C6]">
+        <h4 id="sim3d-guide-title" className="flex items-center gap-1.5 text-base font-bold text-[#5B21B6] dark:text-[#C4B5FD]">
           <BookOpen className="w-4 h-4" aria-hidden="true" />
           {h.title}
         </h4>
@@ -141,7 +141,7 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
             type="button"
             onClick={() => void listen()}
             aria-pressed={speaking}
-            className="inline-flex items-center gap-1.5 min-h-[40px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]"
+            className="inline-flex items-center gap-1.5 min-h-[40px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]"
           >
             {speaking ? <Square className="w-4 h-4" aria-hidden="true" /> : <Volume2 className="w-4 h-4" aria-hidden="true" />}
             {speaking ? h.stop : h.listen}
@@ -159,8 +159,8 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
             onClick={() => choose(l.id)}
             className={`min-h-[40px] rounded-lg border px-3 py-1 text-sm font-semibold ${
               lang === l.id
-                ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]'
+                ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]'
             }`}
           >
             {l.label}
@@ -169,7 +169,7 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
       </div>
 
       {voiceMissing && (
-        <p role="status" className="text-xs text-[#7A4A00] dark:text-[#F2B544]">
+        <p role="status" className="text-xs text-[#7A4A00] dark:text-[#FF9F1C]">
           {NO_VOICE[lang]}
         </p>
       )}
@@ -177,7 +177,7 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
       <div className="grid gap-2 md:grid-cols-2">
         <div className={section}>
           <p className={heading}>
-            <Eye className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <Eye className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
             {h.see}
           </p>
           <p className={body}>{guide.see}</p>
@@ -208,7 +208,7 @@ export const Sim3DGuide: React.FC<Props> = ({ experimentId, appLanguage }) => {
           <p className={body}>{guide.life}</p>
         </div>
       </div>
-      {lang !== 'en' && <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">{h.note}</p>}
+      {lang !== 'en' && <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">{h.note}</p>}
     </section>
   );
 };

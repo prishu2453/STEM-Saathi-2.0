@@ -56,7 +56,7 @@ const SHORT: Record<StationId, { en: string; hi: string; kn: string }> = {
 export const stationShortName = (id: StationId, lang: Language) => SHORT[id][lang];
 
 const btn =
-  'min-h-[44px] min-w-[44px] justify-center inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-2.5 py-2 text-xs sm:text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer';
+  'min-h-[44px] min-w-[44px] justify-center inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-2.5 py-2 text-xs sm:text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer';
 
 export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) => {
   const def = STATIONS[id];
@@ -149,7 +149,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
         if (c) {
           const dark = document.documentElement.classList.contains('dark');
           const { w, h } = sizeRef.current;
-          c.fillStyle = dark ? '#0F1F30' : '#FFFDF7';
+          c.fillStyle = dark ? '#120A28' : '#FFFDF7';
           c.fillRect(0, 0, w, h);
           def.draw(c, s, paramsRef.current, w, h, dark, language);
         }
@@ -209,7 +209,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
           <div className="min-w-0 space-y-2">
             {/* run bar */}
             <div className="flex flex-wrap items-center gap-1.5">
-              <h3 id={`station-${id}-title`} className="mr-1 text-base lg:text-lg font-bold text-[#17324D] dark:text-white">
+              <h3 id={`station-${id}-title`} className="mr-1 text-base lg:text-lg font-bold text-[#2E1A6E] dark:text-white">
                 {def.title[L]}
               </h3>
               <button type="button" className={btn} onClick={() => setRunning((r) => !r)} aria-pressed={!running}>
@@ -247,7 +247,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
             </div>
             <div
               ref={wrapRef}
-              className="w-full h-[58vh] min-h-[320px] lg:h-[calc(100vh-200px)] lg:min-h-[440px] max-h-[920px] group-data-[fs=true]/stage:h-[calc(100vh-90px)] group-data-[fs=true]/stage:max-h-none rounded-xl border border-[#E6DEC8] dark:border-[#284766] overflow-hidden"
+              className="w-full h-[58vh] min-h-[320px] lg:h-[calc(100vh-200px)] lg:min-h-[440px] max-h-[920px] group-data-[fs=true]/stage:h-[calc(100vh-90px)] group-data-[fs=true]/stage:max-h-none rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] overflow-hidden"
             >
               <canvas ref={canvasRef} role="img" aria-label={`${def.title[L]}. ${def.intro[L]}`} className="block" />
             </div>
@@ -256,18 +256,18 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
           {panelOpen && (
             <aside
               aria-label={T.values[L]}
-              className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-3 space-y-4 md:max-h-[calc(100vh-150px)] md:sticky md:top-20 md:overflow-y-auto group-data-[fs=true]/stage:max-h-[calc(100vh-40px)]"
+              className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-3 space-y-4 md:max-h-[calc(100vh-150px)] md:sticky md:top-20 md:overflow-y-auto group-data-[fs=true]/stage:max-h-[calc(100vh-40px)]"
             >
               <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">{T.controls[L]}</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">{T.controls[L]}</h4>
                 {def.params.map((q) => (
                   <div key={q.key} className="space-y-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <label htmlFor={`st-${id}-${q.key}`} className="text-xs sm:text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                      <label htmlFor={`st-${id}-${q.key}`} className="text-xs sm:text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                         {q.label[L]}
                       </label>
                       {!q.choices && (
-                        <span className="text-sm font-mono font-bold tabular-nums text-[#0B5F58] dark:text-[#4AD1C6] whitespace-nowrap">
+                        <span className="text-sm font-mono font-bold tabular-nums text-[#5B21B6] dark:text-[#C4B5FD] whitespace-nowrap">
                           {params[q.key]} {q.unit}
                         </span>
                       )}
@@ -282,8 +282,8 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
                             onClick={() => onParam(q.key, ch.value, q.live)}
                             className={`min-h-[40px] rounded-lg border px-2 py-1 text-xs font-semibold ${
                               params[q.key] === ch.value
-                                ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                                : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#EEF3F7]'
+                                ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                                : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#F3EFFF]'
                             }`}
                           >
                             {ch.label[L]}
@@ -300,7 +300,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
                         value={params[q.key]}
                         aria-valuetext={`${params[q.key]} ${q.unit}`}
                         onChange={(e) => onParam(q.key, Number(e.target.value), q.live)}
-                        className="block w-full h-8 accent-[#0F766E] cursor-pointer"
+                        className="block w-full h-8 accent-[#6D28D9] cursor-pointer"
                       />
                     )}
                   </div>
@@ -308,24 +308,24 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
               </div>
 
               <div className="space-y-1.5">
-                <h4 className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">{T.live[L]}</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">{T.live[L]}</h4>
                 <dl className="grid grid-cols-2 md:grid-cols-1 gap-1.5">
                   {readings.map((r) => (
                     <div
                       key={r.label.en}
                       className={`rounded-lg px-2.5 py-1.5 ${
-                        r.accent ? 'bg-[#E3F4F1] dark:bg-[#0F3B38]' : 'bg-[#F6F1E3] dark:bg-[#1C3652]'
+                        r.accent ? 'bg-[#EFE7FF] dark:bg-[#2D1B5A]' : 'bg-[#F5F0FF] dark:bg-[#2A1D5C]'
                       }`}
                     >
-                      <dt className="text-[11px] leading-tight text-[#3D4A50] dark:text-[#B4C5D4]">{r.label[L]}</dt>
-                      <dd className="text-sm font-mono font-bold tabular-nums text-[#17324D] dark:text-white">
+                      <dt className="text-[11px] leading-tight text-[#4A3F66] dark:text-[#C9BFEA]">{r.label[L]}</dt>
+                      <dd className="text-sm font-mono font-bold tabular-nums text-[#2E1A6E] dark:text-white">
                         {r.nature ? r.nature[L] : `${r.value} ${r.unit ?? ''}`}
                       </dd>
                     </div>
                   ))}
                 </dl>
               </div>
-              <p className="rounded-lg border border-[#0F766E]/40 bg-[#0F766E]/10 px-2.5 py-2 text-xs font-mono text-[#0B5F58] dark:text-[#9FE3DA] break-words">
+              <p className="rounded-lg border border-[#6D28D9]/40 bg-[#6D28D9]/10 px-2.5 py-2 text-xs font-mono text-[#5B21B6] dark:text-[#9FE3DA] break-words">
                 {live}
               </p>
             </aside>
@@ -334,45 +334,45 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
       </div>
 
       {/* 6–9. formulas, principle, observations, assumptions, quiz */}
-      <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] max-w-5xl">{def.intro[L]}</p>
+      <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] max-w-5xl">{def.intro[L]}</p>
       <div className="grid gap-3 lg:grid-cols-2">
-        <section className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-2">
-          <h4 className="text-sm font-bold text-[#17324D] dark:text-white">{T.formulas[L]}</h4>
+        <section className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-2">
+          <h4 className="text-sm font-bold text-[#2E1A6E] dark:text-white">{T.formulas[L]}</h4>
           <ul className="space-y-2">
             {def.formulas.map((f) => (
               <li key={f.expr}>
-                <p className="font-mono text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{f.expr}</p>
-                <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{f.note[L]}</p>
+                <p className="font-mono text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{f.expr}</p>
+                <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{f.note[L]}</p>
               </li>
             ))}
           </ul>
-          <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] pt-1 border-t border-[#E6DEC8] dark:border-[#284766]">
+          <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] pt-1 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
             <span className="font-semibold">{T.withValues[L]}:</span> <span className="font-mono">{live}</span>
           </p>
         </section>
-        <section className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-2">
-          <h4 className="text-sm font-bold text-[#17324D] dark:text-white">{T.principle[L]}</h4>
-          <p className="text-sm leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]">{def.principle[L]}</p>
+        <section className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-2">
+          <h4 className="text-sm font-bold text-[#2E1A6E] dark:text-white">{T.principle[L]}</h4>
+          <p className="text-sm leading-relaxed text-[#22163F] dark:text-[#E4DDFA]">{def.principle[L]}</p>
         </section>
-        <section className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-2">
-          <h4 className="text-sm font-bold text-[#17324D] dark:text-white">{T.observe[L]}</h4>
-          <ul className="list-disc pl-5 space-y-1 text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+        <section className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-2">
+          <h4 className="text-sm font-bold text-[#2E1A6E] dark:text-white">{T.observe[L]}</h4>
+          <ul className="list-disc pl-5 space-y-1 text-sm text-[#22163F] dark:text-[#E4DDFA]">
             {def.observations.map((o, i) => (
               <li key={i}>{o[L]}</li>
             ))}
           </ul>
-          <h4 className="text-sm font-bold text-[#17324D] dark:text-white pt-2">{T.assume[L]}</h4>
-          <ul className="list-disc pl-5 space-y-1 text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+          <h4 className="text-sm font-bold text-[#2E1A6E] dark:text-white pt-2">{T.assume[L]}</h4>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
             {def.assumptions.map((o, i) => (
               <li key={i}>{o[L]}</li>
             ))}
           </ul>
         </section>
-        <section className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-3">
+        <section className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <h4 className="text-sm font-bold text-[#17324D] dark:text-white">{T.quiz[L]}</h4>
+            <h4 className="text-sm font-bold text-[#2E1A6E] dark:text-white">{T.quiz[L]}</h4>
             {Object.keys(answers).length > 0 && (
-              <span className="text-xs font-semibold tabular-nums text-[#0B5F58] dark:text-[#4AD1C6]">
+              <span className="text-xs font-semibold tabular-nums text-[#5B21B6] dark:text-[#C4B5FD]">
                 {T.score[L]}: {score}/{def.quiz.length}
               </span>
             )}
@@ -381,7 +381,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
             const chosen = answers[qi];
             return (
               <fieldset key={qi} className="space-y-1.5">
-                <legend className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                <legend className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                   {qi + 1}. {q.q[L]}
                 </legend>
                 <div className="grid gap-1.5 sm:grid-cols-2">
@@ -396,12 +396,12 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
                         onClick={() => setAnswers((a) => ({ ...a, [qi]: oi }))}
                         className={`min-h-[40px] rounded-lg border px-2.5 py-1.5 text-left text-sm ${
                           !done
-                            ? 'border-[#E6DEC8] dark:border-[#284766] hover:border-[#0F766E] text-[#17324D] dark:text-[#EEF3F7]'
+                            ? 'border-[#E7DDFB] dark:border-[#3B2C78] hover:border-[#6D28D9] text-[#2E1A6E] dark:text-[#F3EFFF]'
                             : right
-                              ? 'border-[#0F766E] bg-[#E3F4F1] dark:bg-[#0F3B38] text-[#0B5F58] dark:text-[#9FE3DA]'
+                              ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#2D1B5A] text-[#5B21B6] dark:text-[#9FE3DA]'
                               : chosen === oi
                                 ? 'border-[#B45309] bg-[#FDF0E1] dark:bg-[#3A2A14] text-[#7A2E0E] dark:text-[#F5B38A]'
-                                : 'border-[#E6DEC8] dark:border-[#284766] opacity-60 text-[#17324D] dark:text-[#EEF3F7]'
+                                : 'border-[#E7DDFB] dark:border-[#3B2C78] opacity-60 text-[#2E1A6E] dark:text-[#F3EFFF]'
                         }`}
                       >
                         <span className="inline-flex items-center gap-1">
@@ -414,7 +414,7 @@ export const ExperimentStation: React.FC<Props> = ({ id, language, onSelect }) =
                   })}
                 </div>
                 {chosen !== undefined && (
-                  <p role="status" className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <p role="status" className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                     {q.explain[L]}
                   </p>
                 )}

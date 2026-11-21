@@ -246,14 +246,14 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
   const liftFactor = triedCount > 0 ? Math.min(1, animPhase || (lowPowerMode ? 1 : 0.95)) : 0;
 
   return (
-    <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 sm:p-6 shadow-sm space-y-4">
+    <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 sm:p-6 shadow-sm space-y-4">
       {/* Header + Audio Button */}
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+          <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
             2D Science Demo
           </p>
-          <h2 className="text-base sm:text-lg font-semibold text-[#17324D] dark:text-[#EEF3F7] mt-0.5">
+          <h2 className="text-base sm:text-lg font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] mt-0.5">
             {MODE_PROMPTS[mode][language]}
           </h2>
         </div>
@@ -262,12 +262,12 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
           type="button"
           onClick={toggleReadAloud}
           aria-label={isSpeaking ? t.stopReading : t.readAloud}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 min-h-[44px] text-xs font-semibold text-[#17324D] dark:text-[#DCE5EC] hover:border-[#0F766E] shrink-0 cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 min-h-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#E4DDFA] hover:border-[#6D28D9] shrink-0 cursor-pointer"
         >
           {isSpeaking ? (
-            <VolumeX className="w-4 h-4 text-[#D99B26] dark:text-[#F2B544]" aria-hidden="true" />
+            <VolumeX className="w-4 h-4 text-[#F07C00] dark:text-[#FF9F1C]" aria-hidden="true" />
           ) : (
-            <Volume2 className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <Volume2 className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
           )}
           <span className="hidden sm:inline">{isSpeaking ? t.stopReading : t.readAloud}</span>
         </button>
@@ -277,7 +277,7 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
       <div
         role="tablist"
         aria-label="Interactive physics demo modes"
-        className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-1 border border-[#E6DEC8] dark:border-[#284766]"
+        className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-1 border border-[#E7DDFB] dark:border-[#3B2C78]"
       >
         {(
           [
@@ -296,8 +296,8 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
               onClick={() => handleModeSwitch(item.id)}
               className={`inline-flex items-center justify-center gap-1.5 py-2 px-2 min-h-[44px] rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                 active
-                  ? 'bg-[#0F766E] text-white shadow-xs'
-                  : 'text-[#17324D] dark:text-[#DCE5EC] hover:text-[#0B5F58] dark:hover:text-white'
+                  ? 'bg-[#6D28D9] text-white shadow-xs'
+                  : 'text-[#2E1A6E] dark:text-[#E4DDFA] hover:text-[#5B21B6] dark:hover:text-white'
               }`}
             >
               {item.icon}
@@ -308,14 +308,14 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
       </div>
 
       {spokenCaption && (
-        <p className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 px-3 py-2 text-xs text-[#17324D] dark:text-[#EEF3F7]">
-          <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{t.captionPrefix}: </span>
+        <p className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 px-3 py-2 text-xs text-[#2E1A6E] dark:text-[#F3EFFF]">
+          <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{t.captionPrefix}: </span>
           {spokenCaption}
         </p>
       )}
 
       {/* Lightweight 2D SVG Stage */}
-      <div className="rounded-xl border border-[#17324D]/40 dark:border-[#284766] bg-[#0D1B2A] p-2.5">
+      <div className="rounded-xl border border-[#2E1A6E]/40 dark:border-[#3B2C78] bg-[#0D1B2A] p-2.5">
         {mode === 'electromagnet' && (
           <svg
             viewBox="0 0 360 170"
@@ -540,10 +540,10 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
       {/* Touch-Friendly Parameter Control + Try Action */}
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-2 text-xs">
-          <label htmlFor="home-demo-slider" className="font-semibold text-[#17324D] dark:text-[#DCE5EC]">
+          <label htmlFor="home-demo-slider" className="font-semibold text-[#2E1A6E] dark:text-[#E4DDFA]">
             {sliderConfig.label}
           </label>
-          <span className="font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+          <span className="font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
             {sliderConfig.valueText}
           </span>
         </div>
@@ -553,7 +553,7 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
             type="button"
             onClick={() => sliderConfig.onChange(Math.max(sliderConfig.min, sliderConfig.value - sliderConfig.step))}
             aria-label={`Decrease ${sliderConfig.label}`}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
           >
             <Minus className="w-4 h-4" aria-hidden="true" />
           </button>
@@ -566,14 +566,14 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
             step={sliderConfig.step}
             value={sliderConfig.value}
             onChange={(e) => sliderConfig.onChange(Number(e.target.value))}
-            className="w-full accent-[#0F766E] h-3 cursor-pointer"
+            className="w-full accent-[#6D28D9] h-3 cursor-pointer"
           />
 
           <button
             type="button"
             onClick={() => sliderConfig.onChange(Math.min(sliderConfig.max, sliderConfig.value + sliderConfig.step))}
             aria-label={`Increase ${sliderConfig.label}`}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
           >
             <Plus className="w-4 h-4" aria-hidden="true" />
           </button>
@@ -584,7 +584,7 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
             type="button"
             disabled={isAnimating}
             onClick={triggerTry}
-            className="flex-1 min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2.5 text-sm font-semibold text-white transition-colors cursor-pointer disabled:opacity-75"
+            className="flex-1 min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2.5 text-sm font-semibold text-white transition-colors cursor-pointer disabled:opacity-75"
           >
             <Play className="w-4 h-4" aria-hidden="true" />
             <span>{tryButtonLabel}</span>
@@ -595,7 +595,7 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
               type="button"
               onClick={handleReset}
               aria-label="Reset preview"
-              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#DCE5EC] hover:border-[#0F766E] cursor-pointer shrink-0"
+              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#E4DDFA] hover:border-[#6D28D9] cursor-pointer shrink-0"
             >
               <RotateCcw className="w-4 h-4" aria-hidden="true" />
             </button>
@@ -607,15 +607,15 @@ export const HomeQuickLaunchPreview: React.FC<HomeQuickLaunchPreviewProps> = ({
       <div
         className={`rounded-xl border p-3.5 text-xs leading-relaxed ${
           triedCount > 0
-            ? 'border-[#0F766E]/45 bg-[#0F766E]/10 text-[#17324D] dark:text-[#9BECE4]'
-            : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#1A262C] dark:text-[#B4C5D4]'
+            ? 'border-[#6D28D9]/45 bg-[#6D28D9]/10 text-[#2E1A6E] dark:text-[#9BECE4]'
+            : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#22163F] dark:text-[#C9BFEA]'
         }`}
       >
         <p>{explanationText}</p>
         <button
           type="button"
           onClick={onStartFullMission}
-          className="inline-flex items-center gap-1 pt-2 font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+          className="inline-flex items-center gap-1 pt-2 font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
         >
           <span>{t.startMissionCta}</span>
           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />

@@ -670,7 +670,7 @@ export const PhysicsOrbitGame: React.FC<PhysicsOrbitGameProps> = ({
                     onClick={onClose}
                     className="w-full rounded-lg border border-slate-700 py-2 text-xs font-medium text-slate-300 hover:bg-slate-800 cursor-pointer"
                   >
-                    Return to STEM Saathi
+                    Return to Gyaan Graph
                   </button>
                 </div>
               </>
@@ -731,7 +731,7 @@ export const PhysicsOrbitGame: React.FC<PhysicsOrbitGameProps> = ({
                     onClick={onClose}
                     className="w-full rounded-lg border border-slate-700 py-2 text-xs font-medium text-slate-300 hover:bg-slate-800 cursor-pointer"
                   >
-                    Back to STEM Saathi
+                    Back to Gyaan Graph
                   </button>
                 </div>
               </>

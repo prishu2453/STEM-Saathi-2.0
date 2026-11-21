@@ -6,6 +6,7 @@ import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, ThinkingLevel, Type } from '@google/genai';
 import { askOtherProvider, NO_PROVIDER_MESSAGE, pickProvider } from './aiProviders';
 import * as accounts from './accountStore';
+import { registerTutorRoutes } from './tutorRoutes';
 import { evaluateExpression, formatSig, parseLooseNumber } from './shared/mathEval';
 import {
   getChapterById,
@@ -107,7 +108,7 @@ function buildRoleInstruction(mentorRole: string, subject: string): string {
   if (mentorRole === 'Science Research Assistant') {
     return `Act as an up-to-date ${subject} Science Research Assistant: use grounded current scientific facts, recent discoveries, and real-world applications clearly.`;
   }
-  return `Act as STEM Saathi's AI ${subject} Concept Tutor — a patient, inclusive science mentor using everyday analogies, accurate formulas, and a quick check question.`;
+  return `Act as Gyaan Graph's AI ${subject} Concept Tutor — a patient, inclusive science mentor using everyday analogies, accurate formulas, and a quick check question.`;
 }
 
 async function startServer() {
@@ -376,8 +377,39 @@ async function startServer() {
     res.json({ ok: true });
   });
 
+  // Forgot password: username + recovery code (no email/SMS needed for rural students)
+  app.post('/api/auth/reset', async (req, res) => {
+    const username = accounts.normalizeUsername(req.body?.username);
+    const keys = [`reset-ip:${req.ip}`, `reset-user:${username}`];
+    if (accounts.isBlocked(keys[0], 30) || accounts.isBlocked(keys[1], 5)) {
+      return res.status(429).json({ error: 'Too many wrong tries. Please wait 15 minutes and try again.' });
+    }
+    const pErr = accounts.validatePassword(req.body?.newPassword);
+    if (pErr) return res.status(400).json({ error: pErr });
+    const result = username ? await accounts.resetWithRecoveryCode(username, String(req.body?.recoveryCode ?? ''), req.body.newPassword) : null;
+    if (!result) {
+      keys.forEach((k) => accounts.recordFailure(k));
+      return res.status(400).json({ error: 'Username or recovery code is wrong.' });
+    }
+    keys.forEach((k) => accounts.clearFailures(k));
+    res.json(result);
+  });
+
+  app.post('/api/account/recovery-code', async (req, res) => {
+    const r = await accounts.createRecoveryCode(bearer(req), String(req.body?.password ?? ''));
+    if ('error' in r) {
+      return r.error === 'auth'
+        ? res.status(401).json({ error: 'Please log in again.' })
+        : res.status(400).json({ error: 'Password is wrong.' });
+    }
+    res.json(r);
+  });
+
+  // Adaptive tutor (diagnostic, misconceptions, question generation) and teacher class reports
+  registerTutorRoutes(app, { bearer });
+
   app.get('/api/health', (_req, res) => {
-    res.json({ status: 'ok', platform: 'STEM Saathi', timestamp: new Date().toISOString() });
+    res.json({ status: 'ok', platform: 'Gyaan Graph', timestamp: new Date().toISOString() });
   });
 
   app.get('/api/mentor/status', (_req, res) => {
@@ -844,7 +876,7 @@ Do not use LaTeX.${
   console.log(`Student accounts stored in: ${store}`);
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`STEM Saathi server running at http://0.0.0.0:${PORT}`);
+    console.log(`Gyaan Graph server running at http://0.0.0.0:${PORT}`);
   });
 }
 

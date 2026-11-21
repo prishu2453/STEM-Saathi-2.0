@@ -76,7 +76,7 @@ const FormattedMessage: React.FC<{ text: string }> = ({ text }) => {
     return parts.map((part, idx) => {
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
-          <strong key={idx} className="font-semibold text-[#17324D] dark:text-white">
+          <strong key={idx} className="font-semibold text-[#2E1A6E] dark:text-white">
             {part.slice(2, -2)}
           </strong>
         );
@@ -85,7 +85,7 @@ const FormattedMessage: React.FC<{ text: string }> = ({ text }) => {
         return (
           <code
             key={idx}
-            className="rounded bg-[#F6F1E3] dark:bg-[#1C3652] px-1 py-0.5 font-mono text-[11px] text-[#0B5F58] dark:text-[#4AD1C6]"
+            className="rounded bg-[#F5F0FF] dark:bg-[#2A1D5C] px-1 py-0.5 font-mono text-[11px] text-[#5B21B6] dark:text-[#C4B5FD]"
           >
             {part.slice(1, -1)}
           </code>
@@ -101,18 +101,18 @@ const FormattedMessage: React.FC<{ text: string }> = ({ text }) => {
         const line = rawLine.trim();
         if (!line) return <div key={idx} className="h-1" />;
         if (line === '---' || line === '***') {
-          return <hr key={idx} className="border-[#E6DEC8] dark:border-[#284766] my-1.5" />;
+          return <hr key={idx} className="border-[#E7DDFB] dark:border-[#3B2C78] my-1.5" />;
         }
         if (line.startsWith('### ')) {
           return (
-            <h4 key={idx} className="text-xs font-bold text-[#17324D] dark:text-white pt-1">
+            <h4 key={idx} className="text-xs font-bold text-[#2E1A6E] dark:text-white pt-1">
               {renderInline(line.slice(4))}
             </h4>
           );
         }
         if (line.startsWith('## ')) {
           return (
-            <h3 key={idx} className="text-sm font-bold text-[#17324D] dark:text-white pt-1">
+            <h3 key={idx} className="text-sm font-bold text-[#2E1A6E] dark:text-white pt-1">
               {renderInline(line.slice(3))}
             </h3>
           );
@@ -120,7 +120,7 @@ const FormattedMessage: React.FC<{ text: string }> = ({ text }) => {
         if (line.startsWith('* ') || line.startsWith('- ')) {
           return (
             <div key={idx} className="flex items-start gap-1.5 pl-1">
-              <span className="text-[#0F766E] dark:text-[#4AD1C6] mt-0.5">•</span>
+              <span className="text-[#6D28D9] dark:text-[#C4B5FD] mt-0.5">•</span>
               <span>{renderInline(line.replace(/^[-*]\s+/, ''))}</span>
             </div>
           );
@@ -267,19 +267,19 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="STEM Saathi AI Chatbot"
-      className="animate-fade-in fixed inset-0 z-50 flex justify-end bg-[#17324D]/50"
+      aria-label="Gyaan Graph AI Chatbot"
+      className="animate-fade-in fixed inset-0 z-50 flex justify-end bg-[#2E1A6E]/50"
     >
-      <div className="animate-panel-reveal w-full max-w-lg h-full bg-white dark:bg-[#152A40] border-l border-[#E6DEC8] dark:border-[#284766] flex flex-col">
+      <div className="animate-panel-reveal w-full max-w-lg h-full bg-white dark:bg-[#1F1545] border-l border-[#E7DDFB] dark:border-[#3B2C78] flex flex-col">
         {/* Header */}
-        <div className="px-5 py-3.5 border-b border-[#E6DEC8] dark:border-[#284766] flex items-center justify-between gap-3">
+        <div className="px-5 py-3.5 border-b border-[#E7DDFB] dark:border-[#3B2C78] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <Sparkles className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
             <div>
-              <h2 className="text-base font-semibold text-[#17324D] dark:text-white">
+              <h2 className="text-base font-semibold text-[#2E1A6E] dark:text-white">
                 AI {subject} Mentor
               </h2>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
                 {isOnline
                   ? 'AI chat with voice · answers can be spoken and captioned'
                   : `${t.offlineStatus} · ${t.requiresInternetNotice}`}
@@ -297,7 +297,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                   setLastFailedQuery(null);
                 }}
                 title="Start new conversation"
-                className="inline-flex items-center gap-1 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-2 py-1 text-[11px] text-[#17324D] dark:text-[#DCE5EC] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652] cursor-pointer"
+                className="inline-flex items-center gap-1 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-2 py-1 text-[11px] text-[#2E1A6E] dark:text-[#E4DDFA] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C] cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" />
                 <span>New Chat</span>
@@ -307,7 +307,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               type="button"
               onClick={onClose}
               aria-label="Close AI Mentor"
-              className="rounded-lg p-1.5 text-[#3D4A50] hover:text-[#17324D] dark:hover:text-white cursor-pointer"
+              className="rounded-lg p-1.5 text-[#4A3F66] hover:text-[#2E1A6E] dark:hover:text-white cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -315,14 +315,14 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
         </div>
 
         {/* Subject, Role, Level & Model Selectors */}
-        <div className="px-5 py-3 border-b border-[#E6DEC8] dark:border-[#284766] space-y-2.5 bg-[#F6F1E3] dark:bg-[#1C3652]/70">
+        <div className="px-5 py-3 border-b border-[#E7DDFB] dark:border-[#3B2C78] space-y-2.5 bg-[#F5F0FF] dark:bg-[#2A1D5C]/70">
           <div className="grid grid-cols-2 gap-2.5">
             <label className="text-xs space-y-1">
-              <span className="text-[#3D4A50] dark:text-[#B4C5D4]">Subject</span>
+              <span className="text-[#4A3F66] dark:text-[#C9BFEA]">Subject</span>
               <select
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs text-[#17324D] dark:text-white"
+                className="w-full rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs text-[#2E1A6E] dark:text-white"
               >
                 <option value="Physics">Physics (Primary)</option>
                 <option value="Chemistry">Chemistry</option>
@@ -331,11 +331,11 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               </select>
             </label>
             <label className="text-xs space-y-1">
-              <span className="text-[#3D4A50] dark:text-[#B4C5D4]">Chatbot Role</span>
+              <span className="text-[#4A3F66] dark:text-[#C9BFEA]">Chatbot Role</span>
               <select
                 value={mentorRole}
                 onChange={(e) => setMentorRole(e.target.value)}
-                className="w-full rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs text-[#17324D] dark:text-white"
+                className="w-full rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs text-[#2E1A6E] dark:text-white"
               >
                 {MENTOR_ROLES.map((r) => (
                   <option key={r} value={r}>
@@ -348,7 +348,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
 
           <div className="grid grid-cols-2 gap-2.5">
             <label className="text-xs space-y-1">
-              <span className="text-[#3D4A50] dark:text-[#B4C5D4]">Gemini Mode</span>
+              <span className="text-[#4A3F66] dark:text-[#C9BFEA]">Gemini Mode</span>
               <select
                 value={tier}
                 onChange={(e) => {
@@ -356,7 +356,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                   setTier(next);
                   setUseSearch(next === 'search');
                 }}
-                className="w-full rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs text-[#17324D] dark:text-white"
+                className="w-full rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs text-[#2E1A6E] dark:text-white"
               >
                 {TIER_OPTIONS.map((opt) => (
                   <option key={opt.id} value={opt.id}>
@@ -367,11 +367,11 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
             </label>
 
             <label className="text-xs space-y-1">
-              <span className="text-[#3D4A50] dark:text-[#B4C5D4]">Grade Level</span>
+              <span className="text-[#4A3F66] dark:text-[#C9BFEA]">Grade Level</span>
               <select
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
-                className="w-full rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs text-[#17324D] dark:text-white"
+                className="w-full rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs text-[#2E1A6E] dark:text-white"
               >
                 <option>Middle School (Grades 6-8)</option>
                 <option>Secondary (Grades 9-12)</option>
@@ -384,14 +384,14 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
         {/* Scrollable Multi-Turn Conversation Feed */}
         <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
           {!isOnline && (
-            <div className="rounded-xl border border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 p-3 text-xs text-[#17324D] dark:text-[#F6F1E3]">
+            <div className="rounded-xl border border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 p-3 text-xs text-[#2E1A6E] dark:text-[#F5F0FF]">
               {t.offlineStatus}: {t.requiresInternetNotice}. Offline projectile hints, formula sheets, and local quizzes remain available inside Physics World.
             </div>
           )}
 
           {messages.length === 0 && (
             <div className="space-y-3">
-              <p className="text-xs text-[#3D4A50] dark:text-[#DCE5EC]">
+              <p className="text-xs text-[#4A3F66] dark:text-[#E4DDFA]">
                 Ask any concept, numerical problem, or current science question in English, Hindi, or Kannada.
               </p>
               <div className="space-y-2">
@@ -403,11 +403,11 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                       if (item.search) setUseSearch(true);
                       void sendMessage(item.text, item.search);
                     }}
-                    className="w-full text-left rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2.5 text-xs text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] transition-colors cursor-pointer flex items-start justify-between gap-2"
+                    className="w-full text-left rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2.5 text-xs text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] transition-colors cursor-pointer flex items-start justify-between gap-2"
                   >
                     <span>{item.text}</span>
                     {item.search && (
-                      <Globe className="w-3.5 h-3.5 text-[#0F766E] dark:text-[#4AD1C6] shrink-0 mt-0.5" aria-label="Uses Google Search" />
+                      <Globe className="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#C4B5FD] shrink-0 mt-0.5" aria-label="Uses Google Search" />
                     )}
                   </button>
                 ))}
@@ -420,12 +420,12 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               key={msg.id}
               className={`rounded-xl p-3.5 text-xs leading-relaxed ${
                 msg.role === 'user'
-                  ? 'ml-8 bg-[#0F766E] text-white whitespace-pre-wrap'
-                  : 'mr-4 border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#1A262C] dark:text-[#F6F1E3]'
+                  ? 'ml-8 bg-[#6D28D9] text-white whitespace-pre-wrap'
+                  : 'mr-4 border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#22163F] dark:text-[#F5F0FF]'
               }`}
             >
               {msg.modelLabel && (
-                <p className="text-[10px] font-medium text-[#0B5F58] dark:text-[#4AD1C6] mb-1.5">
+                <p className="text-[10px] font-medium text-[#5B21B6] dark:text-[#C4B5FD] mb-1.5">
                   {msg.modelLabel}
                 </p>
               )}
@@ -437,9 +437,9 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
 
               {/* Google Search Grounding Sources */}
               {msg.sources && msg.sources.length > 0 && (
-                <div className="mt-2.5 pt-2.5 border-t border-[#E6DEC8] dark:border-[#284766] space-y-1.5">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[#3D4A50] dark:text-[#B4C5D4] flex items-center gap-1">
-                    <Globe className="w-3 h-3 text-[#0F766E] dark:text-[#4AD1C6]" />
+                <div className="mt-2.5 pt-2.5 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-1.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[#4A3F66] dark:text-[#C9BFEA] flex items-center gap-1">
+                    <Globe className="w-3 h-3 text-[#6D28D9] dark:text-[#C4B5FD]" />
                     <span>Google Search Sources</span>
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -449,7 +449,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                         href={src.uri}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 rounded-md border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2 py-1 text-[11px] text-[#0B5F58] dark:text-[#4AD1C6] hover:border-[#0F766E]"
+                        className="inline-flex items-center gap-1 rounded-md border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2 py-1 text-[11px] text-[#5B21B6] dark:text-[#C4B5FD] hover:border-[#6D28D9]"
                       >
                         <span className="max-w-[180px] truncate">{src.title}</span>
                         <ExternalLink className="w-3 h-3 shrink-0" />
@@ -463,7 +463,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                 <button
                   type="button"
                   onClick={() => (isSpeaking ? stopSpeaking() : speak(msg.text))}
-                  className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+                  className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
                   <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
@@ -473,7 +473,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
           ))}
 
           {loading && (
-            <div className="mr-8 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3.5 text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+            <div className="mr-8 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3.5 text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
               {useSearch || tier === 'search'
                 ? 'Searching live web sources and preparing explanation...'
                 : 'Thinking through the concept...'}
@@ -500,7 +500,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                         setUseSearch(false);
                         void sendMessage(lastFailedQuery, false, 'fast');
                       }}
-                      className="rounded-md bg-[#0F766E] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#0B5F58] cursor-pointer"
+                      className="rounded-md bg-[#6D28D9] px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-[#5B21B6] cursor-pointer"
                     >
                       Try Fast Mode (Flash Lite)
                     </button>
@@ -518,19 +518,19 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
             e.preventDefault();
             void sendMessage();
           }}
-          className="p-4 border-t border-[#E6DEC8] dark:border-[#284766] space-y-2"
+          className="p-4 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-2"
         >
           {voice.speaking && (
-            <div role="status" aria-live="polite" className="rounded-xl border border-[#0F766E]/50 bg-[#E3F5F3] dark:bg-[#0F766E]/20 p-3 space-y-1.5">
+            <div role="status" aria-live="polite" className="rounded-xl border border-[#6D28D9]/50 bg-[#EFE7FF] dark:bg-[#6D28D9]/20 p-3 space-y-1.5">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[10px] font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+                <span className="text-[10px] font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                   {language === 'hi' ? 'बोल रहा है — कैप्शन' : language === 'kn' ? 'ಮಾತನಾಡುತ್ತಿದೆ — ಕ್ಯಾಪ್ಷನ್' : 'Speaking — captions'}
                 </span>
-                <button type="button" onClick={voice.stop} className="min-h-[36px] rounded-lg border border-[#0F766E] px-3 text-[11px] font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer">
+                <button type="button" onClick={voice.stop} className="min-h-[36px] rounded-lg border border-[#6D28D9] px-3 text-[11px] font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer">
                   {language === 'hi' ? 'रोकें' : language === 'kn' ? 'ನಿಲ್ಲಿಸಿ' : 'Stop'}
                 </button>
               </div>
-              <p className="text-base font-medium leading-snug text-[#17324D] dark:text-white">{voice.caption}</p>
+              <p className="text-base font-medium leading-snug text-[#2E1A6E] dark:text-white">{voice.caption}</p>
             </div>
           )}
           {voice.ttsSupported && !voice.hasVoice && (
@@ -545,16 +545,16 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
           {voice.voiceError && <p className="text-[11px] text-amber-700 dark:text-amber-400">{voice.voiceError}</p>}
 
           {voice.ttsSupported && (
-            <div className="rounded-lg border border-[#E6DEC8] dark:border-[#284766] p-2.5 space-y-2">
+            <div className="rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] p-2.5 space-y-2">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[11px] font-medium text-[#3D4A50] dark:text-[#B4C5D4]">
+                <span className="text-[11px] font-medium text-[#4A3F66] dark:text-[#C9BFEA]">
                   {language === 'hi' ? 'बोलने की आवाज़' : language === 'kn' ? 'ಮಾತಿನ ಧ್ವನಿ' : 'Spoken voice'}
                 </span>
                 <button
                   type="button"
                   aria-pressed={voice.voiceMode === 'natural'}
                   onClick={() => { voice.stop(); voice.setVoiceMode('natural'); }}
-                  className={`min-h-[36px] rounded-lg border px-2.5 text-[11px] font-semibold cursor-pointer ${voice.voiceMode === 'natural' ? 'border-[#0F766E] bg-[#E3F5F3] text-[#0B5F58] dark:bg-[#0F766E]/20 dark:text-[#4AD1C6]' : 'border-[#D8D0BB] dark:border-[#35516B]'}`}
+                  className={`min-h-[36px] rounded-lg border px-2.5 text-[11px] font-semibold cursor-pointer ${voice.voiceMode === 'natural' ? 'border-[#6D28D9] bg-[#EFE7FF] text-[#5B21B6] dark:bg-[#6D28D9]/20 dark:text-[#C4B5FD]' : 'border-[#D8D0BB] dark:border-[#35516B]'}`}
                 >
                   {language === 'hi' ? 'प्राकृतिक आवाज़' : language === 'kn' ? 'ಸಹಜ ಧ್ವನಿ' : 'Natural voice'}
                 </button>
@@ -562,13 +562,13 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                   type="button"
                   aria-pressed={voice.voiceMode === 'device'}
                   onClick={() => { voice.stop(); voice.setVoiceMode('device'); }}
-                  className={`min-h-[36px] rounded-lg border px-2.5 text-[11px] font-semibold cursor-pointer ${voice.voiceMode === 'device' ? 'border-[#0F766E] bg-[#E3F5F3] text-[#0B5F58] dark:bg-[#0F766E]/20 dark:text-[#4AD1C6]' : 'border-[#D8D0BB] dark:border-[#35516B]'}`}
+                  className={`min-h-[36px] rounded-lg border px-2.5 text-[11px] font-semibold cursor-pointer ${voice.voiceMode === 'device' ? 'border-[#6D28D9] bg-[#EFE7FF] text-[#5B21B6] dark:bg-[#6D28D9]/20 dark:text-[#C4B5FD]' : 'border-[#D8D0BB] dark:border-[#35516B]'}`}
                 >
                   {language === 'hi' ? 'डिवाइस आवाज़' : language === 'kn' ? 'ಸಾಧನದ ಧ್ವನಿ' : 'Device voice'}
                 </button>
               </div>
               <div className="flex flex-wrap items-center gap-2">
-                <label className="flex min-w-0 flex-1 items-center gap-2 text-[11px] font-medium text-[#3D4A50] dark:text-[#B4C5D4]">
+                <label className="flex min-w-0 flex-1 items-center gap-2 text-[11px] font-medium text-[#4A3F66] dark:text-[#C9BFEA]">
                   <span className="shrink-0">{language === 'hi' ? 'आवाज़' : language === 'kn' ? 'ಧ್ವನಿ' : 'Voice'}</span>
                   <select
                     aria-label={language === 'hi' ? 'उत्तर की आवाज़ चुनें' : language === 'kn' ? 'ಉತ್ತರದ ಧ್ವನಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ' : 'Choose answer voice'}
@@ -578,7 +578,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                       if (voice.voiceMode === 'natural') voice.setNaturalVoiceName(event.target.value);
                       else voice.setPreferredVoice(event.target.value);
                     }}
-                    className="min-h-[36px] min-w-0 flex-1 rounded-lg border border-[#D8D0BB] dark:border-[#35516B] bg-white dark:bg-[#152A40] px-2 py-1 text-[11px] text-[#17324D] dark:text-[#F6F1E3]"
+                    className="min-h-[36px] min-w-0 flex-1 rounded-lg border border-[#D8D0BB] dark:border-[#35516B] bg-white dark:bg-[#1F1545] px-2 py-1 text-[11px] text-[#2E1A6E] dark:text-[#F5F0FF]"
                   >
                     {voice.voiceMode === 'natural' ? (
                       voice.naturalVoices.length > 0
@@ -606,13 +606,13 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                         : 'Hello! I’m your science learning companion. What would you like to explore today?'
                   )}
                   aria-label={language === 'hi' ? 'आवाज़ का नमूना सुनें' : language === 'kn' ? 'ಧ್ವನಿ ಮಾದರಿಯನ್ನು ಕೇಳಿ' : 'Preview selected voice'}
-                  className="min-h-[36px] shrink-0 rounded-lg border border-[#D8D0BB] dark:border-[#35516B] px-2 text-[11px] text-[#17324D] dark:text-[#F6F1E3] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652] cursor-pointer"
+                  className="min-h-[36px] shrink-0 rounded-lg border border-[#D8D0BB] dark:border-[#35516B] px-2 text-[11px] text-[#2E1A6E] dark:text-[#F5F0FF] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C] cursor-pointer"
                 >
                   {language === 'hi' ? 'सुनें' : language === 'kn' ? 'ಕೇಳಿ' : 'Preview'}
                 </button>
               </div>
               {voice.voiceMode === 'natural' && (
-                <p className="text-[10px] leading-relaxed text-[#53636A] dark:text-[#B4C5D4]">
+                <p className="text-[10px] leading-relaxed text-[#53636A] dark:text-[#C9BFEA]">
                   {voice.naturalNeedsSetup
                     ? 'The natural English voice is not switched on yet: the Groq account owner must accept the Orpheus model terms once in the Groq console. Using the phone voice until then.'
                     : voice.naturalEngine === 'groq'
@@ -632,8 +632,8 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               aria-pressed={autoSpeak}
               className={`min-h-[40px] inline-flex items-center gap-1.5 rounded-lg border px-3 text-[11px] font-semibold cursor-pointer ${
                 autoSpeak
-                  ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/20 text-[#0B5F58] dark:text-[#4AD1C6]'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#3D4A50] dark:text-[#B4C5D4]'
+                  ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/20 text-[#5B21B6] dark:text-[#C4B5FD]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#4A3F66] dark:text-[#C9BFEA]'
               }`}
             >
               <Volume2 className="w-3.5 h-3.5" aria-hidden="true" />
@@ -652,7 +652,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
                         : 'Using the exact values shown in my simulation, explain what is happening now and why.'
                   )
                 }
-                className="min-h-[40px] inline-flex items-center gap-1.5 rounded-lg bg-[#17324D] px-3 text-[11px] font-semibold text-white disabled:opacity-50 cursor-pointer"
+                className="min-h-[40px] inline-flex items-center gap-1.5 rounded-lg bg-[#2E1A6E] px-3 text-[11px] font-semibold text-white disabled:opacity-50 cursor-pointer"
               >
                 {language === 'hi' ? 'मेरा सिमुलेशन समझाएँ' : language === 'kn' ? 'ನನ್ನ ಸಿಮ್ಯುಲೇಶನ್ ವಿವರಿಸಿ' : 'Explain my simulation'}
               </button>
@@ -670,8 +670,8 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               aria-pressed={useSearch || tier === 'search'}
               className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
                 useSearch || tier === 'search'
-                  ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/20 text-[#0B5F58] dark:text-[#4AD1C6]'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#3D4A50] dark:text-[#B4C5D4] hover:border-[#0F766E]'
+                  ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/20 text-[#5B21B6] dark:text-[#C4B5FD]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#4A3F66] dark:text-[#C9BFEA] hover:border-[#6D28D9]'
               }`}
             >
               <Globe className="w-3.5 h-3.5" />
@@ -683,7 +683,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
             </button>
 
             {isTranscribing && (
-              <span className="text-[11px] text-[#0B5F58] dark:text-[#4AD1C6]">Transcribing audio...</span>
+              <span className="text-[11px] text-[#5B21B6] dark:text-[#C4B5FD]">Transcribing audio...</span>
             )}
           </div>
 
@@ -716,7 +716,7 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               className={`min-h-[44px] min-w-[44px] rounded-lg border p-2.5 cursor-pointer ${
                 voice.listening || isRecording
                   ? 'border-red-500 bg-red-500/15 text-red-500'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#3D4A50] dark:text-[#B4C5D4] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#4A3F66] dark:text-[#C9BFEA] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C]'
               }`}
             >
               {voice.listening || isRecording ? <Square className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
@@ -726,13 +726,13 @@ export const AIMentorDrawer: React.FC<AIMentorDrawerProps> = ({
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask your Physics or STEM question..."
-              className="flex-1 rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs text-[#17324D] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
+              className="flex-1 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs text-[#2E1A6E] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6D28D9]"
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
               aria-label="Send question"
-              className="rounded-lg bg-[#0F766E] p-2.5 text-white hover:bg-[#0B5F58] disabled:opacity-50 cursor-pointer"
+              className="rounded-lg bg-[#6D28D9] p-2.5 text-white hover:bg-[#5B21B6] disabled:opacity-50 cursor-pointer"
             >
               <Send className="w-4 h-4" />
             </button>

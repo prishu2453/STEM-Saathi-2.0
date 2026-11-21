@@ -30,6 +30,8 @@ interface AccountRecord {
   snapshotUpdatedAt: string | null;
   createdAt: string;
   lastLoginAt: string | null;
+  /** scrypt hash of the one-time recovery code (for "Forgot password") */
+  recoveryHash?: string;
 }
 
 interface SessionRecord {
@@ -49,6 +51,7 @@ export interface PublicAccount {
   profile: StudentProfile;
   createdAt: string;
   snapshotUpdatedAt: string | null;
+  hasRecoveryCode: boolean;
 }
 
 const DATA_DIR = process.env.ACCOUNTS_DIR || path.join(process.cwd(), 'data');
@@ -245,7 +248,30 @@ const toPublic = (a: AccountRecord): PublicAccount => ({
   profile: a.profile,
   createdAt: a.createdAt,
   snapshotUpdatedAt: a.snapshotUpdatedAt,
+  hasRecoveryCode: Boolean(a.recoveryHash),
 });
+
+/* ---------- recovery codes ("Forgot password" without email or SMS) ---------- */
+// No 0/O, 1/I/L, 5/S to avoid copying mistakes. 12 characters ≈ 58 bits.
+const CODE_ALPHABET = 'ABCDEFGHJKMNPQRTUVWXYZ2346789';
+function newRecoveryCode(): string {
+  const bytes = crypto.randomBytes(12);
+  const chars = [...bytes].map((b) => CODE_ALPHABET[b % CODE_ALPHABET.length]).join('');
+  return `${chars.slice(0, 4)}-${chars.slice(4, 8)}-${chars.slice(8, 12)}`;
+}
+export const normalizeRecoveryCode = (raw: unknown) =>
+  String(raw ?? '')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, '')
+    .replace(/O/g, '0')
+    .slice(0, 24);
+/** Give the account a fresh code (old one stops working). Returns the plain code to show once. */
+function rotateRecoveryCode(rec: AccountRecord): string {
+  const code = newRecoveryCode();
+  rec.recoveryHash = hashPassword(normalizeRecoveryCode(code));
+  markAccount(rec);
+  return code;
+}
 
 function newSession(accountId: string): string {
   const token = crypto.randomBytes(32).toString('base64url');
@@ -264,7 +290,7 @@ export async function createAccount(
   password: string,
   profile: StudentProfile,
   snapshot: Record<string, string> | null
-): Promise<{ token: string; account: PublicAccount } | { error: string; status: number }> {
+): Promise<{ token: string; account: PublicAccount; recoveryCode: string } | { error: string; status: number }> {
   const d = load();
   if (d.accounts.some((a) => a.username === username)) {
     return { error: 'This username is already taken. Try another or log in.', status: 409 };
@@ -282,9 +308,10 @@ export async function createAccount(
   };
   d.accounts.push(rec);
   markAccount(rec);
+  const recoveryCode = rotateRecoveryCode(rec);
   const token = newSession(rec.id);
   await persist();
-  return { token, account: toPublic(rec) };
+  return { token, account: toPublic(rec), recoveryCode };
 }
 
 export async function login(
@@ -312,6 +339,16 @@ function accountForToken(token: string | undefined): AccountRecord | null {
 export function getAccount(token: string | undefined) {
   const rec = accountForToken(token);
   return rec ? { account: toPublic(rec), snapshot: rec.snapshot } : null;
+}
+
+/**
+ * Accounts whose synced snapshot has `key` set to `value` (used for teacher class reports:
+ * a student joins a class by saving the class code on their device). Server-side only.
+ */
+export function accountsWithSnapshotValue(key: string, value: string) {
+  return load()
+    .accounts.filter((a) => a.snapshot?.[key] === value)
+    .map((a) => ({ id: a.id, profile: a.profile, snapshot: a.snapshot, snapshotUpdatedAt: a.snapshotUpdatedAt }));
 }
 
 export async function updateProfile(token: string | undefined, profile: StudentProfile) {
@@ -345,6 +382,34 @@ export async function changePassword(token: string | undefined, oldPw: string, n
   sessionOp({ t: 'delAccountExcept', accountId: rec.id, keep });
   await persist();
   return 'ok';
+}
+
+/** Logged-in student creates a new recovery code (needs their current password). */
+export async function createRecoveryCode(token: string | undefined, password: string) {
+  const rec = accountForToken(token);
+  if (!rec) return { error: 'auth' as const };
+  if (!verifyPassword(password, rec.passwordHash)) return { error: 'wrong' as const };
+  const recoveryCode = rotateRecoveryCode(rec);
+  await persist();
+  return { recoveryCode, account: toPublic(rec) };
+}
+
+/**
+ * "Forgot password": username + recovery code → new password.
+ * The used code stops working; a new one is returned. Every other device is logged out.
+ */
+export async function resetWithRecoveryCode(username: string, code: string, newPassword: string) {
+  const rec = load().accounts.find((a) => a.username === username);
+  const ok = verifyPassword(normalizeRecoveryCode(code), rec?.recoveryHash ?? DUMMY_HASH);
+  if (!rec || !rec.recoveryHash || !ok) return null;
+  rec.passwordHash = hashPassword(newPassword);
+  const recoveryCode = rotateRecoveryCode(rec);
+  load().sessions = load().sessions.filter((s) => s.accountId !== rec.id);
+  sessionOp({ t: 'delAccountExcept', accountId: rec.id, keep: '' });
+  rec.lastLoginAt = new Date().toISOString();
+  const token = newSession(rec.id);
+  await persist();
+  return { token, account: toPublic(rec), snapshot: rec.snapshot, recoveryCode };
 }
 
 export async function logout(token: string | undefined) {

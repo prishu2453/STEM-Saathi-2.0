@@ -33,13 +33,13 @@ export const CoverageOverview: React.FC<{ language: Language }> = ({ language })
   const opt = options.find((o) => o.key === sel)!;
   const summary = useMemo(() => coverageSummary(), []);
   const vs = videoStats(EXPERIMENT_VIDEOS);
-  const field = 'mt-1 block w-full min-h-[44px] rounded-xl border border-[#B9AD8C] bg-white dark:bg-[#1C3652] px-3 text-sm';
+  const field = 'mt-1 block w-full min-h-[44px] rounded-xl border border-[#B6A6E0] bg-white dark:bg-[#2A1D5C] px-3 text-sm';
 
   return (
     <section className="mx-auto max-w-5xl px-4 sm:px-6 py-6 space-y-6" aria-labelledby="cov-title">
       <div>
-        <h1 id="cov-title" className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-white">{L.title[language]}</h1>
-        <p className="mt-1 text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{L.intro[language]}</p>
+        <h1 id="cov-title" className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-white">{L.title[language]}</h1>
+        <p className="mt-1 text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{L.intro[language]}</p>
       </div>
 
       <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3" aria-label="Totals across all boards, classes and subjects">
@@ -50,7 +50,7 @@ export const CoverageOverview: React.FC<{ language: Language }> = ({ language })
           </li>
         ))}
       </ul>
-      <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{STATUS_EXPLAIN['list-covered'][language]}</p>
+      <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{STATUS_EXPLAIN['list-covered'][language]}</p>
 
       <div className="grid gap-3 sm:grid-cols-2">
         <label className="text-sm font-semibold">{L.board[language]}
@@ -61,11 +61,11 @@ export const CoverageOverview: React.FC<{ language: Language }> = ({ language })
         </label>
       </div>
 
-      <div className="overflow-x-auto rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40]">
+      <div className="overflow-x-auto rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545]">
         <table className="w-full text-sm">
           <caption className="sr-only">{opt.label} — {SUBJ[subject][language]}</caption>
           <thead>
-            <tr className="text-left text-xs text-[#3D4A50] dark:text-[#B4C5D4] border-b border-[#E6DEC8] dark:border-[#284766]">
+            <tr className="text-left text-xs text-[#4A3F66] dark:text-[#C9BFEA] border-b border-[#E7DDFB] dark:border-[#3B2C78]">
               <th scope="col" className="p-3">{L.cls[language]}</th>
               <th scope="col" className="p-3">Status</th>
               <th scope="col" className="p-3">{L.chapters[language]}</th>
@@ -76,16 +76,16 @@ export const CoverageOverview: React.FC<{ language: Language }> = ({ language })
             {COVERAGE_CLASSES.map((c) => {
               const cov = getCoverage(c, opt.board, (opt as { state?: string }).state, subject);
               return (
-                <tr key={c} className="border-b last:border-0 border-[#E6DEC8] dark:border-[#284766] align-top">
+                <tr key={c} className="border-b last:border-0 border-[#E7DDFB] dark:border-[#3B2C78] align-top">
                   <th scope="row" className="p-3 font-semibold">{c}</th>
                   <td className="p-3"><StatusChip status={cov.status} language={language} /></td>
                   <td className="p-3 tabular-nums">
                     {cov.chaptersCovered}{cov.chaptersOfficial ? ` / ${cov.chaptersOfficial}` : ''}
-                    {cov.missingTitles.length > 0 && <div className="mt-1 text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{cov.missingTitles.slice(0, 4).join(' · ')}{cov.missingTitles.length > 4 ? ' …' : ''}</div>}
+                    {cov.missingTitles.length > 0 && <div className="mt-1 text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{cov.missingTitles.slice(0, 4).join(' · ')}{cov.missingTitles.length > 4 ? ' …' : ''}</div>}
                   </td>
                   <td className="p-3 text-xs">
                     {cov.session ?? '—'}
-                    {cov.source && (<><br /><a href={cov.source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline text-[#0B5F58] dark:text-[#4AD1C6]">{cov.source.title}<ExternalLink className="w-3 h-3" aria-hidden="true" /></a></>)}
+                    {cov.source && (<><br /><a href={cov.source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 underline text-[#5B21B6] dark:text-[#C4B5FD]">{cov.source.title}<ExternalLink className="w-3 h-3" aria-hidden="true" /></a></>)}
                   </td>
                 </tr>
               );
@@ -94,10 +94,10 @@ export const CoverageOverview: React.FC<{ language: Language }> = ({ language })
         </table>
       </div>
 
-      <section aria-labelledby="vid-title" className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-2">
-        <h2 id="vid-title" className="text-lg font-bold text-[#17324D] dark:text-white">{L.videosTitle[language]}</h2>
-        <p className="text-3xl font-bold tabular-nums text-[#17324D] dark:text-white">{vs.verifiedVideos}<span className="text-base font-semibold text-[#3D4A50] dark:text-[#B4C5D4]"> {L.videosText[language]} {vs.totalExperiments}</span></p>
-        <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{L.videosHow[language]}</p>
+      <section aria-labelledby="vid-title" className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-2">
+        <h2 id="vid-title" className="text-lg font-bold text-[#2E1A6E] dark:text-white">{L.videosTitle[language]}</h2>
+        <p className="text-3xl font-bold tabular-nums text-[#2E1A6E] dark:text-white">{vs.verifiedVideos}<span className="text-base font-semibold text-[#4A3F66] dark:text-[#C9BFEA]"> {L.videosText[language]} {vs.totalExperiments}</span></p>
+        <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{L.videosHow[language]}</p>
       </section>
 
       <PilotFeedback language={language} />

@@ -113,14 +113,14 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
   return (
     <section className="mx-auto max-w-6xl px-4 sm:px-6 py-5 sm:py-8 space-y-6">
       {/* Chapter Header Card */}
-      <header className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 sm:p-6 space-y-4">
+      <header className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 sm:p-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <button
             type="button"
             onClick={onBack}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4 text-[#0F766E]" aria-hidden="true" />
+            <ArrowLeft className="w-4 h-4 text-[#6D28D9]" aria-hidden="true" />
             <span>Back to My Syllabus</span>
           </button>
 
@@ -128,9 +128,9 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
             <button
               type="button"
               onClick={() => (isSpeaking ? stopSpeaking() : speak(`${title}. ${summary}`))}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer"
             >
-              <Volume2 className="w-4 h-4 text-[#0F766E]" aria-hidden="true" />
+              <Volume2 className="w-4 h-4 text-[#6D28D9]" aria-hidden="true" />
               <span>{isSpeaking ? 'Stop Reading' : 'Listen'}</span>
             </button>
 
@@ -146,7 +146,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                   `Explain Class ${chapter.classLevel} chapter "${title}" clearly with an example.`
                 )
               }
-              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:border-[#0F766E] cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:border-[#6D28D9] cursor-pointer"
             >
               <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>Ask AI Mentor</span>
@@ -158,8 +158,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
               aria-pressed={isCompleted}
               className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 min-h-[42px] text-xs font-semibold cursor-pointer transition-colors ${
                 isCompleted
-                  ? 'bg-[#0F766E] text-white'
-                  : 'border border-[#0F766E] text-[#0B5F58] dark:text-[#4AD1C6] hover:bg-[#E3F5F3] dark:hover:bg-[#0F766E]/20'
+                  ? 'bg-[#6D28D9] text-white'
+                  : 'border border-[#6D28D9] text-[#5B21B6] dark:text-[#C4B5FD] hover:bg-[#EFE7FF] dark:hover:bg-[#6D28D9]/20'
               }`}
             >
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
@@ -169,7 +169,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
         </div>
 
         <div className="space-y-1.5">
-          <p className="text-xs font-semibold text-[#3D4A50] dark:text-[#B4C5D4]">
+          <p className="text-xs font-semibold text-[#4A3F66] dark:text-[#C9BFEA]">
             Class {chapter.classLevel} · Chapter {chapter.chapterNumber} · {textbookName}
             {sourceUrl && (
               <>
@@ -179,27 +179,27 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                   href={sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0B5F58] dark:text-[#4AD1C6] underline"
+                  className="text-[#5B21B6] dark:text-[#C4B5FD] underline"
                 >
                   {sourceTitle || 'Official Source'}
                 </a>
               </>
             )}
           </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-white tracking-tight">
             {title}
           </h1>
-          <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] leading-relaxed max-w-3xl">
+          <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] leading-relaxed max-w-3xl">
             {summary}
           </p>
           <button
             type="button"
             onClick={() =>
               void shareText(
-                `📘 ${title}\n${summary}\n— STEM Saathi ${window.location.origin}/#chapter/${chapter.id}`
+                `📘 ${title}\n${summary}\n— Gyaan Graph ${window.location.origin}/#chapter/${chapter.id}`
               )
             }
-            className="inline-flex items-center gap-1.5 min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-4 py-2 text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]"
+            className="inline-flex items-center gap-1.5 min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-4 py-2 text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]"
           >
             <Share2 className="w-4 h-4" aria-hidden="true" />
             {language === 'hi' ? 'दोस्तों को भेजें (WhatsApp)' : language === 'kn' ? 'ಸ್ನೇಹಿತರಿಗೆ ಕಳುಹಿಸಿ (WhatsApp)' : 'Send to friends (WhatsApp)'}
@@ -207,7 +207,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
         </div>
 
         {linkedSims.length > 0 && (
-          <div className="space-y-3 pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
+          <div className="space-y-3 pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
             {linkedSims.map((simId) => (
               <InlineSimulation key={simId} experimentId={simId} language={language} lowPowerMode={lowPowerMode} />
             ))}
@@ -218,7 +218,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
         <div
           role="tablist"
           aria-label="Chapter learning sections"
-          className="flex flex-wrap gap-1.5 pt-2 border-t border-[#E6DEC8] dark:border-[#284766]"
+          className="flex flex-wrap gap-1.5 pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]"
         >
           {(
             [
@@ -237,8 +237,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
               onClick={() => setTab(item.id)}
               className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 min-h-[42px] text-xs font-semibold cursor-pointer transition-colors ${
                 tab === item.id
-                  ? 'bg-[#17324D] text-white'
-                  : 'bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] border border-[#E6DEC8] dark:border-[#284766] hover:border-[#0F766E]'
+                  ? 'bg-[#2E1A6E] text-white'
+                  : 'bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] border border-[#E7DDFB] dark:border-[#3B2C78] hover:border-[#6D28D9]'
               }`}
             >
               {item.icon}
@@ -252,8 +252,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
       {tab === 'concepts' && (
         <div className="space-y-6">
           {/* Interactive Concept Diagram */}
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
               Interactive Visual Diagram
             </h2>
             <ChapterDiagramViewer
@@ -267,7 +267,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
 
           {/* Topics & Subtopics */}
           <div className="space-y-3">
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
               Topics &amp; Subtopics
             </h2>
             {chapter.topics.map((tp) => {
@@ -280,10 +280,10 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
               return (
                 <div
                   key={tp.id}
-                  className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-3"
+                  className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-3"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-base font-bold text-[#17324D] dark:text-white">{tTitle}</h3>
+                    <h3 className="text-base font-bold text-[#2E1A6E] dark:text-white">{tTitle}</h3>
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
@@ -291,8 +291,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                         aria-pressed={bookmarked}
                         className={`inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 min-h-[36px] text-xs font-semibold cursor-pointer ${
                           bookmarked
-                            ? 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/20 text-[#9A6100] dark:text-[#F2B544]'
-                            : 'border-[#E6DEC8] dark:border-[#284766] text-[#3D4A50] dark:text-[#B4C5D4]'
+                            ? 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/20 text-[#B4430C] dark:text-[#FF9F1C]'
+                            : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#4A3F66] dark:text-[#C9BFEA]'
                         }`}
                       >
                         <Bookmark className="w-3.5 h-3.5" aria-hidden="true" />
@@ -304,8 +304,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                         aria-pressed={studied}
                         className={`inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 min-h-[36px] text-xs font-semibold cursor-pointer ${
                           studied
-                            ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6]'
-                            : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#EEF3F7]'
+                            ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD]'
+                            : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#F3EFFF]'
                         }`}
                       >
                         <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
@@ -313,9 +313,9 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                       </button>
                     </div>
                   </div>
-                  <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] leading-relaxed">{tExpl}</p>
+                  <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] leading-relaxed">{tExpl}</p>
                   {subs.length > 0 && (
-                    <ul className="list-disc pl-5 text-xs sm:text-sm text-[#3D4A50] dark:text-[#B4C5D4] space-y-1">
+                    <ul className="list-disc pl-5 text-xs sm:text-sm text-[#4A3F66] dark:text-[#C9BFEA] space-y-1">
                       {subs.map((s) => (
                         <li key={s}>{s}</li>
                       ))}
@@ -328,17 +328,17 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
 
           {/* Definitions & Key Concepts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-              <h2 className="text-base font-bold text-[#17324D] dark:text-white">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+              <h2 className="text-base font-bold text-[#2E1A6E] dark:text-white">
                 Important Definitions
               </h2>
               <dl className="space-y-3">
                 {chapter.definitions.map((d) => (
-                  <div key={d.id} className="border-b last:border-b-0 border-[#E6DEC8]/70 dark:border-[#284766]/70 pb-2.5 last:pb-0">
-                    <dt className="text-sm font-bold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <div key={d.id} className="border-b last:border-b-0 border-[#E7DDFB]/70 dark:border-[#3B2C78]/70 pb-2.5 last:pb-0">
+                    <dt className="text-sm font-bold text-[#5B21B6] dark:text-[#C4B5FD]">
                       {resolveLocalizedText(d.term, language).text}
                     </dt>
-                    <dd className="text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] mt-0.5 leading-relaxed">
+                    <dd className="text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] mt-0.5 leading-relaxed">
                       {resolveLocalizedText(d.definition, language).text}
                     </dd>
                   </div>
@@ -346,11 +346,11 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
               </dl>
             </div>
 
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-              <h2 className="text-base font-bold text-[#17324D] dark:text-white">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+              <h2 className="text-base font-bold text-[#2E1A6E] dark:text-white">
                 Key Concepts &amp; Revision Notes
               </h2>
-              <ul className="list-disc pl-5 text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] space-y-1.5">
+              <ul className="list-disc pl-5 text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] space-y-1.5">
                 {keyConcepts.map((kc) => (
                   <li key={kc}>{kc}</li>
                 ))}
@@ -359,11 +359,11 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                 ))}
               </ul>
               {applications.length > 0 && (
-                <div className="pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#9A6100] dark:text-[#F2B544] mb-1">
+                <div className="pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#B4430C] dark:text-[#FF9F1C] mb-1">
                     Real-Life Applications
                   </p>
-                  <ul className="list-disc pl-5 text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] space-y-1">
+                  <ul className="list-disc pl-5 text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] space-y-1">
                     {applications.map((app) => (
                       <li key={app}>{app}</li>
                     ))}
@@ -379,21 +379,21 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
       {tab === 'formulas' && (
         <div className="space-y-5">
           {chapter.formulas.length > 0 && (
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">Formula Sheet</h2>
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">Formula Sheet</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {chapter.formulas.map((f) => (
                   <div
                     key={f.id}
-                    className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-1"
+                    className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-1"
                   >
-                    <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                    <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                       {resolveLocalizedText(f.name, language).text}
                     </p>
-                    <p className="font-mono text-base font-bold text-[#17324D] dark:text-white">
+                    <p className="font-mono text-base font-bold text-[#2E1A6E] dark:text-white">
                       {f.formula}
                     </p>
-                    <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                    <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                       {resolveLocalizedText(f.variables, language).text} · Unit: {f.unit}
                     </p>
                   </div>
@@ -403,27 +403,27 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
           )}
 
           {chapter.solvedNumericals.length > 0 && (
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Solved Numerical Examples
               </h2>
               {chapter.solvedNumericals.map((n) => (
                 <div
                   key={n.id}
-                  className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-2"
+                  className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-2"
                 >
-                  <p className="text-sm font-semibold text-[#17324D] dark:text-white">
+                  <p className="text-sm font-semibold text-[#2E1A6E] dark:text-white">
                     {resolveLocalizedText(n.problem, language).text}
                   </p>
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] font-mono">
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] font-mono">
                     Given: {n.given.join(' | ')} · Formula: {n.formulaUsed}
                   </p>
-                  <ol className="list-decimal pl-5 text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] space-y-1">
+                  <ol className="list-decimal pl-5 text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] space-y-1">
                     {n.solutionSteps.map((s) => (
                       <li key={s}>{s}</li>
                     ))}
                   </ol>
-                  <p className="text-xs sm:text-sm font-bold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <p className="text-xs sm:text-sm font-bold text-[#5B21B6] dark:text-[#C4B5FD]">
                     Answer: {n.finalAnswer}
                   </p>
                 </div>
@@ -432,22 +432,22 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
           )}
 
           {chapter.chemicalEquations && chapter.chemicalEquations.length > 0 && (
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Balanced Chemical Equations
               </h2>
               {chapter.chemicalEquations.map((eq) => (
                 <div
                   key={eq.id}
-                  className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-1"
+                  className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-1"
                 >
-                  <p className="text-xs font-semibold text-[#9A6100] dark:text-[#F2B544]">
+                  <p className="text-xs font-semibold text-[#B4430C] dark:text-[#FF9F1C]">
                     {resolveLocalizedText(eq.title, language).text} · {eq.reactionType}
                   </p>
-                  <p className="font-mono text-sm font-bold text-[#17324D] dark:text-white">
+                  <p className="font-mono text-sm font-bold text-[#2E1A6E] dark:text-white">
                     {eq.equation}
                   </p>
-                  <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+                  <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA]">
                     {resolveLocalizedText(eq.explanation, language).text}
                   </p>
                 </div>
@@ -456,19 +456,19 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
           )}
 
           {chapter.biologyProcesses && chapter.biologyProcesses.length > 0 && (
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Biological Processes &amp; Microscopy
               </h2>
               {chapter.biologyProcesses.map((bp) => (
                 <div
                   key={bp.id}
-                  className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-2"
+                  className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-2"
                 >
-                  <p className="text-sm font-bold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <p className="text-sm font-bold text-[#5B21B6] dark:text-[#C4B5FD]">
                     {resolveLocalizedText(bp.title, language).text}
                   </p>
-                  <ol className="list-decimal pl-5 text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] space-y-1">
+                  <ol className="list-decimal pl-5 text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] space-y-1">
                     {resolveLocalizedList(bp.steps, language).items.map((st) => (
                       <li key={st}>{st}</li>
                     ))}
@@ -482,7 +482,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
             chapter.solvedNumericals.length === 0 &&
             !(chapter.chemicalEquations && chapter.chemicalEquations.length > 0) &&
             !(chapter.biologyProcesses && chapter.biologyProcesses.length > 0) && (
-              <div className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-6 text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+              <div className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-6 text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
                 This chapter focuses on conceptual observations and experiments. Switch to Topics or Experiments above to explore further.
               </div>
             )}
@@ -510,8 +510,8 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
       {/* TAB 4: Chapter Questions & Interactive MCQ Quiz */}
       {tab === 'questions' && (
         <div className="space-y-6">
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-            <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+            <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
               Chapter-Wise Questions
             </h2>
             <div className="space-y-3">
@@ -520,20 +520,20 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                 return (
                   <div
                     key={q.id}
-                    className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-2"
+                    className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-2"
                   >
                     <button
                       type="button"
                       onClick={() => setOpenQuestionId(isOpen ? null : q.id)}
-                      className="w-full text-left flex items-center justify-between gap-2 text-sm font-semibold text-[#17324D] dark:text-white cursor-pointer"
+                      className="w-full text-left flex items-center justify-between gap-2 text-sm font-semibold text-[#2E1A6E] dark:text-white cursor-pointer"
                     >
                       <span>{resolveLocalizedText(q.question, language).text}</span>
-                      <span className="text-xs text-[#0B5F58] dark:text-[#4AD1C6] shrink-0">
+                      <span className="text-xs text-[#5B21B6] dark:text-[#C4B5FD] shrink-0">
                         {isOpen ? 'Hide Answer' : 'View Answer'}
                       </span>
                     </button>
                     {isOpen && (
-                      <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC] pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
+                      <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA] pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
                         {resolveLocalizedText(q.answer, language).text}
                       </p>
                     )}
@@ -543,13 +543,13 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
             </div>
           </div>
 
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4">
             <div className="flex items-center justify-between gap-2">
-              <h2 className="text-lg font-bold text-[#17324D] dark:text-white">
+              <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">
                 Practice MCQ Quiz
               </h2>
               {progress.chapterQuizScores?.[chapter.id] !== undefined && (
-                <span className="text-xs font-bold text-[#9A6100] dark:text-[#F2B544] tabular-nums">
+                <span className="text-xs font-bold text-[#B4430C] dark:text-[#FF9F1C] tabular-nums">
                   Best Score: {progress.chapterQuizScores[chapter.id]}%
                 </span>
               )}
@@ -561,9 +561,9 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
               return (
                 <div
                   key={m.id}
-                  className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-2.5"
+                  className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-2.5"
                 >
-                  <p className="text-sm font-semibold text-[#17324D] dark:text-white">
+                  <p className="text-sm font-semibold text-[#2E1A6E] dark:text-white">
                     {idx + 1}. {resolveLocalizedText(m.question, language).text}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -578,9 +578,9 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                           className={`text-left rounded-xl border px-3 py-2.5 min-h-[42px] text-xs font-medium cursor-pointer transition-colors ${
                             active
                               ? correct
-                                ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6]'
-                                : 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/20 text-[#9A6100] dark:text-[#F2B544]'
-                              : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#1A262C] dark:text-[#DCE5EC] hover:border-[#0F766E]'
+                                ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD]'
+                                : 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/20 text-[#B4430C] dark:text-[#FF9F1C]'
+                              : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#22163F] dark:text-[#E4DDFA] hover:border-[#6D28D9]'
                           }`}
                         >
                           {opt}
@@ -589,7 +589,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
                     })}
                   </div>
                   {picked !== undefined && (
-                    <p className="text-xs text-[#0B5F58] dark:text-[#4AD1C6]">
+                    <p className="text-xs text-[#5B21B6] dark:text-[#C4B5FD]">
                       {picked === m.correctIndex ? 'Correct! ' : 'Check concept: '}
                       {resolveLocalizedText(m.explanation, language).text}
                     </p>
@@ -602,7 +602,7 @@ export const ChapterDetailView: React.FC<ChapterDetailViewProps> = ({
       )}
 
       {tab === 'flashcards' && (
-        <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-6">
+        <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-6">
           <FlashcardTrainer
             key={`${chapter.id}-${language}`}
             deck={buildDeck([chapter], language)}

@@ -643,7 +643,7 @@ export const RESOURCE_PACKS: ResourcePack[] = [
     domain: 'Physics',
     sizeKb: 148,
     format: 'Markdown / Offline Pack',
-    content: `# STEM Saathi — Physics Master Formula Compendium
+    content: `# Gyaan Graph — Physics Master Formula Compendium
 
 ## 1. Mechanics
 - Kinematics: v = u + at | s = ut + 1/2 at^2 | v^2 = u^2 + 2as
@@ -684,7 +684,7 @@ export const RESOURCE_PACKS: ResourcePack[] = [
     domain: 'Physics',
     sizeKb: 210,
     format: 'Markdown / Offline Pack',
-    content: `# STEM Saathi — Virtual Physics Practical Manual
+    content: `# Gyaan Graph — Virtual Physics Practical Manual
 
 1. Projectile Range Verification: Vary launch angle (30, 45, 60 deg) at fixed velocity 24 m/s.
 2. Ohm's Law V-I Characteristic: Measure current I for 3V, 6V, 9V, 12V across 10 Ohm resistor.
@@ -704,7 +704,7 @@ export const RESOURCE_PACKS: ResourcePack[] = [
     domain: 'Chemistry',
     sizeKb: 112,
     format: 'Markdown / Offline Pack',
-    content: `# STEM Saathi — Chemistry Study Guide
+    content: `# Gyaan Graph — Chemistry Study Guide
 - pH = -log10[H+], Neutral at 25C: pH = 7.0
 - Strong acid + strong base neutralization: HCl + NaOH -> NaCl + H2O
 - Ionic vs Covalent bonding threshold: Delta Electronegativity ~ 1.7
@@ -720,7 +720,7 @@ export const RESOURCE_PACKS: ResourcePack[] = [
     domain: 'Mathematics',
     sizeKb: 124,
     format: 'Markdown / Offline Pack',
-    content: `# STEM Saathi — Biology & Mathematics Reference
+    content: `# Gyaan Graph — Biology & Mathematics Reference
 - Biology: Xylem transports water/minerals upward; Phloem transports sucrose bi-directionally.
 - Photosynthesis: 6CO2 + 6H2O + Light -> C6H12O6 + 6O2
 - Trigonometry: sin^2(theta) + cos^2(theta) = 1

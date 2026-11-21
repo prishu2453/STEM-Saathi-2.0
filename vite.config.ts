@@ -22,12 +22,12 @@ export default defineConfig(() => {
         includeAssets: ['icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png'],
         manifest: {
           id: base,
-          name: 'STEM Saathi — Inclusive 3D Science Universe',
-          short_name: 'STEM Saathi',
+          name: 'Gyaan Graph — Physics that knows what you know',
+          short_name: 'Gyaan Graph',
           description:
-            'Inclusive multilingual STEM platform featuring an interactive 3D Physics World alongside Chemistry, Biology, and Mathematics.',
-          theme_color: '#17324D',
-          background_color: '#FFF9EE',
+            'Finds the Class 10 Physics concepts you have not understood and fixes them: diagnostic, targeted practice, spaced revision, 3D labs.',
+          theme_color: '#6D28D9',
+          background_color: '#FFF9F2',
           display: 'standalone',
           start_url: base,
           scope: base,

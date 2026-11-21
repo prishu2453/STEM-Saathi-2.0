@@ -38,26 +38,26 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
   return (
     <section
       aria-labelledby="media-studio-heading"
-      className="mx-auto max-w-7xl px-4 sm:px-6 py-10 border-t border-[#E6DEC8] dark:border-[#284766] space-y-6"
+      className="mx-auto max-w-7xl px-4 sm:px-6 py-10 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-6"
     >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6]">
+          <p className="text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD]">
             Voice notes · {t.requiresInternetNotice}
           </p>
           <h2
             id="media-studio-heading"
-            className="text-2xl sm:text-3xl font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-1"
+            className="text-2xl sm:text-3xl font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-1"
           >
             Transcribe Lab Audio
           </h2>
-          <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] mt-1 max-w-2xl">
+          <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] mt-1 max-w-2xl">
             Transcribe spoken classroom questions or experiment notes in English, Hindi, or Kannada.
           </p>
         </div>
 
         {!isOnline && (
-          <div className="inline-flex items-center gap-2 rounded-xl border border-[#F2B544]/50 bg-[#F2B544]/15 px-3.5 py-2 text-xs font-medium text-[#9A6100] dark:text-[#F2B544] shrink-0">
+          <div className="inline-flex items-center gap-2 rounded-xl border border-[#FF9F1C]/50 bg-[#FF9F1C]/15 px-3.5 py-2 text-xs font-medium text-[#B4430C] dark:text-[#FF9F1C] shrink-0">
             <WifiOff className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>{t.offlineStatus}: {t.requiresInternetNotice}</span>
           </div>
@@ -68,18 +68,18 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
         {/* Right: Audio Lab Notes Transcriber (5 cols) */}
         <div
           id="audio-transcriber-card"
-          className={`animate-panel-reveal lg:col-span-7 a11y-surface rounded-2xl border bg-white dark:bg-[#152A40] p-5 space-y-4 ${
+          className={`animate-panel-reveal lg:col-span-7 a11y-surface rounded-2xl border bg-white dark:bg-[#1F1545] p-5 space-y-4 ${
             focusTool === 'audio'
-              ? 'border-[#0F766E] ring-2 ring-[#0F766E]/20'
-              : 'border-[#E6DEC8] dark:border-[#284766]'
+              ? 'border-[#6D28D9] ring-2 ring-[#6D28D9]/20'
+              : 'border-[#E7DDFB] dark:border-[#3B2C78]'
           }`}
         >
           <div>
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#F6F1E3] flex items-center gap-2">
-              <Mic className="w-4 h-4 text-[#9A6100] dark:text-[#F2B544]" aria-hidden="true" />
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center gap-2">
+              <Mic className="w-4 h-4 text-[#B4430C] dark:text-[#FF9F1C]" aria-hidden="true" />
               <span>Spoken Lab Audio Transcriber</span>
             </h3>
-            <p className="text-xs text-[#1A262C] dark:text-[#B4C5D4] mt-1">
+            <p className="text-xs text-[#22163F] dark:text-[#C9BFEA] mt-1">
               Record microphone observations or upload an audio clip to convert spoken physics formulas and notes into clean text.
             </p>
           </div>
@@ -113,7 +113,7 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
               className={`min-h-[42px] inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50 ${
                 isRecording
                   ? 'bg-red-600 text-white hover:bg-red-500'
-                  : 'bg-[#0F766E] text-white hover:bg-[#0B5F58]'
+                  : 'bg-[#6D28D9] text-white hover:bg-[#5B21B6]'
               }`}
             >
               {isRecording ? <Square className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
@@ -132,7 +132,7 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
               type="button"
               disabled={isRecording || isTranscribing || !isOnline}
               onClick={() => audioFileRef.current?.click()}
-              className="min-h-[42px] inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-2 text-xs font-medium text-[#17324D] dark:text-[#DCE5EC] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652] cursor-pointer disabled:opacity-50"
+              className="min-h-[42px] inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-2 text-xs font-medium text-[#2E1A6E] dark:text-[#E4DDFA] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C] cursor-pointer disabled:opacity-50"
             >
               <Upload className="w-3.5 h-3.5" />
               <span>Upload Audio</span>
@@ -140,7 +140,7 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
           </div>
 
           {transcribeError && (
-            <div className="rounded-xl border border-[#F2B544]/50 bg-[#F2B544]/15 p-3 text-xs text-[#9A6100] dark:text-[#F2B544]">
+            <div className="rounded-xl border border-[#FF9F1C]/50 bg-[#FF9F1C]/15 p-3 text-xs text-[#B4430C] dark:text-[#FF9F1C]">
               {transcribeError}
             </div>
           )}
@@ -150,16 +150,16 @@ export const VideoAnimatorLab: React.FC<VideoAnimatorLabProps> = ({ language, fo
             value={transcriptText}
             onChange={(e) => setTranscriptText(e.target.value)}
             placeholder="Your transcribed physics equations, lab observations, or multilingual voice notes will appear here..."
-            className="w-full rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2.5 text-xs text-[#17324D] dark:text-[#F6F1E3] focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
+            className="w-full rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2.5 text-xs text-[#2E1A6E] dark:text-[#F5F0FF] focus:outline-none focus:ring-2 focus:ring-[#6D28D9]"
           />
 
-          <div className="flex items-center justify-between text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+          <div className="flex items-center justify-between text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
             <span>Supports English, हिन्दी &amp; ಕನ್ನಡ</span>
             {transcriptText && (
               <button
                 type="button"
                 onClick={() => setTranscriptText('')}
-                className="text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+                className="text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
               >
                 Clear Transcript
               </button>

@@ -207,7 +207,7 @@ export const UI_TEXT: Record<Language, Dictionary> = {
     sideMenuLabel: 'Menu — Open navigation drawer',
     launchPhysicsLab: 'Continue Physics',
     exploreAllWorlds: 'Other subjects',
-    primaryDomainLabel: 'STEM Saathi · Explore Science',
+    primaryDomainLabel: 'Gyaan Graph · Explore Science',
     physicsWorldTitle: 'Physics World',
     physicsWorldDesc:
       'Interactive 2D & optional 3D physics labs, step-by-step numerical solver, virtual practicals, and offline-ready projectile missions.',
@@ -380,7 +380,7 @@ export const UI_TEXT: Record<Language, Dictionary> = {
     sideMenuLabel: 'मेनू — नेविगेशन खोलें',
     launchPhysicsLab: 'भौतिकी जारी रखें',
     exploreAllWorlds: 'अन्य विषय',
-    primaryDomainLabel: 'STEM Saathi · विज्ञान की खोज',
+    primaryDomainLabel: 'Gyaan Graph · विज्ञान की खोज',
     physicsWorldTitle: 'भौतिकी जगत (Physics World)',
     physicsWorldDesc:
       'इंटरैक्टिव 2D व वैकल्पिक 3D प्रयोगशालाएँ, न्यूमेरिकल सॉल्वर, वर्चुअल प्रैक्टिकल और ऑफ़लाइन प्रक्षेप्य मिशन।',
@@ -553,7 +553,7 @@ export const UI_TEXT: Record<Language, Dictionary> = {
     sideMenuLabel: 'ಮೆನು — ನ್ಯಾವಿಗೇಷನ್ ತೆರೆಯಿರಿ',
     launchPhysicsLab: 'ಭೌತಶಾಸ್ತ್ರ ಮುಂದುವರಿಸಿ',
     exploreAllWorlds: 'ಇತರ ವಿಷಯಗಳು',
-    primaryDomainLabel: 'STEM Saathi · ವಿಜ್ಞಾನವನ್ನು ಅನ್ವೇಷಿಸಿ',
+    primaryDomainLabel: 'Gyaan Graph · ವಿಜ್ಞಾನವನ್ನು ಅನ್ವೇಷಿಸಿ',
     physicsWorldTitle: 'ಭೌತಶಾಸ್ತ್ರ ಲೋಕ (Physics World)',
     physicsWorldDesc:
       'ಸಂವಾದಾತ್ಮಕ 2D ಮತ್ತು ಐಚ್ಛಿಕ 3D ಪ್ರಯೋಗಾಲಯಗಳು, ಸಂಖ್ಯಾತ್ಮಕ ಪರಿಹಾರಕ, ಪ್ರಾಯೋಗಿಕ ಬೆಂಚ್ ಮತ್ತು ಆಫ್‌ಲೈನ್ ಪ್ರಕ್ಷೇಪಕ ಮಿಷನ್.',

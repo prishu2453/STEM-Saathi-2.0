@@ -19,6 +19,10 @@ import { StudentPathSelector } from './components/StudentPathSelector';
 // Big screens load only when the student opens them — the home page stays small for slow connections.
 const AIMentorDrawer = lazy(() => import('./components/AIMentorDrawer').then((m) => ({ default: m.AIMentorDrawer })));
 const CurriculumBrowser = lazy(() => import('./components/CurriculumBrowser').then((m) => ({ default: m.CurriculumBrowser })));
+const StoryLibrary = lazy(() => import('./story/StoryLibrary').then((m) => ({ default: m.StoryLibrary })));
+const HomeHero = lazy(() => import('./components/HomeHero').then((m) => ({ default: m.HomeHero })));
+const AdaptiveTutor = lazy(() => import('./components/tutor/AdaptiveTutor').then((m) => ({ default: m.AdaptiveTutor })));
+const TeacherDashboard = lazy(() => import('./components/tutor/TeacherDashboard').then((m) => ({ default: m.TeacherDashboard })));
 const CoverageOverview = lazy(() => import('./components/CoverageOverview').then((m) => ({ default: m.CoverageOverview })));
 const DashboardsHub = lazy(() => import('./components/DashboardsHub').then((m) => ({ default: m.DashboardsHub })));
 const DemoJourney = lazy(() => import('./components/DemoJourney').then((m) => ({ default: m.DemoJourney })));
@@ -163,6 +167,15 @@ function resolveRouteFromLocation(): ResolvedRoute {
     const chId = (rawParam || rawHash).trim().slice('chapter/'.length);
     return { view: 'my-learning', chapterId: chId || undefined };
   }
+  if (token === 'tutor' || token === 'practice' || token === 'smart-practice' || token === 'diagnostic') {
+    return { view: 'tutor' };
+  }
+  if (token === 'stories' || token === 'story' || token === '3d-stories' || token.startsWith('story/')) {
+    return { view: 'stories' };
+  }
+  if (token === 'teacher' || token === 'teacher-dashboard' || token === 'class') {
+    return { view: 'teacher' };
+  }
   if (token === 'demo' || token === 'journey') {
     return { view: 'demo' };
   }
@@ -223,10 +236,7 @@ function resolveRouteFromLocation(): ResolvedRoute {
   if (token === 'dashboards' || token === 'student-dashboard') {
     return { view: 'dashboards', dashboardRole: 'student' };
   }
-  // Teacher and School Admin interfaces were removed from the student app; old links open the student dashboard.
-  if (token === 'teacher-dashboard') {
-    return { view: 'dashboards', dashboardRole: 'student' };
-  }
+  // The old School Admin link opens the student dashboard; teachers use ?view=teacher (class-wide gaps).
   if (token === 'admin-dashboard') {
     return { view: 'dashboards', dashboardRole: 'student' };
   }
@@ -290,6 +300,8 @@ function StemSaathiApp() {
   const [authError, setAuthError] = useState<string | null>(null);
 
   const [activeView, setActiveView] = useState<AppWorkspaceView>(initialRoute.view);
+  // concept to practise when Smart Practice is opened from a story or elsewhere
+  const [tutorFocus, setTutorFocus] = useState<string | undefined>(undefined);
   const [activePhysicsTopic, setActivePhysicsTopic] = useState<PhysicsTopicId>(
     initialRoute.physicsTopic ?? 'mechanics'
   );
@@ -850,15 +862,15 @@ function StemSaathiApp() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F6F1E3] text-[#1A262C] dark:bg-[#0E1E2E] dark:text-[#EEF3F7]">
+    <div className="min-h-screen flex flex-col bg-[#F5F0FF] text-[#22163F] dark:bg-[#140C2E] dark:text-[#F3EFFF]">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-xl focus:bg-[#17324D] focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-xl focus:bg-[#2E1A6E] focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
       >
         {language === 'hi' ? 'मुख्य सामग्री पर जाएँ' : language === 'kn' ? 'ಮುಖ್ಯ ವಿಷಯಕ್ಕೆ ಹೋಗಿ' : 'Skip to main content'}
       </a>
       {/* Minimal Top Bar: 3-Line Side Dashboard Trigger + Brand Name + Quick Language + Primary CTA */}
-      <header className="sticky top-0 z-40 border-b border-[#E6DEC8] dark:border-[#284766] bg-white/95 dark:bg-[#152A40]/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-40 border-b border-[#E7DDFB] dark:border-[#3B2C78] bg-white/95 dark:bg-[#1F1545]/95 backdrop-blur-sm">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 h-15 flex items-center justify-between gap-2 sm:gap-8">
           {/* Zone 1: 3-Line Side Menu Button + Website Name */}
           <div className="flex items-center gap-2.5 shrink-0">
@@ -868,7 +880,7 @@ function StemSaathiApp() {
               onClick={() => setSideMenuOpen(true)}
               aria-label={t.sideMenuLabel}
               aria-expanded={sideMenuOpen}
-              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-white hover:border-[#0F766E] transition-colors cursor-pointer"
+              className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-white hover:border-[#6D28D9] transition-colors cursor-pointer"
             >
               <Menu className="w-5 h-5" aria-hidden="true" />
             </button>
@@ -879,9 +891,9 @@ function StemSaathiApp() {
                 e.preventDefault();
                 scrollToSection('universe');
               }}
-              className="font-display text-xl font-bold tracking-tight text-[#17324D] dark:text-white whitespace-nowrap shrink-0 inline-flex items-center min-h-[44px]"
+              className="font-display text-xl font-bold tracking-tight text-[#2E1A6E] dark:text-white whitespace-nowrap shrink-0 inline-flex items-center min-h-[44px]"
             >
-              STEM Saathi
+              Gyaan Graph
             </a>
           </div>
 
@@ -889,7 +901,7 @@ function StemSaathiApp() {
           <div
             role="group"
             aria-label={t.actionChooseLanguage}
-            className="hidden sm:inline-flex items-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-1"
+            className="hidden sm:inline-flex items-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-1"
           >
             {(
               [
@@ -904,8 +916,8 @@ function StemSaathiApp() {
                 onClick={() => setLanguage(item.id)}
                 className={`px-3 py-1.5 min-h-[36px] text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                   language === item.id
-                    ? 'bg-[#0F766E] text-white shadow-xs'
-                    : 'text-[#17324D] dark:text-[#DCE5EC] hover:text-[#0F766E] dark:hover:text-white'
+                    ? 'bg-[#6D28D9] text-white shadow-xs'
+                    : 'text-[#2E1A6E] dark:text-[#E4DDFA] hover:text-[#6D28D9] dark:hover:text-white'
                 }`}
               >
                 {item.label}
@@ -920,9 +932,9 @@ function StemSaathiApp() {
             onClick={() => scrollToSection('account', 'login')}
             aria-current={activeView === 'account' ? 'page' : undefined}
             aria-label={studentAccount ? (language === 'hi' ? 'मेरा खाता' : language === 'kn' ? 'ನನ್ನ ಖಾತೆ' : 'My account') : (language === 'hi' ? 'लॉग इन' : language === 'kn' ? 'ಲಾಗ್ ಇನ್' : 'Log in')}
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 sm:px-3 py-2 min-h-[44px] min-w-[44px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] transition-colors whitespace-nowrap cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 sm:px-3 py-2 min-h-[44px] min-w-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] transition-colors whitespace-nowrap cursor-pointer"
           >
-            <UserRound className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <UserRound className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
             <span className="hidden sm:inline max-w-[90px] truncate">
               {studentAccount
                 ? (studentAccount.profile.fullName || studentAccount.username).split(' ')[0]
@@ -936,7 +948,7 @@ function StemSaathiApp() {
               setMentorPrompt('');
               setMentorOpen(true);
             }}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] px-3 sm:px-4 py-2 min-h-[44px] text-xs font-semibold text-white hover:bg-[#0B5F58] transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] px-3 sm:px-4 py-2 min-h-[44px] text-xs font-semibold text-white hover:bg-[#5B21B6] transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
             <span>{t.askMentor}</span>
@@ -1043,12 +1055,12 @@ function StemSaathiApp() {
 
       {authError && (
         <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 pt-3">
-          <div className="rounded-xl border border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 px-3.5 py-2.5 text-xs text-[#17324D] dark:text-[#F6F1E3] flex items-center justify-between gap-2">
+          <div className="rounded-xl border border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 px-3.5 py-2.5 text-xs text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center justify-between gap-2">
             <span>{authError}</span>
             <button
               type="button"
               onClick={() => setAuthError(null)}
-              className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6] underline cursor-pointer"
+              className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD] underline cursor-pointer"
             >
               Dismiss
             </button>
@@ -1057,95 +1069,37 @@ function StemSaathiApp() {
       )}
 
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
-        <Suspense fallback={<div role="status" className="mx-auto max-w-6xl px-4 py-16 text-center text-sm text-[#3D4A50] dark:text-[#B4C5D4]">Loading…</div>}>
+        <Suspense fallback={<div role="status" className="mx-auto max-w-6xl px-4 py-16 text-center text-sm text-[#4A3F66] dark:text-[#C9BFEA]">Loading…</div>}>
         <div key={activeView} className="animate-view-enter">
         {activeView === 'universe' ? (
-          /* MINIMAL FIRST LOOK: Prominent STEM Saathi + Interactive 3D Observatory + 3-Line Menu Access */
+          /* FRONT PAGE: what Gyaan Graph does, misconception of the day, the student's graph, then the live 3D lab */
           <section
             id="universe-section"
             className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-              {/* Left: Website Name, Calm Headline, Primary Action */}
-              <div className="lg:col-span-5 space-y-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
-                  {t.primaryDomainLabel}
-                </p>
-
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#17324D] dark:text-white leading-tight text-balance">
-                  {t.heroTitle}
-                </h1>
-
-                <p className="text-base leading-relaxed text-[#1A262C] dark:text-[#DCE5EC] max-w-lg">
-                  {t.heroSubtitle}
-                </p>
-
-                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-1">
-                  <button
-                    type="button"
-                    onClick={() => openPhysicsWorkbench('double-slit')}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] text-white px-6 py-3.5 min-h-[52px] text-sm font-semibold transition-colors cursor-pointer shadow-sm"
-                  >
-                    <Atom className="w-4 h-4 shrink-0" aria-hidden="true" />
-                    <span>{t.startMissionCta}</span>
-                    <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setMentorSubject('Physics');
-                      setMentorPrompt('');
-                      setMentorOpen(true);
-                    }}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] hover:border-[#0F766E] text-[#17324D] dark:text-[#F6F1E3] px-5 py-3.5 min-h-[50px] text-sm font-semibold transition-colors cursor-pointer"
-                  >
-                    <Sparkles className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
-                    <span>{language === 'hi' ? 'AI ट्यूटर से पूछें' : language === 'kn' ? 'AI ಬೋಧಕರನ್ನು ಕೇಳಿ' : 'Ask the AI Tutor'}</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection('experiment-library', 'experiment-library')}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] hover:border-[#0F766E] text-[#17324D] dark:text-[#F6F1E3] px-4 py-3.5 min-h-[50px] text-sm font-semibold transition-colors cursor-pointer"
-                  >
-                    <FlaskConical className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
-                    <span>{t.menuExperimentLibrary}</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection('resources', 'offline')}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] hover:border-[#0F766E] text-[#17324D] dark:text-[#F6F1E3] px-4 py-3.5 min-h-[50px] text-sm font-semibold transition-colors cursor-pointer"
-                  >
-                    <HardDriveDownload className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
-                    <span>{t.exploreOfflineCta}</span>
-                    {offlineMetas.length > 0 && (
-                      <span className="rounded-md bg-[#F2B544] px-1.5 py-0.5 text-xs font-mono font-bold text-[#17324D] tabular-nums">
-                        {offlineMetas.length}
-                      </span>
-                    )}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection('demo', 'demo')}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#17324D] hover:bg-[#284766] text-white px-4 py-3.5 min-h-[50px] text-sm font-semibold transition-colors cursor-pointer"
-                  >
-                    <GraduationCap className="w-4 h-4 shrink-0" aria-hidden="true" />
-                    <span>{language === 'hi' ? '3 मिनट की सीखने की यात्रा' : language === 'kn' ? '3 ನಿಮಿಷದ ಕಲಿಕೆಯ ಪ್ರಯಾಣ' : 'Start the 3-minute learning journey'}</span>
-                  </button>
-                </div>
-
+            <HomeHero
+              language={language}
+              onStartDiagnostic={() => scrollToSection('tutor', 'diagnostic')}
+              onOpenTutor={() => scrollToSection('tutor')}
+              onOpenLab={() => openPhysicsWorkbench('double-slit')}
+              onOpenTeacher={() => scrollToSection('teacher')}
+              onOpenStory={(id) => scrollToSection('stories', id ? `story/${id}` : 'stories')}
+              onAskDoubt={() => {
+                setMentorSubject('Physics');
+                setMentorPrompt('');
+                setMentorOpen(true);
+              }}
+            >
                 {/* Student Learning Path ("Choose your class / My learning") — saved locally, works offline */}
                 <div className="space-y-2.5 pt-1">
-                  <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-4 py-3 flex flex-wrap items-center justify-between gap-2.5 shadow-2xs">
+                  <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-4 py-3 flex flex-wrap items-center justify-between gap-2.5 shadow-2xs">
                     <div className="flex items-center gap-2.5 min-w-0">
-                      <BookOpen className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+                      <BookOpen className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
                       <div className="min-w-0">
-                        <p className="text-[11px] font-semibold text-[#3D4A50] dark:text-[#B4C5D4]">
+                        <p className="text-[11px] font-semibold text-[#4A3F66] dark:text-[#C9BFEA]">
                           {language === 'hi' ? 'आपकी कक्षा और बोर्ड' : language === 'kn' ? 'ನಿಮ್ಮ ತರಗತಿ ಮತ್ತು ಮಂಡಳಿ' : 'Your class & board'}
                         </p>
-                        <p className="text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] truncate tabular-nums">
+                        <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] truncate tabular-nums">
                           {formatLearningPathSummary(learningPath, language)}
                         </p>
                       </div>
@@ -1154,7 +1108,7 @@ function StemSaathiApp() {
                       type="button"
                       onClick={() => setPathEditorOpen((v) => !v)}
                       aria-expanded={pathEditorOpen}
-                      className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:border-[#0F766E] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                      className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 min-h-[42px] text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:border-[#6D28D9] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                     >
                       {pathEditorOpen ? t.savePathBtn : t.changeClassBoardBtn}
                     </button>
@@ -1189,8 +1143,8 @@ function StemSaathiApp() {
                         onClick={() => setLanguage(item.id)}
                         className={`flex-1 py-2.5 min-h-[44px] rounded-xl text-xs font-semibold border transition-colors cursor-pointer ${
                           language === item.id
-                            ? 'bg-[#0F766E] border-[#0F766E] text-white'
-                            : 'bg-white dark:bg-[#152A40] border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#DCE5EC]'
+                            ? 'bg-[#6D28D9] border-[#6D28D9] text-white'
+                            : 'bg-white dark:bg-[#1F1545] border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#E4DDFA]'
                         }`}
                       >
                         {item.label}
@@ -1198,17 +1152,40 @@ function StemSaathiApp() {
                     ))}
                   </div>
 
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                     {isOnline ? t.guestAccessNote : t.offlineSyncNote}
                   </p>
                 </div>
-              </div>
+            </HomeHero>
 
-              {/* Right: Original Rotating 3D Physics Observatory Model on Front Page */}
-              <div className="lg:col-span-7">
+            {/* Physics, live: the 3D observatory with every apparatus clickable */}
+            <div className="mt-12 sm:mt-14">
+              <div className="flex flex-wrap items-end justify-between gap-3 mb-4">
+                <div>
+                  <span className="inline-block rotate-1 rounded-lg bg-[#12C26B] px-2.5 py-0.5 text-xs font-extrabold text-white border-2 border-[#2E1A6E]">3D</span>
+                  <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#2E1A6E] dark:text-white mt-1">
+                    {language === 'hi' ? 'भौतिकी, जीवंत' : language === 'kn' ? 'ಭೌತಶಾಸ್ತ್ರ, ಜೀವಂತ' : 'Physics, live'}
+                  </h2>
+                  <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA] max-w-xl">
+                    {language === 'hi'
+                      ? 'घुमाइए, ज़ूम कीजिए, किसी भी उपकरण को छूकर उसका प्रयोग खोलिए।'
+                      : language === 'kn'
+                        ? 'ತಿರುಗಿಸಿ, ಜೂಮ್ ಮಾಡಿ, ಯಾವುದೇ ಉಪಕರಣ ಒತ್ತಿ ಅದರ ಪ್ರಯೋಗ ತೆರೆಯಿರಿ.'
+                        : 'Spin it, zoom in, and tap any apparatus to open its experiment.'}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('experiment-library', 'experiment-library')}
+                  className="inline-flex items-center gap-2 rounded-2xl border-2 border-[#2E1A6E] dark:border-[#C4B5FD] bg-white dark:bg-[#1F1545] px-4 py-2.5 min-h-[46px] text-sm font-extrabold text-[#2E1A6E] dark:text-white"
+                >
+                  <FlaskConical className="w-4 h-4" aria-hidden="true" /> {t.menuExperimentLibrary}
+                </button>
+              </div>
+              <div className="rounded-3xl overflow-hidden border-2 border-[#2E1A6E] dark:border-[#C4B5FD] shadow-[6px_6px_0_#6D28D9]">
                 <Suspense
                   fallback={
-                    <div className="h-[380px] sm:h-[470px] rounded-2xl border border-[#284766] bg-[#102235] flex items-center justify-center text-xs text-[#F6F1E3]">
+                    <div className="h-[380px] sm:h-[470px] bg-[#1F1545] flex items-center justify-center text-xs text-[#F5F0FF]">
                       Loading 3D Physics Observatory...
                     </div>
                   }
@@ -1225,7 +1202,7 @@ function StemSaathiApp() {
                 </Suspense>
               </div>
             </div>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-6">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 pb-6 mt-12">
               <Suspense fallback={null}>
                 <HomeLearningHub
                   language={language}
@@ -1266,18 +1243,18 @@ function StemSaathiApp() {
               <button
                 type="button"
                 onClick={() => scrollToSection('universe')}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-4 py-2 min-h-[44px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-4 py-2 min-h-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] transition-colors cursor-pointer"
               >
-                <ArrowLeft className="w-3.5 h-3.5 text-[#0F766E]" aria-hidden="true" />
+                <ArrowLeft className="w-3.5 h-3.5 text-[#6D28D9]" aria-hidden="true" />
                 <span>{t.backToHome}</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setSideMenuOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-4 py-2 min-h-[44px] text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-4 py-2 min-h-[44px] text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] transition-colors cursor-pointer"
               >
-                <Menu className="w-3.5 h-3.5 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+                <Menu className="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
                 <span>{t.openMenuCta}</span>
               </button>
             </div>
@@ -1436,6 +1413,28 @@ function StemSaathiApp() {
             )}
 
             {activeView === 'coverage' && <CoverageOverview language={language} />}
+            {activeView === 'tutor' && (
+              <AdaptiveTutor
+                language={language}
+                initialFocus={tutorFocus}
+                onFocusConsumed={() => setTutorFocus(undefined)}
+                onOpenStory={(id) => scrollToSection('stories', `story/${id}`)}
+                initialTab={/diagnostic/i.test(window.location.search + window.location.hash) ? 'diagnostic' : undefined}
+                onOpenAccount={() => scrollToSection('account')}
+                onOpenTeacher={() => scrollToSection('teacher')}
+              />
+            )}
+            {activeView === 'stories' && (
+              <StoryLibrary
+                language={language}
+                lowPower={a11y.lowPowerMode}
+                onPractice={(conceptId) => {
+                  setTutorFocus(conceptId);
+                  scrollToSection('tutor');
+                }}
+              />
+            )}
+            {activeView === 'teacher' && <TeacherDashboard language={language} onOpenAccount={() => scrollToSection('account')} />}
             {activeView === 'account' && (
               <AccountPage
                 language={language}
@@ -1525,10 +1524,10 @@ function StemSaathiApp() {
         </Suspense>
       </main>
 
-      <footer className="border-t border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] py-5">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+      <footer className="border-t border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] py-5">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
           <div>
-            <span className="font-semibold text-[#17324D] dark:text-white">STEM Saathi</span>
+            <span className="font-semibold text-[#2E1A6E] dark:text-white">Gyaan Graph</span>
             <span className="mx-2">·</span>
             <span>Interactive Physics &amp; Multilingual STEM Learning</span>
           </div>
@@ -1536,35 +1535,35 @@ function StemSaathiApp() {
             <button
               type="button"
               onClick={() => scrollToSection('experiment-library', 'experiment-library')}
-              className="min-h-[44px] inline-flex items-center text-[#0B5F58] dark:text-[#4AD1C6] font-medium hover:text-[#17324D] dark:hover:text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center text-[#5B21B6] dark:text-[#C4B5FD] font-medium hover:text-[#2E1A6E] dark:hover:text-white transition-colors cursor-pointer"
             >
               {t.menuExperimentLibrary}
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('curriculum', 'chapters')}
-              className="min-h-[44px] inline-flex items-center text-[#0B5F58] dark:text-[#4AD1C6] font-medium hover:text-[#17324D] dark:hover:text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center text-[#5B21B6] dark:text-[#C4B5FD] font-medium hover:text-[#2E1A6E] dark:hover:text-white transition-colors cursor-pointer"
             >
               {t.chaptersExperimentsTitle}
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('physics')}
-              className="min-h-[44px] inline-flex items-center text-[#0B5F58] dark:text-[#4AD1C6] font-medium hover:text-[#17324D] dark:hover:text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center text-[#5B21B6] dark:text-[#C4B5FD] font-medium hover:text-[#2E1A6E] dark:hover:text-white transition-colors cursor-pointer"
             >
               {t.navPhysics}
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('subjects')}
-              className="min-h-[44px] inline-flex items-center text-[#0B5F58] dark:text-[#4AD1C6] font-medium hover:text-[#17324D] dark:hover:text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center text-[#5B21B6] dark:text-[#C4B5FD] font-medium hover:text-[#2E1A6E] dark:hover:text-white transition-colors cursor-pointer"
             >
               {t.navSubjects}
             </button>
             <button
               type="button"
               onClick={() => scrollToSection('resources')}
-              className="min-h-[44px] inline-flex items-center text-[#0B5F58] dark:text-[#4AD1C6] font-medium hover:text-[#17324D] dark:hover:text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center text-[#5B21B6] dark:text-[#C4B5FD] font-medium hover:text-[#2E1A6E] dark:hover:text-white transition-colors cursor-pointer"
             >
               {t.navResources}
             </button>

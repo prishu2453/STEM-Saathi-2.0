@@ -28,16 +28,16 @@ export const ChapterSimulations: React.FC<Props> = ({ chapterId, titleEn, subjec
   const refs = simsForChapter(titleEn, chapterId);
 
   return (
-    <section aria-label={T.heading[language]} className="rounded-2xl border border-[#0F766E]/40 bg-white dark:bg-[#152A40] p-4 space-y-3">
+    <section aria-label={T.heading[language]} className="rounded-2xl border border-[#6D28D9]/40 bg-white dark:bg-[#1F1545] p-4 space-y-3">
       <div className="flex items-center gap-2">
-        <Atom className="w-5 h-5 text-[#0F766E]" aria-hidden="true" />
-        <h3 className="text-base font-bold text-[#17324D] dark:text-white">{T.heading[language]}</h3>
+        <Atom className="w-5 h-5 text-[#6D28D9]" aria-hidden="true" />
+        <h3 className="text-base font-bold text-[#2E1A6E] dark:text-white">{T.heading[language]}</h3>
       </div>
       {refs.length === 0 ? (
-        <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{T.none[language]}</p>
+        <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{T.none[language]}</p>
       ) : (
         <>
-          <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{T.note[language]}</p>
+          <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{T.note[language]}</p>
           <ul className="space-y-3">
             {refs.map((r) => {
               const key = `${r.kind}:${r.id}`;
@@ -48,15 +48,15 @@ export const ChapterSimulations: React.FC<Props> = ({ chapterId, titleEn, subjec
               if (r.kind === 'legacy' && !SIM_EXPLANATIONS[r.id]) return null;
               const isOpen = openKey === key;
               return (
-                <li key={key} className="rounded-xl border border-[#E6DEC8] dark:border-[#284766]">
+                <li key={key} className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78]">
                   <button
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpenKey(isOpen ? null : key)}
-                    className="w-full min-h-[52px] flex items-center justify-between gap-3 px-4 text-left text-sm font-semibold text-[#17324D] dark:text-white cursor-pointer"
+                    className="w-full min-h-[52px] flex items-center justify-between gap-3 px-4 text-left text-sm font-semibold text-[#2E1A6E] dark:text-white cursor-pointer"
                   >
                     <span>{title}</span>
-                    <span className="inline-flex items-center gap-1 text-xs text-[#0B5F58] dark:text-[#4AD1C6]">
+                    <span className="inline-flex items-center gap-1 text-xs text-[#5B21B6] dark:text-[#C4B5FD]">
                       {isOpen ? T.hide[language] : T.open[language]}
                       {isOpen ? <ChevronUp className="w-4 h-4" aria-hidden="true" /> : <ChevronDown className="w-4 h-4" aria-hidden="true" />}
                     </span>

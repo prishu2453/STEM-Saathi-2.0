@@ -704,12 +704,12 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
       {/* MISSION & REAL OFFLINE DOWNLOAD PANEL */}
       <div
         ref={downloadCardRef}
-        className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4"
+        className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4"
       >
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+              <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                 {mission.title[language]}
               </span>
               <span aria-hidden="true">·</span>
@@ -718,8 +718,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   downloadStatus === 'available-offline'
                     ? 'text-emerald-700 dark:text-emerald-400'
                     : downloadStatus === 'downloading'
-                    ? 'text-[#0B5F58] dark:text-[#4AD1C6]'
-                    : 'text-[#B27B16] dark:text-[#F2B544]'
+                    ? 'text-[#5B21B6] dark:text-[#C4B5FD]'
+                    : 'text-[#B27B16] dark:text-[#FF9F1C]'
                 }`}
               >
                 {downloadStatus === 'available-offline'
@@ -729,7 +729,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   : t.statusNotDownloaded}
               </span>
               <span aria-hidden="true">·</span>
-              <span className="text-[#3D4A50] dark:text-[#8FA4B8]">
+              <span className="text-[#4A3F66] dark:text-[#A496D4]">
                 {syncStatus === 'waiting-to-sync' || pendingSyncCount > 0
                   ? `${t.statusWaitingSync} (${pendingSyncCount})`
                   : syncStatus === 'synced'
@@ -737,7 +737,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   : t.statusSavedLocally}
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#B4C5D4] max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#C9BFEA] max-w-3xl leading-relaxed">
               {mission.scenario[language]}
             </p>
           </div>
@@ -750,8 +750,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 onClick={() => handleSelectMission(idx)}
                 className={`min-h-[44px] rounded-xl border px-3 py-2 text-xs font-medium transition-colors cursor-pointer ${
                   missionIndex === idx
-                    ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                    : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]'
+                    ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]'
                 }`}
               >
                 {idx + 1}. {m.targetDistance}m ({m.defaultGravity === 1.62 ? 'Moon' : 'Earth'})
@@ -761,13 +761,13 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
         </div>
 
         {/* Honest Offline Pack Download Controls */}
-        <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div className="space-y-1">
-            <p className="text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] flex items-center gap-1.5">
-              <HardDriveDownload className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] flex items-center gap-1.5">
+              <HardDriveDownload className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
               <span>{l.downloadTitle}</span>
             </p>
-            <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+            <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
               {l.corePackLabel} (~18 KB)
               {offlineMeta && (
                 <span>
@@ -777,25 +777,25 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 </span>
               )}
             </p>
-            <label className="inline-flex items-center gap-2 text-xs text-[#1A262C] dark:text-[#B4C5D4] pt-1 cursor-pointer">
+            <label className="inline-flex items-center gap-2 text-xs text-[#22163F] dark:text-[#C9BFEA] pt-1 cursor-pointer">
               <input
                 type="checkbox"
                 checked={includeMedia}
                 onChange={(e) => setIncludeMedia(e.target.checked)}
-                className="h-4 w-4 accent-[#0F766E] rounded cursor-pointer"
+                className="h-4 w-4 accent-[#6D28D9] rounded cursor-pointer"
               />
               <span>
                 {l.includeMediaLabel} (+{formatBytes(PROJECTILE_MEDIA_SIZE_BYTES)})
               </span>
             </label>
             {swCapabilities && !swCapabilities.controlling && (
-              <p className="text-[11px] text-[#B27B16] dark:text-[#F2B544]">
+              <p className="text-[11px] text-[#B27B16] dark:text-[#FF9F1C]">
                 {swCapabilities.registered
                   ? 'Service worker registered for app shell. Reload once while online if needed for offline browser refresh; lesson data & progress are saved in IndexedDB.'
                   : 'Browser preview iframe may restrict Service Worker reload offline; lesson data & attempts are saved locally in IndexedDB.'}
               </p>
             )}
-            {downloadStep && <p className="text-[11px] text-[#0B5F58] dark:text-[#4AD1C6]">{downloadStep}</p>}
+            {downloadStep && <p className="text-[11px] text-[#5B21B6] dark:text-[#C4B5FD]">{downloadStep}</p>}
             {downloadError && <p className="text-[11px] text-red-600 dark:text-red-400">{downloadError}</p>}
           </div>
 
@@ -807,7 +807,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
               className={`min-h-[44px] inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                 downloadStatus === 'available-offline'
                   ? 'border border-emerald-500/40 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
-                  : 'bg-[#0F766E] text-white hover:bg-[#0B5F58]'
+                  : 'bg-[#6D28D9] text-white hover:bg-[#5B21B6]'
               }`}
             >
               {downloadStatus === 'available-offline' ? (
@@ -829,7 +829,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 type="button"
                 onClick={() => void handleRemoveOffline()}
                 aria-label={l.removeBtn}
-                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3 py-2 text-xs text-[#1A262C] dark:text-[#B4C5D4] hover:border-[#0F766E] cursor-pointer"
+                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3 py-2 text-xs text-[#22163F] dark:text-[#C9BFEA] hover:border-[#6D28D9] cursor-pointer"
               >
                 <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{l.removeBtn}</span>
@@ -840,16 +840,16 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
 
         {/* Optional Downloaded Media Preview (only if user opted in) */}
         {offlineMeta?.includesMedia && (
-          <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#0D1B2A] p-3 flex flex-col sm:flex-row items-center gap-3">
+          <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#0D1B2A] p-3 flex flex-col sm:flex-row items-center gap-3">
             <img
               src={PROJECTILE_MEDIA_URL}
               alt="Physics mechanics apparatus diagram"
               referrerPolicy="no-referrer"
-              className="w-full sm:w-36 h-24 object-cover rounded-lg border border-[#284766]"
+              className="w-full sm:w-36 h-24 object-cover rounded-lg border border-[#3B2C78]"
             />
-            <div className="text-xs text-[#B4C5D4] space-y-1">
-              <p className="font-semibold text-[#EEF3F7]">Offline Media Cached ({formatBytes(offlineMeta.mediaSizeBytes)})</p>
-              <p className="text-[#8FA4B8]">
+            <div className="text-xs text-[#C9BFEA] space-y-1">
+              <p className="font-semibold text-[#F3EFFF]">Offline Media Cached ({formatBytes(offlineMeta.mediaSizeBytes)})</p>
+              <p className="text-[#A496D4]">
                 Visual reference for projectile &amp; rotational mechanics stored in Cache Storage.
               </p>
             </div>
@@ -859,22 +859,22 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
 
       {/* SCIENTIFIC ASSUMPTIONS & MASS INVARIANCE EXPLANATION */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="a11y-surface rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-1.5">
-          <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] flex items-center gap-1.5">
+        <div className="a11y-surface rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-1.5">
+          <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] flex items-center gap-1.5">
             <Info className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>R = (v₀² · sin 2θ) / g</span>
           </p>
-          <p className="text-xs leading-relaxed text-[#1A262C] dark:text-[#B4C5D4]">
+          <p className="text-xs leading-relaxed text-[#22163F] dark:text-[#C9BFEA]">
             {PROJECTILE_SCIENCE_NOTES.idealAssumption[language]}
           </p>
         </div>
 
-        <div className="a11y-surface rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-1.5">
-          <p className="text-xs font-semibold text-[#17324D] dark:text-[#F2B544] flex items-center gap-1.5">
-            <Compass className="w-4 h-4 text-[#D99B26] dark:text-[#F2B544] shrink-0" aria-hidden="true" />
+        <div className="a11y-surface rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-1.5">
+          <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#FF9F1C] flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-[#F07C00] dark:text-[#FF9F1C] shrink-0" aria-hidden="true" />
             <span>KE₀ = ½ m v₀²</span>
           </p>
-          <p className="text-xs leading-relaxed text-[#1A262C] dark:text-[#B4C5D4]">
+          <p className="text-xs leading-relaxed text-[#22163F] dark:text-[#C9BFEA]">
             {PROJECTILE_SCIENCE_NOTES.massNote[language]}
           </p>
         </div>
@@ -892,10 +892,10 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
       {/* STEP 1: PREDICTION BEFORE LAUNCH */}
       <div
         id="projectile-step-predict"
-        className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-3"
+        className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-3"
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h3 className="text-sm sm:text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+          <h3 className="text-sm sm:text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
             {l.stepPredict}
           </h3>
           <button
@@ -903,14 +903,14 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
             onClick={() =>
               speakWithCaption(`${mission.predictionPrompt[language]} ${mission.predictionExplanation[language]}`)
             }
-            className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+            className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
           >
-            <Volume2 className="w-3.5 h-3.5 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <Volume2 className="w-3.5 h-3.5 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
             <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
           </button>
         </div>
 
-        <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#B4C5D4]">
+        <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#C9BFEA]">
           {mission.predictionPrompt[language]}
         </p>
 
@@ -919,15 +919,15 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
             const chosen = predictionIndex === idx;
             const isCorrect = idx === mission.predictionCorrectIndex;
             let cls =
-              'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]';
+              'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]';
             if (predictionChecked) {
               if (isCorrect) {
                 cls = 'border-emerald-500 bg-emerald-500/15 text-emerald-800 dark:text-emerald-300';
               } else if (chosen) {
-                cls = 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 text-[#17324D] dark:text-[#F8DFA8]';
+                cls = 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 text-[#2E1A6E] dark:text-[#FFD9A8]';
               }
             } else if (chosen) {
-              cls = 'border-[#0F766E] bg-[#0F766E]/15 text-[#0B5F58] dark:text-[#4AD1C6]';
+              cls = 'border-[#6D28D9] bg-[#6D28D9]/15 text-[#5B21B6] dark:text-[#C4B5FD]';
             }
 
             return (
@@ -947,8 +947,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
         </div>
 
         {predictionChecked && (
-          <div className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 p-3 text-xs text-[#1A262C] dark:text-[#EEF3F7] flex items-start gap-2">
-            <Lightbulb className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0 mt-0.5" aria-hidden="true" />
+          <div className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 p-3 text-xs text-[#22163F] dark:text-[#F3EFFF] flex items-start gap-2">
+            <Lightbulb className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0 mt-0.5" aria-hidden="true" />
             <span>{mission.predictionExplanation[language]}</span>
           </div>
         )}
@@ -958,10 +958,10 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Stage: Canvas, Results & Comparison Graph (7 cols) */}
         <div className="lg:col-span-7 space-y-5">
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-4">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-3 text-xs text-[#3D4A50] dark:text-[#8FA4B8]">
-                <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{l.currentLegend}</span>
+              <div className="flex items-center gap-3 text-xs text-[#4A3F66] dark:text-[#A496D4]">
+                <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{l.currentLegend}</span>
                 {prevLaunch && <span>· {l.ghostLegend}</span>}
               </div>
 
@@ -970,7 +970,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   <button
                     type="button"
                     onClick={() => setAnimRunning(false)}
-                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] cursor-pointer"
                   >
                     <Pause className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>{t.pauseLabel}</span>
@@ -980,7 +980,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   <button
                     type="button"
                     onClick={() => setAnimRunning(true)}
-                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] cursor-pointer"
                   >
                     <Play className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>{t.playLabel}</span>
@@ -991,7 +991,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   onClick={() => {
                     onLogReading();
                   }}
-                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                 >
                   <ClipboardList className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>{t.logReadingLabel}</span>
@@ -1003,41 +1003,41 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
               ref={canvasRef}
               width={660}
               height={310}
-              className="w-full h-[260px] sm:h-[310px] rounded-xl border border-[#17324D]/40 dark:border-[#284766] bg-[#0D1B2A]"
+              className="w-full h-[260px] sm:h-[310px] rounded-xl border border-[#2E1A6E]/40 dark:border-[#3B2C78] bg-[#0D1B2A]"
               aria-label={`${mission.title.en}: range ${metrics.range.toFixed(1)} meters, max height ${metrics.maxHeight.toFixed(1)} meters, target ${mission.targetDistance} meters`}
             />
 
             {/* Clear Computed Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
               <div>
-                <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{l.rangeLabel}</p>
-                <p className="text-base font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+                <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{l.rangeLabel}</p>
+                <p className="text-base font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
                   {metrics.range.toFixed(2)} m
                 </p>
               </div>
               <div>
-                <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{l.heightLabel}</p>
-                <p className="text-base font-mono font-semibold text-[#17324D] dark:text-[#EEF3F7] tabular-nums">
+                <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{l.heightLabel}</p>
+                <p className="text-base font-mono font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] tabular-nums">
                   {metrics.maxHeight.toFixed(2)} m
                 </p>
               </div>
               <div>
-                <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{l.timeLabel}</p>
+                <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{l.timeLabel}</p>
                 <p className="text-base font-mono font-semibold text-emerald-600 dark:text-emerald-400 tabular-nums">
                   {metrics.tFlight.toFixed(2)} s
                 </p>
               </div>
               <div>
-                <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{l.keLabel}</p>
-                <p className="text-base font-mono font-semibold text-[#B27B16] dark:text-[#F2B544] tabular-nums">
+                <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{l.keLabel}</p>
+                <p className="text-base font-mono font-semibold text-[#B27B16] dark:text-[#FF9F1C] tabular-nums">
                   {metrics.ke0.toFixed(0)} J
                 </p>
               </div>
             </div>
 
             {/* Accessible Text Summary for Screen Readers / Non-Visual Learners */}
-            <p className="text-xs text-[#1A262C] dark:text-[#B4C5D4] bg-[#F6F1E3] dark:bg-[#1C3652] rounded-lg px-3 py-2 border border-[#E6DEC8] dark:border-[#284766]">
-              <strong className="text-[#17324D] dark:text-[#EEF3F7]">{l.textSummaryLabel}:</strong>{' '}
+            <p className="text-xs text-[#22163F] dark:text-[#C9BFEA] bg-[#F5F0FF] dark:bg-[#2A1D5C] rounded-lg px-3 py-2 border border-[#E7DDFB] dark:border-[#3B2C78]">
+              <strong className="text-[#2E1A6E] dark:text-[#F3EFFF]">{l.textSummaryLabel}:</strong>{' '}
               θ = {angle}°, v₀ = {velocity} m/s, g = {gravity.toFixed(2)} m/s², m = {mass.toFixed(1)} kg →{' '}
               {l.rangeLabel} {metrics.range.toFixed(1)} m ({l.targetLabel} {mission.targetDistance} ± {mission.tolerance} m,{' '}
               {metrics.missDelta >= 0 ? `+${metrics.missDelta.toFixed(1)}` : metrics.missDelta.toFixed(1)} m).
@@ -1045,17 +1045,17 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
           </div>
 
           {/* Angle vs Range Visual Comparison Graph */}
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-2">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-2">
             <div className="flex items-center justify-between gap-2 text-xs">
-              <p className="font-semibold text-[#17324D] dark:text-[#EEF3F7]">{l.graphTitle}</p>
-              <span className="font-mono text-[#3D4A50] dark:text-[#8FA4B8] tabular-nums">
+              <p className="font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">{l.graphTitle}</p>
+              <span className="font-mono text-[#4A3F66] dark:text-[#A496D4] tabular-nums">
                 90° − {angle}° = {curveChart.compAngle}°
               </span>
             </div>
 
             <svg
               viewBox="0 0 420 140"
-              className="w-full h-36 rounded-xl bg-[#0D1B2A] border border-[#17324D]/40 dark:border-[#284766]"
+              className="w-full h-36 rounded-xl bg-[#0D1B2A] border border-[#2E1A6E]/40 dark:border-[#3B2C78]"
               role="img"
               aria-label="Graph comparing launch angle from 10 to 85 degrees against horizontal range"
             >
@@ -1097,7 +1097,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   })
                   .join(' ')}
                 fill="none"
-                stroke="#4AD1C6"
+                stroke="#C4B5FD"
                 strokeWidth="2.2"
               />
 
@@ -1116,18 +1116,18 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 cx={36 + ((angle - 10) / 75) * 368}
                 cy={116 - (metrics.range / curveChart.maxR) * 94}
                 r="5.5"
-                fill="#F2B544"
+                fill="#FF9F1C"
                 stroke="#FFFFFF"
                 strokeWidth="1.5"
               />
 
-              <text x="36" y="131" fill="#8FA4B8" fontSize="9" fontFamily="IBM Plex Mono, monospace">
+              <text x="36" y="131" fill="#A496D4" fontSize="9" fontFamily="IBM Plex Mono, monospace">
                 10°
               </text>
-              <text x="200" y="131" fill="#4AD1C6" fontSize="9" fontFamily="IBM Plex Mono, monospace">
+              <text x="200" y="131" fill="#C4B5FD" fontSize="9" fontFamily="IBM Plex Mono, monospace">
                 45° (Max R)
               </text>
-              <text x="386" y="131" fill="#8FA4B8" fontSize="9" fontFamily="IBM Plex Mono, monospace">
+              <text x="386" y="131" fill="#A496D4" fontSize="9" fontFamily="IBM Plex Mono, monospace">
                 85°
               </text>
             </svg>
@@ -1136,8 +1136,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
 
         {/* Right Deck: Accessible Touch Controls + Encouraging Hints & Reflection (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4">
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4">
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
               {l.stepLaunch}
             </h3>
 
@@ -1183,8 +1183,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     onClick={() => setGravity(preset.g)}
                     className={`min-h-[42px] rounded-xl border px-3 py-1.5 text-xs font-medium cursor-pointer transition-colors ${
                       Math.abs(gravity - preset.g) < 0.08
-                        ? 'border-[#0F766E] bg-[#0F766E]/15 text-[#0B5F58] dark:text-[#4AD1C6]'
-                        : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#1A262C] dark:text-[#B4C5D4] hover:border-[#0F766E]'
+                        ? 'border-[#6D28D9] bg-[#6D28D9]/15 text-[#5B21B6] dark:text-[#C4B5FD]'
+                        : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#22163F] dark:text-[#C9BFEA] hover:border-[#6D28D9]'
                     }`}
                   >
                     {preset.label}
@@ -1207,7 +1207,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
               <button
                 type="button"
                 onClick={() => void handleLaunch()}
-                className="min-h-[48px] flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F766E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#0B5F58] transition-colors cursor-pointer"
+                className="min-h-[48px] flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6D28D9] px-5 py-3 text-sm font-semibold text-white hover:bg-[#5B21B6] transition-colors cursor-pointer"
               >
                 <Target className="w-4 h-4" aria-hidden="true" />
                 <span>{hasLaunched ? l.relaunchBtn : l.launchBtn}</span>
@@ -1217,7 +1217,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 type="button"
                 onClick={() => handleSelectMission(missionIndex)}
                 aria-label="Reset mission parameters"
-                className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -1225,9 +1225,9 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
           </div>
 
           {/* STEP 3: ENCOURAGING RESULTS, PROGRESSIVE HINTS & REFLECTION */}
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3.5">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3.5">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+              <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                 {l.stepResults}
               </h3>
               <button
@@ -1237,29 +1237,29 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     `${dynamicHints.summary} ${dynamicHints.hints.slice(0, Math.max(1, hintsShown)).join(' ')}`
                   )
                 }
-                className="min-h-[40px] inline-flex items-center gap-1 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-1.5 text-xs text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                className="min-h-[40px] inline-flex items-center gap-1 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-1.5 text-xs text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
               >
-                <Volume2 className="w-3.5 h-3.5 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+                <Volume2 className="w-3.5 h-3.5 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
                 <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
               </button>
             </div>
 
             {!hasLaunched ? (
-              <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8]">{l.noLaunchYet}</p>
+              <p className="text-xs text-[#4A3F66] dark:text-[#A496D4]">{l.noLaunchYet}</p>
             ) : (
               <div className="space-y-3">
                 <div
                   className={`rounded-xl border p-3.5 text-xs space-y-1.5 ${
                     lastLaunch?.hit
                       ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200'
-                      : 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 text-[#17324D] dark:text-[#F8DFA8]'
+                      : 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 text-[#2E1A6E] dark:text-[#FFD9A8]'
                   }`}
                 >
                   <p className="font-semibold flex items-center gap-1.5">
                     {lastLaunch?.hit ? (
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" aria-hidden="true" />
                     ) : (
-                      <AlertTriangle className="w-4 h-4 text-[#D99B26] dark:text-[#F2B544] shrink-0" aria-hidden="true" />
+                      <AlertTriangle className="w-4 h-4 text-[#F07C00] dark:text-[#FF9F1C] shrink-0" aria-hidden="true" />
                     )}
                     <span>{lastLaunch?.hit ? l.hitStatus : l.missStatus}</span>
                   </p>
@@ -1272,9 +1272,9 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     {dynamicHints.hints.slice(0, hintsShown).map((hintText, idx) => (
                       <div
                         key={idx}
-                        className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 text-xs text-[#1A262C] dark:text-[#B4C5D4] flex items-start gap-2"
+                        className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 text-xs text-[#22163F] dark:text-[#C9BFEA] flex items-start gap-2"
                       >
-                        <Lightbulb className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0 mt-0.5" aria-hidden="true" />
+                        <Lightbulb className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0 mt-0.5" aria-hidden="true" />
                         <span>{hintText}</span>
                       </div>
                     ))}
@@ -1286,7 +1286,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     <button
                       type="button"
                       onClick={() => setHintsShown((c) => Math.min(3, c + 1))}
-                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#0F766E]/40 bg-[#0F766E]/10 px-3.5 py-2 text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:bg-[#0F766E]/20 cursor-pointer"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#6D28D9]/40 bg-[#6D28D9]/10 px-3.5 py-2 text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:bg-[#6D28D9]/20 cursor-pointer"
                     >
                       <HelpCircle className="w-3.5 h-3.5" aria-hidden="true" />
                       <span>
@@ -1294,7 +1294,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                       </span>
                     </button>
                   ) : (
-                    <span className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">
+                    <span className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">
                       {l.allHintsShown} (offline)
                     </span>
                   )}
@@ -1306,7 +1306,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     className={`min-h-[44px] ml-auto inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold cursor-pointer ${
                       isCompleted
                         ? 'bg-emerald-600/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/40'
-                        : 'bg-[#17324D] text-white hover:bg-[#1F4060]'
+                        : 'bg-[#2E1A6E] text-white hover:bg-[#1F4060]'
                     }`}
                   >
                     <Award className="w-3.5 h-3.5" aria-hidden="true" />
@@ -1315,8 +1315,8 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 </div>
 
                 {/* Try Again & Explain What Changed */}
-                <div className="pt-3 border-t border-[#E6DEC8] dark:border-[#284766] space-y-2">
-                  <label className="block text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                <div className="pt-3 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-2">
+                  <label className="block text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                     {l.reflectTitle}
                   </label>
                   <textarea
@@ -1324,21 +1324,21 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                     value={reflectionText}
                     onChange={(e) => setReflectionText(e.target.value)}
                     placeholder={l.reflectPlaceholder}
-                    className="w-full rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs text-[#1A262C] dark:text-[#EEF3F7] placeholder:text-[#3D4A50] dark:placeholder:text-[#8FA4B8]"
+                    className="w-full rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs text-[#22163F] dark:text-[#F3EFFF] placeholder:text-[#4A3F66] dark:placeholder:text-[#A496D4]"
                   />
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <button
                       type="button"
                       disabled={!reflectionText.trim() || reflectionSaved}
                       onClick={() => void handleSaveReflection()}
-                      className="min-h-[44px] rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] disabled:opacity-50 cursor-pointer"
+                      className="min-h-[44px] rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] disabled:opacity-50 cursor-pointer"
                     >
                       {reflectionSaved ? l.reflectSaved : l.reflectSave}
                     </button>
                     <button
                       type="button"
                       onClick={onOpenPracticalTab}
-                      className="min-h-[44px] px-2 text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+                      className="min-h-[44px] px-2 text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
                     >
                       {t.practicalLab} →
                     </button>
@@ -1355,10 +1355,10 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
         <div
           role="region"
           aria-live="polite"
-          className="rounded-xl border border-[#0F766E]/40 bg-[#0F766E]/10 p-3.5 text-xs text-[#1A262C] dark:text-[#EEF3F7] flex items-start justify-between gap-3"
+          className="rounded-xl border border-[#6D28D9]/40 bg-[#6D28D9]/10 p-3.5 text-xs text-[#22163F] dark:text-[#F3EFFF] flex items-start justify-between gap-3"
         >
           <div>
-            <p className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{t.captionPrefix}</p>
+            <p className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{t.captionPrefix}</p>
             <p className="mt-0.5 leading-relaxed">{captionText}</p>
           </div>
           <button
@@ -1367,7 +1367,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
               stopSpeaking();
               setCaptionText(null);
             }}
-            className="text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] underline shrink-0 cursor-pointer"
+            className="text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] underline shrink-0 cursor-pointer"
           >
             Close
           </button>
@@ -1377,12 +1377,12 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
       {/* STEP 4: OFFLINE EXPERIMENT NOTES + QUIZ + RECENT ATTEMPT LOG */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Quiz (7 cols) */}
-        <div className="lg:col-span-7 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4">
+        <div className="lg:col-span-7 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
               {l.stepQuiz}
             </h3>
-            <span className="text-xs text-[#3D4A50] dark:text-[#8FA4B8]">
+            <span className="text-xs text-[#4A3F66] dark:text-[#A496D4]">
               {isOnline ? t.onlineStatus : `${t.offlineStatus} · Works locally`}
             </span>
           </div>
@@ -1394,9 +1394,9 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
               return (
                 <div
                   key={q.id}
-                  className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-2.5"
+                  className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-2.5"
                 >
-                  <p className="text-xs sm:text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                  <p className="text-xs sm:text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                     {qIdx + 1}. {q.question[language]}
                   </p>
 
@@ -1405,16 +1405,16 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                       const chosen = selected === oIdx;
                       const isCorrect = oIdx === q.correctIndex;
                       let btnStyle =
-                        'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#1A262C] dark:text-[#EEF3F7] hover:border-[#0F766E]';
+                        'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#22163F] dark:text-[#F3EFFF] hover:border-[#6D28D9]';
                       if (quizSubmitted) {
                         if (isCorrect) {
                           btnStyle =
                             'border-emerald-500 bg-emerald-500/15 text-emerald-800 dark:text-emerald-300';
                         } else if (chosen) {
-                          btnStyle = 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 text-[#17324D] dark:text-[#F8DFA8]';
+                          btnStyle = 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 text-[#2E1A6E] dark:text-[#FFD9A8]';
                         }
                       } else if (chosen) {
-                        btnStyle = 'border-[#0F766E] bg-[#0F766E]/15 text-[#0B5F58] dark:text-[#4AD1C6]';
+                        btnStyle = 'border-[#6D28D9] bg-[#6D28D9]/15 text-[#5B21B6] dark:text-[#C4B5FD]';
                       }
 
                       return (
@@ -1436,13 +1436,13 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                         <button
                           type="button"
                           onClick={() => setQuizHintVisible((prev) => ({ ...prev, [q.id]: true }))}
-                          className="text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+                          className="text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
                         >
                           {l.hintBtn}
                         </button>
                       )}
                       {(quizHintVisible[q.id] || isWrong) && (
-                        <p className="text-xs text-[#17324D] dark:text-[#F8DFA8] bg-[#FFF4DC] dark:bg-[#F2B544]/15 border border-[#F2B544]/50 rounded-lg px-3 py-2 mt-1">
+                        <p className="text-xs text-[#2E1A6E] dark:text-[#FFD9A8] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 border border-[#FF9F1C]/50 rounded-lg px-3 py-2 mt-1">
                           {q.hint[language]}
                         </p>
                       )}
@@ -1450,7 +1450,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                   )}
 
                   {quizSubmitted && (
-                    <p className="text-xs text-[#1A262C] dark:text-[#B4C5D4] flex items-start gap-1.5 pt-1">
+                    <p className="text-xs text-[#22163F] dark:text-[#C9BFEA] flex items-start gap-1.5 pt-1">
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
                       <span>{q.explanation[language]}</span>
                     </p>
@@ -1463,7 +1463,7 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
           <button
             type="button"
             onClick={handleSubmitQuiz}
-            className="min-h-[46px] w-full rounded-xl bg-[#0F766E] py-2.5 text-xs font-semibold text-white hover:bg-[#0B5F58] transition-colors cursor-pointer"
+            className="min-h-[46px] w-full rounded-xl bg-[#6D28D9] py-2.5 text-xs font-semibold text-white hover:bg-[#5B21B6] transition-colors cursor-pointer"
           >
             {l.verifyQuiz}
           </button>
@@ -1471,31 +1471,31 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
 
         {/* Experiment Notes & Local IndexedDB Attempt History (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7] flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
               <span>Experiment Notes</span>
             </h3>
-            <ol className="space-y-2.5 text-xs leading-relaxed text-[#1A262C] dark:text-[#B4C5D4] list-decimal pl-4">
+            <ol className="space-y-2.5 text-xs leading-relaxed text-[#22163F] dark:text-[#C9BFEA] list-decimal pl-4">
               {PROJECTILE_EXPERIMENT_NOTES.map((note, idx) => (
                 <li key={idx}>{note[language]}</li>
               ))}
             </ol>
           </div>
 
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-3">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-3">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+              <h3 className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                 {l.attemptHistoryTitle}
               </h3>
-              <span className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8] flex items-center gap-1">
-                {!isOnline && <CloudOff className="w-3 h-3 text-[#F2B544]" />}
+              <span className="text-[11px] text-[#4A3F66] dark:text-[#A496D4] flex items-center gap-1">
+                {!isOnline && <CloudOff className="w-3 h-3 text-[#FF9F1C]" />}
                 <span>{attemptHistory.length} saved</span>
               </span>
             </div>
 
             {attemptHistory.length === 0 ? (
-              <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8]">
+              <p className="text-xs text-[#4A3F66] dark:text-[#A496D4]">
                 No launches recorded on this device yet. Launch the ball to store real attempts in IndexedDB.
               </p>
             ) : (
@@ -1503,18 +1503,18 @@ export const ProjectileMissionLab: React.FC<ProjectileMissionLabProps> = ({
                 {attemptHistory.slice(0, 8).map((att) => (
                   <li
                     key={att.id}
-                    className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-2.5 text-xs space-y-1"
+                    className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-2.5 text-xs space-y-1"
                   >
                     <div className="flex items-center justify-between font-mono tabular-nums">
-                      <span className={att.hit ? 'text-emerald-700 dark:text-emerald-400 font-semibold' : 'text-[#0B5F58] dark:text-[#4AD1C6]'}>
+                      <span className={att.hit ? 'text-emerald-700 dark:text-emerald-400 font-semibold' : 'text-[#5B21B6] dark:text-[#C4B5FD]'}>
                         θ={att.angle}° · v₀={att.velocity}m/s → R={att.range}m
                       </span>
-                      <span className="text-[10px] text-[#3D4A50] dark:text-[#8FA4B8]">
+                      <span className="text-[10px] text-[#4A3F66] dark:text-[#A496D4]">
                         {att.synced ? 'Synced' : t.statusWaitingSync}
                       </span>
                     </div>
                     {att.reflectionNote && (
-                      <p className="text-[11px] text-[#1A262C] dark:text-[#B4C5D4] italic">
+                      <p className="text-[11px] text-[#22163F] dark:text-[#C9BFEA] italic">
                         “{att.reflectionNote}”
                       </p>
                     )}
@@ -1553,8 +1553,8 @@ const StepperSliderControl: React.FC<StepperSliderControlProps> = ({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-xs">
-        <span className="font-medium text-[#1A262C] dark:text-[#B4C5D4]">{label}</span>
-        <span className="font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+        <span className="font-medium text-[#22163F] dark:text-[#C9BFEA]">{label}</span>
+        <span className="font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
           {valueText}
         </span>
       </div>
@@ -1563,7 +1563,7 @@ const StepperSliderControl: React.FC<StepperSliderControlProps> = ({
           type="button"
           onClick={() => onChange(clamp(value - step))}
           aria-label={`Decrease ${label}`}
-          className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+          className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
         >
           <Minus className="w-4 h-4" aria-hidden="true" />
         </button>
@@ -1575,13 +1575,13 @@ const StepperSliderControl: React.FC<StepperSliderControlProps> = ({
           value={value}
           aria-label={label}
           onChange={(e) => onChange(parseFloat(e.target.value))}
-          className="flex-1 h-2 accent-[#0F766E] cursor-pointer"
+          className="flex-1 h-2 accent-[#6D28D9] cursor-pointer"
         />
         <button
           type="button"
           onClick={() => onChange(clamp(value + step))}
           aria-label={`Increase ${label}`}
-          className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+          className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4" aria-hidden="true" />
         </button>

@@ -45,7 +45,7 @@ const T: Record<string, L3> = {
   kind_quiz: { en: 'Quick quiz', hi: 'त्वरित प्रश्न', kn: 'ತ್ವರಿತ ಪ್ರಶ್ನೆ' },
 };
 const KIND_COLOR: Record<string, string> = {
-  definition: '#0F766E', formula: '#9A6100', concept: '#284766', question: '#7C3AED', quiz: '#B45309',
+  definition: '#6D28D9', formula: '#B4430C', concept: '#3B2C78', question: '#7C3AED', quiz: '#B45309',
 };
 
 interface Props {
@@ -130,29 +130,29 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
   }, [index, card]);
 
   const readText = card ? [card.front, ...(card.frontExtra ?? []), card.back, card.backExtra ?? ''].join('. ') : '';
-  const color = card ? KIND_COLOR[card.kind] : '#0F766E';
+  const color = card ? KIND_COLOR[card.kind] : '#6D28D9';
 
   const Header = (
     <div className="flex flex-wrap items-center gap-3">
-      <div className="flex items-center gap-2 rounded-xl bg-[#17324D] text-white px-3 py-1.5 text-sm font-semibold">
-        <Trophy className="w-4 h-4 text-[#F2B544]" aria-hidden="true" />
+      <div className="flex items-center gap-2 rounded-xl bg-[#2E1A6E] text-white px-3 py-1.5 text-sm font-semibold">
+        <Trophy className="w-4 h-4 text-[#FF9F1C]" aria-hidden="true" />
         {t('level')} {lvl.level}
       </div>
       <div className="flex-1 min-w-[140px]">
-        <div className="flex justify-between text-xs text-[#3D4A50] dark:text-[#B4C5D4] tabular-nums">
+        <div className="flex justify-between text-xs text-[#4A3F66] dark:text-[#C9BFEA] tabular-nums">
           <span>{progress.xp} XP</span>
           <span>{lvl.into}/{lvl.needed}</span>
         </div>
-        <div className="h-2.5 rounded-full bg-[#E6DEC8] dark:bg-[#284766] overflow-hidden" role="progressbar" aria-valuenow={lvl.into} aria-valuemin={0} aria-valuemax={lvl.needed} aria-label="XP to next level">
-          <div className="h-full bg-[#0F766E] transition-all" style={{ width: `${Math.min(100, (lvl.into / lvl.needed) * 100)}%` }} />
+        <div className="h-2.5 rounded-full bg-[#E7DDFB] dark:bg-[#3B2C78] overflow-hidden" role="progressbar" aria-valuenow={lvl.into} aria-valuemin={0} aria-valuemax={lvl.needed} aria-label="XP to next level">
+          <div className="h-full bg-[#6D28D9] transition-all" style={{ width: `${Math.min(100, (lvl.into / lvl.needed) * 100)}%` }} />
         </div>
       </div>
-      <div className="flex items-center gap-1 text-sm font-semibold text-[#9A6100] dark:text-[#F2B544]">
+      <div className="flex items-center gap-1 text-sm font-semibold text-[#B4430C] dark:text-[#FF9F1C]">
         <Flame className="w-4 h-4" aria-hidden="true" />
         {progress.streak} {t('streak')}
       </div>
       {onClose && (
-        <button type="button" onClick={onClose} aria-label={t('close')} className="ml-auto min-h-[44px] min-w-[44px] grid place-items-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] cursor-pointer">
+        <button type="button" onClick={onClose} aria-label={t('close')} className="ml-auto min-h-[44px] min-w-[44px] grid place-items-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] cursor-pointer">
           <X className="w-5 h-5" aria-hidden="true" />
         </button>
       )}
@@ -163,7 +163,7 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
     return (
       <div className="space-y-4">
         {Header}
-        <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{t('empty')}</p>
+        <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{t('empty')}</p>
       </div>
     );
   }
@@ -173,17 +173,17 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
     return (
       <div className="space-y-5">
         {Header}
-        <div className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 sm:p-6 space-y-4 text-center">
-          <Sparkles className="w-8 h-8 mx-auto text-[#0F766E]" aria-hidden="true" />
-          <h3 className="text-xl font-bold text-[#17324D] dark:text-white">{heading ?? t('title')}</h3>
-          <p className="text-3xl font-bold tabular-nums text-[#0F766E]">{due}<span className="text-base font-semibold text-[#3D4A50] dark:text-[#B4C5D4]"> / {deck.length} {t('due')}</span></p>
-          <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{mastered} {t('mastered')}</p>
+        <div className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 sm:p-6 space-y-4 text-center">
+          <Sparkles className="w-8 h-8 mx-auto text-[#6D28D9]" aria-hidden="true" />
+          <h3 className="text-xl font-bold text-[#2E1A6E] dark:text-white">{heading ?? t('title')}</h3>
+          <p className="text-3xl font-bold tabular-nums text-[#6D28D9]">{due}<span className="text-base font-semibold text-[#4A3F66] dark:text-[#C9BFEA]"> / {deck.length} {t('due')}</span></p>
+          <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{mastered} {t('mastered')}</p>
           {due === 0 && <p className="text-sm">{t('nothing')}</p>}
           <div className="flex flex-wrap justify-center gap-3">
             {due > 0 && (
-              <button type="button" onClick={() => begin(false)} className="min-h-[48px] rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-6 text-sm font-semibold text-white cursor-pointer">{t('start')}</button>
+              <button type="button" onClick={() => begin(false)} className="min-h-[48px] rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-6 text-sm font-semibold text-white cursor-pointer">{t('start')}</button>
             )}
-            <button type="button" onClick={() => begin(true)} className="min-h-[48px] rounded-xl border border-[#0F766E] px-6 text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer">{t('all')}</button>
+            <button type="button" onClick={() => begin(true)} className="min-h-[48px] rounded-xl border border-[#6D28D9] px-6 text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer">{t('all')}</button>
           </div>
         </div>
       </div>
@@ -196,13 +196,13 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
     return (
       <div className="space-y-5">
         {Header}
-        <div className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-6 text-center space-y-3">
-          <Trophy className="w-10 h-10 mx-auto text-[#F2B544]" aria-hidden="true" />
-          <h3 className="text-xl font-bold text-[#17324D] dark:text-white">{t('done')}</h3>
+        <div className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-6 text-center space-y-3">
+          <Trophy className="w-10 h-10 mx-auto text-[#FF9F1C]" aria-hidden="true" />
+          <h3 className="text-xl font-bold text-[#2E1A6E] dark:text-white">{t('done')}</h3>
           <p className="text-lg tabular-nums">+{gained} {t('xp')} · {pct}%</p>
           <div className="flex flex-wrap justify-center gap-3 pt-2">
-            <button type="button" onClick={() => begin(false)} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#0F766E] px-6 text-sm font-semibold text-white cursor-pointer"><RotateCcw className="w-4 h-4" aria-hidden="true" />{t('again2')}</button>
-            <button type="button" onClick={() => setQueue(null)} className="min-h-[48px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-6 text-sm font-semibold cursor-pointer">{t('close')}</button>
+            <button type="button" onClick={() => begin(false)} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] px-6 text-sm font-semibold text-white cursor-pointer"><RotateCcw className="w-4 h-4" aria-hidden="true" />{t('again2')}</button>
+            <button type="button" onClick={() => setQueue(null)} className="min-h-[48px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-6 text-sm font-semibold cursor-pointer">{t('close')}</button>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
   return (
     <div className="space-y-4">
       {Header}
-      <div className="flex justify-between text-xs text-[#3D4A50] dark:text-[#B4C5D4] tabular-nums">
+      <div className="flex justify-between text-xs text-[#4A3F66] dark:text-[#C9BFEA] tabular-nums">
         <span>{t('card')} {Math.min(index + 1, queue.length)} / {queue.length}</span>
         <span>{card.chapterTitle}</span>
       </div>
@@ -228,17 +228,17 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
           className="relative block w-full min-h-[300px] sm:min-h-[340px] text-left cursor-pointer focus-visible:outline-4"
           style={{ transformStyle: 'preserve-3d', transition: 'transform 500ms cubic-bezier(0.22,1,0.36,1)', transform: flipped ? 'rotateY(180deg)' : 'none' }}
         >
-          <div className="absolute inset-0 rounded-2xl border-2 bg-white dark:bg-[#152A40] p-5 sm:p-7 flex flex-col justify-between overflow-auto shadow-lg" style={{ ...faceBase, borderColor: color }}>
+          <div className="absolute inset-0 rounded-2xl border-2 bg-white dark:bg-[#1F1545] p-5 sm:p-7 flex flex-col justify-between overflow-auto shadow-lg" style={{ ...faceBase, borderColor: color }}>
             <span className="inline-block self-start rounded-full px-3 py-1 text-xs font-bold text-white" style={{ background: color }}>{t(`kind_${card.kind}`)}</span>
             <div className="space-y-3 py-3">
-              <p className="text-xl sm:text-2xl font-bold leading-snug text-[#17324D] dark:text-white">{card.front}</p>
+              <p className="text-xl sm:text-2xl font-bold leading-snug text-[#2E1A6E] dark:text-white">{card.front}</p>
               {card.frontExtra && (
-                <ul className="space-y-1 text-base text-[#1A262C] dark:text-[#DCE5EC]">
+                <ul className="space-y-1 text-base text-[#22163F] dark:text-[#E4DDFA]">
                   {card.frontExtra.map((o) => <li key={o}>{o}</li>)}
                 </ul>
               )}
             </div>
-            <span className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{t('tap')}</span>
+            <span className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{t('tap')}</span>
           </div>
           <div className="absolute inset-0 rounded-2xl p-5 sm:p-7 flex flex-col justify-center gap-3 overflow-auto shadow-lg text-white" style={{ ...faceBase, background: color, transform: 'rotateY(180deg)' }}>
             <p className={`text-xl sm:text-2xl font-bold leading-snug ${card.mono ? 'font-mono break-words' : ''}`}>{card.back}</p>
@@ -248,13 +248,13 @@ export const FlashcardTrainer: React.FC<Props> = ({ deck, language, heading, onC
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <button type="button" onClick={() => (isSpeaking ? stopSpeaking() : speak(readText))} className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-4 text-sm font-semibold cursor-pointer">
-          <Volume2 className="w-4 h-4 text-[#0F766E]" aria-hidden="true" />{t('listen')}
+        <button type="button" onClick={() => (isSpeaking ? stopSpeaking() : speak(readText))} className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-4 text-sm font-semibold cursor-pointer">
+          <Volume2 className="w-4 h-4 text-[#6D28D9]" aria-hidden="true" />{t('listen')}
         </button>
       </div>
 
       <div className={`grid grid-cols-3 gap-3 transition-opacity ${flipped ? 'opacity-100' : 'opacity-40 pointer-events-none'}`} aria-hidden={!flipped}>
-        {([['again', '#B91C1C', '1'], ['good', '#0F766E', '2'], ['easy', '#284766', '3']] as const).map(([r, c, k]) => (
+        {([['again', '#B91C1C', '1'], ['good', '#6D28D9', '2'], ['easy', '#3B2C78', '3']] as const).map(([r, c, k]) => (
           <button key={r} type="button" disabled={!flipped} onClick={() => rate(r)} className="min-h-[56px] rounded-xl text-white text-base font-semibold cursor-pointer focus-visible:outline-4" style={{ background: c }}>
             {t(r)} <span className="text-xs opacity-80">({k})</span>
           </button>

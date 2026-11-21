@@ -59,23 +59,23 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
   const set = (key: keyof ExperimentParamValues, value: number | string) =>
     setParams((p) => ({ ...p, [key]: value }));
   const btn =
-    'min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7] cursor-pointer hover:border-[#0F766E]';
+    'min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] cursor-pointer hover:border-[#6D28D9]';
 
   return (
     <section
       aria-label={def.title[language]}
-      className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-4"
+      className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-4"
     >
       <div className="flex items-center gap-2">
-        <Atom className="w-5 h-5 text-[#0F766E]" aria-hidden="true" />
-        <h4 className="text-base font-semibold text-[#17324D] dark:text-white">{def.title[language]}</h4>
+        <Atom className="w-5 h-5 text-[#6D28D9]" aria-hidden="true" />
+        <h4 className="text-base font-semibold text-[#2E1A6E] dark:text-white">{def.title[language]}</h4>
       </div>
 
       {!loaded ? (
         <button
           type="button"
           onClick={() => setLoaded(true)}
-          className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-3 text-sm font-semibold text-white cursor-pointer"
+          className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-3 text-sm font-semibold text-white cursor-pointer"
         >
           <Play className="w-4 h-4" aria-hidden="true" />
           {T.load[language]}
@@ -83,7 +83,7 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
       ) : (
         <>
           <Suspense
-            fallback={<div className="h-[310px] rounded-xl bg-[#0F1F30] text-white grid place-items-center">{T.loading[language]}</div>}
+            fallback={<div className="h-[310px] rounded-xl bg-[#120A28] text-white grid place-items-center">{T.loading[language]}</div>}
           >
             {experimentId === 'magnetism' ? (
               <Magnetism3DScene
@@ -128,10 +128,10 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
             </label>
           </div>
 
-          <p className="text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{T.tryIt[language]}</p>
+          <p className="text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{T.tryIt[language]}</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {info.sliders.map((s) => (
-              <label key={s.key} className="block text-sm text-[#1A262C] dark:text-[#EEF3F7]">
+              <label key={s.key} className="block text-sm text-[#22163F] dark:text-[#F3EFFF]">
                 <span className="font-semibold">
                   {s.label[language]}
                   {!s.choices && `: ${params[s.key] as number} ${s.unit}`}
@@ -140,7 +140,7 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
                   <select
                     value={params[s.key] as string}
                     onChange={(e) => set(s.key, e.target.value)}
-                    className="mt-1 block w-full min-h-[44px] rounded-lg border border-[#B9AD8C] bg-white dark:bg-[#1C3652] px-2"
+                    className="mt-1 block w-full min-h-[44px] rounded-lg border border-[#B6A6E0] bg-white dark:bg-[#2A1D5C] px-2"
                   >
                     {s.choices.map((c) => (
                       <option key={c.value} value={c.value}>
@@ -156,7 +156,7 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
                     step={s.step}
                     value={params[s.key] as number}
                     onChange={(e) => set(s.key, Number(e.target.value))}
-                    className="mt-1 block w-full h-8 accent-[#0F766E]"
+                    className="mt-1 block w-full h-8 accent-[#6D28D9]"
                   />
                 )}
               </label>
@@ -164,16 +164,16 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-[#17324D] dark:text-white mb-2">{T.live[language]}</p>
+            <p className="text-sm font-semibold text-[#2E1A6E] dark:text-white mb-2">{T.live[language]}</p>
             <div className="grid gap-2 sm:grid-cols-3">
               {computed.metrics.map((m) => (
-                <div key={m.label} className="rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
-                  <div className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{m.label}</div>
-                  <div className="text-lg font-semibold tabular-nums text-[#17324D] dark:text-white">{m.value}</div>
+                <div key={m.label} className="rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
+                  <div className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{m.label}</div>
+                  <div className="text-lg font-semibold tabular-nums text-[#2E1A6E] dark:text-white">{m.value}</div>
                 </div>
               ))}
             </div>
-            <ul className="mt-2 list-disc pl-5 text-sm text-[#1A262C] dark:text-[#DCE5EC] space-y-1">
+            <ul className="mt-2 list-disc pl-5 text-sm text-[#22163F] dark:text-[#E4DDFA] space-y-1">
               {computed.steps.map((st, i) => (
                 <li key={i}>{st}</li>
               ))}
@@ -182,7 +182,7 @@ export const InlineSimulation: React.FC<Props> = ({ experimentId, language, lowP
         </>
       )}
 
-      <div className="grid gap-3 text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+      <div className="grid gap-3 text-sm text-[#22163F] dark:text-[#E4DDFA]">
         <p><strong>{T.what[language]}</strong> {info.what[language]}</p>
         <p><strong>{T.why[language]}</strong> {info.why[language]}</p>
         <p><strong>{T.principle[language]}:</strong> {info.principle[language]}</p>

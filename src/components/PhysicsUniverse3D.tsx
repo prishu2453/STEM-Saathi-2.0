@@ -561,27 +561,27 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
 
   if (lowPowerMode || webglFailed) {
     return (
-      <div className="relative w-full h-[360px] sm:h-[440px] rounded-2xl overflow-hidden border border-[#E6DEC8] dark:border-[#284766] bg-[#0F1F30]">
+      <div className="relative w-full h-[360px] sm:h-[440px] rounded-2xl overflow-hidden border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#120A28]">
         <img
           src={PHYSICS_HERO_IMAGE}
-          alt="STEM Saathi Physics Observatory apparatus showing gyroscope, optical prism, and copper induction coils"
+          alt="Gyaan Graph Physics Observatory apparatus showing gyroscope, optical prism, and copper induction coils"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F30]/92 via-[#0F1F30]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#120A28]/92 via-[#120A28]/40 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-medium text-[#4AD1C6]">
+            <p className="text-xs font-medium text-[#C4B5FD]">
               {lowPowerMode ? 'Low-End / Battery Saver 2D Preview Active' : 'Static Observatory Preview'}
             </p>
-            <p className="text-sm text-[#F6F1E3] mt-0.5">
+            <p className="text-sm text-[#F5F0FF] mt-0.5">
               Gyroscope Mechanics · Optical Prism Dispersion · Faraday Induction Coils
             </p>
           </div>
           <button
             type="button"
             onClick={() => onSelectPhysicsTopic('mechanics')}
-            className="rounded-lg bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] transition-colors cursor-pointer"
+            className="rounded-lg bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] transition-colors cursor-pointer"
           >
             Launch 2D Interactive Labs
           </button>
@@ -591,21 +591,21 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
   }
 
   return (
-    <div className="relative w-full h-[380px] sm:h-[470px] rounded-2xl overflow-hidden border border-[#284766] bg-[#0F1F30]">
+    <div className="relative w-full h-[380px] sm:h-[470px] rounded-2xl overflow-hidden border border-[#3B2C78] bg-[#120A28]">
       {/* Dedicated isolated WebGL mount */}
       <div ref={mountRef} className="w-full h-full" aria-label="Interactive 3D Physics Observatory" />
 
       {/* Top-Left Minimal Observatory Label & Optional Focus Lab Action */}
       <div className="pointer-events-none absolute top-4 left-4 right-4 z-10 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 rounded-lg bg-[#152A40]/92 border border-[#284766] px-3 py-1.5 text-xs text-[#F6F1E3]">
-          <Compass className="w-3.5 h-3.5 text-[#4AD1C6] shrink-0" aria-hidden="true" />
+        <div className="flex items-center gap-2 rounded-lg bg-[#1F1545]/92 border border-[#3B2C78] px-3 py-1.5 text-xs text-[#F5F0FF]">
+          <Compass className="w-3.5 h-3.5 text-[#C4B5FD] shrink-0" aria-hidden="true" />
           <span>Drag to orbit · Scroll to zoom · Press H to toggle dock</span>
         </div>
         {preset !== 'overview' && (
           <button
             type="button"
             onClick={() => onSelectPhysicsTopic(preset)}
-            className="pointer-events-auto rounded-lg bg-[#0F766E] hover:bg-[#0B5F58] px-3 py-1.5 text-xs font-semibold text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
+            className="pointer-events-auto rounded-lg bg-[#6D28D9] hover:bg-[#5B21B6] px-3 py-1.5 text-xs font-semibold text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
           >
             Open {preset === 'mechanics' ? 'Mechanics' : preset === 'magnetism' ? 'Magnetism' : 'Optics'} Lab
           </button>
@@ -622,7 +622,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
           <button
             type="button"
             onClick={() => setDockCollapsed((v) => !v)}
-            className="inline-flex items-center gap-1.5 rounded-t-lg border border-b-0 border-[#284766] bg-[#152A40]/95 px-3 py-1 text-[11px] font-medium text-[#F6F1E3] hover:text-[#4AD1C6] cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-t-lg border border-b-0 border-[#3B2C78] bg-[#1F1545]/95 px-3 py-1 text-[11px] font-medium text-[#F5F0FF] hover:text-[#C4B5FD] cursor-pointer"
           >
             {dockCollapsed ? (
               <>
@@ -638,7 +638,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
           </button>
         </div>
 
-        <div className="rounded-xl border border-[#284766] bg-[#152A40]/95 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
+        <div className="rounded-xl border border-[#3B2C78] bg-[#1F1545]/95 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
           {/* Camera Focus Presets */}
           <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="3D Observatory Focus">
             {(
@@ -655,8 +655,8 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
                 onClick={() => setPreset(item.id)}
                 className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                   preset === item.id
-                    ? 'bg-[#0F766E] text-white'
-                    : 'bg-[#1C3652] text-[#DCE5EC] hover:bg-[#284766]'
+                    ? 'bg-[#6D28D9] text-white'
+                    : 'bg-[#2A1D5C] text-[#E4DDFA] hover:bg-[#3B2C78]'
                 }`}
               >
                 {item.label}
@@ -666,7 +666,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
 
           {/* Exploded Assembly + Speed + Play/Pause */}
           <div className="flex flex-wrap items-center gap-4">
-            <label className="flex items-center gap-2 text-xs text-[#DCE5EC]">
+            <label className="flex items-center gap-2 text-xs text-[#E4DDFA]">
               <span className="whitespace-nowrap">Explode</span>
               <input
                 type="range"
@@ -675,11 +675,11 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
                 step={0.05}
                 value={exploded}
                 onChange={(e) => setExploded(parseFloat(e.target.value))}
-                className="w-20 accent-[#0F766E] cursor-pointer"
+                className="w-20 accent-[#6D28D9] cursor-pointer"
               />
             </label>
 
-            <label className="flex items-center gap-2 text-xs text-[#DCE5EC]">
+            <label className="flex items-center gap-2 text-xs text-[#E4DDFA]">
               <span className="whitespace-nowrap tabular-nums">Speed {speed.toFixed(1)}×</span>
               <input
                 type="range"
@@ -688,7 +688,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
                 step={0.1}
                 value={speed}
                 onChange={(e) => setSpeed(parseFloat(e.target.value))}
-                className="w-20 accent-[#0F766E] cursor-pointer"
+                className="w-20 accent-[#6D28D9] cursor-pointer"
               />
             </label>
 
@@ -696,7 +696,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
               <button
                 type="button"
                 onClick={() => setPaused((p) => !p)}
-                className="inline-flex items-center gap-1 rounded-md bg-[#1C3652] px-2.5 py-1 text-xs font-medium text-[#F6F1E3] hover:bg-[#284766] cursor-pointer"
+                className="inline-flex items-center gap-1 rounded-md bg-[#2A1D5C] px-2.5 py-1 text-xs font-medium text-[#F5F0FF] hover:bg-[#3B2C78] cursor-pointer"
               >
                 {paused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
                 <span>{paused ? 'Play' : 'Pause'}</span>
@@ -710,7 +710,7 @@ export const PhysicsUniverse3D: React.FC<PhysicsUniverse3DProps> = ({
                   setPaused(false);
                 }}
                 aria-label="Reset 3D observatory view"
-                className="inline-flex items-center rounded-md bg-[#1C3652] p-1.5 text-[#DCE5EC] hover:bg-[#284766] cursor-pointer"
+                className="inline-flex items-center rounded-md bg-[#2A1D5C] p-1.5 text-[#E4DDFA] hover:bg-[#3B2C78] cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
