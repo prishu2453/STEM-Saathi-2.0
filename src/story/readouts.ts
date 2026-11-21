@@ -61,6 +61,9 @@ const T = {
   acw: W('anticlockwise from above', 'ऊपर से वामावर्त', 'ಮೇಲಿನಿಂದ ಅಪ್ರದಕ್ಷಿಣ'),
   cw: W('clockwise from above', 'ऊपर से दक्षिणावर्त', 'ಮೇಲಿನಿಂದ ಪ್ರದಕ್ಷಿಣ'),
   noField: W('no field (no current)', 'क्षेत्र नहीं (धारा नहीं)', 'ಕ್ಷೇತ್ರವಿಲ್ಲ (ಪ್ರವಾಹವಿಲ್ಲ)'),
+  northEnd: W('North pole of the coil', 'कुंडली का उत्तर ध्रुव', 'ಸುರುಳಿಯ ಉತ್ತರ ಧ್ರುವ'),
+  rightEnd: W('right end', 'दायाँ सिरा', 'ಬಲ ತುದಿ'),
+  leftEnd: W('left end', 'बायाँ सिरा', 'ಎಡ ತುದಿ'),
 };
 
 const n = (s: SceneState, k: string, d = 0) => (typeof s[k] === 'number' ? (s[k] as number) : d);
@@ -183,7 +186,12 @@ export function readouts(kit: KitName, s: SceneState, lang: Language): { label: 
       { label: `${L(T.fuse)} ${fuse} A`, value: L(load.blown ? T.blown : T.ok), warn: load.blown },
     ];
   }
-  if (mode === 'wire' || mode === 'solenoid')
+  if (mode === 'solenoid')
+    return [
+      { label: L(T.current), value: `${I.toFixed(2)} A` },
+      { label: L(T.northEnd), value: Math.abs(I) < 0.05 ? L(T.noField) : L(I > 0 ? T.rightEnd : T.leftEnd) },
+    ];
+  if (mode === 'wire')
     return [
       { label: L(T.current), value: `${I.toFixed(2)} A` },
       { label: L(T.field), value: Math.abs(I) < 0.05 ? L(T.noField) : L(I > 0 ? T.acw : T.cw) },

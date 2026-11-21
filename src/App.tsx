@@ -1426,7 +1426,6 @@ function StemSaathiApp() {
             )}
             {activeView === 'stories' && (
               <StoryLibrary
-                key={typeof window !== 'undefined' ? window.location.hash : 'stories'}
                 language={language}
                 lowPower={a11y.lowPowerMode}
                 onPractice={(conceptId) => {

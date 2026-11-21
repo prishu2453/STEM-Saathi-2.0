@@ -547,7 +547,7 @@ function opticsKit(ctx: Ctx): Kit {
 
 /* ======================= CIRCUIT ======================= */
 
-function circuitKit(ctx: Ctx): Kit {
+function circuitKit(_ctx: Ctx): Kit {
   const root = new THREE.Group();
   const board = new THREE.Mesh(new THREE.BoxGeometry(9.2, 0.2, 6), std('#EFE6FF'));
   board.position.y = -0.12;
