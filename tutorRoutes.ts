@@ -65,9 +65,33 @@ async function askJson(system: string, prompt: string): Promise<any> {
     });
     text = r.text ?? '';
   } else {
-    text = (await askOtherProvider(provider, system, [], prompt)).reply;
+    text = (await askOtherProvider(provider, system, [], prompt, { reasoningEffort: 'low' })).reply;
   }
   return extractJson(text);
+}
+
+/**
+ * askJson with retries: AI models sometimes return broken JSON or a provider call times out
+ * or is rate-limited. Retry those with a short back-off; a missing provider fails at once.
+ */
+async function askJsonRetry(system: string, prompt: string, tries = 2, deadline = Date.now() + 40_000): Promise<any> {
+  let last: unknown;
+  for (let i = 0; i < tries; i++) {
+    try {
+      return await askJson(system, prompt);
+    } catch (err) {
+      last = err;
+      if (err instanceof HttpError && err.status === 503) throw err; // no AI provider configured
+      if (i === tries - 1) break;
+      // Rate limited: the provider says how long to wait ("try again in 13.1s"); otherwise back off briefly.
+      const msg = err instanceof Error ? err.message : String(err);
+      const hinted = /try again in ([\d.]+)\s*s/i.exec(msg);
+      const waitMs = hinted ? Math.ceil(Number(hinted[1]) * 1000) + 300 : 600 * (i + 1);
+      if (Date.now() + waitMs > deadline) break;
+      await new Promise((r) => setTimeout(r, waitMs));
+    }
+  }
+  throw last;
 }
 
 const str = (v: unknown, max: number) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
@@ -108,7 +132,7 @@ Return JSON with exactly these keys:
 - "otherDescription": if "other", one sentence naming the wrong idea, else ""
 - "feedback": REQUIRED, never empty. 2-3 short, kind sentences in ${LANG_NAME[language]}, spoken to the student ("you"), that say what is wrong (or right) in their reasoning and explain the correct physics idea, ideally with an everyday comparison.`;
 
-  const out = await askJson(system, prompt);
+  const out = await askJsonRetry(system, prompt, 2);
   let id = str(out?.misconceptionId, 60);
   if (id !== 'none' && id !== 'other' && !candidates.some((m) => m.id === id)) id = 'other';
   const confidence = Math.max(0, Math.min(1, Number(out?.confidence) || 0));
@@ -153,18 +177,35 @@ Return JSON:
  "distractorMisconceptions": {"<wrong option index>": "<misconception id or empty>"},
  "explanation": "1-2 sentences with the working"}`;
 
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const out = await askJson(system, prompt);
+  let lastError: unknown = null;
+  const deadline = Date.now() + 45_000; // the browser gives up at 60 s
+  for (let attempt = 0; attempt < 3 && Date.now() < deadline; attempt++) {
+    let out: any;
+    let check: any;
+    try {
+      out = await askJsonRetry(system, prompt, 2, deadline);
+    } catch (err) {
+      if (err instanceof HttpError && err.status === 503) throw err;
+      lastError = err;
+      continue;
+    }
     const stem = str(out?.stem, 500);
     const options: string[] = Array.isArray(out?.options) ? out.options.map((o: unknown) => str(o, 200)) : [];
     const correctIndex = Number(out?.correctIndex);
     if (!stem || options.length !== 4 || options.some((o) => !o) || new Set(options).size !== 4 || !(correctIndex >= 0 && correctIndex < 4)) continue;
 
     // Independent check: a second call must reach the same answer, or we discard the question.
-    const check = await askJson(
-      'You are a careful physics examiner. Solve the question and reply with JSON only.',
-      `${stem}\n${options.map((o, i) => `${i}. ${o}`).join('\n')}\nReturn {"answerIndex": 0-3}`
-    );
+    try {
+      check = await askJsonRetry(
+        'You are a careful physics examiner. Solve the question and reply with JSON only.',
+        `${stem}\n${options.map((o, i) => `${i}. ${o}`).join('\n')}\nReturn {"answerIndex": 0-3}`,
+        2,
+        deadline
+      );
+    } catch (err) {
+      lastError = err;
+      continue;
+    }
     if (Number(check?.answerIndex) !== correctIndex) continue;
 
     const distractorMisconceptions: Record<number, string> = {};
@@ -187,6 +228,7 @@ Return JSON:
       language,
     };
   }
+  if (lastError) console.error('Question generation failed:', lastError instanceof Error ? lastError.message : lastError);
   throw new HttpError(502, 'Could not make a question that passed the answer check. Please try again.');
 }
 

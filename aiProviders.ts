@@ -68,7 +68,9 @@ export async function askOtherProvider(
   provider: Exclude<ProviderName, 'gemini'>,
   system: string,
   history: TurnMsg[],
-  message: string
+  message: string,
+  /** Short structured calls (the adaptive tutor) can ask reasoning models to think less, using far fewer tokens. */
+  opts: { reasoningEffort?: 'low' | 'medium' | 'high' } = {}
 ): Promise<{ reply: string; model: string }> {
   if (provider === 'anthropic') {
     const model = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
@@ -100,6 +102,7 @@ export async function askOtherProvider(
     { Authorization: `Bearer ${process.env[cfg.key]}` },
     {
       model: cfg.model,
+      ...(opts.reasoningEffort && /gpt-oss/i.test(cfg.model) ? { reasoning_effort: opts.reasoningEffort } : {}),
       messages: [
         { role: 'system', content: system },
         ...history.map((m) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.text })),
