@@ -31,7 +31,7 @@ export const PWAInstallButton: React.FC = () => {
       <button
         type="button"
         onClick={() => void install()}
-        className="inline-flex items-center gap-2 rounded-lg border border-[#0F766E]/45 bg-[#0F766E]/10 px-3 py-1.5 text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6] hover:bg-[#0F766E]/20 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+        className="inline-flex items-center gap-2 rounded-lg border border-[#6D28D9]/45 bg-[#6D28D9]/10 px-3 py-1.5 text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD] hover:bg-[#6D28D9]/20 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
       >
         <Download className="w-3.5 h-3.5" aria-hidden="true" />
         <span>Install App</span>
@@ -45,7 +45,7 @@ export const PWAInstallButton: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowIOSGuide(true)}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#F6F1E3] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652] whitespace-nowrap shrink-0 cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F5F0FF] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C] whitespace-nowrap shrink-0 cursor-pointer"
         >
           <Download className="w-3.5 h-3.5" aria-hidden="true" />
           <span>Install iOS</span>
@@ -55,31 +55,31 @@ export const PWAInstallButton: React.FC = () => {
           <div
             role="dialog"
             aria-modal="true"
-            aria-label="Install STEM Saathi on iOS"
+            aria-label="Install Gyaan Graph on iOS"
             className="animate-fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
           >
-            <div className="animate-panel-reveal w-full max-w-sm rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-6 shadow-xl">
+            <div className="animate-panel-reveal w-full max-w-sm rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-6 shadow-xl">
               <div className="flex items-center justify-between">
-                <h3 className="text-base font-semibold text-[#17324D] dark:text-[#F6F1E3]">
-                  Install STEM Saathi on iPhone / iPad
+                <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
+                  Install Gyaan Graph on iPhone / iPad
                 </h3>
                 <button
                   type="button"
                   onClick={() => setShowIOSGuide(false)}
                   aria-label="Close install instructions"
-                  className="p-1 rounded-lg text-[#3D4A50] hover:text-[#17324D] dark:text-[#B4C5D4] dark:hover:text-[#F6F1E3]"
+                  className="p-1 rounded-lg text-[#4A3F66] hover:text-[#2E1A6E] dark:text-[#C9BFEA] dark:hover:text-[#F5F0FF]"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
-              <ol className="mt-3 space-y-2 text-sm text-[#1A262C] dark:text-[#DCE5EC] list-decimal pl-4">
+              <ol className="mt-3 space-y-2 text-sm text-[#22163F] dark:text-[#E4DDFA] list-decimal pl-4">
                 <li>Tap the Share button in the Safari toolbar.</li>
                 <li>Scroll down and choose Add to Home Screen for offline study.</li>
               </ol>
               <button
                 type="button"
                 onClick={() => setShowIOSGuide(false)}
-                className="mt-5 w-full rounded-lg bg-[#0F766E] py-2 text-sm font-medium text-white hover:bg-[#0B5F58] transition-colors cursor-pointer"
+                className="mt-5 w-full rounded-lg bg-[#6D28D9] py-2 text-sm font-medium text-white hover:bg-[#5B21B6] transition-colors cursor-pointer"
               >
                 Got it
               </button>
@@ -106,9 +106,9 @@ export const OfflineIndicator: React.FC<{ language: Language; savedOfflineCount:
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-4 left-4 z-40 flex items-center gap-2 rounded-lg border border-[#F2B544]/60 bg-[#17324D] px-3 py-2 text-xs font-medium text-[#F6F1E3] shadow-lg max-w-[260px]"
+      className="fixed bottom-4 left-4 z-40 flex items-center gap-2 rounded-lg border border-[#FF9F1C]/60 bg-[#2E1A6E] px-3 py-2 text-xs font-medium text-[#F5F0FF] shadow-lg max-w-[260px]"
     >
-      <WifiOff className="w-3.5 h-3.5 text-[#F2B544] shrink-0" aria-hidden="true" />
+      <WifiOff className="w-3.5 h-3.5 text-[#FF9F1C] shrink-0" aria-hidden="true" />
       <span>
         {t.offlineStatus} —{' '}
         {savedOfflineCount > 0
@@ -159,14 +159,14 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
   };
 
   return (
-    <div className="border-b border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3]/90 dark:bg-[#0F1F30]/95">
+    <div className="border-b border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF]/90 dark:bg-[#120A28]/95">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-2.5">
         {/* Left: Language + Role Switchers */}
         <div className="flex flex-wrap items-center gap-2.5">
           <div
             role="group"
             aria-label="Language selection"
-            className="inline-flex items-center rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#152A40] p-0.5"
+            className="inline-flex items-center rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#1F1545] p-0.5"
           >
             {(['en', 'hi', 'kn'] as Language[]).map((lang) => (
               <button
@@ -175,8 +175,8 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
                 onClick={() => onLanguageChange(lang)}
                 className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                   language === lang
-                    ? 'bg-[#0F766E] text-white'
-                    : 'text-[#1A262C] dark:text-[#DCE5EC] hover:text-[#17324D] dark:hover:text-[#F6F1E3]'
+                    ? 'bg-[#6D28D9] text-white'
+                    : 'text-[#22163F] dark:text-[#E4DDFA] hover:text-[#2E1A6E] dark:hover:text-[#F5F0FF]'
                 }`}
               >
                 {LANGUAGE_LABELS[lang]}
@@ -187,7 +187,7 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
           <div
             role="group"
             aria-label="Dashboard role selection"
-            className="inline-flex items-center rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#152A40] p-0.5"
+            className="inline-flex items-center rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#1F1545] p-0.5"
           >
             {(
               [
@@ -202,8 +202,8 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
                 onClick={() => onRoleChange(item.id)}
                 className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                   role === item.id
-                    ? 'bg-white dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3] shadow-sm'
-                    : 'text-[#3D4A50] dark:text-[#B4C5D4] hover:text-[#17324D] dark:hover:text-[#F6F1E3]'
+                    ? 'bg-white dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF] shadow-sm'
+                    : 'text-[#4A3F66] dark:text-[#C9BFEA] hover:text-[#2E1A6E] dark:hover:text-[#F5F0FF]'
                 }`}
               >
                 {item.label}
@@ -229,14 +229,14 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
               type="button"
               disabled={authLoading || !isOnline}
               onClick={onSignIn}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#DCE5EC] hover:border-[#0F766E] whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#E4DDFA] hover:border-[#6D28D9] whitespace-nowrap shrink-0 cursor-pointer disabled:opacity-60"
             >
-              <LogIn className="w-3.5 h-3.5 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+              <LogIn className="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
               <span>{authLoading ? 'Signing in...' : 'Sign in (Sync)'}</span>
             </button>
           )}
 
-          <span className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] whitespace-nowrap tabular-nums">
+          <span className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] whitespace-nowrap tabular-nums">
             {isOnline ? t.onlineStatus : t.offlineStatus}
             {' · '}
             {savedOfflineCount > 0 ? `${savedOfflineCount} ${t.savedOffline}` : t.statusNotDownloaded}
@@ -251,16 +251,16 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
               onA11yChange({ ...a11y, theme: a11y.theme === 'dark' ? 'light' : 'dark' })
             }
             aria-label={a11y.theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#DCE5EC] hover:border-[#0F766E] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#E4DDFA] hover:border-[#6D28D9] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             {a11y.theme === 'dark' ? (
               <>
-                <Sun className="w-3.5 h-3.5 text-[#F2B544]" aria-hidden="true" />
+                <Sun className="w-3.5 h-3.5 text-[#FF9F1C]" aria-hidden="true" />
                 <span>{t.lightTheme}</span>
               </>
             ) : (
               <>
-                <Moon className="w-3.5 h-3.5 text-[#0F766E]" aria-hidden="true" />
+                <Moon className="w-3.5 h-3.5 text-[#6D28D9]" aria-hidden="true" />
                 <span>{t.darkTheme}</span>
               </>
             )}
@@ -272,8 +272,8 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
             aria-expanded={openA11y}
             className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               openA11y || a11y.highContrast || a11y.dyslexiaSpacing || a11y.lowPowerMode
-                ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#DCE5EC] hover:border-[#0F766E]'
+                ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#E4DDFA] hover:border-[#6D28D9]'
             }`}
           >
             <Accessibility className="w-3.5 h-3.5" aria-hidden="true" />
@@ -283,7 +283,7 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
       </div>
 
       {openA11y && (
-        <div className="border-t border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#152A40]">
+        <div className="border-t border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#1F1545]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex flex-wrap items-center gap-3">
             <button
               type="button"
@@ -291,8 +291,8 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
               aria-pressed={a11y.highContrast}
               className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium cursor-pointer transition-colors ${
                 a11y.highContrast
-                  ? 'border-[#F2B544] bg-[#F2B544]/20 text-[#9A6100] dark:text-[#F2B544]'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#1A262C] dark:text-[#DCE5EC]'
+                  ? 'border-[#FF9F1C] bg-[#FF9F1C]/20 text-[#B4430C] dark:text-[#FF9F1C]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#22163F] dark:text-[#E4DDFA]'
               }`}
             >
               <Eye className="w-3.5 h-3.5" aria-hidden="true" />
@@ -305,8 +305,8 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
               aria-pressed={a11y.dyslexiaSpacing}
               className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium cursor-pointer transition-colors ${
                 a11y.dyslexiaSpacing
-                  ? 'border-[#0F766E] bg-[#0F766E]/15 text-[#0B5F58] dark:text-[#4AD1C6]'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#1A262C] dark:text-[#DCE5EC]'
+                  ? 'border-[#6D28D9] bg-[#6D28D9]/15 text-[#5B21B6] dark:text-[#C4B5FD]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#22163F] dark:text-[#E4DDFA]'
               }`}
             >
               <TypeIcon className="w-3.5 h-3.5" aria-hidden="true" />
@@ -316,7 +316,7 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
             <button
               type="button"
               onClick={cycleFontScale}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs font-medium text-[#1A262C] dark:text-[#DCE5EC] cursor-pointer hover:border-[#0F766E]"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs font-medium text-[#22163F] dark:text-[#E4DDFA] cursor-pointer hover:border-[#6D28D9]"
             >
               <span>Text Size: {a11y.fontScale === 'base' ? '100%' : a11y.fontScale === 'md' ? '112%' : '125%'}</span>
             </button>
@@ -328,7 +328,7 @@ export const WorkspaceToolbar: React.FC<WorkspaceControlsProps> = ({
               className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium cursor-pointer transition-colors ${
                 a11y.lowPowerMode
                   ? 'border-emerald-500 bg-emerald-500/15 text-emerald-800 dark:text-emerald-300'
-                  : 'border-[#E6DEC8] dark:border-[#284766] text-[#1A262C] dark:text-[#DCE5EC]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#22163F] dark:text-[#E4DDFA]'
               }`}
             >
               <Cpu className="w-3.5 h-3.5" aria-hidden="true" />

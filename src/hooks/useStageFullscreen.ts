@@ -62,9 +62,9 @@ export function useStageFullscreen<T extends HTMLElement = HTMLDivElement>() {
 
   const stageClass =
     mode === 'css'
-      ? 'fixed inset-0 z-[60] p-2 sm:p-3 bg-[#FFF9EE] dark:bg-[#0B1826] overflow-auto'
+      ? 'fixed inset-0 z-[60] p-2 sm:p-3 bg-[#FFF9F2] dark:bg-[#0B1826] overflow-auto'
       : mode === 'native'
-        ? 'p-2 sm:p-3 bg-[#FFF9EE] dark:bg-[#0B1826] overflow-auto'
+        ? 'p-2 sm:p-3 bg-[#FFF9F2] dark:bg-[#0B1826] overflow-auto'
         : '';
 
   return { ref, mode, isFullscreen: mode !== 'off', toggle, stageClass };

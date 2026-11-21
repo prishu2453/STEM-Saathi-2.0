@@ -1,4 +1,5 @@
 import { apiUrl } from './apiBase';
+import { mergeLearners } from '../../shared/tutor/learnerModel';
 /**
  * Client side of student accounts. Everything the app saves on the phone under the
  * "stem-saathi-" prefix (progress, class/board, flashcards, streak, settings…) is copied
@@ -163,6 +164,8 @@ export function mergeSnapshots(local: Record<string, string>, remote: Record<str
     const r = parse(remote[k]);
     if (k.startsWith('stem-saathi-progress') && l && r) out[k] = JSON.stringify(mergeProgress(l, r));
     else if (k.startsWith('stem-saathi-flashcards') && l && r) out[k] = JSON.stringify(mergeFlashcards(l, r));
+    else if (k.startsWith('stem-saathi-learner') && l && r) out[k] = JSON.stringify(mergeLearners(l, r));
+    else if (k.startsWith('stem-saathi-genq') && l && r) out[k] = JSON.stringify({ ...r, ...l });
     else if (k.startsWith('stem-saathi-activity-days')) {
       try {
         const days = Array.from(new Set([...(JSON.parse(remote[k]) as string[]), ...(JSON.parse(local[k]) as string[])]));

@@ -52,9 +52,9 @@ export const fmt = (x: number, d = 2) => (Number.isFinite(x) ? x.toFixed(d) : 'â
 export const clamp = (x: number, a: number, b: number) => Math.min(b, Math.max(a, x));
 
 /* ---------- small canvas helpers ---------- */
-export const INK = '#17324D';
-export const TEAL = '#0F766E';
-export const AMBER = '#D99B26';
+export const INK = '#2E1A6E';
+export const TEAL = '#6D28D9';
+export const AMBER = '#F07C00';
 export const RED = '#B91C1C';
 export const PURPLE = '#7C3AED';
 export const PAPER = '#FFFDF7';

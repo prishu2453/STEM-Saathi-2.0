@@ -366,9 +366,9 @@ export const Magnetism3DScene: React.FC<Magnetism3DSceneProps> = ({
 
   if (lowPowerMode) {
     return (
-      <div className="h-[260px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#152A40] flex flex-col items-center justify-center p-4 text-center">
-        <p className="text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">Lite Mode: Faraday Induction Formula View</p>
-        <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] mt-1 max-w-md">
+      <div className="h-[260px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#1F1545] flex flex-col items-center justify-center p-4 text-center">
+        <p className="text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">Lite Mode: Faraday Induction Formula View</p>
+        <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] mt-1 max-w-md">
           3D WebGL solenoid paused for low-power Android efficiency. Adjust Turns (N), Speed, and Field Strength (B) to compute peak EMF live below.
         </p>
       </div>
@@ -378,7 +378,7 @@ export const Magnetism3DScene: React.FC<Magnetism3DSceneProps> = ({
   return (
     <div
       ref={containerRef}
-      className="w-full h-[56vh] min-h-[340px] max-h-[820px] lg:h-[calc(100vh-190px)] group-data-[fs=true]/stage:h-[calc(100vh-40px)] group-data-[fs=true]/stage:max-h-none rounded-xl overflow-hidden border border-[#284766] bg-[#0F1F30]"
+      className="w-full h-[56vh] min-h-[340px] max-h-[820px] lg:h-[calc(100vh-190px)] group-data-[fs=true]/stage:h-[calc(100vh-40px)] group-data-[fs=true]/stage:max-h-none rounded-xl overflow-hidden border border-[#3B2C78] bg-[#120A28]"
       aria-label="3D Faraday Electromagnetic Induction Lab"
     />
   );

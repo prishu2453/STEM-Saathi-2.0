@@ -51,10 +51,10 @@ function fit(w: number, h: number, xmin: number, xmax: number, ymin: number, yma
   return { s, X: (x: number) => ox + s * x, Y: (y: number) => oy - s * y };
 }
 const colors = (dark: boolean) => ({
-  ink: dark ? '#EEF3F7' : INK,
+  ink: dark ? '#F3EFFF' : INK,
   soft: dark ? '#9FB3C8' : '#5B6B73',
   grid: dark ? '#26405C' : '#E8E0CB',
-  bg: dark ? '#0F1F30' : '#FFFDF7',
+  bg: dark ? '#120A28' : '#FFFDF7',
   water: dark ? 'rgba(74,163,230,0.55)' : 'rgba(56,140,214,0.45)',
   waterDeep: dark ? 'rgba(30,90,170,0.75)' : 'rgba(26,86,170,0.6)',
 });
@@ -78,7 +78,7 @@ function dimArrow(c: CanvasRenderingContext2D, x: number, y1: number, y2: number
 function panel(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, dark: boolean) {
   c.save();
   c.fillStyle = dark ? 'rgba(21,42,64,0.92)' : 'rgba(255,255,255,0.92)';
-  c.strokeStyle = dark ? '#284766' : '#E6DEC8';
+  c.strokeStyle = dark ? '#3B2C78' : '#E7DDFB';
   c.lineWidth = 1;
   c.beginPath();
   c.roundRect(x, y, w, h, 10);
@@ -964,7 +964,7 @@ function makeMirror(kind: 'concave' | 'convex'): StationDef<MirState> {
         const tt = (XMIN - 0) / dx;
         return { x: XMIN, y: y0 + dy * tt };
       };
-      const rayColors = ['#D97706', '#0F766E', '#7C3AED'];
+      const rayColors = ['#D97706', '#6D28D9', '#7C3AED'];
       const imgFinite = Number.isFinite(v);
       // Ray 1: parallel to axis → reflects through F (concave) / as if from F (convex)
       {

@@ -382,29 +382,29 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
       className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8 space-y-6"
     >
       {/* Header */}
-      <div className="pb-4 border-b border-[#E6DEC8] dark:border-[#284766]">
-        <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+      <div className="pb-4 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
+        <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
           {t.myLearningPathLabel} · {t.localPreferenceNote}
         </p>
         <h1
           id="curriculum-browser-heading"
-          className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-[#F6F1E3] mt-1 text-balance"
+          className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-[#F5F0FF] mt-1 text-balance"
         >
           {t.chaptersExperimentsTitle}
         </h1>
-        <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] mt-1 max-w-3xl">
+        <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] mt-1 max-w-3xl">
           {t.chaptersExperimentsDesc}
         </p>
       </div>
 
       {/* Step-by-Step Filter Row: Class -> Board -> State (only if State Board) -> Subject -> Language */}
-      <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
+      <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
           {/* 1. Class */}
           <div>
             <label
               htmlFor="curr-class-select"
-              className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+              className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
             >
               1. {t.classLabel}
             </label>
@@ -418,7 +418,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   configured: true,
                 })
               }
-              className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+              className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
             >
               {SCHOOL_CLASSES.map((cls) => (
                 <option key={cls} value={cls}>
@@ -432,7 +432,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           <div>
             <label
               htmlFor="curr-board-select"
-              className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+              className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
             >
               2. {t.boardLabel}
             </label>
@@ -448,7 +448,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   configured: true,
                 });
               }}
-              className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+              className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
             >
               {EDUCATION_BOARDS.map((b) => (
                 <option key={b.id} value={b.id}>
@@ -463,7 +463,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
             <div>
               <label
                 htmlFor="curr-state-select"
-                className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+                className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
               >
                 3. {t.stateLabel}
               </label>
@@ -477,7 +477,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                     configured: true,
                   })
                 }
-                className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+                className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
               >
                 {STATE_BOARD_STATES.map((st) => (
                   <option key={st} value={st}>
@@ -492,7 +492,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           <div>
             <label
               htmlFor="curr-session-select"
-              className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+              className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
             >
               {learningPath.board === 'state' ? '4.' : '3.'} {t.sessionLabel}
             </label>
@@ -506,7 +506,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   configured: true,
                 })
               }
-              className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+              className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
             >
               {ACADEMIC_SESSIONS.map((sess) => (
                 <option key={sess.id} value={sess.id}>
@@ -520,7 +520,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           <div>
             <label
               htmlFor="curr-subject-select"
-              className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+              className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
             >
               {learningPath.board === 'state' ? '5.' : '4.'} {t.subjectFilterLabel}
             </label>
@@ -535,7 +535,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   configured: true,
                 });
               }}
-              className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+              className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
             >
               <option value="physics">{t.menuSectionPhysics} (Science)</option>
               <option value="chemistry">{t.subjChemistry} (Science)</option>
@@ -548,7 +548,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           <div>
             <label
               htmlFor="curr-lang-select"
-              className="block text-xs font-semibold text-[#1A262C] dark:text-[#B4C5D4] mb-1"
+              className="block text-xs font-semibold text-[#22163F] dark:text-[#C9BFEA] mb-1"
             >
               {learningPath.board === 'state' ? '6.' : '5.'} {t.actionChooseLanguage}
             </label>
@@ -556,7 +556,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
               id="curr-lang-select"
               value={language}
               onChange={(e) => onLanguageChange(e.target.value as Language)}
-              className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3]"
+              className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF]"
             >
               <option value="en">English</option>
               <option value="hi">हिन्दी</option>
@@ -565,19 +565,19 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           </div>
         </div>
 
-        <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">{t.sessionChangeExplain}</p>
+        <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">{t.sessionChangeExplain}</p>
       </div>
 
       {/* UNVERIFIED BOARD/CLASS/SESSION OR MATHEMATICS PLACEHOLDER STATE */}
       {!catalogue || isMathsUnderVerifiedSample ? (
-        <div className="animate-panel-reveal a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-6 space-y-4">
+        <div className="animate-panel-reveal a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-6 space-y-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-[#9A6100] dark:text-[#F2B544] shrink-0 mt-0.5" aria-hidden="true" />
+            <AlertTriangle className="w-5 h-5 text-[#B4430C] dark:text-[#FF9F1C] shrink-0 mt-0.5" aria-hidden="true" />
             <div className="space-y-1.5">
-              <h2 className="text-lg font-semibold text-[#17324D] dark:text-[#F6F1E3]">
+              <h2 className="text-lg font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
                 {t.contentBeingAddedTitle}
               </h2>
-              <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC] max-w-2xl">
+              <p className="text-sm text-[#22163F] dark:text-[#E4DDFA] max-w-2xl">
                 {isMathsUnderVerifiedSample
                   ? `${t.contentBeingAddedDesc} (${catalogue.bookTitle} Science chapters are available; Mathematics chapters can be explored in the Mathematics playground below.)`
                   : t.contentBeingAddedDesc}
@@ -599,7 +599,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   configured: true,
                 });
               }}
-              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-colors cursor-pointer"
+              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-colors cursor-pointer"
             >
               <BookOpen className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>{t.tryClass8CbseBtn}</span>
@@ -618,7 +618,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                         : 'chemistry'
                     )
               }
-              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] hover:border-[#0F766E] px-4 py-2 text-xs sm:text-sm font-medium text-[#17324D] dark:text-[#F6F1E3] cursor-pointer"
+              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] hover:border-[#6D28D9] px-4 py-2 text-xs sm:text-sm font-medium text-[#2E1A6E] dark:text-[#F5F0FF] cursor-pointer"
             >
               <span>
                 {learningPath.subject === 'physics'
@@ -631,7 +631,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
             <button
               type="button"
               onClick={handleRequestCurrentBoard}
-              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-4 py-2 text-xs font-medium text-[#1A262C] dark:text-[#DCE5EC] hover:border-[#0F766E] cursor-pointer"
+              className="min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-4 py-2 text-xs font-medium text-[#22163F] dark:text-[#E4DDFA] hover:border-[#6D28D9] cursor-pointer"
             >
               <span>{t.requestBoardNoteLabel}</span>
             </button>
@@ -647,11 +647,11 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
         /* VERIFIED CATALOGUE: SEARCH, FILTERS, CHAPTER LIST & CHAPTER/EXPERIMENT READER */
         <>
           {/* Search + Topic + Activity-Type Filters */}
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-3">
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-3">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
               <div className="md:col-span-7 relative">
                 <Search
-                  className="w-4 h-4 text-[#3D4A50] dark:text-[#B4C5D4] absolute left-3.5 top-1/2 -translate-y-1/2"
+                  className="w-4 h-4 text-[#4A3F66] dark:text-[#C9BFEA] absolute left-3.5 top-1/2 -translate-y-1/2"
                   aria-hidden="true"
                 />
                 <input
@@ -660,7 +660,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.searchChaptersPlaceholder}
                   aria-label={t.searchChaptersPlaceholder}
-                  className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] pl-10 pr-3 py-2 text-xs sm:text-sm text-[#17324D] dark:text-[#F6F1E3] placeholder:text-[#3D4A50]"
+                  className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] pl-10 pr-3 py-2 text-xs sm:text-sm text-[#2E1A6E] dark:text-[#F5F0FF] placeholder:text-[#4A3F66]"
                 />
               </div>
 
@@ -669,7 +669,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   aria-label="Filter by chapter topic"
                   value={topicFilter}
                   onChange={(e) => setTopicFilter(e.target.value)}
-                  className="w-full min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs sm:text-sm text-[#17324D] dark:text-[#F6F1E3]"
+                  className="w-full min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs sm:text-sm text-[#2E1A6E] dark:text-[#F5F0FF]"
                 >
                   <option value="all">All topics ({subjectChapters.length})</option>
                   {topicOptions.map((opt) => (
@@ -701,8 +701,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                     aria-pressed={active}
                     className={`min-h-[40px] rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                       active
-                        ? 'bg-[#0F766E] text-white'
-                        : 'bg-[#FAF4E4] dark:bg-[#1C3652] text-[#1A262C] dark:text-[#DCE5EC] hover:text-[#17324D] dark:hover:text-white'
+                        ? 'bg-[#6D28D9] text-white'
+                        : 'bg-[#FFF3E6] dark:bg-[#2A1D5C] text-[#22163F] dark:text-[#E4DDFA] hover:text-[#2E1A6E] dark:hover:text-white'
                     }`}
                   >
                     {f.label}
@@ -717,7 +717,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
             {/* Chapter List */}
             <aside
               aria-label="Chapter list"
-              className="lg:col-span-4 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-3"
+              className="lg:col-span-4 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-3"
             >
               <div className="mb-3">
                 <CoverageNotice
@@ -728,12 +728,12 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   language={language}
                 />
               </div>
-              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#E6DEC8] dark:border-[#284766]">
+              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
                 <div>
-                  <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                     {catalogue.bookTitle}
                   </p>
-                  <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] tabular-nums">
+                  <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] tabular-nums">
                     {filteredChapters.length} chapters shown · {learningPath.board === 'state' && learningPath.stateName ? `${learningPath.stateName} Board` : learningPath.board.toUpperCase()} Class {learningPath.classLevel}
                   </p>
                 </div>
@@ -741,7 +741,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
               {filteredChapters.length === 0 ? (
                 <div className="py-6 text-center space-y-2">
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
                     No chapters match your current search or filter.
                   </p>
                   <button
@@ -751,7 +751,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                       setTopicFilter('all');
                       setActivityFilter('all');
                     }}
-                    className="min-h-[38px] rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer"
+                    className="min-h-[38px] rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer"
                   >
                     Reset filters
                   </button>
@@ -774,8 +774,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                         aria-current={active ? 'true' : undefined}
                         className={`w-full text-left rounded-xl border p-3.5 min-h-[54px] transition-colors cursor-pointer space-y-1 ${
                           active
-                            ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                            : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]'
+                            ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                            : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-2">
@@ -783,13 +783,13 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                             Ch {ch.chapterNumber}: {chTitle}
                           </span>
                           <ChevronRight
-                            className={`w-4 h-4 shrink-0 mt-0.5 ${active ? 'text-white' : 'text-[#3D4A50] dark:text-[#B4C5D4]'}`}
+                            className={`w-4 h-4 shrink-0 mt-0.5 ${active ? 'text-white' : 'text-[#4A3F66] dark:text-[#C9BFEA]'}`}
                             aria-hidden="true"
                           />
                         </div>
                         <div
                           className={`text-[11px] flex flex-wrap items-center gap-x-1.5 gap-y-0.5 tabular-nums ${
-                            active ? 'text-[#E6F6F4]' : 'text-[#3D4A50] dark:text-[#B4C5D4]'
+                            active ? 'text-[#E6F6F4]' : 'text-[#4A3F66] dark:text-[#C9BFEA]'
                           }`}
                         >
                           <span>{chTopic}</span>
@@ -810,11 +810,11 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                 </div>
               )}
               {roadmap.length > 0 && (
-                <div className="mt-4 rounded-xl border border-dashed border-[#B9AD8C] dark:border-[#284766] p-3">
-                  <p className="text-sm font-semibold text-[#17324D] dark:text-white">
+                <div className="mt-4 rounded-xl border border-dashed border-[#B6A6E0] dark:border-[#3B2C78] p-3">
+                  <p className="text-sm font-semibold text-[#2E1A6E] dark:text-white">
                     Also in the NCERT book — lessons coming soon
                   </p>
-                  <ul className="mt-2 space-y-1 text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+                  <ul className="mt-2 space-y-1 text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
                     {roadmap.map((r) => (
                       <li key={r.no + r.title}>
                         Ch {r.no}: {r.title}
@@ -830,27 +830,27 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
               {activeChapter && chapterTitleResolved && chapterSummaryResolved && (
                 <div
                   key={activeChapter.id}
-                  className="animate-panel-reveal a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-6 space-y-5"
+                  className="animate-panel-reveal a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-6 space-y-5"
                 >
                   {/* Prominent Separate Experiment Language Selector (Does not lose selected chapter/experiment) */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E6DEC8] dark:border-[#284766]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
                     <div>
-                      <p className="text-xs font-medium text-[#3D4A50] dark:text-[#B4C5D4]">
+                      <p className="text-xs font-medium text-[#4A3F66] dark:text-[#C9BFEA]">
                         {activeChapter.textbookName} · Chapter {activeChapter.chapterNumber}
                       </p>
-                      <h2 className="text-xl sm:text-2xl font-bold text-[#17324D] dark:text-[#F6F1E3] mt-0.5">
+                      <h2 className="text-xl sm:text-2xl font-bold text-[#2E1A6E] dark:text-[#F5F0FF] mt-0.5">
                         {chapterTitleResolved.text}
                       </h2>
                     </div>
 
                     <div className="flex flex-col items-start sm:items-end gap-1 shrink-0">
-                      <span className="text-[11px] font-semibold text-[#3D4A50] dark:text-[#B4C5D4]">
+                      <span className="text-[11px] font-semibold text-[#4A3F66] dark:text-[#C9BFEA]">
                         {t.experimentLanguageLabel}
                       </span>
                       <div
                         role="group"
                         aria-label={t.experimentLanguageLabel}
-                        className="inline-flex items-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#1C3652] p-1"
+                        className="inline-flex items-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#2A1D5C] p-1"
                       >
                         {(
                           [
@@ -865,8 +865,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                             onClick={() => onLanguageChange(langOpt.id)}
                             className={`min-h-[36px] px-3 py-1 rounded-lg text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                               language === langOpt.id
-                                ? 'bg-[#0F766E] text-white'
-                                : 'text-[#1A262C] dark:text-[#DCE5EC] hover:text-[#17324D] dark:hover:text-white'
+                                ? 'bg-[#6D28D9] text-white'
+                                : 'text-[#22163F] dark:text-[#E4DDFA] hover:text-[#2E1A6E] dark:hover:text-white'
                             }`}
                           >
                             {langOpt.label}
@@ -878,12 +878,12 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
                   {/* Honest Translation Fallback Banner if any string fell back to English */}
                   {anyTranslationFallback && language !== 'en' && (
-                    <div className="rounded-xl border border-[#F2B544]/50 bg-[#F2B544]/15 p-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[#17324D] dark:text-[#F6F1E3]">
+                    <div className="rounded-xl border border-[#FF9F1C]/50 bg-[#FF9F1C]/15 p-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[#2E1A6E] dark:text-[#F5F0FF]">
                       <span>{t.translationMissingNotice}</span>
                       <button
                         type="button"
                         onClick={() => onLanguageChange('en')}
-                        className="rounded-lg border border-[#F2B544]/60 bg-white dark:bg-[#1C3652] px-3 py-1.5 font-semibold cursor-pointer"
+                        className="rounded-lg border border-[#FF9F1C]/60 bg-white dark:bg-[#2A1D5C] px-3 py-1.5 font-semibold cursor-pointer"
                       >
                         {t.switchEnglishFallback}
                       </button>
@@ -891,7 +891,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   )}
 
                   {/* Chapter Concept Summary */}
-                  <p className="text-sm leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]">
+                  <p className="text-sm leading-relaxed text-[#22163F] dark:text-[#E4DDFA]">
                     {chapterSummaryResolved.text}
                   </p>
 
@@ -904,9 +904,9 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                   />
 
                   {/* Chapter Offline Pack Download Bar (Class + Board + Chapter + Language + Size + Honest Saved State) */}
-                  <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-0.5">
-                      <p className="text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] flex items-center gap-1.5">
+                      <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center gap-1.5">
                         {currentSavedMeta ? (
                           <>
                             <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" aria-hidden="true" />
@@ -916,14 +916,14 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                           </>
                         ) : (
                           <>
-                            <HardDriveDownload className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+                            <HardDriveDownload className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
                             <span>
                               {t.downloadChapterOfflineBtn} · {formatBytes(estimatedBytes)}
                             </span>
                           </>
                         )}
                       </p>
-                      <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+                      <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
                         Class {learningPath.classLevel} ·{' '}
                         {learningPath.board === 'state' && learningPath.stateName
                           ? `${learningPath.stateName} State Board`
@@ -938,8 +938,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                       onClick={() => void handleToggleChapterOffline()}
                       className={`min-h-[42px] inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                         currentSavedMeta
-                          ? 'border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#1A262C] dark:text-[#DCE5EC] hover:border-red-500'
-                          : 'bg-[#0F766E] hover:bg-[#0B5F58] text-white'
+                          ? 'border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#22163F] dark:text-[#E4DDFA] hover:border-red-500'
+                          : 'bg-[#6D28D9] hover:bg-[#5B21B6] text-white'
                       }`}
                     >
                       {currentSavedMeta ? (
@@ -980,8 +980,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                               onClick={() => setSelectedExperimentId(exp.id)}
                               className={`min-h-[42px] rounded-xl border px-3.5 py-2 text-xs font-semibold text-left transition-colors cursor-pointer ${
                                 isSel
-                                  ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                                  : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]'
+                                  ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                                  : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]'
                               }`}
                             >
                               {expTitle}
@@ -1006,17 +1006,17 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                     expWhyResolved && (
                       <div
                         key={activeExperiment.id}
-                        className="animate-panel-reveal pt-4 border-t border-[#E6DEC8] dark:border-[#284766] space-y-5"
+                        className="animate-panel-reveal pt-4 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-5"
                       >
                         {/* Experiment Title + Honest Relationship Metadata + Read Aloud + Simulation CTA */}
                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                           <div className="space-y-1">
-                            <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                            <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                               <span>{relationLabel(activeExperiment.relationType)}</span>
                               <span aria-hidden="true"> · </span>
                               <span>{activityModeLabel(activeExperiment.activityMode)}</span>
                             </p>
-                            <h3 className="text-lg sm:text-xl font-bold text-[#17324D] dark:text-[#F6F1E3]">
+                            <h3 className="text-lg sm:text-xl font-bold text-[#2E1A6E] dark:text-[#F5F0FF]">
                               {expTitleResolved.text}
                             </h3>
                           </div>
@@ -1034,9 +1034,9 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                                   speak(spoken);
                                 }
                               }}
-                              className="min-h-[42px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer"
+                              className="min-h-[42px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer"
                             >
-                              <Volume2 className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+                              <Volume2 className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
                               <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
                             </button>
 
@@ -1044,7 +1044,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                               <button
                                 type="button"
                                 onClick={() => handleLaunchSimulation(activeExperiment)}
-                                className="min-h-[42px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2 text-xs font-semibold text-white transition-colors cursor-pointer"
+                                className="min-h-[42px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2 text-xs font-semibold text-white transition-colors cursor-pointer"
                               >
                                 <Play className="w-3.5 h-3.5" aria-hidden="true" />
                                 <span>{t.openSimulationBtn}</span>
@@ -1062,8 +1062,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                         )}
 
                         {captionText && (
-                          <div className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 p-3 text-xs text-[#17324D] dark:text-[#F6F1E3]">
-                            <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                          <div className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 p-3 text-xs text-[#2E1A6E] dark:text-[#F5F0FF]">
+                            <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                               {t.captionPrefix}:{' '}
                             </span>
                             <span>{captionText}</span>
@@ -1072,20 +1072,20 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
                         {/* Objective & Materials */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-1.5">
-                            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+                          <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-1.5">
+                            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                               {t.objectiveLabel}
                             </h4>
-                            <p className="text-xs sm:text-sm leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]">
+                            <p className="text-xs sm:text-sm leading-relaxed text-[#22163F] dark:text-[#E4DDFA]">
                               {expObjectiveResolved.text}
                             </p>
                           </div>
 
-                          <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-1.5">
-                            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+                          <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-1.5">
+                            <h4 className="text-xs font-semibold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                               {t.materialsLabel}
                             </h4>
-                            <ul className="list-disc pl-4 space-y-1 text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+                            <ul className="list-disc pl-4 space-y-1 text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA]">
                               {expMaterialsResolved.items.map((item, idx) => (
                                 <li key={idx}>{item}</li>
                               ))}
@@ -1094,8 +1094,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                         </div>
 
                         {/* Safety Note */}
-                        <div className="rounded-xl border border-[#F2B544]/50 bg-[#F2B544]/15 p-3.5 flex items-start gap-2.5 text-xs sm:text-sm text-[#17324D] dark:text-[#F6F1E3]">
-                          <AlertTriangle className="w-4 h-4 text-[#9A6100] dark:text-[#F2B544] shrink-0 mt-0.5" aria-hidden="true" />
+                        <div className="rounded-xl border border-[#FF9F1C]/50 bg-[#FF9F1C]/15 p-3.5 flex items-start gap-2.5 text-xs sm:text-sm text-[#2E1A6E] dark:text-[#F5F0FF]">
+                          <AlertTriangle className="w-4 h-4 text-[#B4430C] dark:text-[#FF9F1C] shrink-0 mt-0.5" aria-hidden="true" />
                           <div>
                             <span className="font-semibold">{t.safetyNoteLabel}: </span>
                             <span>{expSafetyResolved.text}</span>
@@ -1104,16 +1104,16 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
                         {/* Steps */}
                         <div className="space-y-2">
-                          <h4 className="text-xs font-semibold uppercase tracking-wide text-[#3D4A50] dark:text-[#B4C5D4]">
+                          <h4 className="text-xs font-semibold uppercase tracking-wide text-[#4A3F66] dark:text-[#C9BFEA]">
                             {t.stepsLabel}
                           </h4>
                           <ol className="space-y-2">
                             {expStepsResolved.items.map((step, idx) => (
                               <li
                                 key={idx}
-                                className="flex items-start gap-3 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 text-xs sm:text-sm text-[#17324D] dark:text-[#F6F1E3]"
+                                className="flex items-start gap-3 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 text-xs sm:text-sm text-[#2E1A6E] dark:text-[#F5F0FF]"
                               >
-                                <span className="w-6 h-6 rounded-lg bg-[#0F766E] text-white text-xs font-mono font-semibold flex items-center justify-center shrink-0 tabular-nums">
+                                <span className="w-6 h-6 rounded-lg bg-[#6D28D9] text-white text-xs font-mono font-semibold flex items-center justify-center shrink-0 tabular-nums">
                                   {idx + 1}
                                 </span>
                                 <span className="leading-relaxed">{step}</span>
@@ -1124,12 +1124,12 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
                         {/* Observation Table */}
                         <div className="space-y-2">
-                          <h4 className="text-xs font-semibold uppercase tracking-wide text-[#3D4A50] dark:text-[#B4C5D4]">
+                          <h4 className="text-xs font-semibold uppercase tracking-wide text-[#4A3F66] dark:text-[#C9BFEA]">
                             {t.observationTableLabel}
                           </h4>
-                          <div className="overflow-x-auto rounded-xl border border-[#E6DEC8] dark:border-[#284766]">
+                          <div className="overflow-x-auto rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78]">
                             <table className="w-full text-left text-xs tabular-nums">
-                              <thead className="bg-[#FAF4E4] dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3]">
+                              <thead className="bg-[#FFF3E6] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF]">
                                 <tr>
                                   {expColsResolved.items.map((col, idx) => (
                                     <th key={idx} className="px-3 py-2.5 font-semibold">
@@ -1138,11 +1138,11 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                                   ))}
                                 </tr>
                               </thead>
-                              <tbody className="divide-y divide-[#E6DEC8] dark:divide-[#284766]">
+                              <tbody className="divide-y divide-[#E7DDFB] dark:divide-[#3B2C78]">
                                 {activeExperiment.observationTable.sampleRows.map((row, rIdx) => (
-                                  <tr key={rIdx} className="bg-white dark:bg-[#152A40]">
+                                  <tr key={rIdx} className="bg-white dark:bg-[#1F1545]">
                                     {row.map((cell, cIdx) => (
-                                      <td key={cIdx} className="px-3 py-2 text-[#1A262C] dark:text-[#DCE5EC]">
+                                      <td key={cIdx} className="px-3 py-2 text-[#22163F] dark:text-[#E4DDFA]">
                                         {cell}
                                       </td>
                                     ))}
@@ -1154,15 +1154,15 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                         </div>
 
                         {/* "What should happen?" Prediction + Hints + "Why did this happen?" */}
-                        <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-3">
+                        <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-3">
                           <div className="flex items-center gap-2">
-                            <HelpCircle className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
-                            <h4 className="text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3]">
+                            <HelpCircle className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
+                            <h4 className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
                               {t.whatShouldHappenLabel}
                             </h4>
                           </div>
 
-                          <p className="text-xs sm:text-sm text-[#1A262C] dark:text-[#DCE5EC]">
+                          <p className="text-xs sm:text-sm text-[#22163F] dark:text-[#E4DDFA]">
                             {expPredQResolved.text}
                           </p>
 
@@ -1173,14 +1173,14 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                               const hasAnswered = picked !== undefined;
                               const isCorrect = idx === activeExperiment.predictionCorrectIndex;
                               let cls =
-                                'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]';
+                                'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]';
                               if (hasAnswered) {
                                 if (isCorrect) {
                                   cls =
                                     'border-emerald-600 bg-emerald-500/15 text-emerald-900 dark:text-emerald-200';
                                 } else if (isPicked) {
                                   cls =
-                                    'border-[#F2B544] bg-[#F2B544]/15 text-[#17324D] dark:text-[#F6F1E3]';
+                                    'border-[#FF9F1C] bg-[#FF9F1C]/15 text-[#2E1A6E] dark:text-[#F5F0FF]';
                                 }
                               }
                               return (
@@ -1213,9 +1213,9 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                                     return { ...prev, [activeExperiment.id]: next };
                                   })
                                 }
-                                className="min-h-[38px] inline-flex items-center gap-1.5 rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3 py-1.5 text-xs font-medium text-[#1A262C] dark:text-[#DCE5EC] hover:border-[#0F766E] cursor-pointer"
+                                className="min-h-[38px] inline-flex items-center gap-1.5 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3 py-1.5 text-xs font-medium text-[#22163F] dark:text-[#E4DDFA] hover:border-[#6D28D9] cursor-pointer"
                               >
-                                <Lightbulb className="w-3.5 h-3.5 text-[#9A6100] dark:text-[#F2B544]" aria-hidden="true" />
+                                <Lightbulb className="w-3.5 h-3.5 text-[#B4430C] dark:text-[#FF9F1C]" aria-hidden="true" />
                                 <span>{t.showHintLabel}</span>
                               </button>
                             )}
@@ -1228,14 +1228,14 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                                   [activeExperiment.id]: !prev[activeExperiment.id],
                                 }))
                               }
-                              className="min-h-[38px] inline-flex items-center gap-1.5 rounded-lg border border-[#0F766E]/40 bg-[#0F766E]/10 px-3 py-1.5 text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer"
+                              className="min-h-[38px] inline-flex items-center gap-1.5 rounded-lg border border-[#6D28D9]/40 bg-[#6D28D9]/10 px-3 py-1.5 text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer"
                             >
                               <span>{t.whyDidThisHappenLabel}</span>
                             </button>
                           </div>
 
                           {(revealedHintsMap[activeExperiment.id] ?? 0) > 0 && (
-                            <div className="space-y-1 text-xs text-[#17324D] dark:text-[#F6F1E3] bg-[#F2B544]/15 rounded-lg p-3">
+                            <div className="space-y-1 text-xs text-[#2E1A6E] dark:text-[#F5F0FF] bg-[#FF9F1C]/15 rounded-lg p-3">
                               {expHintsResolved.items
                                 .slice(0, revealedHintsMap[activeExperiment.id])
                                 .map((hint, hIdx) => (
@@ -1249,8 +1249,8 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
 
                           {(showWhyMap[activeExperiment.id] ||
                             predictionChoiceMap[activeExperiment.id] !== undefined) && (
-                            <div className="rounded-lg border border-[#0F766E]/30 bg-white dark:bg-[#152A40] p-3 text-xs sm:text-sm leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]">
-                              <p className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6] mb-1">
+                            <div className="rounded-lg border border-[#6D28D9]/30 bg-white dark:bg-[#1F1545] p-3 text-xs sm:text-sm leading-relaxed text-[#22163F] dark:text-[#E4DDFA]">
+                              <p className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD] mb-1">
                                 {t.whyDidThisHappenLabel}
                               </p>
                               <p>{expWhyResolved.text}</p>
@@ -1265,17 +1265,17 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
           </div>
 
           {/* Honest Coverage Note & Curriculum Source Attribution */}
-          <footer className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 space-y-1.5 text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+          <footer className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 space-y-1.5 text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
             <p>{resolveLocalizedText(catalogue.coverageNote, language).text}</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span className="font-semibold text-[#17324D] dark:text-[#F6F1E3]">
+              <span className="font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
                 {t.curriculumSourceLabel}:
               </span>
               <a
                 href={catalogue.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[#0B5F58] dark:text-[#4AD1C6] hover:underline"
+                className="inline-flex items-center gap-1 text-[#5B21B6] dark:text-[#C4B5FD] hover:underline"
               >
                 <span>{catalogue.sourceTitle}</span>
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
@@ -1287,7 +1287,7 @@ export const CurriculumBrowser: React.FC<CurriculumBrowserProps> = ({
                     href={catalogue.secondarySourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[#0B5F58] dark:text-[#4AD1C6] hover:underline"
+                    className="inline-flex items-center gap-1 text-[#5B21B6] dark:text-[#C4B5FD] hover:underline"
                   >
                     <span>{catalogue.secondarySourceTitle}</span>
                     <ExternalLink className="w-3 h-3" aria-hidden="true" />

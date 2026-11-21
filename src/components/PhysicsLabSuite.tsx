@@ -375,18 +375,18 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
   return (
     <section aria-labelledby="physics-lab-heading" className="mx-auto max-w-[1720px] px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
       {/* Section Header + Top Mode Tabs */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-2 pb-3 border-b border-[#E6DEC8] dark:border-[#284766]">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-2 pb-3 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
         <div>
-          <p className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+          <p className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
             {t.primaryDomainLabel}
           </p>
           <h2
             id="physics-lab-heading"
-            className="text-xl sm:text-2xl font-semibold text-[#17324D] dark:text-[#EEF3F7] mt-0.5 text-balance"
+            className="text-xl sm:text-2xl font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] mt-0.5 text-balance"
           >
             {t.physicsWorldTitle}
           </h2>
-          <p className="hidden xl:block text-sm text-[#1A262C] dark:text-[#B4C5D4] mt-0.5 max-w-3xl">
+          <p className="hidden xl:block text-sm text-[#22163F] dark:text-[#C9BFEA] mt-0.5 max-w-3xl">
             {t.physicsWorldDesc}
           </p>
         </div>
@@ -395,7 +395,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
           <div
             role="tablist"
             aria-label="Physics workspace views"
-            className="inline-flex items-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-1"
+            className="inline-flex items-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-1"
           >
             <button
               type="button"
@@ -404,8 +404,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               onClick={() => setLabTab('simulations')}
               className={`px-3 py-2 min-h-[44px] text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 labTab === 'simulations'
-                  ? 'bg-[#0F766E] text-white shadow-xs'
-                  : 'text-[#17324D] dark:text-[#B4C5D4] hover:text-[#0B5F58] dark:hover:text-white'
+                  ? 'bg-[#6D28D9] text-white shadow-xs'
+                  : 'text-[#2E1A6E] dark:text-[#C9BFEA] hover:text-[#5B21B6] dark:hover:text-white'
               }`}
             >
               {t.simulationsTab}
@@ -417,8 +417,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               onClick={() => setLabTab('practicals')}
               className={`px-3 py-2 min-h-[44px] text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 labTab === 'practicals'
-                  ? 'bg-[#0F766E] text-white shadow-xs'
-                  : 'text-[#17324D] dark:text-[#B4C5D4] hover:text-[#0B5F58] dark:hover:text-white'
+                  ? 'bg-[#6D28D9] text-white shadow-xs'
+                  : 'text-[#2E1A6E] dark:text-[#C9BFEA] hover:text-[#5B21B6] dark:hover:text-white'
               }`}
             >
               {t.practicalLab}
@@ -430,8 +430,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               onClick={() => setLabTab('solver')}
               className={`px-3 py-2 min-h-[44px] text-xs font-semibold rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 labTab === 'solver'
-                  ? 'bg-[#0F766E] text-white shadow-xs'
-                  : 'text-[#17324D] dark:text-[#B4C5D4] hover:text-[#0B5F58] dark:hover:text-white'
+                  ? 'bg-[#6D28D9] text-white shadow-xs'
+                  : 'text-[#2E1A6E] dark:text-[#C9BFEA] hover:text-[#5B21B6] dark:hover:text-white'
               }`}
             >
               {t.solverTab}
@@ -446,9 +446,9 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
           {/* LEFT EXPERIMENT CHOOSER PANEL */}
           <aside
             aria-label="Physics experiments list"
-            className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-2 flex gap-3 overflow-x-auto shadow-xs"
+            className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-2 flex gap-3 overflow-x-auto shadow-xs"
           >
-            <div className="shrink-0 pr-3 border-r border-[#E6DEC8] dark:border-[#284766]">
+            <div className="shrink-0 pr-3 border-r border-[#E7DDFB] dark:border-[#3B2C78]">
               <p className="px-1 text-[11px] font-semibold uppercase tracking-wide text-[#7C3AED] dark:text-[#C4B5FD]">
                 {language === 'hi' ? 'नए प्रयोग' : language === 'kn' ? 'ಹೊಸ ಪ್ರಯೋಗಗಳು' : 'New experiments'}
               </p>
@@ -462,7 +462,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     className={`shrink-0 rounded-xl border px-3 py-2 min-h-[44px] text-xs sm:text-sm font-medium whitespace-nowrap transition-colors cursor-pointer ${
                       station === sid
                         ? 'border-[#7C3AED] bg-[#7C3AED] text-white'
-                        : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#7C3AED]'
+                        : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#7C3AED]'
                     }`}
                   >
                     {stationShortName(sid, language)}
@@ -471,7 +471,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               </div>
             </div>
             <div className="shrink-0">
-              <p className="px-1 text-[11px] font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+              <p className="px-1 text-[11px] font-semibold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                 Quantum Physics Experiments
               </p>
               <div className="mt-1 flex gap-1.5">
@@ -485,12 +485,12 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       onClick={() => handleChooseExperiment(exp.id)}
                       className={`shrink-0 flex items-center gap-2 rounded-xl border px-3 py-2 min-h-[44px] text-left transition-colors cursor-pointer ${
                         active
-                          ? 'border-[#0F766E] bg-[#0F766E] text-white shadow-xs'
-                          : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]'
+                          ? 'border-[#6D28D9] bg-[#6D28D9] text-white shadow-xs'
+                          : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]'
                       }`}
                     >
                       <span className="flex items-center gap-2.5 min-w-0">
-                        <span className={active ? 'text-white' : 'text-[#0B5F58] dark:text-[#4AD1C6]'}>
+                        <span className={active ? 'text-white' : 'text-[#5B21B6] dark:text-[#C4B5FD]'}>
                           {EXPERIMENT_ICONS[exp.id]}
                         </span>
                         <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
@@ -499,7 +499,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       </span>
                       {done && (
                         <CheckCircle2
-                          className={`w-4 h-4 shrink-0 ${active ? 'text-[#F2B544]' : 'text-[#0F766E]'}`}
+                          className={`w-4 h-4 shrink-0 ${active ? 'text-[#FF9F1C]' : 'text-[#6D28D9]'}`}
                           aria-label="Completed"
                         />
                       )}
@@ -509,9 +509,9 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               </div>
             </div>
 
-            <div className="shrink-0 pl-3 border-l border-[#E6DEC8] dark:border-[#284766]">
-              <p className="px-1 text-[11px] font-semibold uppercase tracking-wide text-[#17324D] dark:text-[#F2B544] flex items-center gap-1.5">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#F2B544]" aria-hidden="true" />
+            <div className="shrink-0 pl-3 border-l border-[#E7DDFB] dark:border-[#3B2C78]">
+              <p className="px-1 text-[11px] font-semibold uppercase tracking-wide text-[#2E1A6E] dark:text-[#FF9F1C] flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 rounded-full bg-[#FF9F1C]" aria-hidden="true" />
                 <span>Basic &amp; Classical Physics</span>
               </p>
               <div className="mt-1 flex gap-1.5">
@@ -525,12 +525,12 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       onClick={() => handleChooseExperiment(exp.id)}
                       className={`shrink-0 flex items-center gap-2 rounded-xl border px-3 py-2 min-h-[44px] text-left transition-colors cursor-pointer ${
                         active
-                          ? 'border-[#0F766E] bg-[#0F766E] text-white shadow-xs'
-                          : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E]'
+                          ? 'border-[#6D28D9] bg-[#6D28D9] text-white shadow-xs'
+                          : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9]'
                       }`}
                     >
                       <span className="flex items-center gap-2.5 min-w-0">
-                        <span className={active ? 'text-white' : 'text-[#D99B26] dark:text-[#F2B544]'}>
+                        <span className={active ? 'text-white' : 'text-[#F07C00] dark:text-[#FF9F1C]'}>
                           {EXPERIMENT_ICONS[exp.id]}
                         </span>
                         <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
@@ -539,7 +539,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       </span>
                       {done && (
                         <CheckCircle2
-                          className={`w-4 h-4 shrink-0 ${active ? 'text-[#F2B544]' : 'text-[#0F766E]'}`}
+                          className={`w-4 h-4 shrink-0 ${active ? 'text-[#FF9F1C]' : 'text-[#6D28D9]'}`}
                           aria-label="Completed"
                         />
                       )}
@@ -556,18 +556,18 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
           ) : (
           /* EXPERIMENT WINDOW */
           <div key={selectedExperiment} className="animate-panel-reveal space-y-3">
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-3 sm:p-4 shadow-sm space-y-3">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-3 sm:p-4 shadow-sm space-y-3">
               {/* Side Window Header */}
-              <div className="flex flex-col 2xl:flex-row 2xl:items-start justify-between gap-2 pb-3 border-b border-[#E6DEC8] dark:border-[#284766]">
+              <div className="flex flex-col 2xl:flex-row 2xl:items-start justify-between gap-2 pb-3 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
                 <div>
-                  <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD]">
                     {experimentMeta.category === 'quantum'
                       ? 'Quantum Physics Lab'
                       : 'Basic Physics Lab'}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-semibold text-[#17324D] dark:text-[#EEF3F7] mt-0.5">
+                  <h3 className="text-lg sm:text-xl font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] mt-0.5">
                     {experimentMeta.title[language]}{' '}
-                    <span className="text-xs font-normal text-[#3D4A50] dark:text-[#8FA4B8]">— {experimentMeta.subtitle[language]}</span>
+                    <span className="text-xs font-normal text-[#4A3F66] dark:text-[#A496D4]">— {experimentMeta.subtitle[language]}</span>
                   </h3>
                 </div>
 
@@ -575,7 +575,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   <button
                     type="button"
                     onClick={() => setSimRunning((r) => !r)}
-                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     {simRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                     <span>{simRunning ? t.pauseLabel : t.playLabel}</span>
@@ -584,7 +584,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   <button
                     type="button"
                     onClick={() => setSceneResetKey((k) => k + 1)}
-                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     <span>Reset</span>
                   </button>
@@ -594,7 +594,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       type="button"
                       onClick={() => setControlsOpen((o) => !o)}
                       aria-expanded={controlsOpen}
-                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                     >
                       <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
                       <span>{controlsOpen ? 'Hide controls' : 'Show controls'}</span>
@@ -604,14 +604,14 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     <button
                       type="button"
                       onClick={() => void stage.toggle()}
-                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                     >
                       {stage.isFullscreen ? <Minimize2 className="w-3.5 h-3.5" aria-hidden="true" /> : <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />}
                       <span>{stage.isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}</span>
                     </button>
                   )}
 
-                  <label className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                  <label className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                     Speed
                     <select
                       value={simSpeed}
@@ -637,9 +637,9 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                         speak(spoken);
                       }
                     }}
-                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
-                    <Volume2 className="w-3.5 h-3.5 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+                    <Volume2 className="w-3.5 h-3.5 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
                     <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
                   </button>
 
@@ -649,8 +649,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     disabled={isCompleted}
                     className={`min-h-[44px] inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer ${
                       isCompleted
-                        ? 'bg-[#0F766E]/15 text-[#0B5F58] dark:text-[#4AD1C6] border border-[#0F766E]/45'
-                        : 'bg-[#0F766E] text-white hover:bg-[#0B5F58]'
+                        ? 'bg-[#6D28D9]/15 text-[#5B21B6] dark:text-[#C4B5FD] border border-[#6D28D9]/45'
+                        : 'bg-[#6D28D9] text-white hover:bg-[#5B21B6]'
                     }`}
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
@@ -660,8 +660,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               </div>
 
               {captionText && (
-                <div className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 p-3 text-xs text-[#17324D] dark:text-[#EEF3F7]">
-                  <span className="font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">{t.captionPrefix}: </span>
+                <div className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 p-3 text-xs text-[#2E1A6E] dark:text-[#F3EFFF]">
+                  <span className="font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">{t.captionPrefix}: </span>
                   <span>{captionText}</span>
                 </div>
               )}
@@ -670,7 +670,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               <div
                 role="tablist"
                 aria-label="Experiment views"
-                className="grid grid-cols-3 gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-1"
+                className="grid grid-cols-3 gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-1"
               >
                 {(
                   [
@@ -689,8 +689,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                       onClick={() => setSideTab(tab.id)}
                       className={`inline-flex items-center justify-center gap-2 py-2.5 px-3 min-h-[44px] rounded-lg text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
                         active
-                          ? 'bg-[#0F766E] text-white shadow-xs'
-                          : 'text-[#17324D] dark:text-[#B4C5D4] hover:text-[#0B5F58] dark:hover:text-white'
+                          ? 'bg-[#6D28D9] text-white shadow-xs'
+                          : 'text-[#2E1A6E] dark:text-[#C9BFEA] hover:text-[#5B21B6] dark:hover:text-white'
                       }`}
                     >
                       {tab.icon}
@@ -721,7 +721,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     <button
                       type="button"
                       onClick={() => void stage.toggle()}
-                      className="absolute top-2 right-2 z-10 min-h-[40px] inline-flex items-center gap-1.5 rounded-lg bg-[#17324D]/85 px-3 py-1.5 text-xs font-semibold text-white"
+                      className="absolute top-2 right-2 z-10 min-h-[40px] inline-flex items-center gap-1.5 rounded-lg bg-[#2E1A6E]/85 px-3 py-1.5 text-xs font-semibold text-white"
                     >
                       <Minimize2 className="w-3.5 h-3.5" aria-hidden="true" />
                       Exit fullscreen
@@ -759,18 +759,18 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     {computed.metrics.map((m) => (
                       <div
                         key={m.label}
-                        className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 py-2"
+                        className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 py-2"
                       >
-                        <p className="text-[11px] font-medium text-[#3D4A50] dark:text-[#8FA4B8]">
+                        <p className="text-[11px] font-medium text-[#4A3F66] dark:text-[#A496D4]">
                           {m.label}
                         </p>
                         <p
                           className={`text-base font-mono font-semibold tabular-nums ${
                             m.accent === 'amber'
-                              ? 'text-[#D99B26] dark:text-[#F2B544]'
+                              ? 'text-[#F07C00] dark:text-[#FF9F1C]'
                               : m.accent === 'emerald'
-                                ? 'text-[#0B5F58] dark:text-[#4AD1C6]'
-                                : 'text-[#17324D] dark:text-[#EEF3F7]'
+                                ? 'text-[#5B21B6] dark:text-[#C4B5FD]'
+                                : 'text-[#2E1A6E] dark:text-[#F3EFFF]'
                           }`}
                         >
                           {m.value}
@@ -780,15 +780,15 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   </div>
 
                   {/* Interactive Parameter Sliders for Selected Experiment */}
-                  <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 space-y-3">
+                  <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h4 className="text-xs font-semibold uppercase tracking-wide text-[#17324D] dark:text-[#B4C5D4]">
+                      <h4 className="text-xs font-semibold uppercase tracking-wide text-[#2E1A6E] dark:text-[#C9BFEA]">
                         Experiment Controls
                       </h4>
                       <button
                         type="button"
                         onClick={handleLogCurrentReading}
-                        className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-3.5 py-2 text-xs font-semibold text-white cursor-pointer"
+                        className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-3.5 py-2 text-xs font-semibold text-white cursor-pointer"
                       >
                         <ClipboardList className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>Record Reading</span>
@@ -955,8 +955,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                                 onClick={() => updateParam('particleType', pt)}
                                 className={`flex-1 min-h-[44px] rounded-xl border py-2 text-xs font-semibold capitalize cursor-pointer ${
                                   params.particleType === pt
-                                    ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                                    : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#B4C5D4]'
+                                    ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#C9BFEA]'
                                 }`}
                               >
                                 {pt} Beam
@@ -1017,8 +1017,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                                 onClick={() => updateParam('elecTopology', topo)}
                                 className={`flex-1 min-h-[44px] rounded-xl border py-2 text-xs font-semibold capitalize cursor-pointer ${
                                   params.elecTopology === topo
-                                    ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                                    : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#B4C5D4]'
+                                    ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#C9BFEA]'
                                 }`}
                               >
                                 {topo} Circuit
@@ -1154,8 +1154,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                               onClick={() => setSoundEnabled((s) => !s)}
                               className={`w-full min-h-[44px] inline-flex items-center justify-center gap-2 rounded-xl border py-2 text-xs font-semibold cursor-pointer transition-colors ${
                                 soundEnabled
-                                  ? 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/20 text-[#17324D] dark:text-[#F8DFA8]'
-                                  : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#B4C5D4] hover:border-[#0F766E]'
+                                  ? 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/20 text-[#2E1A6E] dark:text-[#FFD9A8]'
+                                  : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#C9BFEA] hover:border-[#6D28D9]'
                               }`}
                             >
                               {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
@@ -1208,20 +1208,20 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
 
                   {/* Guided 2D Projectile Mission & Offline Download Pack toggle when Projectile Motion is active */}
                   {selectedExperiment === 'mechanics' && (
-                    <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-4">
+                    <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-4">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div>
-                          <p className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                          <p className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                             Guided Target Mission, Tutorial &amp; Offline Lesson Pack
                           </p>
-                          <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8]">
+                          <p className="text-xs text-[#4A3F66] dark:text-[#A496D4]">
                             Includes prediction quiz, step-by-step hints, comparison graph, and offline save.
                           </p>
                         </div>
                         <button
                           type="button"
                           onClick={() => setShowProjectileMissionDrawer((v) => !v)}
-                          className="min-h-[44px] rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2 text-xs font-semibold text-white cursor-pointer"
+                          className="min-h-[44px] rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2 text-xs font-semibold text-white cursor-pointer"
                         >
                           {showProjectileMissionDrawer ? 'Hide Guided 2D Mission' : 'Open Guided 2D Mission & Offline Pack'}
                         </button>
@@ -1254,11 +1254,11 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               {/* SIDE WINDOW TAB 2: LIVE FORMULA & STEP-BY-STEP CALCULATION */}
               {sideTab === 'calculation' && (
                 <div key={`side-${selectedExperiment}-calc`} className="animate-panel-reveal space-y-5">
-                  <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[#3D4A50] dark:text-[#8FA4B8]">
+                  <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[#4A3F66] dark:text-[#A496D4]">
                       Governing Equations
                     </p>
-                    <p className="text-sm sm:text-base font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] mt-1.5">
+                    <p className="text-sm sm:text-base font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] mt-1.5">
                       {experimentMeta.formula}
                     </p>
                   </div>
@@ -1267,31 +1267,31 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                     {computed.metrics.map((m) => (
                       <div
                         key={m.label}
-                        className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3.5"
+                        className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3.5"
                       >
-                        <p className="text-[11px] font-medium text-[#3D4A50] dark:text-[#8FA4B8]">
+                        <p className="text-[11px] font-medium text-[#4A3F66] dark:text-[#A496D4]">
                           {m.label}
                         </p>
-                        <p className="text-lg font-mono font-semibold text-[#17324D] dark:text-[#EEF3F7] mt-1 tabular-nums">
+                        <p className="text-lg font-mono font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] mt-1 tabular-nums">
                           {m.value}
                         </p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4 space-y-3">
-                    <h4 className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                  <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4 space-y-3">
+                    <h4 className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                       Live Step-by-Step Working
                     </h4>
-                    <ol className="space-y-2 text-xs sm:text-sm text-[#1A262C] dark:text-[#B4C5D4] list-decimal pl-5 font-mono leading-relaxed">
+                    <ol className="space-y-2 text-xs sm:text-sm text-[#22163F] dark:text-[#C9BFEA] list-decimal pl-5 font-mono leading-relaxed">
                       {computed.steps.map((step, idx) => (
                         <li key={idx}>{step}</li>
                       ))}
                     </ol>
                   </div>
 
-                  <div className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <p className="text-xs leading-relaxed text-[#17324D] dark:text-[#B4C5D4]">
+                  <div className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <p className="text-xs leading-relaxed text-[#2E1A6E] dark:text-[#C9BFEA]">
                       {experimentMeta.concept[language]}
                     </p>
                     <button
@@ -1303,7 +1303,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                           `Explain ${experimentMeta.title.en} (${experimentMeta.formula}) and how changing parameters affects the result.`
                         )
                       }
-                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] shrink-0 cursor-pointer disabled:opacity-50"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] shrink-0 cursor-pointer disabled:opacity-50"
                     >
                       <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                       <span>{isOnline ? t.askMentor : t.requiresInternetNotice}</span>
@@ -1315,19 +1315,19 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               {/* SIDE WINDOW TAB 3: READINGS & OBSERVATION LOG */}
               {sideTab === 'readings' && (
                 <div key={`side-${selectedExperiment}-readings`} className="animate-panel-reveal space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-4">
                     <div>
-                      <p className="text-xs font-medium text-[#3D4A50] dark:text-[#8FA4B8]">
+                      <p className="text-xs font-medium text-[#4A3F66] dark:text-[#A496D4]">
                         Current Live Instrument Snapshot
                       </p>
-                      <p className="text-xs sm:text-sm font-mono font-semibold text-[#17324D] dark:text-[#EEF3F7] mt-1 tabular-nums">
+                      <p className="text-xs sm:text-sm font-mono font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] mt-1 tabular-nums">
                         {computed.readingParameterSummary} → {computed.readingMeasuredSummary} ({computed.readingCalculatedSummary})
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={handleLogCurrentReading}
-                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-2 text-xs font-semibold text-white cursor-pointer"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-2 text-xs font-semibold text-white cursor-pointer"
                     >
                       <ClipboardList className="w-4 h-4" aria-hidden="true" />
                       <span>Record Reading</span>
@@ -1335,7 +1335,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   </div>
 
                   <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                    <h4 className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                       Recorded Readings Table
                     </h4>
                     <div className="flex items-center gap-2">
@@ -1344,7 +1344,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                           <button
                             type="button"
                             onClick={handleExportReadingsCsv}
-                            className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                            className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                           >
                             <Download className="w-3.5 h-3.5" aria-hidden="true" />
                             <span>Export CSV</span>
@@ -1352,7 +1352,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                           <button
                             type="button"
                             onClick={() => setReadings([])}
-                            className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs text-[#3D4A50] dark:text-[#8FA4B8] hover:text-[#17324D] dark:hover:text-white cursor-pointer"
+                            className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs text-[#4A3F66] dark:text-[#A496D4] hover:text-[#2E1A6E] dark:hover:text-white cursor-pointer"
                           >
                             <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                             <span>Clear</span>
@@ -1363,29 +1363,29 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   </div>
 
                   {readings.length === 0 ? (
-                    <div className="rounded-xl border border-dashed border-[#E6DEC8] dark:border-[#284766] p-8 text-center">
-                      <p className="text-sm text-[#3D4A50] dark:text-[#8FA4B8]">
+                    <div className="rounded-xl border border-dashed border-[#E7DDFB] dark:border-[#3B2C78] p-8 text-center">
+                      <p className="text-sm text-[#4A3F66] dark:text-[#A496D4]">
                         No readings recorded yet. Adjust sliders in the 3D Simulation tab and click Record Reading.
                       </p>
                     </div>
                   ) : (
-                    <div className="overflow-x-auto rounded-xl border border-[#E6DEC8] dark:border-[#284766]">
+                    <div className="overflow-x-auto rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78]">
                       <table className="w-full text-left text-xs">
-                        <thead className="bg-[#F7EFE0] dark:bg-[#1C3652]">
-                          <tr className="border-b border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#EEF3F7]">
+                        <thead className="bg-[#F7EFE0] dark:bg-[#2A1D5C]">
+                          <tr className="border-b border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#F3EFFF]">
                             <th className="py-2.5 px-3 font-semibold">Experiment</th>
                             <th className="py-2.5 px-3 font-semibold">Parameters</th>
                             <th className="py-2.5 px-3 font-semibold">Measured</th>
                             <th className="py-2.5 px-3 font-semibold text-right">Derived</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#E6DEC8] dark:divide-[#284766] tabular-nums font-mono">
+                        <tbody className="divide-y divide-[#E7DDFB] dark:divide-[#3B2C78] tabular-nums font-mono">
                           {readings.map((row) => (
-                            <tr key={row.id} className="text-[#1A262C] dark:text-[#EEF3F7]">
-                              <td className="py-2.5 px-3 font-sans font-medium text-[#17324D] dark:text-[#EEF3F7]">{row.topic}</td>
+                            <tr key={row.id} className="text-[#22163F] dark:text-[#F3EFFF]">
+                              <td className="py-2.5 px-3 font-sans font-medium text-[#2E1A6E] dark:text-[#F3EFFF]">{row.topic}</td>
                               <td className="py-2.5 px-3">{row.parameter}</td>
-                              <td className="py-2.5 px-3 text-[#0B5F58] dark:text-[#4AD1C6]">{row.measured}</td>
-                              <td className="py-2.5 px-3 text-right text-[#0B5F58] dark:text-[#4AD1C6]">
+                              <td className="py-2.5 px-3 text-[#5B21B6] dark:text-[#C4B5FD]">{row.measured}</td>
+                              <td className="py-2.5 px-3 text-right text-[#5B21B6] dark:text-[#C4B5FD]">
                                 {row.calculated}
                               </td>
                             </tr>
@@ -1405,11 +1405,11 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
       {/* TAB 2: VIRTUAL PRACTICAL EXPERIMENTS & DATA LOG */}
       {labTab === 'practicals' && (
         <div key="tab-practicals" className="animate-panel-reveal grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
-          <div className="lg:col-span-5 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4">
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+          <div className="lg:col-span-5 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4">
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
               {currentModule.experimentTitle[language]}
             </h3>
-            <ol className="space-y-2.5 text-sm text-[#1A262C] dark:text-[#B4C5D4] list-decimal pl-5">
+            <ol className="space-y-2.5 text-sm text-[#22163F] dark:text-[#C9BFEA] list-decimal pl-5">
               {currentModule.experimentSteps.map((step, i) => (
                 <li key={i}>{step[language]}</li>
               ))}
@@ -1418,30 +1418,30 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               <button
                 type="button"
                 onClick={() => setLabTab('simulations')}
-                className="min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                className="min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
               >
                 Open 3D Workbench
               </button>
               <button
                 type="button"
                 onClick={handleLogCurrentReading}
-                className="min-h-[44px] rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] cursor-pointer"
+                className="min-h-[44px] rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] cursor-pointer"
               >
                 Record Current Reading
               </button>
             </div>
           </div>
 
-          <div className="lg:col-span-7 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5">
+          <div className="lg:col-span-7 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5">
             <div className="flex items-center justify-between gap-3 mb-3">
-              <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+              <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                 Virtual Lab Observation Table
               </h3>
               {readings.length > 0 && (
                 <button
                   type="button"
                   onClick={() => setReadings([])}
-                  className="min-h-[40px] inline-flex items-center gap-1 text-xs text-[#3D4A50] hover:text-[#17324D] dark:hover:text-white cursor-pointer"
+                  className="min-h-[40px] inline-flex items-center gap-1 text-xs text-[#4A3F66] hover:text-[#2E1A6E] dark:hover:text-white cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Clear Log</span>
@@ -1450,8 +1450,8 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
             </div>
 
             {readings.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-[#E6DEC8] dark:border-[#284766] p-8 text-center">
-                <p className="text-sm text-[#3D4A50] dark:text-[#8FA4B8]">
+              <div className="rounded-xl border border-dashed border-[#E7DDFB] dark:border-[#3B2C78] p-8 text-center">
+                <p className="text-sm text-[#4A3F66] dark:text-[#A496D4]">
                   No practical readings logged yet. Adjust sliders in any experiment and click Record Reading.
                 </p>
               </div>
@@ -1459,20 +1459,20 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead>
-                    <tr className="border-b border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#8FA4B8]">
+                    <tr className="border-b border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#A496D4]">
                       <th className="py-2 pr-3 font-semibold">Module</th>
                       <th className="py-2 pr-3 font-semibold">Input Parameters</th>
                       <th className="py-2 pr-3 font-semibold">Measured</th>
                       <th className="py-2 font-semibold text-right">Derived Metric</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#E6DEC8] dark:divide-[#284766] tabular-nums font-mono">
+                  <tbody className="divide-y divide-[#E7DDFB] dark:divide-[#3B2C78] tabular-nums font-mono">
                     {readings.map((row) => (
-                      <tr key={row.id} className="text-[#1A262C] dark:text-[#EEF3F7]">
-                        <td className="py-2.5 pr-3 font-sans font-medium text-[#17324D] dark:text-[#EEF3F7]">{row.topic}</td>
+                      <tr key={row.id} className="text-[#22163F] dark:text-[#F3EFFF]">
+                        <td className="py-2.5 pr-3 font-sans font-medium text-[#2E1A6E] dark:text-[#F3EFFF]">{row.topic}</td>
                         <td className="py-2.5 pr-3">{row.parameter}</td>
-                        <td className="py-2.5 pr-3 text-[#0B5F58] dark:text-[#4AD1C6]">{row.measured}</td>
-                        <td className="py-2.5 text-right text-[#0B5F58] dark:text-[#4AD1C6]">
+                        <td className="py-2.5 pr-3 text-[#5B21B6] dark:text-[#C4B5FD]">{row.measured}</td>
+                        <td className="py-2.5 text-right text-[#5B21B6] dark:text-[#C4B5FD]">
                           {row.calculated}
                         </td>
                       </tr>
@@ -1490,20 +1490,20 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
         <div key="tab-solver" className="animate-panel-reveal grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
           <form
             onSubmit={handleSolveNumerical}
-            className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 space-y-4"
+            className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 space-y-4"
           >
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="text-base font-semibold text-[#17324D] dark:text-[#EEF3F7] flex items-center gap-2">
-                <Calculator className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+              <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] flex items-center gap-2">
+                <Calculator className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
                 <span>{t.solverTab}</span>
               </h3>
-              <span className="text-[11px] font-semibold text-[#D99B26] dark:text-[#F2B544]">
+              <span className="text-[11px] font-semibold text-[#F07C00] dark:text-[#FF9F1C]">
                 {t.requiresInternetNotice}
               </span>
             </div>
 
             {!isOnline && (
-              <div className="rounded-xl border border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/15 p-3 text-xs text-[#17324D] dark:text-[#F8DFA8]">
+              <div className="rounded-xl border border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/15 p-3 text-xs text-[#2E1A6E] dark:text-[#FFD9A8]">
                 You are currently offline. Cloud AI numerical solving requires an internet connection, while all interactive simulations and calculations tabs work offline.
               </div>
             )}
@@ -1520,7 +1520,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                 className={`min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-2 text-xs font-semibold cursor-pointer disabled:opacity-50 ${
                   isRecording
                     ? 'border-red-500 bg-red-500/15 text-red-600'
-                    : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7]'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF]'
                 }`}
               >
                 {isRecording ? <Square className="w-3.5 h-3.5" aria-hidden="true" /> : <Mic className="w-3.5 h-3.5" aria-hidden="true" />}
@@ -1539,23 +1539,23 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
               value={solverInput}
               onChange={(e) => setSolverInput(e.target.value)}
               placeholder="Enter any Physics numerical (e.g., double slit fringe width, photoelectric threshold, kinematics, circuits)..."
-              className="w-full rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2.5 text-sm text-[#17324D] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0F766E]"
+              className="w-full rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2.5 text-sm text-[#2E1A6E] dark:text-white focus:outline-none focus:ring-2 focus:ring-[#6D28D9]"
             />
 
-            {transcribeError && <p className="text-xs text-[#D99B26] dark:text-[#F2B544]">{transcribeError}</p>}
+            {transcribeError && <p className="text-xs text-[#F07C00] dark:text-[#FF9F1C]">{transcribeError}</p>}
 
             <div className="flex flex-wrap items-center justify-between gap-2">
               <button
                 type="button"
                 onClick={() => setSolverInput(currentModule.sampleNumerical)}
-                className="min-h-[40px] text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:underline cursor-pointer"
+                className="min-h-[40px] text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:underline cursor-pointer"
               >
                 Load {currentModule.title[language]} Preset
               </button>
               <button
                 type="submit"
                 disabled={solverLoading || !isOnline}
-                className="min-h-[44px] rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] disabled:opacity-50 cursor-pointer"
+                className="min-h-[44px] rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] disabled:opacity-50 cursor-pointer"
               >
                 {solverLoading ? 'Solving...' : t.solveNumerical}
               </button>
@@ -1568,21 +1568,21 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
             )}
           </form>
 
-          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5">
+          <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5">
             {!solverResult ? (
               <div className="h-full flex flex-col justify-center items-center text-center py-8">
-                <Calculator className="w-8 h-8 text-[#3D4A50] mb-2" aria-hidden="true" />
-                <p className="text-sm font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+                <Calculator className="w-8 h-8 text-[#4A3F66] mb-2" aria-hidden="true" />
+                <p className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
                   Structured Step-by-Step Physics Solution
                 </p>
-                <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8] mt-1 max-w-sm">
+                <p className="text-xs text-[#4A3F66] dark:text-[#A496D4] mt-1 max-w-sm">
                   Submit a numerical problem on the left to extract given SI quantities, governing equations, calculations, and dimensional checks.
                 </p>
               </div>
             ) : (
               <div className="space-y-4">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <span className="text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                     {solverResult.finalAnswer
                       ? `Final Answer: ${solverResult.finalAnswer} ${solverResult.unit}`
                       : 'No answer — this does not look like a complete physics numerical. See the note below.'}
@@ -1596,7 +1596,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                             `Formula: ${solverResult.formula}. Answer: ${solverResult.finalAnswer} ${solverResult.unit}. ${solverResult.verificationTip}`
                           )
                     }
-                    className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 text-xs text-[#17324D] dark:text-[#EEF3F7] cursor-pointer"
+                    className="min-h-[40px] inline-flex items-center gap-1 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 text-xs text-[#2E1A6E] dark:text-[#F3EFFF] cursor-pointer"
                   >
                     <Volume2 className="w-3.5 h-3.5" />
                     <span>{isSpeaking ? t.stopReading : t.readAloud}</span>
@@ -1604,24 +1604,24 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold text-[#3D4A50] dark:text-[#8FA4B8]">Given Data</p>
-                  <ul className="mt-1 space-y-1 text-xs font-mono text-[#17324D] dark:text-white">
+                  <p className="text-xs font-semibold text-[#4A3F66] dark:text-[#A496D4]">Given Data</p>
+                  <ul className="mt-1 space-y-1 text-xs font-mono text-[#2E1A6E] dark:text-white">
                     {solverResult.given.map((g, idx) => (
                       <li key={idx}>• {g}</li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="rounded-lg bg-[#F6F1E3] dark:bg-[#1C3652] border border-[#E6DEC8] dark:border-[#284766] p-3">
-                  <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">Governing Formula</p>
-                  <p className="text-sm font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] mt-0.5">
+                <div className="rounded-lg bg-[#F5F0FF] dark:bg-[#2A1D5C] border border-[#E7DDFB] dark:border-[#3B2C78] p-3">
+                  <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">Governing Formula</p>
+                  <p className="text-sm font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] mt-0.5">
                     {solverResult.formula}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold text-[#3D4A50] dark:text-[#8FA4B8]">Step-by-Step Working</p>
-                  <ol className="mt-1 space-y-1.5 text-xs text-[#1A262C] dark:text-[#B4C5D4] list-decimal pl-4">
+                  <p className="text-xs font-semibold text-[#4A3F66] dark:text-[#A496D4]">Step-by-Step Working</p>
+                  <ol className="mt-1 space-y-1.5 text-xs text-[#22163F] dark:text-[#C9BFEA] list-decimal pl-4">
                     {solverResult.steps.map((s, idx) => (
                       <li key={idx}>{s}</li>
                     ))}
@@ -1632,7 +1632,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   <div
                     className={`rounded-lg border p-3 text-xs ${
                       solverResult.calculatorChecked
-                        ? 'border-[#0F766E] bg-[#E3F4F1] dark:bg-[#0F3B38] text-[#0B5F58] dark:text-[#9FE3DA]'
+                        ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#2D1B5A] text-[#5B21B6] dark:text-[#9FE3DA]'
                         : 'border-[#B45309] bg-[#FDF0E1] dark:bg-[#3A2A14] text-[#7A2E0E] dark:text-[#F5B38A]'
                     }`}
                   >
@@ -1659,7 +1659,7 @@ export const PhysicsLabSuite: React.FC<PhysicsLabSuiteProps> = ({
                   </div>
                 )}
 
-                <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8] border-t border-[#E6DEC8] dark:border-[#284766] pt-3">
+                <p className="text-xs text-[#4A3F66] dark:text-[#A496D4] border-t border-[#E7DDFB] dark:border-[#3B2C78] pt-3">
                   Verification: {solverResult.verificationTip}
                 </p>
               </div>
@@ -1692,15 +1692,15 @@ const SliderControl: React.FC<SliderControlProps> = ({
 }) => (
   <div className="space-y-1.5">
     <div className="flex items-center justify-between text-xs">
-      <span className="font-medium text-[#17324D] dark:text-[#B4C5D4]">{label}</span>
-      <span className="font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">{value}</span>
+      <span className="font-medium text-[#2E1A6E] dark:text-[#C9BFEA]">{label}</span>
+      <span className="font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">{value}</span>
     </div>
     <div className="flex items-center gap-2">
       <button
         type="button"
         onClick={() => onChange(Math.max(min, Number((num - step).toFixed(4))))}
         aria-label={`Decrease ${label}`}
-        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
       >
         <Minus className="w-4 h-4" aria-hidden="true" />
       </button>
@@ -1711,13 +1711,13 @@ const SliderControl: React.FC<SliderControlProps> = ({
         step={step}
         value={num}
         onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full accent-[#0F766E] cursor-pointer"
+        className="w-full accent-[#6D28D9] cursor-pointer"
       />
       <button
         type="button"
         onClick={() => onChange(Math.min(max, Number((num + step).toFixed(4))))}
         aria-label={`Increase ${label}`}
-        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer shrink-0"
+        className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer shrink-0"
       >
         <Plus className="w-4 h-4" aria-hidden="true" />
       </button>

@@ -218,12 +218,12 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
           {/* Header + Role Segmented Switch */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-medium text-[#3D4A50] dark:text-[#B4C5D4]">
+              <p className="text-xs font-medium text-[#4A3F66] dark:text-[#C9BFEA]">
                 {progress.isDemoProfile ? t.demoDataBanner : t.earnedProgressTag}
               </p>
               <h2
                 id="dashboards-heading"
-                className="text-2xl sm:text-3xl font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-1"
+                className="text-2xl sm:text-3xl font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-1"
               >
                 {t.studentDashboardTitle}
               </h2>
@@ -234,12 +234,12 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
           {role === 'student' && (
         <div key="student" className="animate-panel-reveal space-y-6">
           {/* Honest Progress & Sync Status Bar */}
-          <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2.5 text-xs">
               <span
                 className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 font-medium ${
                   progress.isDemoProfile
-                    ? 'border-[#F2B544]/50 bg-[#F2B544]/15 text-[#9A6100] dark:text-[#F2B544]'
+                    ? 'border-[#FF9F1C]/50 bg-[#FF9F1C]/15 text-[#B4430C] dark:text-[#FF9F1C]'
                     : 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
                 }`}
               >
@@ -247,11 +247,11 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                 <span>{progress.isDemoProfile ? t.demoDataBanner : t.earnedProgressTag}</span>
               </span>
 
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-2.5 py-1 text-[#17324D] dark:text-[#F6F1E3]">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-2.5 py-1 text-[#2E1A6E] dark:text-[#F5F0FF]">
                 {isOnline && user && syncStatus === 'synced' ? (
                   <Cloud className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                 ) : (
-                  <CloudOff className="w-3.5 h-3.5 text-[#9A6100] dark:text-[#F2B544]" aria-hidden="true" />
+                  <CloudOff className="w-3.5 h-3.5 text-[#B4430C] dark:text-[#FF9F1C]" aria-hidden="true" />
                 )}
                 <span>{syncLabel}</span>
               </span>
@@ -262,7 +262,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                 <button
                   type="button"
                   onClick={onLoadDemoProfile}
-                  className="rounded-lg border border-[#E6DEC8] dark:border-[#284766] px-3 py-1.5 min-h-[38px] text-xs font-medium text-[#17324D] dark:text-[#F6F1E3] hover:bg-[#FAF4E4] dark:hover:bg-[#1C3652] cursor-pointer"
+                  className="rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] px-3 py-1.5 min-h-[38px] text-xs font-medium text-[#2E1A6E] dark:text-[#F5F0FF] hover:bg-[#FFF3E6] dark:hover:bg-[#2A1D5C] cursor-pointer"
                 >
                   Load Sample Demo
                 </button>
@@ -270,7 +270,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                 <button
                   type="button"
                   onClick={onResetProgress}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-[#F2B544]/50 bg-[#F2B544]/15 px-3 py-1.5 min-h-[38px] text-xs font-medium text-[#9A6100] dark:text-[#F2B544] hover:bg-[#F2B544]/25 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-[#FF9F1C]/50 bg-[#FF9F1C]/15 px-3 py-1.5 min-h-[38px] text-xs font-medium text-[#B4430C] dark:text-[#FF9F1C] hover:bg-[#FF9F1C]/25 cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Reset to 0 (Real Progress)</span>
@@ -281,43 +281,43 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
 
           {/* 4 KPI Strip */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4">
-              <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">Completed Lessons &amp; Labs</p>
-              <p className="text-2xl font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums mt-1">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4">
+              <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">Completed Lessons &amp; Labs</p>
+              <p className="text-2xl font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums mt-1">
                 {progress.completedModules.length}
               </p>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-1">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-1">
                 {progress.streakDays}d {t.streakLabel}
               </p>
             </div>
 
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4">
-              <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{t.primaryDomainLabel}</p>
-              <p className="text-2xl font-mono font-semibold text-[#17324D] dark:text-[#F6F1E3] tabular-nums mt-1">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4">
+              <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{t.primaryDomainLabel}</p>
+              <p className="text-2xl font-mono font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] tabular-nums mt-1">
                 {physicsCompletedCount} / {PHYSICS_MODULES.length} Labs
               </p>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-1 tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-1 tabular-nums">
                 {progress.labReadingsCount} practical readings logged
               </p>
             </div>
 
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4">
-              <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">Projectile Mission</p>
-              <p className="text-2xl font-mono font-semibold text-[#9A6100] dark:text-[#F2B544] tabular-nums mt-1 flex items-center gap-1.5">
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4">
+              <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">Projectile Mission</p>
+              <p className="text-2xl font-mono font-semibold text-[#B4430C] dark:text-[#FF9F1C] tabular-nums mt-1 flex items-center gap-1.5">
                 <Target className="w-5 h-5" aria-hidden="true" />
                 <span>{progress.projectileHits ?? 0} Hits</span>
               </p>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-1 tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-1 tabular-nums">
                 {progress.projectileAttempts ?? 0} launches saved on device
               </p>
             </div>
 
-            <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4">
-              <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">Offline Packs Cached</p>
+            <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4">
+              <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">Offline Packs Cached</p>
               <p className="text-2xl font-mono font-semibold text-emerald-600 dark:text-emerald-400 tabular-nums mt-1">
                 {offlineMetas.length} / {RESOURCE_PACKS.length + 1}
               </p>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-1">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-1">
                 {offlineMetas.length > 0 ? t.statusAvailableOffline : t.statusNotDownloaded}
               </p>
             </div>
@@ -325,40 +325,40 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Personalized Recommendations (6 cols) */}
-            <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 flex flex-col justify-between">
+            <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-2">
-                  <p className="text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6]">{t.recommendedNext}</p>
-                  <Sparkles className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+                  <p className="text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD]">{t.recommendedNext}</p>
+                  <Sparkles className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
                 </div>
-                <h3 className="text-base font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-1.5">
+                <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-1.5">
                   {recommendedNext.title}
                 </h3>
-                <p className="text-xs text-[#1A262C] dark:text-[#DCE5EC] mt-1">
+                <p className="text-xs text-[#22163F] dark:text-[#E4DDFA] mt-1">
                   {recommendedNext.domain} · {recommendedNext.reason}
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => onOpenPhysicsModule(recommendedNext.topicId)}
-                className="mt-4 self-start rounded-lg bg-[#0F766E] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#0B5F58] cursor-pointer"
+                className="mt-4 self-start rounded-lg bg-[#6D28D9] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#5B21B6] cursor-pointer"
               >
                 {recommendedNext.actionLabel}
               </button>
             </div>
 
             {/* Daily Challenge (6 cols) */}
-            <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5">
+            <div className="lg:col-span-6 a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5">
               <div className="flex items-center justify-between gap-2 mb-3">
-                <h3 className="text-base font-semibold text-[#17324D] dark:text-[#F6F1E3] flex items-center gap-1.5">
-                  <Flame className="w-4 h-4 text-[#9A6100] dark:text-[#F2B544]" aria-hidden="true" />
+                <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center gap-1.5">
+                  <Flame className="w-4 h-4 text-[#B4430C] dark:text-[#FF9F1C]" aria-hidden="true" />
                   <span>{t.dailyChallenge}</span>
                 </h3>
                 {progress.dailyChallengeDone && (
                   <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">Completed</span>
                 )}
               </div>
-              <p className="text-xs text-[#1A262C] dark:text-[#DCE5EC] mb-3">{dailyQ.question[language]}</p>
+              <p className="text-xs text-[#22163F] dark:text-[#E4DDFA] mb-3">{dailyQ.question[language]}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {dailyQ.options.map((opt, idx) => (
                   <button
@@ -369,8 +369,8 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                       challengeSubmitted && idx === dailyQ.correctIndex
                         ? 'border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
                         : challengeChoice === idx
-                        ? 'border-[#0F766E] bg-[#0F766E]/15 text-[#17324D] dark:text-[#4AD1C6]'
-                        : 'border-[#E6DEC8] dark:border-[#284766] text-[#1A262C] dark:text-[#DCE5EC]'
+                        ? 'border-[#6D28D9] bg-[#6D28D9]/15 text-[#2E1A6E] dark:text-[#C4B5FD]'
+                        : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#22163F] dark:text-[#E4DDFA]'
                     }`}
                   >
                     {opt[language]}
@@ -378,7 +378,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                 ))}
               </div>
               {challengeSubmitted ? (
-                <p className="text-xs text-[#1A262C] dark:text-[#DCE5EC] mt-3">
+                <p className="text-xs text-[#22163F] dark:text-[#E4DDFA] mt-3">
                   {dailyQ.explanation[language]}
                 </p>
               ) : (
@@ -391,7 +391,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                       onClaimDailyChallenge();
                     }
                   }}
-                  className="mt-3 rounded-lg bg-[#0F766E] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#0B5F58] disabled:opacity-50 cursor-pointer"
+                  className="mt-3 rounded-lg bg-[#6D28D9] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#5B21B6] disabled:opacity-50 cursor-pointer"
                 >
                   {t.submitQuizLabel}
                 </button>
@@ -400,9 +400,9 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
           </div>
 
           {/* Achievements Row */}
-          <div className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5">
-            <h3 className="text-base font-semibold text-[#17324D] dark:text-[#F6F1E3] flex items-center gap-2 mb-4">
-              <Award className="w-4 h-4 text-[#9A6100] dark:text-[#F2B544]" aria-hidden="true" />
+          <div className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5">
+            <h3 className="text-base font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] flex items-center gap-2 mb-4">
+              <Award className="w-4 h-4 text-[#B4430C] dark:text-[#FF9F1C]" aria-hidden="true" />
               <span>{t.achievements}</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -412,14 +412,14 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                   className={`rounded-xl border p-3 ${
                     ach.unlocked
                       ? 'border-emerald-500/40 bg-emerald-500/10'
-                      : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] opacity-75'
+                      : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] opacity-75'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <p className="text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3]">{ach.title}</p>
+                    <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">{ach.title}</p>
                     {ach.unlocked && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />}
                   </div>
-                  <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-1">{ach.desc}</p>
+                  <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-1">{ach.desc}</p>
                 </div>
               ))}
             </div>
@@ -433,13 +433,13 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
       {/* REAL OFFLINE LESSON PACKS & STUDY SHEETS */}
       <div
         id="resources-section"
-        className={`${resourcesOnly ? '' : 'pt-4 border-t border-[#E6DEC8] dark:border-[#284766]'} space-y-4`}
+        className={`${resourcesOnly ? '' : 'pt-4 border-t border-[#E7DDFB] dark:border-[#3B2C78]'} space-y-4`}
       >
         <div>
-          <h3 id="resources-heading" className="text-lg font-semibold text-[#17324D] dark:text-[#F6F1E3]">
+          <h3 id="resources-heading" className="text-lg font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
             {t.navResources} — IndexedDB &amp; Cache Storage
           </h3>
-          <p className="text-xs text-[#1A262C] dark:text-[#B4C5D4] mt-0.5">
+          <p className="text-xs text-[#22163F] dark:text-[#C9BFEA] mt-0.5">
             Download lesson bundles directly to browser storage (IndexedDB + Cache API). Zero-byte fake states are never shown.
           </p>
         </div>
@@ -451,15 +451,15 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
         )}
 
         {/* Featured Projectile Interactive Lesson Pack Card */}
-        <div className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/8 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/8 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6]">
+            <p className="text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD]">
               Primary Physics Pack · Interactive Mission + Simulator + Quiz + Notes
             </p>
-            <p className="text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-0.5">
+            <p className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-0.5">
               Projectile Motion Interactive Lesson Pack
             </p>
-            <p className="text-xs text-[#1A262C] dark:text-[#DCE5EC] mt-1">
+            <p className="text-xs text-[#22163F] dark:text-[#E4DDFA] mt-1">
               {projectilePackMeta
                 ? `${t.statusAvailableOffline} (${formatBytes(projectilePackMeta.coreSizeBytes + projectilePackMeta.mediaSizeBytes)}${projectilePackMeta.includesMedia ? ' + diagram' : ''})`
                 : `${t.statusNotDownloaded} · Core bundle ~18 KB`}
@@ -468,7 +468,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
           <button
             type="button"
             onClick={onOpenProjectileDownload}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#0F766E] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#0B5F58] shrink-0 cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#6D28D9] px-4 py-2.5 min-h-[44px] text-xs font-semibold text-white hover:bg-[#5B21B6] shrink-0 cursor-pointer"
           >
             <HardDriveDownload className="w-4 h-4" aria-hidden="true" />
             <span>{projectilePackMeta ? 'Manage Projectile Pack' : t.actionDownloadLesson}</span>
@@ -485,16 +485,16 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
             return (
               <div
                 key={pack.id}
-                className="a11y-surface rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                className="a11y-surface rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
               >
                 <div>
-                  <p className="text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <p className="text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD]">
                     {pack.domain} · {meta ? formatBytes(meta.coreSizeBytes) : `~${pack.sizeKb} KB`} · {pack.format}
                   </p>
-                  <p className="text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-0.5">
+                  <p className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-0.5">
                     {pack.title[language]}
                   </p>
-                  <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4] mt-0.5">
+                  <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA] mt-0.5">
                     {isDownloading
                       ? t.statusDownloading
                       : isSaved
@@ -511,7 +511,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                     className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 min-h-[40px] text-xs font-medium cursor-pointer disabled:opacity-60 ${
                       isSaved
                         ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
-                        : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#F6F1E3] hover:bg-[#FAF4E4] dark:hover:bg-[#1C3652]'
+                        : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#F5F0FF] hover:bg-[#FFF3E6] dark:hover:bg-[#2A1D5C]'
                     }`}
                   >
                     {isDownloading ? (
@@ -533,7 +533,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                   <button
                     type="button"
                     onClick={() => handleDownloadPackSheet(pack.id, pack.content)}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#0F766E] px-3 py-2 min-h-[40px] text-xs font-medium text-white hover:bg-[#0B5F58] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-[#6D28D9] px-3 py-2 min-h-[40px] text-xs font-medium text-white hover:bg-[#5B21B6] cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>{t.downloadSheet}</span>
@@ -545,8 +545,8 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
         </div>
 
         {offlineMetas.some((m) => m.curriculum) && (
-          <div className="pt-4 border-t border-[#E6DEC8] dark:border-[#284766] space-y-3">
-            <h4 className="text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3]">
+          <div className="pt-4 border-t border-[#E7DDFB] dark:border-[#3B2C78] space-y-3">
+            <h4 className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">
               {t.chaptersExperimentsTitle} — {t.savedOffline}
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -565,10 +565,10 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                           {curr.stateName ? ` (${curr.stateName})` : ''} · {curr.session} ·{' '}
                           {curr.language.toUpperCase()} · {formatBytes(meta.coreSizeBytes)}
                         </p>
-                        <p className="text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-0.5">
+                        <p className="text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-0.5">
                           {meta.title}
                         </p>
-                        <p className="text-[11px] text-[#1A262C] dark:text-[#B4C5D4] mt-0.5">
+                        <p className="text-[11px] text-[#22163F] dark:text-[#C9BFEA] mt-0.5">
                           {t.statusAvailableOffline}
                         </p>
                       </div>
@@ -580,7 +580,7 @@ export const DashboardsHub: React.FC<DashboardsHubProps> = ({
                             onOfflinePacksChanged();
                           })();
                         }}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-white dark:bg-[#1C3652] px-3 py-2 min-h-[40px] text-xs font-medium text-emerald-700 dark:text-emerald-300 hover:border-rose-500 hover:text-rose-600 shrink-0 cursor-pointer"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-white dark:bg-[#2A1D5C] px-3 py-2 min-h-[40px] text-xs font-medium text-emerald-700 dark:text-emerald-300 hover:border-rose-500 hover:text-rose-600 shrink-0 cursor-pointer"
                       >
                         <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{t.removeOfflineBtn}</span>

@@ -64,22 +64,22 @@ export const OfflineStudyCard: React.FC<Props> = ({ chapters, language, syllabus
   const download = () => {
     const html = buildStudyPackHtml(chapters, language, syllabusLabel);
     const safe = syllabusLabel.replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 60) || 'study-pack';
-    downloadTextFile(`STEM-Saathi-${safe}-${language}.html`, html);
+    downloadTextFile(`Gyaan-Graph-${safe}-${language}.html`, html);
   };
 
   const saved = status?.serviceWorker === 'active';
 
   return (
-    <div className="a11y-surface rounded-2xl border border-[#0F766E]/50 bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
+    <div className="a11y-surface rounded-2xl border border-[#6D28D9]/50 bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
       <div className="flex items-center gap-2">
-        <WifiOff className="w-5 h-5 text-[#0F766E]" aria-hidden="true" />
-        <h2 className="text-lg font-bold text-[#17324D] dark:text-white">{t('title')}</h2>
-        {!online && <span className="ml-auto rounded-full bg-[#F2B544] px-3 py-1 text-xs font-bold text-[#17324D]">{t('offlineNow')}</span>}
+        <WifiOff className="w-5 h-5 text-[#6D28D9]" aria-hidden="true" />
+        <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">{t('title')}</h2>
+        {!online && <span className="ml-auto rounded-full bg-[#FF9F1C] px-3 py-1 text-xs font-bold text-[#2E1A6E]">{t('offlineNow')}</span>}
       </div>
-      <p className="text-sm text-[#1A262C] dark:text-[#DCE5EC]">{t('intro')}</p>
+      <p className="text-sm text-[#22163F] dark:text-[#E4DDFA]">{t('intro')}</p>
 
       <p className="flex items-start gap-2 text-sm" role="status">
-        <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${saved ? 'text-[#0F766E]' : 'text-[#9A6100]'}`} aria-hidden="true" />
+        <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${saved ? 'text-[#6D28D9]' : 'text-[#B4430C]'}`} aria-hidden="true" />
         <span>
           {saved ? t('appSaved') : t('appNotYet')}
           {saved && status ? ` · ${status.cachedFiles} ${t('files')}${status.storageMb != null ? ` · ${status.storageMb} MB` : ''}` : ''}
@@ -87,18 +87,18 @@ export const OfflineStudyCard: React.FC<Props> = ({ chapters, language, syllabus
       </p>
 
       <div className="flex flex-wrap gap-3">
-        <button type="button" disabled={busy || !online} onClick={() => void prepare()} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-5 text-sm font-semibold text-white disabled:opacity-50 cursor-pointer">
+        <button type="button" disabled={busy || !online} onClick={() => void prepare()} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-5 text-sm font-semibold text-white disabled:opacity-50 cursor-pointer">
           {busy ? <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" /> : <Download className="w-4 h-4" aria-hidden="true" />}
           {busy ? t('preparing') : t('prepare')}
         </button>
-        <button type="button" onClick={download} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl border border-[#0F766E] px-5 text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer">
+        <button type="button" onClick={download} className="min-h-[48px] inline-flex items-center gap-2 rounded-xl border border-[#6D28D9] px-5 text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer">
           <Download className="w-4 h-4" aria-hidden="true" />
           {t('download')}
         </button>
       </div>
-      {prepared && <p className="text-sm font-semibold text-[#0B5F58] dark:text-[#4AD1C6]" role="status">{t('prepared')}</p>}
-      <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{t('dlHint')}</p>
-      <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">{t('needsNet')}</p>
+      {prepared && <p className="text-sm font-semibold text-[#5B21B6] dark:text-[#C4B5FD]" role="status">{t('prepared')}</p>}
+      <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{t('dlHint')}</p>
+      <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{t('needsNet')}</p>
     </div>
   );
 };

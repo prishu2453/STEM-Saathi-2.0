@@ -13,7 +13,9 @@ export type MainSection =
   | 'experiment-library'
   | 'demo'
   | 'coverage'
-  | 'account';
+  | 'account'
+  | 'tutor'
+  | 'teacher';
 
 export type PhysicsTopicId =
   | 'mechanics'

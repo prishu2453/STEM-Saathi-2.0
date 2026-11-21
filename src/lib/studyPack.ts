@@ -21,7 +21,7 @@ const L: Record<string, Record<Language, string>> = {
   safety: { en: 'Safety', hi: 'सावधानी', kn: 'ಸುರಕ್ಷತೆ' },
   syllabus: { en: 'Syllabus', hi: 'पाठ्यक्रम', kn: 'ಪಠ್ಯಕ್ರಮ' },
   note: {
-    en: 'Offline study pack from STEM Saathi. Check the chapter list against your own textbook and teacher.',
+    en: 'Offline study pack from Gyaan Graph. Check the chapter list against your own textbook and teacher.',
     hi: 'STEM साथी का ऑफ़लाइन अध्ययन पैक। अध्यायों की सूची अपनी पाठ्यपुस्तक और शिक्षक से मिला लें।',
     kn: 'STEM ಸಾಥಿಯ ಆಫ್‌ಲೈನ್ ಅಧ್ಯಯನ ಪ್ಯಾಕ್. ಅಧ್ಯಾಯಗಳ ಪಟ್ಟಿಯನ್ನು ನಿಮ್ಮ ಪಠ್ಯಪುಸ್ತಕ ಮತ್ತು ಶಿಕ್ಷಕರೊಂದಿಗೆ ಹೋಲಿಸಿ.',
   },
@@ -84,12 +84,12 @@ export function buildStudyPackHtml(chapters: RichChapterData[], language: Langua
     .join('\n');
 
   return `<!doctype html><html lang="${language}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>STEM Saathi — ${esc(syllabusLabel)}</title>
-<style>body{font:18px/1.7 system-ui,'Noto Sans Devanagari','Noto Sans Kannada',sans-serif;max-width:46rem;margin:0 auto;padding:1rem;color:#1A262C;background:#F6F1E3}
-h1{color:#17324D}h2{color:#0B5F58;border-top:3px solid #0F766E;padding-top:1rem;margin-top:2.5rem}h3{color:#17324D;margin-bottom:.2rem}
-code{background:#fff;border:1px solid #E6DEC8;border-radius:6px;padding:.1rem .4rem;font-size:.95em}small,.tag{color:#3D4A50}
+<title>Gyaan Graph — ${esc(syllabusLabel)}</title>
+<style>body{font:18px/1.7 system-ui,'Noto Sans Devanagari','Noto Sans Kannada',sans-serif;max-width:46rem;margin:0 auto;padding:1rem;color:#22163F;background:#F5F0FF}
+h1{color:#2E1A6E}h2{color:#5B21B6;border-top:3px solid #6D28D9;padding-top:1rem;margin-top:2.5rem}h3{color:#2E1A6E;margin-bottom:.2rem}
+code{background:#fff;border:1px solid #E7DDFB;border-radius:6px;padding:.1rem .4rem;font-size:.95em}small,.tag{color:#4A3F66}
 section{break-inside:auto}@media print{body{background:#fff;font-size:12pt}h2{break-before:page}}</style></head><body>
-<h1>STEM Saathi</h1><p><b>${t('syllabus')}:</b> ${esc(syllabusLabel)}</p><p><small>${t('note')}</small></p>
+<h1>Gyaan Graph</h1><p><b>${t('syllabus')}:</b> ${esc(syllabusLabel)}</p><p><small>${t('note')}</small></p>
 ${body}</body></html>`;
 }
 

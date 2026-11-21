@@ -70,25 +70,25 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
     <section className="mx-auto max-w-3xl px-4 sm:px-6 py-6 sm:py-10">
       <form
         onSubmit={handleSubmit}
-        className="a11y-surface rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-5 sm:p-8 space-y-6"
+        className="a11y-surface rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-5 sm:p-8 space-y-6"
       >
         <div className="space-y-1.5">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#0B5F58] dark:text-[#4AD1C6] flex items-center gap-1.5">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#5B21B6] dark:text-[#C4B5FD] flex items-center gap-1.5">
             <GraduationCap className="w-4 h-4 shrink-0" aria-hidden="true" />
             <span>Personalise My Learning · Student Profile</span>
           </p>
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#17324D] dark:text-white tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#2E1A6E] dark:text-white tracking-tight">
             Choose Your Class &amp; Education Board
           </h1>
-          <p className="text-xs sm:text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
-            STEM Saathi saves your class and board right on this device so your Physics, Chemistry,
+          <p className="text-xs sm:text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
+            Gyaan Graph saves your class and board right on this device so your Physics, Chemistry,
             and Biology syllabus loads automatically every time—no login required.
           </p>
         </div>
 
         {/* 1. Select Class 6-12 */}
         <div className="space-y-2">
-          <label className="block text-sm font-bold text-[#17324D] dark:text-white">
+          <label className="block text-sm font-bold text-[#2E1A6E] dark:text-white">
             1. Select Class (6 to 12)
           </label>
           <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
@@ -100,8 +100,8 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
                 aria-pressed={classLevel === cls}
                 className={`min-h-[46px] rounded-xl border text-xs sm:text-sm font-bold transition-colors cursor-pointer ${
                   classLevel === cls
-                    ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                    : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]'
+                    ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]'
                 }`}
               >
                 Class {cls}
@@ -112,7 +112,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
 
         {/* 2. Select Education Board */}
         <div className="space-y-2">
-          <label className="block text-sm font-bold text-[#17324D] dark:text-white">
+          <label className="block text-sm font-bold text-[#2E1A6E] dark:text-white">
             2. Select Education Board
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -124,8 +124,8 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
                 aria-pressed={board === b.id}
                 className={`min-h-[48px] rounded-xl border px-4 py-2.5 text-sm font-bold transition-colors cursor-pointer ${
                   board === b.id
-                    ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                    : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E]'
+                    ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9]'
                 }`}
               >
                 {b.id === 'cbse' ? 'CBSE' : b.id === 'cisce' ? 'ICSE' : 'State Board'}
@@ -139,7 +139,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
           <div className="space-y-2">
             <label
               htmlFor="my-learning-state-select"
-              className="block text-sm font-bold text-[#17324D] dark:text-white"
+              className="block text-sm font-bold text-[#2E1A6E] dark:text-white"
             >
               3. Select Your State Board
             </label>
@@ -147,7 +147,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
               id="my-learning-state-select"
               value={stateName}
               onChange={(e) => setStateName(e.target.value)}
-              className="w-full min-h-[48px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-4 py-2.5 text-sm font-semibold text-[#17324D] dark:text-white focus:outline-none focus:border-[#0F766E]"
+              className="w-full min-h-[48px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-4 py-2.5 text-sm font-semibold text-[#2E1A6E] dark:text-white focus:outline-none focus:border-[#6D28D9]"
             >
               {states.map((st) => (
                 <option key={st} value={st}>
@@ -162,7 +162,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
         <div className="space-y-2">
           <label
             htmlFor="my-learning-session-select"
-            className="block text-sm font-bold text-[#17324D] dark:text-white"
+            className="block text-sm font-bold text-[#2E1A6E] dark:text-white"
           >
             Academic Year / Syllabus Edition
           </label>
@@ -170,7 +170,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
             id="my-learning-session-select"
             value={session}
             onChange={(e) => setSession(e.target.value as AcademicSession)}
-            className="w-full min-h-[46px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-4 py-2 text-sm font-semibold text-[#17324D] dark:text-white"
+            className="w-full min-h-[46px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-4 py-2 text-sm font-semibold text-[#2E1A6E] dark:text-white"
           >
             {sessions.map((s) => (
               <option key={s.id} value={s.id}>
@@ -182,9 +182,9 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
 
         {/* Verification preview */}
         {verifiedMatch ? (
-          <div className="rounded-xl border border-[#0F766E]/40 bg-[#E3F5F3]/70 dark:bg-[#0F766E]/15 p-3.5 flex items-start gap-2.5 text-xs">
-            <CheckCircle2 className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0 mt-0.5" />
-            <div className="text-[#17324D] dark:text-[#E7F4F2]">
+          <div className="rounded-xl border border-[#6D28D9]/40 bg-[#EFE7FF]/70 dark:bg-[#6D28D9]/15 p-3.5 flex items-start gap-2.5 text-xs">
+            <CheckCircle2 className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0 mt-0.5" />
+            <div className="text-[#2E1A6E] dark:text-[#E7F4F2]">
               <p className="font-bold">
                 Verified Textbook Syllabus Ready ({verifiedMatch.chapterCount} deep chapters)
               </p>
@@ -192,9 +192,9 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
             </div>
           </div>
         ) : (
-          <div className="rounded-xl border border-[#F2B544] bg-[#FFFBEB] dark:bg-[#2F2411] p-3.5 flex items-start gap-2.5 text-xs">
-            <Info className="w-4 h-4 text-[#9A6100] dark:text-[#F2B544] shrink-0 mt-0.5" />
-            <p className="text-[#1A262C] dark:text-[#FCEAC2]">
+          <div className="rounded-xl border border-[#FF9F1C] bg-[#FFFBEB] dark:bg-[#2F2411] p-3.5 flex items-start gap-2.5 text-xs">
+            <Info className="w-4 h-4 text-[#B4430C] dark:text-[#FF9F1C] shrink-0 mt-0.5" />
+            <p className="text-[#22163F] dark:text-[#FCEAC2]">
               Verified syllabus datasets are loaded for CBSE Classes 6–12, ICSE Classes 8 &amp; 10,
               Karnataka (8 &amp; 10 SSLC), Maharashtra (8), Tamil Nadu (8), and Kerala (8). You can
               still apply this choice or switch anytime.
@@ -206,7 +206,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <button
             type="submit"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-6 py-3 min-h-[48px] text-sm font-bold text-white transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-6 py-3 min-h-[48px] text-sm font-bold text-white transition-colors cursor-pointer"
           >
             <span>Apply &amp; View My Syllabus</span>
             <ArrowRight className="w-4 h-4" />
@@ -215,7 +215,7 @@ export const MyLearningProfileSetup: React.FC<MyLearningProfileSetupProps> = ({
             <button
               type="button"
               onClick={onCancel}
-              className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-5 py-3 min-h-[48px] text-sm font-semibold text-[#17324D] dark:text-[#F6F1E3] cursor-pointer"
+              className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-5 py-3 min-h-[48px] text-sm font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] cursor-pointer"
             >
               Cancel
             </button>

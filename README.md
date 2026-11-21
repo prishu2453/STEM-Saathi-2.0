@@ -1,6 +1,6 @@
-# STEM Saathi
+# Gyaan Graph
 
-STEM Saathi is a multilingual science-learning web app for students. It combines curriculum browsing with experiments, simulations, offline study packs, and an AI mentor.
+Gyaan Graph is a multilingual science-learning web app for students. It combines curriculum browsing with experiments, simulations, offline study packs, and an AI mentor.
 
 ## Features
 

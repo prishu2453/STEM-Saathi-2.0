@@ -88,8 +88,8 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
     verificationStatus: 'verified-sample',
     bookTitle: 'Curiosity — Class 8 Science (NCERT 2025–26)',
     coverageNote: {
-      en: 'Verified sample path: all 13 chapters of the new NCERT Class 8 Science ("Curiosity") textbook introduced for 2025–26, mapped to hands-on home experiments and existing STEM Saathi simulations. Mathematics chapter list is still being added.',
-      hi: 'सत्यापित नमूना पथ: 2025–26 के लिए जारी नई NCERT कक्षा 8 विज्ञान ("Curiosity") पाठ्यपुस्तक के सभी 13 अध्याय, जिन्हें घर के सुरक्षित प्रयोगों और STEM Saathi सिमुलेशन से जोड़ा गया है। गणित के अध्याय अभी जोड़े जा रहे हैं।',
+      en: 'Verified sample path: all 13 chapters of the new NCERT Class 8 Science ("Curiosity") textbook introduced for 2025–26, mapped to hands-on home experiments and existing Gyaan Graph simulations. Mathematics chapter list is still being added.',
+      hi: 'सत्यापित नमूना पथ: 2025–26 के लिए जारी नई NCERT कक्षा 8 विज्ञान ("Curiosity") पाठ्यपुस्तक के सभी 13 अध्याय, जिन्हें घर के सुरक्षित प्रयोगों और Gyaan Graph सिमुलेशन से जोड़ा गया है। गणित के अध्याय अभी जोड़े जा रहे हैं।',
       kn: 'ಪರಿಶೀಲಿಸಿದ ಮಾದರಿ ಮಾರ್ಗ: 2025–26ಕ್ಕೆ ಪರಿಚಯಿಸಲಾದ ಹೊಸ NCERT ತರಗತಿ 8 ವಿಜ್ಞಾನ ("Curiosity") ಪಠ್ಯಪುಸ್ತಕದ ಎಲ್ಲಾ 13 ಅಧ್ಯಾಯಗಳು. ಗಣಿತ ಅಧ್ಯಾಯಗಳನ್ನು ಇನ್ನೂ ಸೇರಿಸಲಾಗುತ್ತಿದೆ.',
     },
     sourceTitle: 'CBSE Academic Circular Acad-48/2025 (New NCERT Class 8 Curiosity)',
@@ -357,9 +357,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ವೋಲ್ಟೇಜ್ (V) ಬದಲಾಯಿಸಿದಾಗ ಮತ್ತು ರೋಧಕಗಳನ್ನು ಸರಣಿ ಅಥವಾ ಸಮಾನಾಂತರವಾಗಿ ಜೋಡಿಸಿದಾಗ ವಿದ್ಯುತ್ ಪ್ರವಾಹ (A) ಹೇಗೆ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಹೋಲಿಸಿ.',
             },
             materials: {
-              en: ['STEM Saathi Interactive Circuit Simulator (works offline)'],
-              hi: ['STEM Saathi इंटरैक्टिव परिपथ सिम्युलेटर (ऑफ़लाइन कार्यशील)'],
-              kn: ['STEM Saathi ಸಂವಾದಾತ್ಮಕ ಸರ್ಕ್ಯೂಟ್ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Interactive Circuit Simulator (works offline)'],
+              hi: ['Gyaan Graph इंटरैक्टिव परिपथ सिम्युलेटर (ऑफ़लाइन कार्यशील)'],
+              kn: ['Gyaan Graph ಸಂವಾದಾತ್ಮಕ ಸರ್ಕ್ಯೂಟ್ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual simulation — safe for testing high voltages and short-branch currents without overheating.',
@@ -563,9 +563,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಎಸೆದ ಚೆಂಡನ್ನು ಕೆಳಕ್ಕೆ ಎಳೆದು ವಕ್ರಪಥವನ್ನು ಹೇಗೆ ರಚಿಸುತ್ತದೆ ಮತ್ತು ಕೋನದಿಂದ ದೂರ (m) ಹೇಗೆ ಬದಲಾಗುತ್ತದೆ ಎಂದು ಪರೀಕ್ಷಿಸಿ.',
             },
             materials: {
-              en: ['STEM Saathi Projectile Mission Simulation (works offline)'],
-              hi: ['STEM Saathi प्रक्षेप्य मिशन सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಪ್ರಕ್ಷೇಪಕ ಮಿಷನ್ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Projectile Mission Simulation (works offline)'],
+              hi: ['Gyaan Graph प्रक्षेप्य मिशन सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಪ್ರಕ್ಷೇಪಕ ಮಿಷನ್ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual experiment — ideal motion without air resistance is assumed and stated in the simulation.',
@@ -982,9 +982,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ಗಾಳಿ (1.00), ನೀರು (1.33) ಮತ್ತು ಗಾಜು (1.52) ನಡುವೆ ಬೆಳಕು ಹೇಗೆ ಬಾಗುತ್ತದೆ ಎಂದು ಅಳೆಯಿರಿ.',
             },
             materials: {
-              en: ['STEM Saathi Interactive Optics Simulation (works offline)'],
-              hi: ['STEM Saathi इंटरैक्टिव प्रकाशिकी सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಸಂವಾದಾತ್ಮಕ ದೃಗ್ವಿಜ್ಞಾನ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Interactive Optics Simulation (works offline)'],
+              hi: ['Gyaan Graph इंटरैक्टिव प्रकाशिकी सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಸಂವಾದಾತ್ಮಕ ದೃಗ್ವಿಜ್ಞಾನ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual laser beam — safe to test any angle without eye hazard.',
@@ -1391,9 +1391,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ಜೀವಶಾಸ್ತ್ರ ಲೋಕದ ಪಾಠಗಳನ್ನು ನೋಡಿ ಮತ್ತು 3 ಪ್ರಶ್ನೆಗಳ ಕ್ವಿಜ್ ಪೂರ್ಣಗೊಳಿಸಿ.',
             },
             materials: {
-              en: ['STEM Saathi Biology World (works offline)'],
-              hi: ['STEM Saathi जीव विज्ञान जगत (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಜೀವಶಾಸ್ತ್ರ ಲೋಕ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Biology World (works offline)'],
+              hi: ['Gyaan Graph जीव विज्ञान जगत (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಜೀವಶಾಸ್ತ್ರ ಲೋಕ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Digital learning module — safe for offline study.',
@@ -1466,9 +1466,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ತಾಪಮಾನ (K) ಹೆಚ್ಚಿಸಿದಾಗ ಅಥವಾ ಗಾತ್ರ (L) ಕುಗ್ಗಿಸಿದಾಗ ಅನಿಲ ಕಣಗಳ ಡಿಕ್ಕಿ ಮತ್ತು ಒತ್ತಡ (kPa) ಹೇಗೆ ಹೆಚ್ಚಾಗುತ್ತದೆ ಎಂದು ನೋಡಿ.',
             },
             materials: {
-              en: ['STEM Saathi Ideal Gas Chamber Simulation (works offline)'],
-              hi: ['STEM Saathi आदर्श गैस सिमुलेशन (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಆದರ್ಶ ಅನಿಲ ಸಿಮ್ಯುಲೇಷನ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Ideal Gas Chamber Simulation (works offline)'],
+              hi: ['Gyaan Graph आदर्श गैस सिमुलेशन (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಆದರ್ಶ ಅನಿಲ ಸಿಮ್ಯುಲೇಷನ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual chamber — test high pressures safely without pressurized canisters.',
@@ -1564,9 +1564,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ರಾಸಾಯನಿಕ ಬಂಧ ಮತ್ತು ಮಿಶ್ರಣಗಳನ್ನು ಅರಿತು ರಸಾಯನಶಾಸ್ತ್ರ ಲೋಕದಲ್ಲಿ pH ಪ್ರಯೋಗ ಮಾಡಿ.',
             },
             materials: {
-              en: ['STEM Saathi Chemistry World (works offline)'],
-              hi: ['STEM Saathi रसायन विज्ञान जगत (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ರಸಾಯನಶಾಸ್ತ್ರ ಲೋಕ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Chemistry World (works offline)'],
+              hi: ['Gyaan Graph रसायन विज्ञान जगत (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ರಸಾಯನಶಾಸ್ತ್ರ ಲೋಕ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual chemistry lab — no corrosive acids handled.',
@@ -1642,9 +1642,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: '0.1 M ಆಮ್ಲ ಮತ್ತು ಕ್ಷಾರ ದ್ರಾವಣಗಳನ್ನು ಬೆರೆಸಿ ತಟಸ್ಥ pH 7.0 ಪಡೆಯಿರಿ.',
             },
             materials: {
-              en: ['STEM Saathi Chemistry World pH Sandbox (works offline)'],
-              hi: ['STEM Saathi रसायन pH सैंडबॉक्स (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ರಸಾಯನಶಾಸ್ತ್ರ pH ಸ್ಯಾಂಡ್‌ಬಾಕ್ಸ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Chemistry World pH Sandbox (works offline)'],
+              hi: ['Gyaan Graph रसायन pH सैंडबॉक्स (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ರಸಾಯನಶಾಸ್ತ್ರ pH ಸ್ಯಾಂಡ್‌ಬಾಕ್ಸ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Virtual titration — safe for learning pH scale without chemical splashes.',
@@ -1729,9 +1729,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ಸೂರ್ಯನ ಬೆಳಕು ಮತ್ತು ಮಣ್ಣಿನ ತೇವಾಂಶ ಸಸ್ಯದ ಆಹಾರ ಮತ್ತು ನೀರಿನ ಹರಿವನ್ನು ಹೇಗೆ ನಡೆಸುತ್ತವೆ ಎಂದು ನೋಡಿ.',
             },
             materials: {
-              en: ['STEM Saathi Biology World Simulator (works offline)'],
-              hi: ['STEM Saathi जीव विज्ञान सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಜೀವಶಾಸ್ತ್ರ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Biology World Simulator (works offline)'],
+              hi: ['Gyaan Graph जीव विज्ञान सिम्युलेटर (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಜೀವಶಾಸ್ತ್ರ ಸಿಮ್ಯುಲೇಟರ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Safe virtual simulation.',
@@ -1804,9 +1804,9 @@ export const SYLLABUS_CATALOGUES: SyllabusCatalogueEntry[] = [
               kn: 'ಭೂಮಿಯ ಬಲವಾದ ಗುರುತ್ವವು ವಾಯುಮಂಡಲವನ್ನು ಹೇಗೆ ಹಿಡಿದಿಡುತ್ತದೆ ಮತ್ತು ಕಡಿಮೆ ಗುರುತ್ವದಲ್ಲಿ ವಸ್ತು ಎಷ್ಟು ದೂರ ಹಾರುತ್ತದೆ ಎಂದು ನೋಡಿ.',
             },
             materials: {
-              en: ['STEM Saathi Mechanics Simulation (works offline)'],
-              hi: ['STEM Saathi यांत्रिकी सिमुलेशन (ऑफ़लाइन उपलब्ध)'],
-              kn: ['STEM Saathi ಯಂತ್ರಶಾಸ್ತ್ರ ಸಿಮ್ಯುಲೇಷನ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
+              en: ['Gyaan Graph Mechanics Simulation (works offline)'],
+              hi: ['Gyaan Graph यांत्रिकी सिमुलेशन (ऑफ़लाइन उपलब्ध)'],
+              kn: ['Gyaan Graph ಯಂತ್ರಶಾಸ್ತ್ರ ಸಿಮ್ಯುಲೇಷನ್ (ಆಫ್‌ಲೈನ್ ಲಭ್ಯ)'],
             },
             safetyNote: {
               en: 'Safe virtual comparison.',

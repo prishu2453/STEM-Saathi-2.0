@@ -1641,20 +1641,20 @@ export const PhysicsExperiment3DScene: React.FC<PhysicsExperiment3DSceneProps> =
 
   if (lowPowerMode) {
     return (
-      <div className="min-h-[340px] h-[56vh] max-h-[820px] lg:h-[calc(100vh-190px)] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#FAF4E4] dark:bg-[#152A40] p-5 flex flex-col justify-between text-[#17324D] dark:text-[#F6F1E3]">
-        <div className="flex items-center justify-between text-xs text-[#0B5F58] dark:text-[#4AD1C6] font-medium">
+      <div className="min-h-[340px] h-[56vh] max-h-[820px] lg:h-[calc(100vh-190px)] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#FFF3E6] dark:bg-[#1F1545] p-5 flex flex-col justify-between text-[#2E1A6E] dark:text-[#F5F0FF]">
+        <div className="flex items-center justify-between text-xs text-[#5B21B6] dark:text-[#C4B5FD] font-medium">
           <span>2D Lite Simulation Mode Active</span>
           <span className="font-mono uppercase">{experimentId}</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-auto">
           {liteComputation.metrics.map((m) => (
-            <div key={m.label} className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#1C3652] p-3.5">
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">{m.label}</p>
-              <p className="text-lg font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] mt-1 tabular-nums">{m.value}</p>
+            <div key={m.label} className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#2A1D5C] p-3.5">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">{m.label}</p>
+              <p className="text-lg font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] mt-1 tabular-nums">{m.value}</p>
             </div>
           ))}
         </div>
-        <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+        <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
           Disable Lite 2D Mode in Accessibility settings to enable the interactive Three.js 3D apparatus.
         </p>
       </div>
@@ -1665,10 +1665,10 @@ export const PhysicsExperiment3DScene: React.FC<PhysicsExperiment3DSceneProps> =
     <div className="relative">
       <div
         ref={containerRef}
-        className="w-full h-[56vh] min-h-[340px] max-h-[820px] lg:h-[calc(100vh-190px)] group-data-[fs=true]/stage:h-[calc(100vh-40px)] group-data-[fs=true]/stage:max-h-none rounded-xl border border-[#284766] bg-[#0F1F30] overflow-hidden cursor-grab active:cursor-grabbing"
+        className="w-full h-[56vh] min-h-[340px] max-h-[820px] lg:h-[calc(100vh-190px)] group-data-[fs=true]/stage:h-[calc(100vh-40px)] group-data-[fs=true]/stage:max-h-none rounded-xl border border-[#3B2C78] bg-[#120A28] overflow-hidden cursor-grab active:cursor-grabbing"
         aria-label={`${experimentId} interactive 3D simulation`}
       />
-      <p className="mt-1.5 text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+      <p className="mt-1.5 text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
         Drag to rotate 3D camera · Scroll or pinch to zoom
       </p>
     </div>

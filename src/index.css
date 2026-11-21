@@ -9,21 +9,21 @@
   html { font-size: 17px; }
 
   :root {
-    --font-display: 'Outfit', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
-    --font-sans: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
+    --font-display: 'Baloo 2', 'Baloo Tamma 2', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
+    --font-sans: 'Nunito', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
   }
 
   body {
     font-family: var(--font-sans);
     line-height: 1.65;
-    background-color: #F6F1E3;
-    color: #1A262C;
+    background-color: #F5F0FF;
+    color: #22163F;
   }
 
   html.dark body {
-    background-color: #0E1E2E;
-    color: #EEF3F7;
+    background-color: #140C2E;
+    color: #F3EFFF;
   }
 
   h1, h2, h3, h4, .font-display {

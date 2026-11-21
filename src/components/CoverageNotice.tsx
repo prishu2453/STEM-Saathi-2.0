@@ -5,8 +5,8 @@ import type { EducationBoard, Language, SchoolClass } from '../types/stem';
 
 export const STATUS_STYLE: Record<CoverageStatus, { bg: string; fg: string; border: string }> = {
   verified: { bg: '#DCFCE7', fg: '#14532D', border: '#16A34A' },
-  'list-covered': { bg: '#E3F5F3', fg: '#0B5F58', border: '#0F766E' },
-  partial: { bg: '#FEF3C7', fg: '#7A4B00', border: '#D99B26' },
+  'list-covered': { bg: '#EFE7FF', fg: '#5B21B6', border: '#6D28D9' },
+  partial: { bg: '#FEF3C7', fg: '#7A4B00', border: '#F07C00' },
   preparing: { bg: '#E5E7EB', fg: '#374151', border: '#9CA3AF' },
 };
 const ICON: Record<CoverageStatus, React.ReactNode> = {
@@ -53,19 +53,19 @@ export const CoverageNotice: React.FC<Props> = ({ classLevel, board, stateName, 
   return (
     <section
       aria-label={STATUS_TEXT[c.status][language]}
-      className="rounded-xl border-l-4 bg-white dark:bg-[#152A40] border border-[#E6DEC8] dark:border-[#284766] p-3.5 space-y-2"
+      className="rounded-xl border-l-4 bg-white dark:bg-[#1F1545] border border-[#E7DDFB] dark:border-[#3B2C78] p-3.5 space-y-2"
       style={{ borderLeftColor: st.border }}
     >
       <div className="flex flex-wrap items-center gap-2">
         <StatusChip status={c.status} language={language} />
-        <span className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] tabular-nums">
+        <span className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] tabular-nums">
           {c.chaptersCovered} {c.chaptersOfficial ? `${L.of[language]} ${c.chaptersOfficial} ${L.official[language]}` : L.chapters[language]}
         </span>
       </div>
-      <p className="text-xs leading-relaxed text-[#1A262C] dark:text-[#DCE5EC]">{STATUS_EXPLAIN[c.status][language]}</p>
-      {c.chaptersOfficial === undefined && c.status !== 'preparing' && <p className="text-xs text-[#7A4B00] dark:text-[#F2B544]">{L.noList[language]}</p>}
+      <p className="text-xs leading-relaxed text-[#22163F] dark:text-[#E4DDFA]">{STATUS_EXPLAIN[c.status][language]}</p>
+      {c.chaptersOfficial === undefined && c.status !== 'preparing' && <p className="text-xs text-[#7A4B00] dark:text-[#FF9F1C]">{L.noList[language]}</p>}
       {c.missingTitles.length > 0 && (
-        <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4]">
+        <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">
           <strong>{L.still[language]}:</strong> {c.missingTitles.join(' · ')}
         </p>
       )}
@@ -75,11 +75,11 @@ export const CoverageNotice: React.FC<Props> = ({ classLevel, board, stateName, 
         </p>
       )}
       {(c.source || c.session) && (
-        <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] flex flex-wrap items-center gap-x-3 gap-y-1">
+        <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] flex flex-wrap items-center gap-x-3 gap-y-1">
           {c.session && <span>{L.session[language]}: {c.session}</span>}
           {c.dataDate && <span>{L.dataDate[language]}: {c.dataDate}</span>}
           {c.source && (
-            <a href={c.source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 min-h-[44px] underline text-[#0B5F58] dark:text-[#4AD1C6]">
+            <a href={c.source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 min-h-[44px] underline text-[#5B21B6] dark:text-[#C4B5FD]">
               {L.source[language]}: {c.source.title}
               <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </a>

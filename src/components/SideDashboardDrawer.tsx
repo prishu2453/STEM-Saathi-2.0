@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Accessibility,
   Atom,
+  Brain,
   BookOpen,
   Calculator,
   ClipboardList,
@@ -27,6 +28,7 @@ import {
   X,
   Zap,
   UserRound,
+  Users,
 } from 'lucide-react';
 import { formatLearningPathSummary } from '../data/learningPathCore';
 import { LANGUAGE_LABELS, UI_TEXT } from '../data/i18n';
@@ -190,8 +192,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
   const itemClass = (isActive: boolean) =>
     `w-full flex items-center gap-3 rounded-xl px-3 py-2.5 min-h-[44px] text-left text-sm font-medium transition-colors cursor-pointer ${
       isActive
-        ? 'bg-[#0F766E] text-white shadow-xs'
-        : 'text-[#17324D] dark:text-[#EEF3F7] hover:bg-[#F6F1E3] dark:hover:bg-[#1C3652]'
+        ? 'bg-[#6D28D9] text-white shadow-xs'
+        : 'text-[#2E1A6E] dark:text-[#F3EFFF] hover:bg-[#F5F0FF] dark:hover:bg-[#2A1D5C]'
     }`;
 
   return (
@@ -203,20 +205,20 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
     >
       {/* Darkened Backdrop */}
       <div
-        className="animate-fade-in fixed inset-0 bg-[#17324D]/45 backdrop-blur-sm"
+        className="animate-fade-in fixed inset-0 bg-[#2E1A6E]/45 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Left Side Drawer */}
-      <aside className="animate-drawer-in relative z-10 w-[86vw] max-w-[340px] h-full bg-white dark:bg-[#152A40] border-r border-[#E6DEC8] dark:border-[#284766] flex flex-col shadow-2xl">
+      <aside className="animate-drawer-in relative z-10 w-[86vw] max-w-[340px] h-full bg-white dark:bg-[#1F1545] border-r border-[#E7DDFB] dark:border-[#3B2C78] flex flex-col shadow-2xl">
         {/* Drawer Header */}
-        <div className="px-4 py-3.5 border-b border-[#E6DEC8] dark:border-[#284766] flex items-center justify-between gap-2 bg-[#F6F1E3] dark:bg-[#122538]">
+        <div className="px-4 py-3.5 border-b border-[#E7DDFB] dark:border-[#3B2C78] flex items-center justify-between gap-2 bg-[#F5F0FF] dark:bg-[#122538]">
           <div>
-            <p className="font-display text-lg font-bold tracking-tight text-[#17324D] dark:text-white">
-              STEM Saathi
+            <p className="font-display text-lg font-bold tracking-tight text-[#2E1A6E] dark:text-white">
+              Gyaan Graph
             </p>
-            <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] tabular-nums">
+            <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] tabular-nums">
               {isOnline ? t.onlineStatus : t.offlineStatus} ·{' '}
               {savedOfflineCount > 0 ? `${savedOfflineCount} ${t.savedOffline}` : t.statusNotDownloaded}
             </p>
@@ -226,7 +228,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
             type="button"
             onClick={onClose}
             aria-label={t.closeMenuLabel}
-            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#1C3652] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+            className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
           >
             <X className="w-5 h-5" aria-hidden="true" />
           </button>
@@ -247,6 +249,32 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
             >
               <Home className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>{t.navUniverse}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onSelectView('tutor');
+                onClose();
+              }}
+              aria-current={activeView === 'tutor' ? 'page' : undefined}
+              className={itemClass(activeView === 'tutor')}
+            >
+              <Brain className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span>{language === 'hi' ? 'स्मार्ट अभ्यास (AI ट्यूटर)' : language === 'kn' ? 'ಸ್ಮಾರ್ಟ್ ಅಭ್ಯಾಸ (AI ಶಿಕ್ಷಕ)' : 'Smart Practice (AI tutor)'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onSelectView('teacher');
+                onClose();
+              }}
+              aria-current={activeView === 'teacher' ? 'page' : undefined}
+              className={itemClass(activeView === 'teacher')}
+            >
+              <Users className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span>{language === 'hi' ? 'शिक्षक डैशबोर्ड' : language === 'kn' ? 'ಶಿಕ್ಷಕರ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್' : 'Teacher dashboard'}</span>
             </button>
 
             <button
@@ -317,7 +345,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
 
           {/* 2. Physics */}
           <div className="space-y-1">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE]">
               {t.menuSectionPhysics}
             </p>
             <button
@@ -328,7 +356,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
               }}
               className={itemClass(false)}
             >
-              <Waves className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+              <Waves className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
               <span>Double-Slit &amp; Quantum Labs</span>
             </button>
             {physicsTopics.map((topic) => {
@@ -393,7 +421,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
 
           {/* 3. Other subjects */}
           <div className="space-y-1">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE]">
               {t.menuSectionSubjects}
             </p>
             {subjects.map((subj) => {
@@ -418,7 +446,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
 
           {/* 4. Learning tools */}
           <div className="space-y-1">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE]">
               {t.menuSectionTools}
             </p>
 
@@ -430,7 +458,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
               }}
               className={itemClass(false)}
             >
-              <Sparkles className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+              <Sparkles className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
               <span>{t.askMentor}</span>
             </button>
             <button
@@ -449,24 +477,24 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
 
           {/* 5. My learning (Class / Board preference + Dashboards) */}
           <div className="space-y-2">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE]">
               {t.menuSectionMyLearning}
             </p>
 
-            <div className="mx-1 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 space-y-2">
+            <div className="mx-1 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 space-y-2">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-[11px] font-semibold text-[#0B5F58] dark:text-[#4AD1C6]">
+                  <p className="text-[11px] font-semibold text-[#5B21B6] dark:text-[#C4B5FD]">
                     {t.chooseYourClassLabel}
                   </p>
-                  <p className="text-xs font-semibold text-[#17324D] dark:text-[#F6F1E3] mt-0.5 tabular-nums">
+                  <p className="text-xs font-semibold text-[#2E1A6E] dark:text-[#F5F0FF] mt-0.5 tabular-nums">
                     {formatLearningPathSummary(learningPath, language)}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setPathEditorOpen((v) => !v)}
-                  className="shrink-0 rounded-lg border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-2.5 py-1.5 min-h-[34px] text-[11px] font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:border-[#0F766E] cursor-pointer"
+                  className="shrink-0 rounded-lg border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-2.5 py-1.5 min-h-[34px] text-[11px] font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:border-[#6D28D9] cursor-pointer"
                 >
                   {pathEditorOpen ? t.savePathBtn : t.changeClassBoardBtn}
                 </button>
@@ -524,7 +552,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
 
           {/* 6. Offline */}
           <div className="space-y-1">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE]">
               {t.menuSectionOffline}
             </p>
             <button
@@ -545,8 +573,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
           </div>
 
           {/* 7. Settings */}
-          <div className="space-y-3 pt-3 border-t border-[#E6DEC8] dark:border-[#284766]">
-            <p className="px-3 text-xs font-semibold text-[#3D4A50] dark:text-[#9CB2C7] flex items-center gap-1.5">
+          <div className="space-y-3 pt-3 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
+            <p className="px-3 text-xs font-semibold text-[#4A3F66] dark:text-[#B3A6DE] flex items-center gap-1.5">
               <Accessibility className="w-3.5 h-3.5" aria-hidden="true" />
               <span>{t.menuSectionSettings}</span>
             </p>
@@ -556,7 +584,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
               <div
                 role="group"
                 aria-label={t.actionChooseLanguage}
-                className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#F6F1E3] dark:bg-[#1C3652] p-1 border border-[#E6DEC8] dark:border-[#284766]"
+                className="grid grid-cols-3 gap-1.5 rounded-xl bg-[#F5F0FF] dark:bg-[#2A1D5C] p-1 border border-[#E7DDFB] dark:border-[#3B2C78]"
               >
                 {(['en', 'hi', 'kn'] as Language[]).map((lang) => (
                   <button
@@ -565,8 +593,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                     onClick={() => onLanguageChange(lang)}
                     className={`py-2 min-h-[40px] rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
                       language === lang
-                        ? 'bg-[#0F766E] text-white'
-                        : 'text-[#17324D] dark:text-[#DCE5EC] hover:text-[#0F766E] dark:hover:text-white'
+                        ? 'bg-[#6D28D9] text-white'
+                        : 'text-[#2E1A6E] dark:text-[#E4DDFA] hover:text-[#6D28D9] dark:hover:text-white'
                     }`}
                   >
                     {LANGUAGE_LABELS[lang]}
@@ -582,16 +610,16 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                 onClick={() =>
                   onA11yChange({ ...a11y, theme: a11y.theme === 'dark' ? 'light' : 'dark' })
                 }
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-2.5 py-2 min-h-[42px] text-xs font-medium text-[#17324D] dark:text-[#F6F1E3] cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-2.5 py-2 min-h-[42px] text-xs font-medium text-[#2E1A6E] dark:text-[#F5F0FF] cursor-pointer"
               >
                 {a11y.theme === 'dark' ? (
                   <>
-                    <Sun className="w-3.5 h-3.5 text-[#F2B544]" aria-hidden="true" />
+                    <Sun className="w-3.5 h-3.5 text-[#FF9F1C]" aria-hidden="true" />
                     <span>{t.lightTheme}</span>
                   </>
                 ) : (
                   <>
-                    <Moon className="w-3.5 h-3.5 text-[#17324D]" aria-hidden="true" />
+                    <Moon className="w-3.5 h-3.5 text-[#2E1A6E]" aria-hidden="true" />
                     <span>{t.darkTheme}</span>
                   </>
                 )}
@@ -600,7 +628,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
               <button
                 type="button"
                 onClick={cycleFontScale}
-                className="inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-2.5 py-2 min-h-[42px] text-xs font-medium text-[#17324D] dark:text-[#F6F1E3] cursor-pointer"
+                className="inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-2.5 py-2 min-h-[42px] text-xs font-medium text-[#2E1A6E] dark:text-[#F5F0FF] cursor-pointer"
               >
                 {t.textSizeLabel}:{' '}
                 {a11y.fontScale === 'base' ? '100%' : a11y.fontScale === 'md' ? '112%' : '125%'}
@@ -612,8 +640,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                 aria-pressed={a11y.highContrast}
                 className={`inline-flex items-center justify-center gap-1.5 rounded-xl border px-2.5 py-2 min-h-[42px] text-xs font-medium cursor-pointer ${
                   a11y.highContrast
-                    ? 'border-[#F2B544] bg-[#F2B544]/20 text-[#17324D] dark:text-[#F6F1E3]'
-                    : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#DCE5EC]'
+                    ? 'border-[#FF9F1C] bg-[#FF9F1C]/20 text-[#2E1A6E] dark:text-[#F5F0FF]'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#E4DDFA]'
                 }`}
               >
                 <Eye className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
@@ -626,8 +654,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                 aria-pressed={a11y.lowPowerMode}
                 className={`inline-flex items-center justify-center gap-1.5 rounded-xl border px-2.5 py-2 min-h-[42px] text-xs font-medium cursor-pointer ${
                   a11y.lowPowerMode
-                    ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6]'
-                    : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#DCE5EC]'
+                    ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD]'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#E4DDFA]'
                 }`}
               >
                 <Cpu className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
@@ -640,8 +668,8 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                 aria-pressed={a11y.dyslexiaSpacing}
                 className={`col-span-2 inline-flex items-center justify-center gap-1.5 rounded-xl border px-2.5 py-2 min-h-[42px] text-xs font-medium cursor-pointer ${
                   a11y.dyslexiaSpacing
-                    ? 'border-[#0F766E] bg-[#E3F5F3] dark:bg-[#0F766E]/25 text-[#0B5F58] dark:text-[#4AD1C6]'
-                    : 'border-[#E6DEC8] dark:border-[#284766] text-[#17324D] dark:text-[#DCE5EC]'
+                    ? 'border-[#6D28D9] bg-[#EFE7FF] dark:bg-[#6D28D9]/25 text-[#5B21B6] dark:text-[#C4B5FD]'
+                    : 'border-[#E7DDFB] dark:border-[#3B2C78] text-[#2E1A6E] dark:text-[#E4DDFA]'
                 }`}
               >
                 <TypeIcon className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
@@ -652,13 +680,13 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
         </nav>
 
         {/* Drawer Footer: Optional Sign In / Sync + Offline Save Info + PWA Install */}
-        <div className="p-3.5 border-t border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#122538] space-y-2">
+        <div className="p-3.5 border-t border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#122538] space-y-2">
           <div className="flex items-center justify-between gap-2">
             {user ? (
               <button
                 type="button"
                 onClick={onSignOut}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#0F766E]/50 bg-[#E3F5F3] dark:bg-[#0F766E]/20 px-3 py-2 min-h-[42px] text-xs font-medium text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#6D28D9]/50 bg-[#EFE7FF] dark:bg-[#6D28D9]/20 px-3 py-2 min-h-[42px] text-xs font-medium text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer"
               >
                 <span>{(user.displayName || 'Synced').split(' ')[0]}</span>
                 <LogOut className="w-3.5 h-3.5" aria-hidden="true" />
@@ -668,9 +696,9 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
                 type="button"
                 disabled={authLoading || !isOnline}
                 onClick={onSignIn}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#1C3652] px-3 py-2 min-h-[42px] text-xs font-medium text-[#17324D] dark:text-[#F6F1E3] hover:border-[#0F766E] cursor-pointer disabled:opacity-60"
+                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#2A1D5C] px-3 py-2 min-h-[42px] text-xs font-medium text-[#2E1A6E] dark:text-[#F5F0FF] hover:border-[#6D28D9] cursor-pointer disabled:opacity-60"
               >
-                <LogIn className="w-3.5 h-3.5 text-[#0F766E] dark:text-[#4AD1C6]" aria-hidden="true" />
+                <LogIn className="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#C4B5FD]" aria-hidden="true" />
                 <span>
                   {authLoading
                     ? t.signingInLabel
@@ -682,7 +710,7 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
             )}
             <PWAInstallButton />
           </div>
-          <p className="text-[11px] text-[#3D4A50] dark:text-[#B4C5D4]">
+          <p className="text-[11px] text-[#4A3F66] dark:text-[#C9BFEA]">
             {pendingSyncCount > 0
               ? `${pendingSyncCount} ${t.queuedSyncSuffix}`
               : t.deviceSyncExplain}

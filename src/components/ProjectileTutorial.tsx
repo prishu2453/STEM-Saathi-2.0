@@ -305,13 +305,13 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
 
   if (!expanded) {
     return (
-      <div className="rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div className="rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-4 py-3 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <BookOpen className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+          <BookOpen className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
           <div className="text-xs">
-            <span className="font-semibold text-[#17324D] dark:text-[#EEF3F7]">{txt.headerTitle}</span>
+            <span className="font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">{txt.headerTitle}</span>
             {isCompleted && (
-              <span className="text-[#0B5F58] dark:text-[#4AD1C6] font-semibold">
+              <span className="text-[#5B21B6] dark:text-[#C4B5FD] font-semibold">
                 {' '}· {txt.completedTag}
               </span>
             )}
@@ -323,7 +323,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
             setExpanded(true);
             setStage(1);
           }}
-          className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#0F766E]/45 bg-[#0F766E]/10 px-3.5 py-2 text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] hover:bg-[#0F766E]/20 cursor-pointer"
+          className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#6D28D9]/45 bg-[#6D28D9]/10 px-3.5 py-2 text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] hover:bg-[#6D28D9]/20 cursor-pointer"
         >
           <span>{isCompleted ? txt.replayBtn : txt.openBtn}</span>
           <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
@@ -345,15 +345,15 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
   const rangeFactor = speedFactor * speedFactor;
 
   return (
-    <div className="a11y-surface animate-panel-reveal rounded-2xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
+    <div className="a11y-surface animate-panel-reveal rounded-2xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
       {/* Header Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E6DEC8] dark:border-[#284766]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E7DDFB] dark:border-[#3B2C78]">
         <div>
-          <h3 className="text-sm sm:text-base font-semibold text-[#17324D] dark:text-[#EEF3F7] flex items-center gap-2">
-            <Compass className="w-4 h-4 text-[#0B5F58] dark:text-[#4AD1C6] shrink-0" aria-hidden="true" />
+          <h3 className="text-sm sm:text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] flex items-center gap-2">
+            <Compass className="w-4 h-4 text-[#5B21B6] dark:text-[#C4B5FD] shrink-0" aria-hidden="true" />
             <span>{txt.headerTitle}</span>
           </h3>
-          <p className="text-xs text-[#3D4A50] dark:text-[#8FA4B8] mt-0.5">{txt.headerSubtitle}</p>
+          <p className="text-xs text-[#4A3F66] dark:text-[#A496D4] mt-0.5">{txt.headerSubtitle}</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -368,15 +368,15 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
               }
               onSpeak(spoken);
             }}
-            className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+            className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
           >
-            <Volume2 className="w-3.5 h-3.5 text-[#0B5F58] dark:text-[#4AD1C6]" aria-hidden="true" />
+            <Volume2 className="w-3.5 h-3.5 text-[#5B21B6] dark:text-[#C4B5FD]" aria-hidden="true" />
             <span>{isSpeaking ? txt.stopAudio : txt.readAloud}</span>
           </button>
           <button
             type="button"
             onClick={() => setExpanded(false)}
-            className="min-h-[44px] inline-flex items-center gap-1 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-medium text-[#1A262C] dark:text-[#B4C5D4] hover:border-[#0F766E] cursor-pointer"
+            className="min-h-[44px] inline-flex items-center gap-1 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-medium text-[#22163F] dark:text-[#C9BFEA] hover:border-[#6D28D9] cursor-pointer"
           >
             <span>{txt.skipBtn}</span>
             <ChevronUp className="w-3.5 h-3.5" aria-hidden="true" />
@@ -388,7 +388,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
         <div
           role="region"
           aria-live="polite"
-          className="rounded-xl border border-[#0F766E]/35 bg-[#0F766E]/10 px-3 py-2 text-xs text-[#17324D] dark:text-[#EEF3F7] flex items-start justify-between gap-2"
+          className="rounded-xl border border-[#6D28D9]/35 bg-[#6D28D9]/10 px-3 py-2 text-xs text-[#2E1A6E] dark:text-[#F3EFFF] flex items-start justify-between gap-2"
         >
           <p className="leading-relaxed">{tutorialCaption}</p>
           <button
@@ -423,8 +423,8 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
               }}
               className={`min-h-[44px] rounded-xl border px-2.5 py-2 text-xs font-semibold text-left transition-colors cursor-pointer ${
                 active
-                  ? 'border-[#0F766E] bg-[#0F766E] text-white'
-                  : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#17324D] dark:text-[#B4C5D4] hover:border-[#0F766E]'
+                  ? 'border-[#6D28D9] bg-[#6D28D9] text-white'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#2E1A6E] dark:text-[#C9BFEA] hover:border-[#6D28D9]'
               }`}
             >
               <span className="block truncate">
@@ -439,9 +439,9 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
         {/* Left Zone: Live Interactive SVG Trajectory & Vector Stage */}
         <div className="lg:col-span-7 flex flex-col justify-between gap-3">
-          <div className="rounded-xl border border-[#17324D]/40 dark:border-[#284766] bg-[#0D1B2A] p-3 space-y-2">
-            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#B4C5D4]">
-              <span className="font-medium text-[#4AD1C6]">{txt.currentLegend}</span>
+          <div className="rounded-xl border border-[#2E1A6E]/40 dark:border-[#3B2C78] bg-[#0D1B2A] p-3 space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#C9BFEA]">
+              <span className="font-medium text-[#C4B5FD]">{txt.currentLegend}</span>
               {baselineSim && <span>· {txt.baselineLegend}</span>}
               {stage === 3 && (
                 <span className="font-medium text-emerald-400">· {txt.practiceFlag}</span>
@@ -625,28 +625,28 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
           </div>
 
           {/* Tabular Live Physics Readouts */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3">
             <div>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{txt.vxLabel}</p>
-              <p className="text-sm font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{txt.vxLabel}</p>
+              <p className="text-sm font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
                 {activeSim.vx.toFixed(1)} m/s
               </p>
             </div>
             <div>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{txt.vyLabel}</p>
-              <p className="text-sm font-mono font-semibold text-[#D99B26] dark:text-[#F2B544] tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{txt.vyLabel}</p>
+              <p className="text-sm font-mono font-semibold text-[#F07C00] dark:text-[#FF9F1C] tabular-nums">
                 {activeSim.vy.toFixed(1)} m/s
               </p>
             </div>
             <div>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{txt.timeLabel}</p>
-              <p className="text-sm font-mono font-semibold text-[#17324D] dark:text-[#EEF3F7] tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{txt.timeLabel}</p>
+              <p className="text-sm font-mono font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] tabular-nums">
                 {activeSim.tFlight.toFixed(2)} s
               </p>
             </div>
             <div>
-              <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">{txt.rangeLabel}</p>
-              <p className="text-sm font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+              <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">{txt.rangeLabel}</p>
+              <p className="text-sm font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
                 {activeSim.range.toFixed(1)} m
               </p>
             </div>
@@ -656,13 +656,13 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
         {/* Right Zone: Guided Concept & Interactive Controls */}
         <div className="lg:col-span-5 flex flex-col justify-between gap-4">
           <div className="space-y-3">
-            <h4 className="text-sm sm:text-base font-semibold text-[#17324D] dark:text-[#EEF3F7]">
+            <h4 className="text-sm sm:text-base font-semibold text-[#2E1A6E] dark:text-[#F3EFFF]">
               {stageMeta.title[language]}
             </h4>
-            <p className="text-xs leading-relaxed text-[#1A262C] dark:text-[#B4C5D4]">
+            <p className="text-xs leading-relaxed text-[#22163F] dark:text-[#C9BFEA]">
               {stageMeta.takeaway[language]}
             </p>
-            <p className="text-[11px] text-[#3D4A50] dark:text-[#8FA4B8]">
+            <p className="text-[11px] text-[#4A3F66] dark:text-[#A496D4]">
               {stage === 1
                 ? txt.fixedSpeedNote
                 : stage === 2
@@ -672,10 +672,10 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
 
             {/* Stage 1 & Stage 3 Angle Control */}
             {(stage === 1 || stage === 3) && (
-              <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 space-y-2.5">
+              <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 space-y-2.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-medium text-[#17324D] dark:text-[#EEF3F7]">{txt.angleLabel}</span>
-                  <span className="font-mono font-semibold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+                  <span className="font-medium text-[#2E1A6E] dark:text-[#F3EFFF]">{txt.angleLabel}</span>
+                  <span className="font-mono font-semibold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
                     {tutAngle}°
                   </span>
                 </div>
@@ -684,7 +684,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                     type="button"
                     aria-label="Decrease tutorial angle"
                     onClick={() => setTutAngle((a) => Math.max(15, a - 5))}
-                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     <Minus className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -696,13 +696,13 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                     value={tutAngle}
                     aria-label={txt.angleLabel}
                     onChange={(e) => setTutAngle(Number(e.target.value))}
-                    className="flex-1 h-2 accent-[#0F766E] cursor-pointer"
+                    className="flex-1 h-2 accent-[#6D28D9] cursor-pointer"
                   />
                   <button
                     type="button"
                     aria-label="Increase tutorial angle"
                     onClick={() => setTutAngle((a) => Math.min(75, a + 5))}
-                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     <Plus className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -716,14 +716,14 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                         setTutAngle((prev) => (prev === 30 ? 60 : 30));
                         setStage1TestedPair(true);
                       }}
-                      className="min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] px-3 py-1.5 text-xs font-medium text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                      className="min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] px-3 py-1.5 text-xs font-medium text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                     >
                       {txt.tryComplementary} ({tutAngle === 30 ? '60°' : '30°'})
                     </button>
                     <button
                       type="button"
                       onClick={() => setTutAngle(45)}
-                      className="min-h-[44px] rounded-xl border border-[#0F766E]/45 bg-[#0F766E]/10 px-3 py-1.5 text-xs font-semibold text-[#0B5F58] dark:text-[#4AD1C6] cursor-pointer"
+                      className="min-h-[44px] rounded-xl border border-[#6D28D9]/45 bg-[#6D28D9]/10 px-3 py-1.5 text-xs font-semibold text-[#5B21B6] dark:text-[#C4B5FD] cursor-pointer"
                     >
                       {txt.reset45}
                     </button>
@@ -734,10 +734,10 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
 
             {/* Stage 2 & Stage 3 Speed Control */}
             {(stage === 2 || stage === 3) && (
-              <div className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] p-3 space-y-2.5">
+              <div className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] p-3 space-y-2.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-medium text-[#17324D] dark:text-[#EEF3F7]">{txt.speedLabel}</span>
-                  <span className="font-mono font-semibold text-[#D99B26] dark:text-[#F2B544] tabular-nums">
+                  <span className="font-medium text-[#2E1A6E] dark:text-[#F3EFFF]">{txt.speedLabel}</span>
+                  <span className="font-mono font-semibold text-[#F07C00] dark:text-[#FF9F1C] tabular-nums">
                     {tutSpeed} m/s
                   </span>
                 </div>
@@ -746,7 +746,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                     type="button"
                     aria-label="Decrease tutorial speed"
                     onClick={() => setTutSpeed((v) => Math.max(10, v - 2))}
-                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     <Minus className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -758,13 +758,13 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                     value={tutSpeed}
                     aria-label={txt.speedLabel}
                     onChange={(e) => setTutSpeed(Number(e.target.value))}
-                    className="flex-1 h-2 accent-[#F2B544] cursor-pointer"
+                    className="flex-1 h-2 accent-[#FF9F1C] cursor-pointer"
                   />
                   <button
                     type="button"
                     aria-label="Increase tutorial speed"
                     onClick={() => setTutSpeed((v) => Math.min(30, v + 2))}
-                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                    className="min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                   >
                     <Plus className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -784,19 +784,19 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                           onClick={() => setTutSpeed(p.val)}
                           className={`min-h-[44px] rounded-xl border px-3 py-1.5 text-xs font-semibold cursor-pointer ${
                             tutSpeed === p.val
-                              ? 'border-[#F2B544] bg-[#FFF4DC] dark:bg-[#F2B544]/20 text-[#17324D] dark:text-[#F8DFA8]'
-                              : 'border-[#E6DEC8] dark:border-[#284766] bg-white dark:bg-[#152A40] text-[#1A262C] dark:text-[#B4C5D4]'
+                              ? 'border-[#FF9F1C] bg-[#FFF1DE] dark:bg-[#FF9F1C]/20 text-[#2E1A6E] dark:text-[#FFD9A8]'
+                              : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-white dark:bg-[#1F1545] text-[#22163F] dark:text-[#C9BFEA]'
                           }`}
                         >
                           {p.label}
                         </button>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between text-[11px] font-mono tabular-nums text-[#1A262C] dark:text-[#B4C5D4] pt-1 border-t border-[#E6DEC8] dark:border-[#284766]">
+                    <div className="flex items-center justify-between text-[11px] font-mono tabular-nums text-[#22163F] dark:text-[#C9BFEA] pt-1 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
                       <span>
                         {txt.speedBoostLabel}: {speedFactor.toFixed(1)}×
                       </span>
-                      <span className="text-[#0B5F58] dark:text-[#4AD1C6] font-semibold">
+                      <span className="text-[#5B21B6] dark:text-[#C4B5FD] font-semibold">
                         {txt.rangeBoostLabel}: {rangeFactor.toFixed(2)}×
                       </span>
                     </div>
@@ -809,12 +809,12 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
             <div
               className={`rounded-xl border p-3 text-xs flex items-start gap-2 ${
                 stageGoalMet
-                  ? 'border-[#0F766E]/45 bg-[#0F766E]/10 text-[#17324D] dark:text-[#9BECE4]'
-                  : 'border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] text-[#1A262C] dark:text-[#B4C5D4]'
+                  ? 'border-[#6D28D9]/45 bg-[#6D28D9]/10 text-[#2E1A6E] dark:text-[#9BECE4]'
+                  : 'border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] text-[#22163F] dark:text-[#C9BFEA]'
               }`}
             >
               {stageGoalMet && (
-                <CheckCircle2 className="w-4 h-4 text-[#0F766E] dark:text-[#4AD1C6] shrink-0 mt-0.5" aria-hidden="true" />
+                <CheckCircle2 className="w-4 h-4 text-[#6D28D9] dark:text-[#C4B5FD] shrink-0 mt-0.5" aria-hidden="true" />
               )}
               <span className="leading-relaxed">
                 {stageGoalMet
@@ -829,13 +829,13 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
           </div>
 
           {/* Step Navigation Controls */}
-          <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#E6DEC8] dark:border-[#284766]">
+          <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#E7DDFB] dark:border-[#3B2C78]">
             <div className="flex items-center gap-2">
               {stage > 1 && (
                 <button
                   type="button"
                   onClick={() => setStage((s) => (s === 3 ? 2 : 1))}
-                  className="min-h-[44px] rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3.5 py-2 text-xs font-semibold text-[#17324D] dark:text-[#EEF3F7] hover:border-[#0F766E] cursor-pointer"
+                  className="min-h-[44px] rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3.5 py-2 text-xs font-semibold text-[#2E1A6E] dark:text-[#F3EFFF] hover:border-[#6D28D9] cursor-pointer"
                 >
                   {txt.prevStep}
                 </button>
@@ -848,7 +848,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                   setTutSpeed(10);
                   setStage1TestedPair(false);
                 }}
-                className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E6DEC8] dark:border-[#284766] bg-[#F6F1E3] dark:bg-[#1C3652] px-3 text-[#17324D] dark:text-[#B4C5D4] hover:border-[#0F766E] cursor-pointer"
+                className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] bg-[#F5F0FF] dark:bg-[#2A1D5C] px-3 text-[#2E1A6E] dark:text-[#C9BFEA] hover:border-[#6D28D9] cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -867,7 +867,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
                     setTutSpeed(18);
                   }
                 }}
-                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] cursor-pointer"
+                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] cursor-pointer"
               >
                 <span>{txt.nextStep}</span>
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -876,7 +876,7 @@ export const ProjectileTutorial: React.FC<ProjectileTutorialProps> = ({
               <button
                 type="button"
                 onClick={handleFinishTutorial}
-                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#0F766E] px-4 py-2 text-xs font-semibold text-white hover:bg-[#0B5F58] cursor-pointer"
+                className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl bg-[#6D28D9] px-4 py-2 text-xs font-semibold text-white hover:bg-[#5B21B6] cursor-pointer"
               >
                 <span>{txt.startMission}</span>
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />

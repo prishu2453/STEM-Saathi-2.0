@@ -492,7 +492,7 @@ export const diode: SimDef<Record<string, never>> = {
     for (let v = -1; v <= 0.85; v += 0.01) { const x = X(v), y = Y(I(v)); v === -1 ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke();
     const cur = I(p.V); c.fillStyle = RED; c.beginPath(); c.arc(X(p.V), Y(cur), 7, 0, 7); c.fill();
     label(c, 'V (V)', R - 4, B + 24, INK, 12, 'right'); label(c, 'I (mA)', L + 6, T + 10, INK, 12);
-    label(c, '−1', X(-1), B + 16, '#3D4A50', 11, 'center'); label(c, '0', X(0), B + 16, '#3D4A50', 11, 'center'); label(c, '0.7', X(0.7), B + 16, '#3D4A50', 11, 'center');
+    label(c, '−1', X(-1), B + 16, '#4A3F66', 11, 'center'); label(c, '0', X(0), B + 16, '#4A3F66', 11, 'center'); label(c, '0.7', X(0.7), B + 16, '#4A3F66', 11, 'center');
     label(c, p.V > 0.5 ? 'forward bias: conducting' : p.V >= 0 ? 'forward bias: below knee' : 'reverse bias: blocking', w - 12, 22, p.V > 0.6 ? TEAL : INK, 13, 'right');
   },
   readings: (s, p) => {
@@ -628,7 +628,7 @@ export const spectrum: SimDef<SpecState> = {
   step(s, p, dt) { s.t += dt; },
   draw(c, s, p, w, h) {
     const lam = 10 ** p.lg, band = BANDS.find((b) => lam < b.max)!;
-    const cols = ['#7C3AED', '#6366F1', '#8B5CF6', '#22C55E', '#DC2626', '#F97316', '#0F766E'];
+    const cols = ['#7C3AED', '#6366F1', '#8B5CF6', '#22C55E', '#DC2626', '#F97316', '#6D28D9'];
     const bw = (w - 40) / 7, bi = BANDS.indexOf(band);
     BANDS.forEach((b, i) => { c.fillStyle = cols[i]; c.globalAlpha = i === bi ? 1 : 0.35; c.fillRect(20 + i * bw, 20, bw - 3, 28); c.globalAlpha = 1; label(c, b.n.split(' ')[0], 20 + i * bw + bw / 2 - 1.5, 38, '#fff', 10, 'center'); });
     const mx = 20 + ((p.lg + 13) / 16) * (w - 40);

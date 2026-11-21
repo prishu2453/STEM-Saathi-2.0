@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#0B1120"/>
-  <circle cx="256" cy="256" r="144" fill="none" stroke="#38BDF8" stroke-width="14" opacity="0.35"/>
-  <ellipse cx="256" cy="256" rx="170" ry="64" transform="rotate(-30 256 256)" fill="none" stroke="#38BDF8" stroke-width="14"/>
-  <ellipse cx="256" cy="256" rx="170" ry="64" transform="rotate(30 256 256)" fill="none" stroke="#10B981" stroke-width="14"/>
-  <ellipse cx="256" cy="256" rx="170" ry="64" transform="rotate(90 256 256)" fill="none" stroke="#F59E0B" stroke-width="14"/>
-  <circle cx="256" cy="256" r="28" fill="#F8FAFC"/>
+  <!-- Gyaan Graph: four concepts joined by prerequisite links, one still being learned -->
+  <rect width="512" height="512" rx="112" fill="#6D28D9"/>
+  <g stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M150 340 L232 196"/>
+    <path d="M232 196 L362 168"/>
+    <path d="M232 196 L300 344"/>
+    <path d="M150 340 L300 344"/>
+  </g>
+  <circle cx="150" cy="340" r="50" fill="#FF9F1C" stroke="#FFFFFF" stroke-width="14"/>
+  <circle cx="232" cy="196" r="56" fill="#12C26B" stroke="#FFFFFF" stroke-width="14"/>
+  <circle cx="362" cy="168" r="42" fill="#FFFFFF"/>
+  <circle cx="300" cy="344" r="46" fill="#FF5DA2" stroke="#FFFFFF" stroke-width="14"/>
 </svg>

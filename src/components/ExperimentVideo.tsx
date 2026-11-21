@@ -11,7 +11,7 @@ export const ExperimentVideo: React.FC<{ experimentId: string }> = ({ experiment
 
   if (!video || problem) {
     return (
-      <div className="flex items-start gap-2 rounded-xl border border-dashed border-[#B9AD8C] dark:border-[#284766] px-3 py-2.5 text-sm text-[#3D4A50] dark:text-[#B4C5D4]">
+      <div className="flex items-start gap-2 rounded-xl border border-dashed border-[#B6A6E0] dark:border-[#3B2C78] px-3 py-2.5 text-sm text-[#4A3F66] dark:text-[#C9BFEA]">
         <VideoOff className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
         <span>No verified video for this experiment yet. Use the written steps{' '}
           {problem && import.meta.env.DEV ? `(a registered video was hidden: ${problem})` : 'and any simulation shown here.'}
@@ -27,7 +27,7 @@ export const ExperimentVideo: React.FC<{ experimentId: string }> = ({ experiment
         <button
           type="button"
           onClick={() => setLoaded(true)}
-          className="inline-flex items-center gap-2 rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 py-3 min-h-[48px] text-sm font-semibold text-white cursor-pointer"
+          className="inline-flex items-center gap-2 rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 py-3 min-h-[48px] text-sm font-semibold text-white cursor-pointer"
         >
           <PlayCircle className="w-5 h-5" aria-hidden="true" />
           Watch video: {video.title} (uses data)

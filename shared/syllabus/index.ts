@@ -135,7 +135,7 @@ export function querySyllabus(params: {
       session: params.session,
       subject,
       chapters: [],
-      unavailableReason: `Official textbook-verified chapters for Class ${params.classLevel} · ${boardDisplay} (${params.session}) are not yet loaded in this offline/API dataset. STEM Saathi never guesses or copies CBSE chapters into another board. Currently verified: ${verifiedList}.`,
+      unavailableReason: `Official textbook-verified chapters for Class ${params.classLevel} · ${boardDisplay} (${params.session}) are not yet loaded in this offline/API dataset. Gyaan Graph never guesses or copies CBSE chapters into another board. Currently verified: ${verifiedList}.`,
     };
   }
 

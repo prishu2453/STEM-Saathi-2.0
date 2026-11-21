@@ -29,26 +29,26 @@ export const SavedLessons: React.FC<Props> = ({ metas, language, onChanged, onOp
   const total = lessons.reduce((n, m) => n + m.coreSizeBytes + m.mediaSizeBytes, 0);
   return (
     <section aria-label={L.title[language]} className="mx-auto max-w-6xl px-4 sm:px-6 pt-5">
-      <div className="a11y-surface rounded-2xl border border-[#0F766E]/50 bg-white dark:bg-[#152A40] p-4 sm:p-5 space-y-4">
+      <div className="a11y-surface rounded-2xl border border-[#6D28D9]/50 bg-white dark:bg-[#1F1545] p-4 sm:p-5 space-y-4">
         <div className="flex flex-wrap items-center gap-2">
-          <HardDriveDownload className="w-5 h-5 text-[#0F766E]" aria-hidden="true" />
-          <h2 className="text-lg font-bold text-[#17324D] dark:text-white">{L.title[language]}</h2>
+          <HardDriveDownload className="w-5 h-5 text-[#6D28D9]" aria-hidden="true" />
+          <h2 className="text-lg font-bold text-[#2E1A6E] dark:text-white">{L.title[language]}</h2>
           {lessons.length > 0 && (
-            <span className="ml-auto rounded-full bg-[#E3F5F3] dark:bg-[#0F766E]/25 px-3 py-1 text-xs font-bold text-[#0B5F58] dark:text-[#4AD1C6] tabular-nums">
+            <span className="ml-auto rounded-full bg-[#EFE7FF] dark:bg-[#6D28D9]/25 px-3 py-1 text-xs font-bold text-[#5B21B6] dark:text-[#C4B5FD] tabular-nums">
               {lessons.length} · {L.total[language]} {formatBytes(total)}
             </span>
           )}
         </div>
         {lessons.length === 0 ? (
-          <p className="text-sm text-[#3D4A50] dark:text-[#B4C5D4]">{L.empty[language]}</p>
+          <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA]">{L.empty[language]}</p>
         ) : (
           <ul className="space-y-2">
             {lessons.map((m) => (
-              <li key={m.id} className="rounded-xl border border-[#E6DEC8] dark:border-[#284766] p-3 flex flex-wrap items-center gap-3">
+              <li key={m.id} className="rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] p-3 flex flex-wrap items-center gap-3">
                 <div className="flex-1 min-w-[200px] space-y-0.5">
-                  <p className="text-sm font-semibold text-[#17324D] dark:text-white">{m.title}</p>
-                  <p className="text-xs text-[#3D4A50] dark:text-[#B4C5D4] flex flex-wrap items-center gap-x-3 tabular-nums">
-                    <span className="inline-flex items-center gap-1 text-[#0B5F58] dark:text-[#4AD1C6] font-semibold">
+                  <p className="text-sm font-semibold text-[#2E1A6E] dark:text-white">{m.title}</p>
+                  <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA] flex flex-wrap items-center gap-x-3 tabular-nums">
+                    <span className="inline-flex items-center gap-1 text-[#5B21B6] dark:text-[#C4B5FD] font-semibold">
                       <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                       {L.saved[language]} · {formatBytes(m.coreSizeBytes + m.mediaSizeBytes)}
                     </span>
@@ -56,7 +56,7 @@ export const SavedLessons: React.FC<Props> = ({ metas, language, onChanged, onOp
                     {m.curriculum && <span>{m.curriculum.session}</span>}
                   </p>
                 </div>
-                <button type="button" onClick={() => onOpenChapter(m)} className="min-h-[44px] rounded-xl bg-[#0F766E] hover:bg-[#0B5F58] px-4 text-sm font-semibold text-white cursor-pointer">
+                <button type="button" onClick={() => onOpenChapter(m)} className="min-h-[44px] rounded-xl bg-[#6D28D9] hover:bg-[#5B21B6] px-4 text-sm font-semibold text-white cursor-pointer">
                   {L.open[language]}
                 </button>
                 <button
@@ -69,7 +69,7 @@ export const SavedLessons: React.FC<Props> = ({ metas, language, onChanged, onOp
                     onChanged();
                   }}
                   aria-label={`${L.remove[language]}: ${m.title}`}
-                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E6DEC8] dark:border-[#284766] px-3 text-sm font-semibold text-[#B91C1C] cursor-pointer"
+                  className="min-h-[44px] inline-flex items-center gap-1.5 rounded-xl border border-[#E7DDFB] dark:border-[#3B2C78] px-3 text-sm font-semibold text-[#B91C1C] cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" aria-hidden="true" />
                   {L.remove[language]}
@@ -78,8 +78,8 @@ export const SavedLessons: React.FC<Props> = ({ metas, language, onChanged, onOp
             ))}
           </ul>
         )}
-        <div className="grid gap-2 sm:grid-cols-2 text-xs text-[#1A262C] dark:text-[#DCE5EC]">
-          <p className="flex gap-2"><WifiOff className="w-4 h-4 shrink-0 text-[#0F766E]" aria-hidden="true" /><span><strong>{L.includes[language]}:</strong> {L.includesText[language]}.</span></p>
+        <div className="grid gap-2 sm:grid-cols-2 text-xs text-[#22163F] dark:text-[#E4DDFA]">
+          <p className="flex gap-2"><WifiOff className="w-4 h-4 shrink-0 text-[#6D28D9]" aria-hidden="true" /><span><strong>{L.includes[language]}:</strong> {L.includesText[language]}.</span></p>
           <p className="flex gap-2"><WifiOff className="w-4 h-4 shrink-0 text-[#B91C1C]" aria-hidden="true" /><span><strong>{L.notIncluded[language]}:</strong> {L.notIncludedText[language]}</span></p>
         </div>
       </div>
