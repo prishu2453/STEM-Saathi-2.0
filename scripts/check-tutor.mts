@@ -157,4 +157,72 @@ check('class report finds gaps, misconceptions and re-teach actions', () => {
   assert.ok(r.students[0].overall <= r.students[r.students.length - 1].overall, 'weakest first');
 });
 
-console.log(`✓ ${passed} tutor checks passed (${CONCEPTS.length} concepts, ${QUESTION_BANK.length} questions)`);
+/* ---------- 3D story lessons ---------- */
+const { STORIES, stateAt } = await import('../src/story/stories');
+const SP = await import('../src/story/physics');
+
+check('3D stories cover all 24 concepts, each exactly once', () => {
+  const covered = STORIES.flatMap((s) => s.concepts);
+  for (const c of CONCEPTS) assert.equal(covered.filter((x) => x === c.id).length, 1, `${c.id} covered ${covered.filter((x) => x === c.id).length} times`);
+});
+
+check('every story scene is narrated in English, Hindi and Kannada', () => {
+  for (const s of STORIES) {
+    for (const lang of ['en', 'hi', 'kn'] as const) {
+      assert.ok(s.title[lang].trim() && s.premise[lang].trim(), `${s.id} title/premise ${lang}`);
+      s.beats.forEach((b, i) => assert.ok(b.say[lang].trim().length > 20, `${s.id} beat ${i + 1} ${lang}`));
+      s.experiment.controls.forEach((c) => assert.ok(c.label[lang].trim(), `${s.id} control ${c.key} ${lang}`));
+    }
+    assert.ok(s.beats.length >= 5, `${s.id} has only ${s.beats.length} scenes`);
+  }
+});
+
+check('numbers spoken in the stories match the physics engine', () => {
+  const near = (a: number, b: number, tol = 0.02) => assert.ok(Math.abs(a - b) <= tol, `${a} ≠ ${b}`);
+  near(SP.snell(40, 1, 1.5)!, 25.4, 0.1); // broken pencil: i 40°, r 25°
+  const m = SP.mirrorImage(-4.5, -1.5); // bus mirror: v −22.5 cm, m −0.5
+  near(m.v, -2.25);
+  near(m.m, -0.5);
+  const l = SP.lensImage(-2.25, 1.5); // magnifying glass: v +45 cm, m −2, P ≈ 6.7 D
+  near(l.v, 4.5);
+  near(l.m, -2);
+  near(1 / 0.15, 6.67, 0.01);
+  near(SP.solveCircuit(2, [4], 'series').current, 0.5); // repair shop: 2 V, 4 Ω → 0.5 A
+  near(SP.solveCircuit(8, [4], 'series').current, 2);
+  near(SP.solveCircuit(6, [6, 6, 6], 'series').current, 1 / 3, 0.005); // Diwali: 0.33 A, 2 V each
+  near(SP.solveCircuit(6, [6, 6, 6], 'series').branchVoltage[0], 2);
+  near(SP.solveCircuit(6, [6, 6, 6], 'parallel').current, 3); // 3 A, R = 2 Ω
+  near(SP.solveCircuit(6, [6, 6, 6], 'parallel').req, 2);
+  const h = SP.solveCircuit(12, [3], 'series'); // heater: 4 A, 48 W
+  near(h.current, 4);
+  near(h.power[0], 48);
+  const house = SP.houseLoad({ bulb: 1, fan: 1, heater: 1, iron: 1 }, 5, 'none'); // 3175 W ≈ 14 A, fuse blows
+  assert.equal(house.watts, 3175);
+  near(house.current, 14.4, 0.05);
+  assert.ok(house.blown);
+  assert.ok(SP.houseLoad({ bulb: 1, fan: 1, heater: 1 }, 15, 'earth', true).blown, 'earthed fault should blow the fuse');
+  assert.ok(!SP.houseLoad({ bulb: 1, fan: 1, heater: 1 }, 15, 'earth', false).blown, 'unearthed fault does not blow the fuse');
+  assert.ok(SP.forceOnWire(3, [0, 0, 1], [0, -1, 0])[0] > 0 && SP.forceOnWire(-3, [0, 0, 1], [0, -1, 0])[0] < 0, 'reversing current reverses the force');
+});
+
+check('glasses in the eye story really focus on the retina', () => {
+  for (const [defect, objX] of [['myopia', null], ['hypermetropia', SP.EYE.near]] as const) {
+    const eye = SP.eyeModel(defect);
+    const fc = SP.correctiveLens(defect, objX)!;
+    assert.ok(defect === 'myopia' ? fc < 0 : fc > 0, `${defect} lens sign`);
+    const fEye = defect === 'myopia' ? eye.fRelaxed : eye.fMin;
+    const pts = objX === null
+      ? SP.traceParaxial(-6, 0.5, 0, [{ x: SP.EYE.spectacleX, f: fc }, { x: 0, f: fEye }], eye.retinaX)
+      : SP.traceParaxial(objX, 0, 0.5 / (SP.EYE.spectacleX - objX), [{ x: SP.EYE.spectacleX, f: fc }, { x: 0, f: fEye }], eye.retinaX);
+    assert.ok(Math.abs(pts[pts.length - 1][1]) < 0.01, `${defect} corrected image off the retina by ${pts[pts.length - 1][1]}`);
+  }
+});
+
+check('every experiment control points at a key the scene uses', () => {
+  for (const s of STORIES) {
+    const keys = new Set(Object.keys({ ...s.base, ...stateAt(s, s.beats.length - 1), ...(s.experiment.start ?? {}) }));
+    for (const c of s.experiment.controls) assert.ok(keys.has(c.key), `${s.id}: control ${c.key} not in scene state`);
+  }
+});
+
+console.log(`✓ ${passed} tutor and story checks passed (${CONCEPTS.length} concepts, ${QUESTION_BANK.length} questions, ${STORIES.length} 3D stories)`);

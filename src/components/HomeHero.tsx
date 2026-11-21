@@ -3,7 +3,8 @@
  * "misconception of the day", and the student's own graph (or how it works).
  */
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Atom, CalendarClock, ClipboardCheck, Lightbulb, Target, Users } from 'lucide-react';
+import { ArrowRight, Atom, CalendarClock, ClipboardCheck, Clapperboard, Lightbulb, Play, Target, Users } from 'lucide-react';
+import { STORIES } from '../story/stories';
 import { CONCEPTS, CONCEPT_BY_ID, MISCONCEPTION_BY_ID } from '../../shared/tutor/conceptGraph';
 import { conceptStatus, dueConcepts, effectiveMastery, isReady, overallMastery } from '../../shared/tutor/learnerModel';
 import { useLearner } from '../lib/learnerStore';
@@ -26,6 +27,13 @@ const T = {
   ctaLab: { en: 'Open the 3D lab', hi: '3D लैब खोलें', kn: '3D ಪ್ರಯೋಗಾಲಯ ತೆರೆಯಿರಿ' },
   ctaTeacher: { en: 'I’m a teacher', hi: 'मैं शिक्षक हूँ', kn: 'ನಾನು ಶಿಕ್ಷಕ' },
   ctaAsk: { en: 'Ask a doubt', hi: 'सवाल पूछें', kn: 'ಸಂದೇಹ ಕೇಳಿ' },
+  storiesTitle: { en: 'Learn it as a 3D story', hi: '3D कहानी से सीखिए', kn: '3D ಕಥೆಯಾಗಿ ಕಲಿಯಿರಿ' },
+  storiesSub: {
+    en: 'Every Class 10 topic as a short narrated 3D story from everyday life, then you do the experiment yourself.',
+    hi: 'कक्षा 10 का हर विषय रोज़मर्रा की एक छोटी 3D कहानी के रूप में, फिर आप ख़ुद प्रयोग करते हैं।',
+    kn: '10ನೇ ತರಗತಿಯ ಪ್ರತಿ ವಿಷಯ ದೈನಂದಿನ ಜೀವನದ ಸಣ್ಣ 3D ಕಥೆಯಾಗಿ, ನಂತರ ನೀವೇ ಪ್ರಯೋಗ ಮಾಡುತ್ತೀರಿ.',
+  },
+  allStories: { en: 'All 12 stories', hi: 'सभी 12 कहानियाँ', kn: 'ಎಲ್ಲಾ 12 ಕಥೆಗಳು' },
   motd: { en: 'Misconception of the day', hi: 'आज की गलतफ़हमी', kn: 'ಇಂದಿನ ತಪ್ಪುಕಲ್ಪನೆ' },
   tap: { en: 'Tap your answer', hi: 'अपना उत्तर चुनें', kn: 'ನಿಮ್ಮ ಉತ್ತರ ಒತ್ತಿ' },
   right: { en: 'Right!', hi: 'सही!', kn: 'ಸರಿ!' },
@@ -89,11 +97,13 @@ interface Props {
   onOpenLab: () => void;
   onOpenTeacher: () => void;
   onAskDoubt: () => void;
+  /** Open a 3D story (no id: the story library). */
+  onOpenStory?: (storyId?: string) => void;
   /** Class/board picker, language buttons and notes from the app shell. */
   children?: React.ReactNode;
 }
 
-export const HomeHero: React.FC<Props> = ({ language, onStartDiagnostic, onOpenTutor, onOpenLab, onOpenTeacher, onAskDoubt, children }) => {
+export const HomeHero: React.FC<Props> = ({ language, onStartDiagnostic, onOpenTutor, onOpenLab, onOpenTeacher, onAskDoubt, onOpenStory, children }) => {
   const [learner] = useLearner();
   const day = Math.floor(Date.now() / 86_400_000);
   const item = DAILY[day % DAILY.length];
@@ -213,6 +223,43 @@ export const HomeHero: React.FC<Props> = ({ language, onStartDiagnostic, onOpenT
           </div>
         </div>
       </div>
+
+      {/* 3D story lessons */}
+      {onOpenStory && (
+        <div>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="flex items-center gap-2 font-display text-2xl sm:text-3xl font-extrabold text-[#2E1A6E] dark:text-white">
+                <Clapperboard className="w-7 h-7 text-[#FF5DA2]" aria-hidden="true" /> {L(T.storiesTitle, language)}
+              </h2>
+              <p className="text-sm text-[#4A3F66] dark:text-[#C9BFEA] max-w-xl">{L(T.storiesSub, language)}</p>
+            </div>
+            <button type="button" onClick={() => onOpenStory()} className="inline-flex items-center gap-1.5 rounded-2xl border-2 border-[#2E1A6E] dark:border-[#C4B5FD] bg-white dark:bg-[#1F1545] px-4 py-2.5 min-h-[46px] text-sm font-extrabold text-[#2E1A6E] dark:text-white">
+              {L(T.allStories, language)} <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {['bus-mirror', 'ravi-eyes', 'diwali-lights', 'jumping-wire'].map((id) => {
+              const s = STORIES.find((x) => x.id === id)!;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => onOpenStory(id)}
+                  className="group text-left rounded-2xl border-2 border-[#2E1A6E] dark:border-[#C4B5FD] bg-white dark:bg-[#1F1545] overflow-hidden hover:-translate-y-1 transition-transform"
+                  style={{ boxShadow: `4px 4px 0 ${s.color}` }}
+                >
+                  <div className="flex items-center justify-between px-3 py-2" style={{ background: s.color }}>
+                    <span className="text-[11px] font-extrabold text-[#2E1A6E] bg-white/85 rounded-full px-2 py-0.5">{s.beats.length} scenes · 3D</span>
+                    <Play className="w-5 h-5 text-white group-hover:scale-125 transition-transform" aria-hidden="true" />
+                  </div>
+                  <p className="p-3 font-display text-base sm:text-lg font-extrabold leading-tight text-[#2E1A6E] dark:text-white">{L(s.title, language)}</p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Your graph, or how it works */}
       {started ? (

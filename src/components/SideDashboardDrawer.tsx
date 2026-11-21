@@ -3,6 +3,7 @@ import {
   Accessibility,
   Atom,
   Brain,
+  Clapperboard,
   BookOpen,
   Calculator,
   ClipboardList,
@@ -262,6 +263,19 @@ export const SideDashboardDrawer: React.FC<SideDashboardDrawerProps> = ({
             >
               <Brain className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>{language === 'hi' ? 'स्मार्ट अभ्यास (AI ट्यूटर)' : language === 'kn' ? 'ಸ್ಮಾರ್ಟ್ ಅಭ್ಯಾಸ (AI ಶಿಕ್ಷಕ)' : 'Smart Practice (AI tutor)'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onSelectView('stories');
+                onClose();
+              }}
+              aria-current={activeView === 'stories' ? 'page' : undefined}
+              className={itemClass(activeView === 'stories')}
+            >
+              <Clapperboard className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span>{language === 'hi' ? '3D कहानी पाठ (कक्षा 10)' : language === 'kn' ? '3D ಕಥಾ ಪಾಠಗಳು (10ನೇ ತರಗತಿ)' : '3D story lessons (Class 10)'}</span>
             </button>
 
             <button

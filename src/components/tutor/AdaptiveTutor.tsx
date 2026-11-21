@@ -20,17 +20,22 @@ import type { Language } from '../../types/stem';
 import { ConceptMap, type NodeView } from './ConceptMap';
 import { TutorSession } from './TutorSession';
 import { pct, relTime, STATUS_COLOR, tt, type TKey } from './tutorText';
+import { STORY_FOR_CONCEPT } from '../../story/stories';
 
 type Tab = 'map' | 'diagnostic' | 'practice' | 'review' | 'class';
 
 interface Props {
   language: Language;
   initialTab?: Tab;
+  /** Start practice on this concept (e.g. coming from a 3D story). */
+  initialFocus?: string;
+  onFocusConsumed?: () => void;
   onOpenAccount?: () => void;
   onOpenTeacher?: () => void;
+  onOpenStory?: (storyId: string) => void;
 }
 
-export const AdaptiveTutor: React.FC<Props> = ({ language, initialTab, onOpenAccount, onOpenTeacher }) => {
+export const AdaptiveTutor: React.FC<Props> = ({ language, initialTab, initialFocus, onFocusConsumed, onOpenAccount, onOpenTeacher, onOpenStory }) => {
   const t = (k: TKey) => tt(k, language);
   const [learner, setLearner] = useLearner();
   const [tab, setTab] = useState<Tab>(initialTab ?? 'map');
@@ -70,6 +75,13 @@ export const AdaptiveTutor: React.FC<Props> = ({ language, initialTab, onOpenAcc
     setTab(mode === 'diagnostic' ? 'diagnostic' : mode === 'review' ? 'review' : 'practice');
   };
 
+  useEffect(() => {
+    if (!initialFocus) return;
+    begin('practice', initialFocus);
+    onFocusConsumed?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialFocus]);
+
   const tabs: { id: Tab; label: string; icon: React.ReactNode; badge?: number }[] = [
     { id: 'map', label: t('tabMap'), icon: <MapIcon className="w-4 h-4" aria-hidden="true" /> },
     { id: 'diagnostic', label: t('tabDiagnostic'), icon: <ClipboardCheck className="w-4 h-4" aria-hidden="true" /> },
@@ -90,6 +102,7 @@ export const AdaptiveTutor: React.FC<Props> = ({ language, initialTab, onOpenAcc
       learner={learner}
       setLearner={setLearner}
       aiAvailable={ai}
+      onOpenStory={onOpenStory}
       onExit={() => {
         setSession(null);
         setTab('map');
@@ -184,9 +197,16 @@ export const AdaptiveTutor: React.FC<Props> = ({ language, initialTab, onOpenAcc
                   <h3 className="text-lg font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">{name(selected)}</h3>
                   <p className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{CONCEPT_BY_ID[selected].summary}</p>
                 </div>
-                <button type="button" onClick={() => begin('practice', selected)} className="rounded-lg bg-[#6D28D9] text-white px-4 py-2 text-sm font-semibold min-h-[44px]">
-                  {t('practiseThis')}
-                </button>
+                <div className="flex flex-wrap gap-2">
+                  {onOpenStory && STORY_FOR_CONCEPT[selected] && (
+                    <button type="button" onClick={() => onOpenStory(STORY_FOR_CONCEPT[selected].id)} className="rounded-lg border-2 border-[#2E1A6E] dark:border-[#C4B5FD] bg-[#FF9F1C] text-[#2E1A6E] px-4 py-2 text-sm font-semibold min-h-[44px]">
+                      ▶ {t('watchStory')}
+                    </button>
+                  )}
+                  <button type="button" onClick={() => begin('practice', selected)} className="rounded-lg bg-[#6D28D9] text-white px-4 py-2 text-sm font-semibold min-h-[44px]">
+                    {t('practiseThis')}
+                  </button>
+                </div>
               </div>
               <dl className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
                 <div><dt className="text-xs text-[#4A3F66] dark:text-[#C9BFEA]">{t('masteryChange')}</dt><dd className="font-mono font-semibold text-[#2E1A6E] dark:text-[#F5F0FF]">{nodes[selected].value === null ? '—' : pct(nodes[selected].value!)}</dd></div>

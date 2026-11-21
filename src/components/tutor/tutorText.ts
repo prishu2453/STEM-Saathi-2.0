@@ -76,6 +76,8 @@ export const TT = {
   why_stretch: { en: 'Stretch question', hi: 'चुनौती प्रश्न', kn: 'ಸವಾಲಿನ ಪ್ರಶ್ನೆ' },
   redirected: { en: 'first: it is a prerequisite you have not mastered yet for', hi: 'पहले: यह इसकी नींव है जो अभी कमज़ोर है —', kn: 'ಮೊದಲು: ಇದು ಇನ್ನೂ ಕಲಿಯದ ಅಡಿಪಾಯ —' },
   practiseThis: { en: 'Practise this concept', hi: 'इस संकल्पना का अभ्यास करें', kn: 'ಈ ಪರಿಕಲ್ಪನೆ ಅಭ್ಯಾಸ ಮಾಡಿ' },
+  watchStory: { en: 'Watch the 3D story', hi: '3D कहानी देखें', kn: '3D ಕಥೆ ನೋಡಿ' },
+  stuckStory: { en: 'Still confusing? Watch the 3D story for this concept', hi: 'अब भी उलझन? इस संकल्पना की 3D कहानी देखें', kn: 'ಇನ್ನೂ ಗೊಂದಲವೇ? ಈ ಪರಿಕಲ್ಪನೆಯ 3D ಕಥೆ ನೋಡಿ' },
   prereqs: { en: 'Builds on', hi: 'इन पर आधारित', kn: 'ಇವುಗಳ ಮೇಲೆ ನಿಂತಿದೆ' },
   attempts: { en: 'Answers', hi: 'उत्तर', kn: 'ಉತ್ತರಗಳು' },
   accuracy: { en: 'Correct', hi: 'सही', kn: 'ಸರಿ' },

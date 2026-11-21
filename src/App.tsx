@@ -19,6 +19,7 @@ import { StudentPathSelector } from './components/StudentPathSelector';
 // Big screens load only when the student opens them — the home page stays small for slow connections.
 const AIMentorDrawer = lazy(() => import('./components/AIMentorDrawer').then((m) => ({ default: m.AIMentorDrawer })));
 const CurriculumBrowser = lazy(() => import('./components/CurriculumBrowser').then((m) => ({ default: m.CurriculumBrowser })));
+const StoryLibrary = lazy(() => import('./story/StoryLibrary').then((m) => ({ default: m.StoryLibrary })));
 const HomeHero = lazy(() => import('./components/HomeHero').then((m) => ({ default: m.HomeHero })));
 const AdaptiveTutor = lazy(() => import('./components/tutor/AdaptiveTutor').then((m) => ({ default: m.AdaptiveTutor })));
 const TeacherDashboard = lazy(() => import('./components/tutor/TeacherDashboard').then((m) => ({ default: m.TeacherDashboard })));
@@ -169,6 +170,9 @@ function resolveRouteFromLocation(): ResolvedRoute {
   if (token === 'tutor' || token === 'practice' || token === 'smart-practice' || token === 'diagnostic') {
     return { view: 'tutor' };
   }
+  if (token === 'stories' || token === 'story' || token === '3d-stories' || token.startsWith('story/')) {
+    return { view: 'stories' };
+  }
   if (token === 'teacher' || token === 'teacher-dashboard' || token === 'class') {
     return { view: 'teacher' };
   }
@@ -296,6 +300,8 @@ function StemSaathiApp() {
   const [authError, setAuthError] = useState<string | null>(null);
 
   const [activeView, setActiveView] = useState<AppWorkspaceView>(initialRoute.view);
+  // concept to practise when Smart Practice is opened from a story or elsewhere
+  const [tutorFocus, setTutorFocus] = useState<string | undefined>(undefined);
   const [activePhysicsTopic, setActivePhysicsTopic] = useState<PhysicsTopicId>(
     initialRoute.physicsTopic ?? 'mechanics'
   );
@@ -1077,6 +1083,7 @@ function StemSaathiApp() {
               onOpenTutor={() => scrollToSection('tutor')}
               onOpenLab={() => openPhysicsWorkbench('double-slit')}
               onOpenTeacher={() => scrollToSection('teacher')}
+              onOpenStory={(id) => scrollToSection('stories', id ? `story/${id}` : 'stories')}
               onAskDoubt={() => {
                 setMentorSubject('Physics');
                 setMentorPrompt('');
@@ -1409,9 +1416,23 @@ function StemSaathiApp() {
             {activeView === 'tutor' && (
               <AdaptiveTutor
                 language={language}
+                initialFocus={tutorFocus}
+                onFocusConsumed={() => setTutorFocus(undefined)}
+                onOpenStory={(id) => scrollToSection('stories', `story/${id}`)}
                 initialTab={/diagnostic/i.test(window.location.search + window.location.hash) ? 'diagnostic' : undefined}
                 onOpenAccount={() => scrollToSection('account')}
                 onOpenTeacher={() => scrollToSection('teacher')}
+              />
+            )}
+            {activeView === 'stories' && (
+              <StoryLibrary
+                key={typeof window !== 'undefined' ? window.location.hash : 'stories'}
+                language={language}
+                lowPower={a11y.lowPowerMode}
+                onPractice={(conceptId) => {
+                  setTutorFocus(conceptId);
+                  scrollToSection('tutor');
+                }}
               />
             )}
             {activeView === 'teacher' && <TeacherDashboard language={language} onOpenAccount={() => scrollToSection('account')} />}

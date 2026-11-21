@@ -15,7 +15,8 @@ export type MainSection =
   | 'coverage'
   | 'account'
   | 'tutor'
-  | 'teacher';
+  | 'teacher'
+  | 'stories';
 
 export type PhysicsTopicId =
   | 'mechanics'

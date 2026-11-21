@@ -30,6 +30,7 @@ import { markActiveToday } from '../../lib/engagement';
 import { diagnoseReasoning, generateQuestion, questionPool, saveGenerated, type ReasoningDiagnosis } from '../../lib/learnerStore';
 import type { Language } from '../../types/stem';
 import { pct, tt, type TKey } from './tutorText';
+import { STORY_FOR_CONCEPT } from '../../story/stories';
 
 interface Props {
   mode: AnswerMode;
@@ -37,6 +38,7 @@ interface Props {
   learner: LearnerState;
   setLearner: (next: LearnerState | ((prev: LearnerState) => LearnerState)) => void;
   aiAvailable: boolean;
+  onOpenStory?: (storyId: string) => void;
   /** Practice: concept the student asked for (may be redirected to a weak prerequisite). */
   focus?: string;
   onExit: () => void;
@@ -71,7 +73,7 @@ function targetDifficulty(mastery: number) {
   return clamp(ability - Math.log(partial / (1 - partial)), -1.5, 1.5);
 }
 
-export const TutorSession: React.FC<Props> = ({ mode, language, learner, setLearner, aiAvailable, focus, onExit }) => {
+export const TutorSession: React.FC<Props> = ({ mode, language, learner, setLearner, aiAvailable, focus, onExit, onOpenStory }) => {
   const t = (k: TKey) => tt(k, language);
   const [current, setCurrent] = useState<Current | null>(null);
   const [phase, setPhase] = useState<'answer' | 'why' | 'feedback' | 'done' | 'empty'>('answer');
@@ -463,6 +465,16 @@ export const TutorSession: React.FC<Props> = ({ mode, language, learner, setLear
           )}
 
           <MasteryChange name={conceptName(q.conceptId)} before={result.pBefore} after={result.pAfter} label={t('masteryChange')} />
+
+          {!result.correct && onOpenStory && STORY_FOR_CONCEPT[q.conceptId] && (
+            <button
+              type="button"
+              onClick={() => onOpenStory(STORY_FOR_CONCEPT[q.conceptId].id)}
+              className="w-full rounded-xl border-2 border-dashed border-[#FF9F1C] bg-[#FFF3E6] dark:bg-[#3A2A14] px-4 py-2.5 text-left text-sm font-bold text-[#B4430C] dark:text-[#FFB27A]"
+            >
+              ▶ {t('stuckStory')}: “{STORY_FOR_CONCEPT[q.conceptId].title[language] || STORY_FOR_CONCEPT[q.conceptId].title.en}”
+            </button>
+          )}
 
           <div className="flex flex-wrap gap-2">
             <button type="button" onClick={() => void loadNext()} className="inline-flex items-center gap-2 rounded-lg bg-[#6D28D9] text-white px-5 py-2.5 text-sm font-semibold min-h-[44px]">
